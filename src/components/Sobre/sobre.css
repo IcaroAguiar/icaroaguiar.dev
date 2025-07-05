@@ -46,7 +46,7 @@
 
 /* Adiciona um "bullet" customizado com a cor primária */
 .experience-card li::before {
-  content: '•';
+  content: "•";
   color: var(--color-primary);
   font-weight: bold;
   position: absolute;
@@ -79,9 +79,19 @@
 }
 
 /* Card de Habilidades (sem alterações) */
-.skill-category { margin-bottom: 1.2rem; }
-.skill-category strong { font-size: 1rem; color: var(--color-text-primary); }
-.tags-container { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
+.skill-category {
+  margin-bottom: 1.2rem;
+}
+.skill-category strong {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
 .tag {
   background-color: #eef8f7;
   color: var(--color-primary-dark);
@@ -92,23 +102,63 @@
 }
 
 /* Card de Formação (sem alterações) */
-.education-item:not(:last-child) { margin-bottom: 1rem; }
-.education-item h3 { font-size: 1.2rem; color: var(--color-text-primary); }
-.education-item h4 { font-size: 1rem; font-weight: 400; color: var(--color-text-secondary); }
-.education-item p { font-size: 0.9rem; color: var(--color-primary); }
+.education-item:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.education-item h3 {
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+}
+.education-item h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+.education-item p {
+  font-size: 0.9rem;
+  color: var(--color-primary);
+}
 
 /* Card de Contato (sem alterações) */
-.contact-card p { margin-bottom: 1rem; color: var(--color-text-secondary); flex-grow: 1; }
-.contact-details { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
-.contact-item { display: flex; align-items: center; gap: 1rem; color: var(--color-text-secondary); }
-.contact-item svg { color: var(--color-primary); font-size: 1.2rem; }
-.social-links { display: flex; gap: 1.5rem; }
-.social-links a { font-size: 2rem; color: var(--color-text-secondary); transition: all 0.3s ease; }
-.social-links a:hover { color: var(--color-primary); transform: scale(1.1); }
-
+.contact-card p {
+  margin-bottom: 1rem;
+  color: var(--color-text-secondary);
+  flex-grow: 1;
+}
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-text-secondary);
+}
+.contact-item svg {
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.social-links a {
+  font-size: 2rem;
+  color: var(--color-text-secondary);
+  transition: all 0.3s ease;
+}
+.social-links a:hover {
+  color: var(--color-primary);
+  transform: scale(1.1);
+}
 
 /* --- Responsividade --- */
-@media (max-width: 992px) {
+/* --- MEDIA QUERY ATUALIZADA PARA TELAS MENORES --- */
+@media (max-width: 960px) {
+  /* Alinhando com o breakpoint do menu */
   .experience-grid {
     grid-template-columns: 1fr; /* Coluna única em telas menores */
   }

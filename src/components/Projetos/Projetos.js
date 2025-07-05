@@ -1,10 +1,7 @@
 import React from "react";
 import "./Projetos.css";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import AnimatedCard from "../AnimatedCard/AnimatedCard"; // Importe o componente de animação
-
-// Quando tiver imagens, você pode importá-las assim:
-// import projImg1 from '../../assets/proj1.png';
+import AnimatedCard from "../AnimatedCard/AnimatedCard";
 
 function Projetos() {
   const projects = [
@@ -37,9 +34,16 @@ function Projetos() {
   return (
     <div className="projetos-container">
       <h1 className="section-title">Meus Projetos</h1>
+
+      {/* --- MENSAGEM DE AVISO AQUI --- */}
+      <p className="projetos-disclaimer">
+        Novos projetos autorais estão sendo desenvolvidos e serão adicionados em
+        breve. Abaixo estão alguns exemplos para demonstrar minhas áreas de
+        interesse e as tecnologias que aplico.
+      </p>
+
       <div className="projetos-grid">
         {projects.map((project, index) => (
-          // Cada card é agora um AnimatedCard
           <AnimatedCard key={index}>
             <div className="projeto-card">
               <div className="placeholder-img">

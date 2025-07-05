@@ -83,3 +83,12 @@
 .projeto-links a:hover {
   color: var(--color-primary);
 }
+.projetos-disclaimer {
+  max-width: 600px;
+  text-align: center;
+  margin: -1rem auto 3rem; /* Espaçamento negativo para aproximar do título */
+  color: var(--color-text-secondary);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}

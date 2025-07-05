@@ -71,7 +71,7 @@
 }
 
 .home-image-wrapper::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -135,5 +135,29 @@
     margin-top: 3rem;
     width: 280px;
     height: 280px;
+  }
+}
+
+/* --- MEDIA QUERY ADICIONAL PARA CELULARES PEQUENOS --- */
+@media (max-width: 480px) {
+  .home-text h1 {
+    font-size: 2.5rem; /* Reduz drasticamente o título principal */
+    line-height: 1.2;
+  }
+  .home-subtitle {
+    font-size: 1.3rem; /* Reduz o subtítulo animado */
+    height: auto; /* Permite que quebre em duas linhas se necessário */
+    min-height: 2.5rem;
+  }
+  .home-text p {
+    font-size: 1rem; /* Reduz o texto do parágrafo */
+  }
+  .profile-image-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+  .profile-image-wrapper img {
+    width: 260px;
+    height: 260px;
   }
 }

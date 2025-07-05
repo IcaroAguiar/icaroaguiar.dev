@@ -1,6 +1,6 @@
 .navbar {
-  background-color: var(--color-background); /* Fundo correspondente ao body */
-  height: 70px; /* Um pouco mais de altura */
+  background-color: var(--color-background);
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,10 +12,9 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Estilo da navbar quando a página é rolada */
 .navbar.scrolled {
-  background-color: var(--color-surface); /* Fundo branco */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra suave */
+  background-color: var(--color-surface);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-container {
@@ -30,8 +29,6 @@
 
 .navbar-logo {
   color: var(--color-text-primary);
-  justify-self: start;
-  cursor: pointer;
   font-size: 1.5rem;
   font-weight: 700;
   transition: color 0.3s ease;
@@ -55,7 +52,6 @@
   color: var(--color-text-secondary);
   display: flex;
   align-items: center;
-  text-decoration: none;
   padding: 0 1.5rem;
   height: 100%;
   position: relative;
@@ -67,19 +63,59 @@
   color: var(--color-primary);
 }
 
-/* Linha sutil que aparece embaixo do link ao passar o mouse */
-.nav-links::after {
-  content: '';
-  position: absolute;
-  bottom: 20px; /* Posição da linha */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background-color: var(--color-primary);
-  transition: width 0.3s ease;
+/* Escondendo o ícone do menu em telas grandes */
+.menu-icon {
+  display: none;
 }
 
-.nav-links:hover::after {
-  width: 50%;
+/* --- ESTILOS PARA MOBILE --- */
+@media screen and (max-width: 960px) {
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 70px;
+    left: -100%; /* Esconde o menu fora da tela */
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .nav-menu.active {
+    background: var(--color-surface);
+    left: 0; /* Traz o menu para a tela */
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  .nav-links {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+  }
+
+  .nav-links:hover {
+    color: var(--color-primary);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+  }
+
+  .nav-item {
+    width: 100%;
+    height: auto;
+  }
+
+  .menu-icon {
+    display: block; /* Mostra o ícone em telas pequenas */
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--color-text-primary);
+  }
 }
