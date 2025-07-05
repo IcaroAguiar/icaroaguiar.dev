@@ -1,0 +1,66 @@
+/* global.css */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+:root {
+  --color-background: #f4f4f9; /* Branco suave (Off-white) */
+  --color-surface: #ffffff; /* Branco puro para os cards */
+  --color-primary: #2a9d8f; /* Verde Sálvia (Sage Green) */
+  --color-primary-dark: #238276; /* Verde Sálvia mais escuro para hover */
+  --color-text-primary: #1c1c1c; /* Preto para textos principais */
+  --color-text-secondary: #555555; /* Cinza para textos secundários */
+  --font-family: "Roboto", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+section {
+  padding: 6rem 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--color-text-primary);
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+  font-weight: 700;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-primary);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}

@@ -1,0 +1,85 @@
+.projetos-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+/* O AnimatedCard já cria o efeito de fade-in. Estilizamos o card interno. */
+.projeto-card {
+  background: var(--color-surface);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  height: 100%; /* Garante que os cards na mesma linha tenham a mesma altura */
+}
+
+.placeholder-img {
+  height: 200px;
+  background-color: #e9ecef; /* Cinza claro para o placeholder */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.projeto-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Faz o conteúdo crescer */
+}
+
+.projeto-content h3 {
+  font-size: 1.5rem;
+  color: var(--color-primary); /* Destaque em verde */
+  margin-bottom: 1rem;
+}
+
+.projeto-content p {
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Empurra os tags e links para o final do card */
+}
+
+.projeto-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Reutilizando o mesmo estilo de tag da seção Sobre para consistência */
+.projeto-tags .tag {
+  background-color: #eef8f7;
+  color: var(--color-primary-dark);
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.projeto-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.projeto-links a {
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.projeto-links a:hover {
+  color: var(--color-primary);
+}
