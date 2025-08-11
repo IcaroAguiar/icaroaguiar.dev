@@ -1,33 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Projetos.css";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaInfoCircle } from "react-icons/fa";
 import AnimatedCard from "../AnimatedCard/AnimatedCard";
+import ProjectModal from "../ProjectModal/ProjectModal";
 
 function Projetos() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
+
   const projects = [
     {
-      title: "Sistema de Gestão de Tarefas",
+      title: "Ascend - App de Finanças Pessoal",
       description:
-        "Uma aplicação web completa para gerenciamento de tarefas (To-Do List) com autenticação de usuário, criação, edição e exclusão de tarefas, e filtros por status.",
-      tags: ["React", "Node.js", "Express", "MongoDB"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Buscador de Filmes com API",
-      description:
-        "Um aplicativo que consome a API do The Movie Database (TMDB) para permitir que os usuários pesquisem filmes, vejam detalhes, avaliações e trailers.",
-      tags: ["React", "API REST", "CSS Modules"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Clone de UI - Landing Page",
-      description:
-        "Recriação fiel da interface de uma landing page de um produto conhecido, com foco em aprimorar as habilidades de estilização com CSS, responsividade e atenção aos detalhes.",
-      tags: ["HTML5", "CSS3", "JavaScript"],
-      liveUrl: "#",
-      githubUrl: "#",
+        "Um aplicativo mobile completo de gestão financeira, construído do zero com React Native e Node.js. Ascend permite o controle de transações, orçamentos, e um sistema inovador para gerenciar cobranças e pagamentos parcelados.",
+      tags: ["React Native", "Node.js", "PostgreSQL", "Docker", "Prisma", "Expo", "JWT"],
+      image: "/assets/ascend-hero.png",
+      demoUrl: "https://youtube.com/shorts/P-ANNF2PoFw?feature=share",
+      githubUrl: "https://github.com/your-username/ascend-finance-app", // Substitua pelo seu repositório GitHub
     },
   ];
 
@@ -37,18 +36,24 @@ function Projetos() {
 
       {/* --- MENSAGEM DE AVISO AQUI --- */}
       <p className="projetos-disclaimer">
-        Novos projetos autorais estão sendo desenvolvidos e serão adicionados em
-        breve. Abaixo estão alguns exemplos para demonstrar minhas áreas de
-        interesse e as tecnologias que aplico.
+        Projeto destaque: Ascend, um aplicativo mobile de gestão financeira desenvolvido
+        completamente do zero. Mais projetos autorais estão sendo desenvolvidos e serão
+        adicionados em breve.
       </p>
 
       <div className="projetos-grid">
         {projects.map((project, index) => (
           <AnimatedCard key={index}>
             <div className="projeto-card">
-              <div className="placeholder-img">
-                <span>Imagem do Projeto</span>
-              </div>
+              {project.image ? (
+                <div className="projeto-img">
+                  <img src={project.image} alt={project.title} />
+                </div>
+              ) : (
+                <div className="placeholder-img">
+                  <span>Imagem do Projeto</span>
+                </div>
+              )}
               <div className="projeto-content">
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
@@ -60,6 +65,13 @@ function Projetos() {
                   ))}
                 </div>
                 <div className="projeto-links">
+                  <button
+                    onClick={() => openModal(project)}
+                    className="projeto-button"
+                    title="Ver Mais Detalhes"
+                  >
+                    <FaInfoCircle /> Ver Mais
+                  </button>
                   <a
                     href={project.githubUrl}
                     target="_blank"
@@ -69,7 +81,7 @@ function Projetos() {
                     <FaGithub /> Código
                   </a>
                   <a
-                    href={project.liveUrl}
+                    href={project.demoUrl || project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Ver Demonstração"
@@ -82,6 +94,12 @@ function Projetos() {
           </AnimatedCard>
         ))}
       </div>
+
+      <ProjectModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        project={selectedProject}
+      />
     </div>
   );
 }

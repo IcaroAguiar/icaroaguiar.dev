@@ -1,6 +1,5 @@
 import React from "react";
 import "./sobre.css";
-import { FaLinkedin, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
 import AnimatedCard from "../AnimatedCard/AnimatedCard";
 
 function Sobre() {
@@ -31,7 +30,7 @@ function Sobre() {
       company: "Oi S.A.",
       period: "Abril de 2023 - Abril de 2025",
       tasks: [
-        "Desenvolvimento Full-Stack com React e Node.js em sistemas internos.",
+        "Desenvolvimento Full-Stack com React e Node.js, incluindo aplicações mobile com React Native.",
         "Manutenção e otimização de APIs em ambiente REST.",
         "Gerenciamento de ambientes SOA e suporte técnico avançado.",
       ],
@@ -51,10 +50,10 @@ function Sobre() {
   const skills = {
     Linguagens: ["C#", "JavaScript/TypeScript", "Python"],
     "Front-end": ["React", "Angular", "HTML5", "CSS3"],
-    "Back-end": [".NET", "Node.js", "APIs REST"],
-    Mobile: ["React Native"],
-    "Bancos de Dados": ["Microsoft SQL Server", "Oracle"],
-    "DevOps & Cloud": ["Azure DevOps", "CI/CD", "Git", "Linux"],
+    "Back-end": [".NET", "Node.js", "APIs REST", "Prisma"],
+    Mobile: ["React Native", "Expo"],
+    "Bancos de Dados": ["Microsoft SQL Server", "Oracle", "PostgreSQL"],
+    "DevOps & Cloud": ["Azure DevOps", "CI/CD", "Git", "Linux", "Docker"],
     Metodologias: ["Scrum", "Desenvolvimento Ágil"],
   };
 
@@ -79,6 +78,15 @@ function Sobre() {
   return (
     <div className="sobre-container">
       <h1 className="section-title">Sobre Mim</h1>
+
+      <AnimatedCard customClass="bio-card">
+        <p className="bio-description">
+          Desenvolvedor Full-Stack com experiência na construção de aplicações web e mobile completas, 
+          do backend Node.js ao frontend em React Native. Atualmente desenvolvendo soluções inovadoras 
+          com foco em tecnologias modernas como Docker, Prisma e PostgreSQL, sempre buscando entregar 
+          produtos de alta qualidade e impacto.
+        </p>
+      </AnimatedCard>
 
       <div className="experience-grid">
         {experiences.map((exp, index) => (
