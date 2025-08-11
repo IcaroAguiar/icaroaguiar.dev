@@ -146,7 +146,15 @@ function ProjectModal({ isOpen, onClose, project }) {
             rel="noopener noreferrer"
             className="cta-button github-button"
           >
-            <FaGithub /> Código no GitHub
+            <FaGithub /> Frontend (App)
+          </a>
+          <a
+            href="https://github.com/IcaroAguiar/financas-api"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-button github-button"
+          >
+            <FaGithub /> Backend (API)
           </a>
         </div>
       </section>

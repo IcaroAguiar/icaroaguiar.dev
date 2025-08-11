@@ -204,11 +204,12 @@
 /* CTA Buttons */
 .project-links-modal {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   justify-content: center;
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
 }
 
 .cta-button {
@@ -222,7 +223,7 @@
   font-size: 1.1rem;
   transition: all 0.3s ease;
   text-align: center;
-  min-width: 180px;
+  min-width: 160px;
   justify-content: center;
 }
 

@@ -26,7 +26,7 @@ function Projetos() {
       tags: ["React Native", "Node.js", "PostgreSQL", "Docker", "Prisma", "Expo", "JWT"],
       image: "/assets/ascend-hero.png",
       demoUrl: "https://youtube.com/shorts/P-ANNF2PoFw?feature=share",
-      githubUrl: "https://github.com/your-username/ascend-finance-app", // Substitua pelo seu repositório GitHub
+      githubUrl: "https://github.com/IcaroAguiar/financas-app",
     },
   ];
 
