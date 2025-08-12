@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa"; // Ícones para o menu
 
@@ -23,9 +24,9 @@ function Navbar() {
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
       <div className="navbar-container">
-        <a href="#home" className="navbar-logo" onClick={closeMobileMenu}>
+        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
           Ícaro Aguiar
-        </a>
+        </Link>
 
         {/* --- Ícone do Menu Hambúrguer (só aparece em mobile) --- */}
         <div className="menu-icon" onClick={handleMenuClick}>
@@ -35,24 +36,24 @@ function Navbar() {
         {/* --- Adiciona a classe 'active' quando o menu está aberto --- */}
         <ul className={isMenuOpen ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
-            <a href="#home" className="nav-links" onClick={closeMobileMenu}>
+            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
               Início
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="#sobre" className="nav-links" onClick={closeMobileMenu}>
+            <Link to="/sobre" className="nav-links" onClick={closeMobileMenu}>
               Sobre
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="#projetos" className="nav-links" onClick={closeMobileMenu}>
+            <Link to="/projetos" className="nav-links" onClick={closeMobileMenu}>
               Projetos
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="#contato" className="nav-links" onClick={closeMobileMenu}>
+            <Link to="/contato" className="nav-links" onClick={closeMobileMenu}>
               Contato
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

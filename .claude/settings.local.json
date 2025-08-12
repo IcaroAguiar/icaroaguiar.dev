@@ -6,7 +6,8 @@
       "Bash(mkdir:*)",
       "Bash(copy:*)",
       "Bash(cp:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(npm install:*)"
     ],
     "deny": []
   }

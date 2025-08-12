@@ -1,34 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import "./Projetos.css";
 import { FaGithub, FaExternalLinkAlt, FaInfoCircle } from "react-icons/fa";
 import AnimatedCard from "../AnimatedCard/AnimatedCard";
-import ProjectModal from "../ProjectModal/ProjectModal";
+import { projects } from "../../data/projects";
 
 function Projetos() {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = (project) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedProject(null);
-  };
-
-  const projects = [
-    {
-      title: "Ascend - App de Finanças Pessoal",
-      description:
-        "Um aplicativo mobile completo de gestão financeira, construído do zero com React Native e Node.js. Ascend permite o controle de transações, orçamentos, e um sistema inovador para gerenciar cobranças e pagamentos parcelados.",
-      tags: ["React Native", "Node.js", "PostgreSQL", "Docker", "Prisma", "Expo", "JWT"],
-      image: "/assets/ascend-hero.png",
-      demoUrl: "https://youtube.com/shorts/P-ANNF2PoFw?feature=share",
-      githubUrl: "https://github.com/IcaroAguiar/financas-app",
-    },
-  ];
+  // Projects data is imported from src/data/projects.js
 
   return (
     <div className="projetos-container">
@@ -65,13 +43,13 @@ function Projetos() {
                   ))}
                 </div>
                 <div className="projeto-links">
-                  <button
-                    onClick={() => openModal(project)}
+                  <Link
+                    to={`/projeto/${project.id}`}
                     className="projeto-button"
-                    title="Ver Mais Detalhes"
+                    title="Ver Case Study Completo"
                   >
-                    <FaInfoCircle /> Ver Mais
-                  </button>
+                    <FaInfoCircle /> Ver Case Study
+                  </Link>
                   <a
                     href={project.githubUrl}
                     target="_blank"
@@ -94,12 +72,6 @@ function Projetos() {
           </AnimatedCard>
         ))}
       </div>
-
-      <ProjectModal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        project={selectedProject}
-      />
     </div>
   );
 }
