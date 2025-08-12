@@ -78,15 +78,20 @@ function Sobre() {
   return (
     <section className="container">
       <div className="sobre-container">
-        <h1 className="section-title">Sobre Mim</h1>
+        <h1 className="section-title">Desenvolvedor de Software</h1>
 
       <AnimatedCard customClass="bio-card">
         <p className="bio-description">
-          Desenvolvedor Full-Stack com experiência na construção de aplicações web e mobile completas, 
-          do backend Node.js ao frontend em React Native. Atualmente desenvolvendo soluções inovadoras 
-          com foco em tecnologias modernas como Docker, Prisma e PostgreSQL, sempre buscando entregar 
-          produtos de alta qualidade e impacto.
+          Como Desenvolvedor Full-Stack, eu transformo ideias de negócio complexas em aplicações web e mobile de alta performance. Minha especialidade é criar experiências de usuário intuitivas com React no frontend, suportadas por APIs seguras e escaláveis em Node.js no backend. Meu foco é sempre entregar um produto final polido que não só funcione perfeitamente, mas que também gere valor real e impacto para os seus objetivos.
         </p>
+        
+        <h3>O Que Eu Faço:</h3>
+        <ul className="services-list">
+          <li><strong>Desenvolvimento Frontend:</strong> Criação de interfaces responsivas e interativas com React.</li>
+          <li><strong>Desenvolvimento Backend:</strong> Construção de APIs RESTful robustas com Node.js e PostgreSQL.</li>
+          <li><strong>Desenvolvimento Mobile:</strong> Desenvolvimento de aplicativos multiplataforma com React Native.</li>
+          <li><strong>Ecossistema Completo:</strong> Implementação de bancos de dados, deploy e infraestrutura com Docker.</li>
+        </ul>
       </AnimatedCard>
 
       <div className="experience-grid">

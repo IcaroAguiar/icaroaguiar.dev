@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
+import { FaLinkedin, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import './Contato.css';
 import AnimatedCard from '../AnimatedCard/AnimatedCard';
 
@@ -10,7 +11,7 @@ function Contato() {
       return (
         <section className="container">
           <div className="contato-container success-message">
-              <h1 className="section-title">Contato</h1>
+              <h1 className="section-title">Vamos Construir Juntos?</h1>
               <p>Obrigado pelo seu contato! Responderei em breve.</p>
           </div>
         </section>
@@ -20,7 +21,8 @@ function Contato() {
   return (
     <section className="container">
       <div className="contato-container">
-        <h1 className="section-title">Entre em Contato</h1>
+        <h1 className="section-title">Vamos Construir Juntos?</h1>
+        <p className="intro-paragraph">Estou buscando ativamente novas oportunidades e projetos freelance. Se você tem uma ideia que precisa ganhar vida ou uma equipe que precisa de um desenvolvedor dedicado e focado em resultados, adoraria conversar. Envie-me uma mensagem abaixo para iniciarmos o diálogo.</p>
       <AnimatedCard customClass="form-card">
         <form onSubmit={handleSubmit} className="contact-form">
           <div className="form-group">
@@ -63,10 +65,25 @@ function Contato() {
           </div>
 
           <button type="submit" disabled={state.submitting} className="btn btn-primary">
-            {state.submitting ? 'Enviando...' : 'Enviar Mensagem'}
+            {state.submitting ? 'Enviando...' : 'Iniciar Conversa'}
           </button>
         </form>
       </AnimatedCard>
+      
+      <div className="alternative-contact">
+        <p>Prefere outro meio? Conecte-se comigo:</p>
+        <div className="contact-links">
+          <a href="https://wa.me/5571992608397" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <FaWhatsapp />
+          </a>
+          <a href="https://linkedin.com/in/icaro-aguiar" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <FaLinkedin />
+          </a>
+          <a href="mailto:icaroaguiar14@gmail.com" aria-label="Email">
+            <FaEnvelope />
+          </a>
+        </div>
+      </div>
       </div>
     </section>
   );

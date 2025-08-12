@@ -8,6 +8,10 @@ function Footer() {
   return (
     <footer className="footer-container">
       <div className="footer-content">
+        <div className="footer-cta">
+          <p><strong>Disponível para novos desafios.</strong> Vamos conversar?</p>
+          <a href="mailto:icaroaguiar14@gmail.com" className="footer-email-link">icaroaguiar14@gmail.com</a>
+        </div>
         <div className="footer-socials">
           <a href="https://github.com/IcaroAguiar" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <FaGithub />
