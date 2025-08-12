@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa"; // Ícones para o menu
 
@@ -36,24 +36,24 @@ function Navbar() {
         {/* --- Adiciona a classe 'active' quando o menu está aberto --- */}
         <ul className={isMenuOpen ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+            <NavLink to="/" className="nav-links" onClick={closeMobileMenu}>
               Início
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/sobre" className="nav-links" onClick={closeMobileMenu}>
+            <NavLink to="/sobre" className="nav-links" onClick={closeMobileMenu}>
               Sobre
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/projetos" className="nav-links" onClick={closeMobileMenu}>
+            <NavLink to="/projetos" className="nav-links" onClick={closeMobileMenu}>
               Projetos
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link to="/contato" className="nav-links" onClick={closeMobileMenu}>
+            <NavLink to="/contato" className="nav-links" onClick={closeMobileMenu}>
               Contato
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

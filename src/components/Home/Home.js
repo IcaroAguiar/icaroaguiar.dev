@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./home.css";
 import perfil from '../../assets/perfil.jpg';
 import { TypeAnimation } from "react-type-animation";
@@ -6,7 +7,8 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 function Home() {
   return (
-    <div className="home-container container">
+    <section className="container">
+      <div className="home-container">
       <div className="home-content">
         <div className="home-text">
           <h1>Olá, eu sou Ícaro Aguiar</h1>
@@ -32,9 +34,9 @@ function Home() {
             Desenvolvedor apaixonado por construir soluções de software que geram impacto e valor.
           </p>
           <div className="home-actions">
-            <a href="#projetos" className="btn btn-primary">
+            <Link to="/projetos" className="btn btn-primary">
               Ver Projetos
-            </a>
+            </Link>
             <div className="home-socials">
               <a href="https://www.linkedin.com/in/icaro-aguiar/" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin />
@@ -55,7 +57,8 @@ function Home() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </section>
   );
 }
 

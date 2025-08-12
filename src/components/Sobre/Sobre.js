@@ -76,8 +76,9 @@ function Sobre() {
   ];
 
   return (
-    <div className="sobre-container">
-      <h1 className="section-title">Sobre Mim</h1>
+    <section className="container">
+      <div className="sobre-container">
+        <h1 className="section-title">Sobre Mim</h1>
 
       <AnimatedCard customClass="bio-card">
         <p className="bio-description">
@@ -134,7 +135,8 @@ function Sobre() {
           ))}
         </AnimatedCard>
       </div>
-    </div>
+      </div>
+    </section>
   );
 }
 

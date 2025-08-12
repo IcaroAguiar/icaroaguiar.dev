@@ -9,8 +9,9 @@ function Projetos() {
   // Projects data is imported from src/data/projects.js
 
   return (
-    <div className="projetos-container">
-      <h1 className="section-title">Meus Projetos</h1>
+    <section className="container">
+      <div className="projetos-container">
+        <h1 className="section-title">Meus Projetos</h1>
 
       {/* --- MENSAGEM DE AVISO AQUI --- */}
       <p className="projetos-disclaimer">
@@ -72,7 +73,8 @@ function Projetos() {
           </AnimatedCard>
         ))}
       </div>
-    </div>
+      </div>
+    </section>
   );
 }
 

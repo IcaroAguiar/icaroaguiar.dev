@@ -63,6 +63,24 @@
   color: var(--color-primary);
 }
 
+/* Estilo para link ativo (NavLink) */
+.nav-links.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.nav-links.active::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px 2px 0 0;
+}
+
 /* Escondendo o ícone do menu em telas grandes */
 .menu-icon {
   display: none;

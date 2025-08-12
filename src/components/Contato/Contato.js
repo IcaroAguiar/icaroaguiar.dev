@@ -8,16 +8,19 @@ function Contato() {
 
   if (state.succeeded) {
       return (
-        <div className="contato-container success-message">
-            <h1 className="section-title">Contato</h1>
-            <p>Obrigado pelo seu contato! Responderei em breve.</p>
-        </div>
+        <section className="container">
+          <div className="contato-container success-message">
+              <h1 className="section-title">Contato</h1>
+              <p>Obrigado pelo seu contato! Responderei em breve.</p>
+          </div>
+        </section>
       );
   }
 
   return (
-    <div className="contato-container">
-      <h1 className="section-title">Entre em Contato</h1>
+    <section className="container">
+      <div className="contato-container">
+        <h1 className="section-title">Entre em Contato</h1>
       <AnimatedCard customClass="form-card">
         <form onSubmit={handleSubmit} className="contact-form">
           <div className="form-group">
@@ -64,7 +67,8 @@ function Contato() {
           </button>
         </form>
       </AnimatedCard>
-    </div>
+      </div>
+    </section>
   );
 }
 
