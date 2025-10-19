@@ -25,7 +25,8 @@
       "Bash(netstat -ano)",
       "Bash(findstr \":3000\")",
       "Bash(findstr \"LISTENING\")",
-      "Bash(git commit -m \"fix: remove arquivos .js antigos conflitantes (mantém apenas .tsx)\")"
+      "Bash(git commit -m \"fix: remove arquivos .js antigos conflitantes (mantém apenas .tsx)\")",
+      "Bash(git commit -m \"fix: remove TODOS os arquivos .js antigos do CRA (mantém apenas estrutura Next.js)\")"
     ],
     "deny": []
   }
