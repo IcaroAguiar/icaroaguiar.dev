@@ -26,7 +26,9 @@
       "Bash(findstr \":3000\")",
       "Bash(findstr \"LISTENING\")",
       "Bash(git commit -m \"fix: remove arquivos .js antigos conflitantes (mantém apenas .tsx)\")",
-      "Bash(git commit -m \"fix: remove TODOS os arquivos .js antigos do CRA (mantém apenas estrutura Next.js)\")"
+      "Bash(git commit -m \"fix: remove TODOS os arquivos .js antigos do CRA (mantém apenas estrutura Next.js)\")",
+      "Bash(npm uninstall react-scripts --legacy-peer-deps)",
+      "Bash(git commit -m \"feat: redesign Hero Section com Inter + Framer Motion, tipografia fluida e botões premium\")"
     ],
     "deny": []
   }

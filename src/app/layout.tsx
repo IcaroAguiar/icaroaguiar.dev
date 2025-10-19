@@ -1,14 +1,21 @@
 import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import './globals.css';
 
-const roboto = Roboto({
-  weight: ['300', '400', '700'],
+const inter = Inter({
+  weight: ['400', '500', '600', '700', '800'],
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-roboto',
+  variable: '--font-inter',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  weight: ['500'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-jetbrains-mono',
 });
 
 export const metadata: Metadata = {
@@ -65,8 +72,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={roboto.variable}>
-      <body className={roboto.className}>
+    <html lang="pt-BR" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <body className={`${inter.className} bg-background`}>
         <Navbar />
         <main>{children}</main>
         <Footer />

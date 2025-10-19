@@ -8,14 +8,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#2a9d8f',
-        secondary: '#264653',
-        accent: '#e76f51',
-        background: '#f4f4f9',
-        text: '#333333',
+        primary: 'var(--color-primary)',
+        'primary-dark': 'var(--color-primary-dark)',
+        background: 'var(--color-background)',
+        surface: 'var(--color-surface)',
+        'text-primary': 'var(--color-text-primary)',
+        'text-secondary': 'var(--color-text-secondary)',
       },
       fontFamily: {
-        sans: ['Roboto', 'sans-serif'],
+        sans: ['var(--font-inter)', 'sans-serif'],
+        mono: ['var(--font-jetbrains-mono)', 'monospace'],
       },
     },
   },

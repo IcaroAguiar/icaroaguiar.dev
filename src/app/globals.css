@@ -3,9 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
-
 /* CSS Custom Properties */
 @layer base {
   :root {
@@ -15,7 +12,6 @@
     --color-primary-dark: #238276;
     --color-text-primary: #1c1c1c;
     --color-text-secondary: #555555;
-    --font-family: "Roboto", sans-serif;
   }
 
   * {
@@ -29,12 +25,32 @@
   }
 
   body {
-    font-family: var(--font-family);
     background-color: var(--color-background);
     color: var(--color-text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Tipografia Fluida com clamp() */
+  h1 {
+    @apply text-[clamp(2.25rem,6vw,3.5rem)] leading-tight tracking-tight font-extrabold text-balance text-text-primary;
+  }
+
+  h2 {
+    @apply text-[clamp(1.5rem,2.8vw,2rem)] font-semibold text-balance text-text-primary;
+  }
+
+  h3 {
+    @apply text-[clamp(1.25rem,2.2vw,1.5rem)] font-medium text-balance text-text-primary;
+  }
+
+  p {
+    @apply leading-relaxed text-base sm:text-[17px] text-text-secondary;
+  }
+
+  code, pre {
+    @apply font-mono;
   }
 }
 
@@ -45,7 +61,7 @@
   }
 
   .section-title {
-    @apply text-4xl font-bold text-center mb-12 relative;
+    @apply text-center mb-12 relative;
   }
 
   .section-title::after {
@@ -56,11 +72,60 @@
   section {
     @apply py-24 px-8 min-h-screen flex flex-col justify-center items-center border-b border-gray-200;
   }
+
+  /* Buttons Premium */
+  .btn-premium {
+    @apply px-6 py-3 rounded-lg font-semibold;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+  }
+
+  .btn-primary {
+    @apply btn-premium bg-primary text-white focus-visible:ring-2 focus-visible:ring-offset-2;
+    focus-visible: ring-color var(--color-primary);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(42, 157, 143, 0.25);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-secondary {
+    @apply btn-premium bg-surface text-primary border-2 focus-visible:ring-2 focus-visible:ring-offset-2;
+    border-color: var(--color-primary);
+    focus-visible: ring-color var(--color-primary);
+  }
+
+  .btn-secondary:hover {
+    @apply bg-primary text-white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(42, 157, 143, 0.15);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0);
+  }
 }
 
 /* Utility Classes */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Micro elevação */
+  .elevation-sm {
+    @apply shadow-[0_2px_8px_rgba(0,0,0,0.08)];
+  }
+
+  .elevation-md {
+    @apply shadow-[0_4px_16px_rgba(0,0,0,0.12)];
+  }
+
+  .elevation-lg {
+    @apply shadow-[0_8px_24px_rgba(0,0,0,0.15)];
   }
 }
