@@ -92,7 +92,9 @@ export default function Hero() {
                 Ver Meus Projetos
               </Link>
               <a
-                href="mailto:icaroaguiar14@gmail.com"
+                href="https://wa.me/5571992608397"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-secondary"
               >
                 Vamos Conversar
