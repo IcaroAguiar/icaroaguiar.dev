@@ -1,17 +1,45 @@
-import React from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
-import { FaArrowLeft, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import AnimatedCard from "../AnimatedCard/AnimatedCard";
-import { projects } from "../../data/projects";
-import "./ProjectDetail.css";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { FaArrowLeft, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import AnimatedCard from '@/components/AnimatedCard/AnimatedCard';
+import { projects } from '@/data/projects';
+import '@/components/ProjectDetail/ProjectDetail.css';
 
-function ProjectDetail() {
-  const { projectId } = useParams();
-  const project = projects.find(p => p.id === projectId);
+type Props = {
+  params: Promise<{ projectId: string }>;
+};
 
-  // Se o projeto não for encontrado, redireciona para a página de projetos
+// Gerar metadata dinâmica para cada projeto
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { projectId } = await params;
+  const project = projects.find((p) => p.id === projectId);
+
   if (!project) {
-    return <Navigate to="/projetos" replace />;
+    return {
+      title: 'Projeto não encontrado',
+    };
+  }
+
+  return {
+    title: project.title,
+    description: project.description,
+  };
+}
+
+// Gerar parâmetros estáticos para SSG
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    projectId: project.id,
+  }));
+}
+
+export default async function ProjectDetailPage({ params }: Props) {
+  const { projectId } = await params;
+  const project = projects.find((p) => p.id === projectId);
+
+  if (!project) {
+    notFound();
   }
 
   const { detailed } = project;
@@ -20,7 +48,7 @@ function ProjectDetail() {
     <div className="project-detail-container">
       {/* Header Navigation */}
       <div className="project-detail-header">
-        <Link to="/projetos" className="back-button">
+        <Link href="/projetos" className="back-button">
           <FaArrowLeft /> Voltar aos Projetos
         </Link>
       </div>
@@ -73,7 +101,7 @@ function ProjectDetail() {
         <p className="section-subtitle">
           Tecnologias aplicadas para resolver desafios específicos do projeto
         </p>
-        
+
         {detailed.architecture.map((category, index) => (
           <div key={index} className="architecture-category">
             <h3 className="architecture-category-title">{category.category}</h3>
@@ -158,5 +186,3 @@ function ProjectDetail() {
     </div>
   );
 }
-
-export default ProjectDetail;
