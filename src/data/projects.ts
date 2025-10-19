@@ -259,7 +259,7 @@ export const projects: Project[] = [
   },
   {
     id: 'fixxcapital',
-    title: 'FixxCapital',
+    title: 'Fixxcapital',
     description:
       'Landing page institucional para captação de investidores em renda fixa estruturada. Destaque para credenciais CVM, produtos (CRIs, Debêntures, Fundos) e CTAs de conversão.',
     tags: ['Next.js', 'Tailwind CSS', 'React', 'Vercel', 'SEO', 'Responsive Design'],
