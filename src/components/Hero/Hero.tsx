@@ -38,7 +38,7 @@ export default function Hero() {
   return (
     <section className="hero-section">
       {/* Wrapper: centraliza e limita largura no mobile */}
-      <div className="mx-auto max-w-screen-sm px-4 sm:px-6 md:max-w-7xl">
+      <div className="mx-auto max-w-screen-sm px-4 sm:px-6 lg:px-8 md:max-w-screen-xl">
         <motion.div
           className="flex flex-col items-center text-center gap-6 md:grid md:grid-cols-12 md:items-center md:text-left md:gap-10"
           variants={shouldReduceMotion ? {} : containerVariants}

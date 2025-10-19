@@ -31,70 +31,74 @@ export default function Navbar() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <nav className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="navbar-container">
-        {/* Logo */}
-        <Link href="/" className="navbar-logo" onClick={() => setIsOpen(false)}>
-          <span className="logo-text">Ícaro Aguiar</span>
-        </Link>
+    <header className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
+      <nav className="mx-auto max-w-screen-xl h-full px-4 sm:px-6 lg:px-8">
+        <div className="flex h-full items-center justify-between">
+          {/* ESQUERDA: Logo */}
+          <Link href="/" className="navbar-logo" onClick={() => setIsOpen(false)}>
+            <span className="logo-text">Ícaro Aguiar</span>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <div className="navbar-menu-desktop">
+          {/* DIREITA: Navegação Desktop */}
+          <ul className="hidden md:flex items-center gap-6 text-sm">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={`navbar-link ${isActive(link.href) ? 'active' : ''}`}
+                >
+                  {link.label}
+                  {isActive(link.href) && (
+                    <motion.div
+                      className="navbar-indicator"
+                      layoutId="navbar-indicator"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile: Hambúrguer */}
+          <button
+            className="navbar-mobile-button md:hidden p-2"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Menu"
+          >
+            {isOpen ? (
+              <FaTimes className="icon" />
+            ) : (
+              <FaBars className="icon" />
+            )}
+          </button>
+
+        </div>
+      </nav>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <motion.div
+          className="navbar-menu-mobile"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.2 }}
+        >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`navbar-link ${isActive(link.href) ? 'active' : ''}`}
+              className={`navbar-link-mobile ${
+                isActive(link.href) ? 'active' : ''
+              }`}
+              onClick={() => setIsOpen(false)}
             >
               {link.label}
-              {isActive(link.href) && (
-                <motion.div
-                  className="navbar-indicator"
-                  layoutId="navbar-indicator"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
             </Link>
           ))}
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="navbar-mobile-button"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Menu"
-        >
-          {isOpen ? (
-            <FaTimes className="icon" />
-          ) : (
-            <FaBars className="icon" />
-          )}
-        </button>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <motion.div
-            className="navbar-menu-mobile"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`navbar-link-mobile ${
-                  isActive(link.href) ? 'active' : ''
-                }`}
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </motion.div>
-        )}
-      </div>
-    </nav>
+        </motion.div>
+      )}
+    </header>
   );
 }
