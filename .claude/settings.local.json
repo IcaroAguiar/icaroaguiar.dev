@@ -19,7 +19,13 @@
       "Bash(git commit -m \"feat: configura Tailwind CSS 4 para Next.js App Router\")",
       "Bash(npm run dev)",
       "Bash(git commit -m \"feat: cria estrutura App Router com layout raiz, Navbar e Footer migrados para Next.js\")",
-      "Bash(git commit -m \"feat: migra todas as páginas para App Router (Home, Sobre, Projetos, Contato) com TypeScript e metadata\")"
+      "Bash(git commit -m \"feat: migra todas as páginas para App Router (Home, Sobre, Projetos, Contato) com TypeScript e metadata\")",
+      "Bash(npm uninstall tailwindcss)",
+      "Bash(git commit -m \"fix: corrige versão do Tailwind CSS para v3 (compatível com Next.js)\")",
+      "Bash(netstat -ano)",
+      "Bash(findstr \":3000\")",
+      "Bash(findstr \"LISTENING\")",
+      "Bash(git commit -m \"fix: remove arquivos .js antigos conflitantes (mantém apenas .tsx)\")"
     ],
     "deny": []
   }
