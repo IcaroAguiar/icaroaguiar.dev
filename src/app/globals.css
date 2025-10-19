@@ -57,7 +57,9 @@
 /* Global Components */
 @layer components {
   .container {
-    @apply w-[90%] max-w-7xl mx-auto py-16;
+    @apply mx-auto px-4 sm:px-6 py-16;
+    @apply max-w-screen-sm md:max-w-7xl;
+    width: 100%;
   }
 
   .section-title {
