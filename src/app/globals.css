@@ -1,0 +1,66 @@
+/* Tailwind CSS Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+/* CSS Custom Properties */
+@layer base {
+  :root {
+    --color-background: #f4f4f9;
+    --color-surface: #ffffff;
+    --color-primary: #2a9d8f;
+    --color-primary-dark: #238276;
+    --color-text-primary: #1c1c1c;
+    --color-text-secondary: #555555;
+    --font-family: "Roboto", sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-family);
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Global Components */
+@layer components {
+  .container {
+    @apply w-[90%] max-w-7xl mx-auto py-16;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold text-center mb-12 relative;
+  }
+
+  .section-title::after {
+    content: "";
+    @apply block w-16 h-1 bg-primary mx-auto mt-2 rounded;
+  }
+
+  section {
+    @apply py-24 px-8 min-h-screen flex flex-col justify-center items-center border-b border-gray-200;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
