@@ -18,7 +18,8 @@
       "Bash(npx tailwindcss init -p)",
       "Bash(git commit -m \"feat: configura Tailwind CSS 4 para Next.js App Router\")",
       "Bash(npm run dev)",
-      "Bash(git commit -m \"feat: cria estrutura App Router com layout raiz, Navbar e Footer migrados para Next.js\")"
+      "Bash(git commit -m \"feat: cria estrutura App Router com layout raiz, Navbar e Footer migrados para Next.js\")",
+      "Bash(git commit -m \"feat: migra todas as páginas para App Router (Home, Sobre, Projetos, Contato) com TypeScript e metadata\")"
     ],
     "deny": []
   }
