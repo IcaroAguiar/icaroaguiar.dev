@@ -7,7 +7,18 @@
       "Bash(copy:*)",
       "Bash(cp:*)",
       "Bash(git add:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(dir:*)",
+      "Bash(git push:*)",
+      "Bash(cat .gitignore)",
+      "Bash(git commit -m \"chore: atualiza .gitignore para Next.js e remove INSTRUCTIONS.MD - checkpoint antes da migração\")",
+      "Bash(git commit -m \"chore: atualiza .gitignore com configuração completa para Next.js + Claude Code\")",
+      "Bash(git checkout -b feat/nextjs-migration)",
+      "Bash(git commit -m \"feat: instala Next.js 15.5.6 e configura next.config.js\")",
+      "Bash(npx tailwindcss init -p)",
+      "Bash(git commit -m \"feat: configura Tailwind CSS 4 para Next.js App Router\")",
+      "Bash(npm run dev)",
+      "Bash(git commit -m \"feat: cria estrutura App Router com layout raiz, Navbar e Footer migrados para Next.js\")"
     ],
     "deny": []
   }
