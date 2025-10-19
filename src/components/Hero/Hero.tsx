@@ -37,15 +37,16 @@ export default function Hero() {
 
   return (
     <section className="hero-section">
-      <div className="container">
+      {/* Wrapper: centraliza e limita largura no mobile */}
+      <div className="mx-auto max-w-screen-sm px-4 sm:px-6 md:max-w-7xl">
         <motion.div
-          className="hero-grid"
+          className="flex flex-col items-center text-center gap-6 md:grid md:grid-cols-12 md:items-center md:text-left md:gap-10"
           variants={shouldReduceMotion ? {} : containerVariants}
           initial={shouldReduceMotion ? 'visible' : 'hidden'}
           animate="visible"
         >
-          {/* Texto (esquerda) */}
-          <motion.div className="hero-text" variants={itemVariants}>
+          {/* Texto (desktop: coluna 7, mobile: ordem 2) */}
+          <motion.div className="order-2 md:order-1 md:col-span-7" variants={itemVariants}>
             <div className="hero-title-group">
               <h1 className="hero-title-main">
                 Desenvolvedor Full-Stack
@@ -86,7 +87,7 @@ export default function Hero() {
             </motion.p>
 
             {/* CTAs */}
-            <motion.div className="hero-actions" variants={itemVariants}>
+            <motion.div className="mt-6 flex flex-col gap-3 w-full sm:flex-row sm:justify-center md:justify-start" variants={itemVariants}>
               <Link href="/projetos" className="btn-primary">
                 Ver Meus Projetos
               </Link>
@@ -121,8 +122,8 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Imagem (direita) */}
-          <motion.div className="hero-image" variants={itemVariants}>
+          {/* Imagem (desktop: coluna 5, mobile: ordem 1) */}
+          <motion.div className="order-1 md:order-2 md:col-span-5 mx-auto" variants={itemVariants}>
             <div className="image-wrapper">
               <Image
                 src={perfil}

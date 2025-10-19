@@ -1,6 +1,6 @@
 /* Hero Section */
 .hero-section {
-  @apply py-20 md:py-32 px-4 md:px-8;
+  @apply py-20 md:py-32;
   background: linear-gradient(
     to bottom right,
     var(--color-background),
@@ -11,15 +11,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.hero-grid {
-  @apply grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 w-full items-center;
-}
-
-/* Texto (Coluna 5) */
-.hero-text {
-  @apply md:col-span-5 order-2 md:order-1;
 }
 
 .hero-title-group {
@@ -53,12 +44,7 @@
 }
 
 .hero-subtitle {
-  @apply text-text-secondary mb-8 leading-relaxed;
-}
-
-/* CTAs */
-.hero-actions {
-  @apply flex flex-col sm:flex-row gap-4 mb-8;
+  @apply text-text-secondary mb-6 leading-relaxed;
 }
 
 .btn-primary,
@@ -85,19 +71,13 @@
 
 /* Social Links */
 .hero-socials {
-  @apply flex gap-5;
+  @apply flex gap-5 mt-6 justify-center md:justify-start;
 }
 
 .social-link {
   @apply text-text-secondary text-4xl transition-[color,transform] duration-200;
   @apply hover:text-primary hover:-translate-y-1;
   @apply focus-visible:outline-none focus-visible:ring-2 ring-offset-2 ring-primary rounded-full p-2;
-}
-
-/* Imagem (Coluna 7) */
-.hero-image {
-  @apply md:col-span-7 order-1 md:order-2;
-  @apply flex justify-center md:justify-end;
 }
 
 .image-wrapper {
@@ -138,20 +118,28 @@
 /* Responsividade Mobile */
 @media (max-width: 768px) {
   .hero-section {
-    @apply py-16 md:py-24;
+    @apply py-16;
     min-height: auto;
   }
 
-  .hero-title {
-    @apply mb-4;
+  .hero-title-main {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero-title-sub {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero-tech-animation {
+    white-space: normal;
+    text-align: center;
   }
 
   .hero-subtitle {
-    @apply mb-6 text-sm sm:text-base;
-  }
-
-  .hero-actions {
-    @apply flex-col;
+    @apply text-sm sm:text-base;
+    text-align: center;
   }
 
   .btn-primary,
