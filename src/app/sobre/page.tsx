@@ -11,14 +11,23 @@ export const metadata: Metadata = {
 export default function SobrePage() {
   const experiences = [
     {
+      role: 'Desenvolvedor Full-Stack',
+      company: 'Star Agency',
+      period: 'Setembro de 2025 - Presente',
+      tasks: [
+        'Sites e sistemas em WordPress/Next.js com UI React + Tailwind.',
+        'Desenvolvimento de aplicativos React Native (Expo).',
+        'CI/CD com GitHub Actions para deploy automatizado.',
+      ],
+    },
+    {
       role: 'Desenvolvedor de Software',
       company: 'ATSD IT Solutions',
       period: 'Junho de 2025 - Presente',
       tasks: [
-        'Desenvolvimento e modernização de aplicações web e mobile.',
-        'Criação de APIs e back-end com foco em C#.',
-        'Suporte a sistemas e bancos de dados da empresa.',
-        'Colaboração na melhoria de processos e criação de novos sistemas.',
+        'APIs em C#/.NET para modernização de sistemas web/mobile.',
+        'Suporte a bancos de dados e infraestrutura.',
+        'Azure DevOps (pipelines CI/CD) e gestão de processos.',
       ],
     },
     {
@@ -26,9 +35,8 @@ export default function SobrePage() {
       company: 'Outlier',
       period: 'Março de 2025 - Presente',
       tasks: [
-        'Atuação como programador freelancer em projetos de Inteligência Artificial.',
-        'Desenvolvimento e programação de novas IAs.',
-        'Aplicação de expertise em desenvolvimento para aprimorar produtos de IA.',
+        'Programador freelancer em projetos de Inteligência Artificial.',
+        'Desenvolvimento e aprimoramento de modelos de IA.',
       ],
     },
     {
@@ -36,9 +44,8 @@ export default function SobrePage() {
       company: 'Oi S.A.',
       period: 'Abril de 2023 - Abril de 2025',
       tasks: [
-        'Desenvolvimento Full-Stack com React e Node.js, incluindo aplicações mobile com React Native.',
-        'Manutenção e otimização de APIs em ambiente REST.',
-        'Gerenciamento de ambientes SOA e suporte técnico avançado.',
+        'Full-Stack com React/Node.js e aplicações mobile React Native.',
+        'Otimização de APIs REST e suporte a ambientes SOA.',
       ],
     },
     {
@@ -46,19 +53,27 @@ export default function SobrePage() {
       company: 'Oi S.A.',
       period: 'Abril de 2022 - Fevereiro de 2023',
       tasks: [
-        'Desenvolvimento de sistemas internos com Angular e Python.',
-        'Automação de tarefas em Linux e gerenciamento de ambientes SOA.',
+        'Desenvolvimento de sistemas internos com Angular/Python.',
+        'Automação de tarefas em Linux e rotinas SOA.',
+      ],
+    },
+    {
+      role: 'Instrutor',
+      company: 'Código Kid',
+      period: 'Junho de 2021 - Abril de 2022',
+      tasks: [
+        'Ensino de programação e robótica para crianças e adolescentes.',
       ],
     },
   ];
 
   const skills = {
     Linguagens: ['C#', 'JavaScript/TypeScript', 'Python'],
-    'Front-end': ['React', 'Angular', 'HTML5', 'CSS3'],
-    'Back-end': ['.NET', 'Node.js', 'APIs REST', 'Prisma'],
+    'Front-end': ['React', 'Next.js', 'Angular', 'Tailwind CSS', 'HTML5/CSS3', 'WordPress'],
+    'Back-end': ['.NET', 'Node.js', 'APIs REST'],
     Mobile: ['React Native', 'Expo'],
-    'Bancos de Dados': ['Microsoft SQL Server', 'Oracle', 'PostgreSQL'],
-    'DevOps & Cloud': ['Azure DevOps', 'CI/CD', 'Git', 'Linux', 'Docker'],
+    'Bancos de Dados': ['SQL Server', 'Oracle', 'PostgreSQL'],
+    'DevOps & Cloud': ['GitHub Actions', 'Azure DevOps', 'CI/CD', 'Linux', 'Docker'],
     Metodologias: ['Scrum', 'Desenvolvimento Ágil'],
   };
 
@@ -87,31 +102,26 @@ export default function SobrePage() {
 
         <AnimatedCard customClass="bio-card">
           <p className="bio-description">
-            Como Desenvolvedor Full-Stack, eu transformo ideias de negócio complexas em
-            aplicações web e mobile de alta performance. Minha especialidade é criar
-            experiências de usuário intuitivas com React no frontend, suportadas por APIs
-            seguras e escaláveis em Node.js no backend. Meu foco é sempre entregar um
-            produto final polido que não só funcione perfeitamente, mas que também gere
-            valor real e impacto para os seus objetivos.
+            Sou <strong>Desenvolvedor Full-Stack</strong> focado em transformar requisitos em
+            produtos funcionais. Trabalho com <strong>React/Next.js</strong> no frontend e{' '}
+            <strong>.NET / Node.js</strong> no backend, entregando interfaces claras, APIs
+            confiáveis e deploy com <strong>CI/CD</strong>. Curto ciclos curtos, versionamento
+            bem feito e comunicação direta.
           </p>
 
-          <h3>O Que Eu Faço:</h3>
+          <h3>O Que Eu Faço</h3>
           <ul className="services-list">
             <li>
-              <strong>Desenvolvimento Frontend:</strong> Criação de interfaces responsivas e
-              interativas com React.
+              <strong>Frontend:</strong> React/Next.js, Tailwind, acessibilidade e responsividade.
             </li>
             <li>
-              <strong>Desenvolvimento Backend:</strong> Construção de APIs RESTful robustas
-              com Node.js e PostgreSQL.
+              <strong>Backend:</strong> .NET e Node.js com APIs REST; integrações e automações.
             </li>
             <li>
-              <strong>Desenvolvimento Mobile:</strong> Desenvolvimento de aplicativos
-              multiplataforma com React Native.
+              <strong>Mobile:</strong> React Native (Expo) para apps multiplataforma.
             </li>
             <li>
-              <strong>Ecossistema Completo:</strong> Implementação de bancos de dados, deploy
-              e infraestrutura com Docker.
+              <strong>Dados & Infra:</strong> SQL Server, Oracle, PostgreSQL; CI/CD (GitHub Actions/Azure DevOps) e Docker/Linux.
             </li>
           </ul>
         </AnimatedCard>
