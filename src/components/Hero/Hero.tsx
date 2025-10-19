@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useReducedMotion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
@@ -45,11 +46,38 @@ export default function Hero() {
         >
           {/* Texto (esquerda) */}
           <motion.div className="hero-text" variants={itemVariants}>
-            <h1 className="hero-title">
-              Desenvolvedor Full-Stack
-              <br />
-              que transforma ideias em produtos
-            </h1>
+            <div className="hero-title-group">
+              <h1 className="hero-title-main">
+                Desenvolvedor Full-Stack
+              </h1>
+              <h2 className="hero-title-sub">
+                que transforma ideias em produtos
+              </h2>
+            </div>
+
+            {/* Animação de Tecnologias */}
+            <motion.div className="hero-tech-animation" variants={itemVariants}>
+              <TypeAnimation
+                sequence={[
+                  'React',
+                  2000,
+                  'Node.js',
+                  2000,
+                  'C#',
+                  2000,
+                  'React Native',
+                  2000,
+                  'PostgreSQL',
+                  2000,
+                  'FastAPI',
+                  2000,
+                ]}
+                wrapper="span"
+                speed={50}
+                className="tech-animation"
+                repeat={Infinity}
+              />
+            </motion.div>
 
             <motion.p className="hero-subtitle" variants={itemVariants}>
               Especializado em React, Node.js e C#. Criador de aplicações web e
