@@ -5,3 +5,4 @@ export { SectionHeader } from './SectionHeader';
 export { TechChip } from './TechChip';
 export { SocialButton } from './SocialButton';
 export { Timeline, TimelineItem } from './Timeline';
+export { ThemeToggle } from './ThemeToggle';

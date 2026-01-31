@@ -1,157 +1,352 @@
 /* Tailwind CSS Directives */
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @theme {
-  --color-primary: var(--color-primary);
-  --color-primary-dark: var(--color-primary-dark);
-  --color-background: var(--color-background);
-  --color-surface: var(--color-surface);
-  --color-text-primary: var(--color-text-primary);
-  --color-text-secondary: var(--color-text-secondary);
-
-  --font-sans: var(--font-inter), sans-serif;
+  /* Cores do Sistema - Mapeadas para CSS Variables */
+  --color-emerald: #2a9d8f;
+  --color-emerald-dark: #238276;
+  --color-emerald-light: #4dd4c4;
+  --color-emerald-glow: rgba(42, 157, 143, 0.5);
+  
+  /* Backgrounds */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-card: var(--bg-card);
+  --color-bg-elevated: var(--bg-elevated);
+  
+  /* Texto */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  
+  /* Bordas e outros */
+  --color-border: var(--border-color);
+  --color-glow: var(--glow-color);
+  
+  /* Fontes */
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+/* === SISTEMA DE TEMA === */
+/* Light Mode (padrão) */
+:root {
+  --bg-primary: #fafafa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f4f4f5;
+  
+  --text-primary: #09090b;
+  --text-secondary: #3f3f46;
+  --text-muted: #71717a;
+  
+  --border-color: rgba(0, 0, 0, 0.08);
+  --glow-color: rgba(42, 157, 143, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+/* Dark Mode (OLED) */
+[data-theme="dark"] {
+  --bg-primary: #000000;
+  --bg-secondary: #121212;
+  --bg-card: #1a1a1a;
+  --bg-elevated: #262626;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  
+  --border-color: rgba(255, 255, 255, 0.1);
+  --glow-color: rgba(42, 157, 143, 0.4);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  
+  --glass-bg: rgba(26, 26, 26, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Transição suave entre temas */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Reset e Base */
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--border-color);
+    box-sizing: border-box;
   }
-}
-
-@utility container {
-  @apply mx-auto px-4 sm:px-6 lg:px-8 py-16;
-  @apply max-w-(--breakpoint-sm) md:max-w-(--breakpoint-xl);
-  width: 100%;
-}
-@utility section-title {
-  @apply text-center mb-12 relative;
-
-  &::after {
-    content: '';
-    @apply block w-16 h-1 bg-primary mx-auto mt-2 rounded-sm;
-  }
-}
-@utility btn-premium {
-  /* Buttons Premium */
-  @apply px-6 py-3 rounded-lg font-semibold;
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s,
-    background 0.2s,
-    color 0.2s;
-}
-@utility btn-primary {
-  @apply btn-premium bg-primary text-white focus-visible:ring-2 focus-visible:ring-offset-2;
-  focus-visible: ring-color var(--color-primary);
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(42, 157, 143, 0.25);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-}
-@utility btn-secondary {
-  @apply btn-premium bg-surface text-primary border-2 focus-visible:ring-2 focus-visible:ring-offset-2;
-  border-color: var(--color-primary);
-  focus-visible: ring-color var(--color-primary);
-
-  &:hover {
-    @apply bg-primary text-white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(42, 157, 143, 0.15);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-}
-
-/* Utility Classes */
-@utility text-balance {
-  text-wrap: balance;
-}
-@utility elevation-sm {
-  /* Micro elevação */
-  @apply shadow-[0_2px_8px_rgba(0,0,0,0.08)];
-}
-@utility elevation-md {
-  @apply shadow-[0_4px_16px_rgba(0,0,0,0.12)];
-}
-@utility elevation-lg {
-  @apply shadow-[0_8px_24px_rgba(0,0,0,0.15)];
-}
-
-/* CSS Custom Properties */
-@layer base {
-  :root {
-    --color-background: #f4f4f9;
-    --color-surface: #ffffff;
-    --color-primary: #2a9d8f;
-    --color-primary-dark: #238276;
-    --color-text-primary: #1c1c1c;
-    --color-text-secondary: #555555;
-  }
-
+  
   * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
-
+  
   html {
     scroll-behavior: smooth;
   }
-
+  
   body {
-    background-color: var(--color-background);
-    color: var(--color-text-primary);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
   }
-
-  /* Tipografia Fluida com clamp() */
+  
+  /* Fonte Display para títulos */
+  h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+  }
+  
+  /* Tipografia Fluida */
   h1 {
-    @apply text-[clamp(2.25rem,6vw,3.5rem)] leading-tight tracking-tight font-extrabold text-balance text-text-primary;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
   }
-
+  
   h2 {
-    @apply text-[clamp(1.5rem,2.8vw,2rem)] font-semibold text-balance text-text-primary;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
   }
-
+  
   h3 {
-    @apply text-[clamp(1.25rem,2.2vw,1.5rem)] font-medium text-balance text-text-primary;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    line-height: 1.3;
+    color: var(--text-primary);
   }
-
+  
   p {
-    @apply leading-relaxed text-base sm:text-[17px] text-text-secondary;
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.7;
+    color: var(--text-secondary);
   }
-
+  
   code, pre {
-    @apply font-mono;
+    font-family: var(--font-mono);
+  }
+  
+  a {
+    color: var(--color-emerald);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: var(--color-emerald-light);
+    }
   }
 }
 
-/* Global Components */
-@layer components {
+/* === UTILITIES CUSTOMIZADOS === */
+@utility container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  
+  @media (min-width: 640px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  @media (min-width: 1024px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 1280px;
+  }
+}
 
-  section {
-    @apply py-24 px-8 min-h-screen flex flex-col justify-center items-center border-b border-gray-200;
+@utility text-balance {
+  text-wrap: balance;
+}
+
+/* Efeito Glow para elementos interativos */
+@utility glow {
+  box-shadow: 0 0 20px var(--glow-color);
+}
+
+@utility glow-hover {
+  transition: box-shadow 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 0 30px var(--glow-color);
+  }
+}
+
+/* Efeito Glassmorphism */
+@utility glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+@utility glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+/* Gradientes */
+@utility gradient-emerald {
+  background: linear-gradient(135deg, var(--color-emerald) 0%, var(--color-emerald-dark) 100%);
+}
+
+@utility gradient-text {
+  background: linear-gradient(135deg, var(--color-emerald) 0%, var(--color-emerald-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Botões */
+@utility btn-glow {
+  background: var(--color-emerald);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px var(--glow-color);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px var(--glow-color), 0 4px 20px var(--shadow-color);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@utility btn-outline {
+  background: transparent;
+  color: var(--color-emerald);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 2px solid var(--color-emerald);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: var(--color-emerald);
+    color: white;
+    box-shadow: 0 0 20px var(--glow-color);
+  }
+}
+
+/* Elevações e Sombras */
+@utility elevation-sm {
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+@utility elevation-md {
+  box-shadow: 0 4px 16px var(--shadow-color);
+}
+
+@utility elevation-lg {
+  box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+/* Animações */
+@utility animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@utility animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+@utility animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--glow-color);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--glow-color);
+  }
+}
+
+/* Scrollbar estilizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-emerald);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-emerald-light);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-emerald);
+  color: white;
+}
+
+/* Focus Visible */
+:focus-visible {
+  outline: 2px solid var(--color-emerald);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
