@@ -1,7 +1,101 @@
 /* Tailwind CSS Directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+
+  --font-sans: var(--font-inter), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8 py-16;
+  @apply max-w-(--breakpoint-sm) md:max-w-(--breakpoint-xl);
+  width: 100%;
+}
+@utility section-title {
+  @apply text-center mb-12 relative;
+
+  &::after {
+    content: '';
+    @apply block w-16 h-1 bg-primary mx-auto mt-2 rounded-sm;
+  }
+}
+@utility btn-premium {
+  /* Buttons Premium */
+  @apply px-6 py-3 rounded-lg font-semibold;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s,
+    color 0.2s;
+}
+@utility btn-primary {
+  @apply btn-premium bg-primary text-white focus-visible:ring-2 focus-visible:ring-offset-2;
+  focus-visible: ring-color var(--color-primary);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(42, 157, 143, 0.25);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+@utility btn-secondary {
+  @apply btn-premium bg-surface text-primary border-2 focus-visible:ring-2 focus-visible:ring-offset-2;
+  border-color: var(--color-primary);
+  focus-visible: ring-color var(--color-primary);
+
+  &:hover {
+    @apply bg-primary text-white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(42, 157, 143, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Utility Classes */
+@utility text-balance {
+  text-wrap: balance;
+}
+@utility elevation-sm {
+  /* Micro elevação */
+  @apply shadow-[0_2px_8px_rgba(0,0,0,0.08)];
+}
+@utility elevation-md {
+  @apply shadow-[0_4px_16px_rgba(0,0,0,0.12)];
+}
+@utility elevation-lg {
+  @apply shadow-[0_8px_24px_rgba(0,0,0,0.15)];
+}
 
 /* CSS Custom Properties */
 @layer base {
@@ -56,78 +150,8 @@
 
 /* Global Components */
 @layer components {
-  .container {
-    @apply mx-auto px-4 sm:px-6 lg:px-8 py-16;
-    @apply max-w-screen-sm md:max-w-screen-xl;
-    width: 100%;
-  }
-
-  .section-title {
-    @apply text-center mb-12 relative;
-  }
-
-  .section-title::after {
-    content: "";
-    @apply block w-16 h-1 bg-primary mx-auto mt-2 rounded;
-  }
 
   section {
     @apply py-24 px-8 min-h-screen flex flex-col justify-center items-center border-b border-gray-200;
-  }
-
-  /* Buttons Premium */
-  .btn-premium {
-    @apply px-6 py-3 rounded-lg font-semibold;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
-  }
-
-  .btn-primary {
-    @apply btn-premium bg-primary text-white focus-visible:ring-2 focus-visible:ring-offset-2;
-    focus-visible: ring-color var(--color-primary);
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(42, 157, 143, 0.25);
-  }
-
-  .btn-primary:active {
-    transform: translateY(0);
-  }
-
-  .btn-secondary {
-    @apply btn-premium bg-surface text-primary border-2 focus-visible:ring-2 focus-visible:ring-offset-2;
-    border-color: var(--color-primary);
-    focus-visible: ring-color var(--color-primary);
-  }
-
-  .btn-secondary:hover {
-    @apply bg-primary text-white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(42, 157, 143, 0.15);
-  }
-
-  .btn-secondary:active {
-    transform: translateY(0);
-  }
-}
-
-/* Utility Classes */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  /* Micro elevação */
-  .elevation-sm {
-    @apply shadow-[0_2px_8px_rgba(0,0,0,0.08)];
-  }
-
-  .elevation-md {
-    @apply shadow-[0_4px_16px_rgba(0,0,0,0.12)];
-  }
-
-  .elevation-lg {
-    @apply shadow-[0_8px_24px_rgba(0,0,0,0.15)];
   }
 }
