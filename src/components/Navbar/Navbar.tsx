@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <header className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
-      <nav className="mx-auto max-w-screen-xl h-full px-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto max-w-(--breakpoint-xl) h-full px-4 sm:px-6 lg:px-8">
         <div className="flex h-full items-center justify-between">
           {/* ESQUERDA: Logo */}
           <Link href="/" className="navbar-logo" onClick={() => setIsOpen(false)}>

@@ -1,47 +1,24 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import perfil from '@/assets/perfil.jpg';
+import { SOCIAL_LINKS } from '@/constants';
+import { staggerContainerVariants, itemVariants } from '@/hooks';
 import './Hero.css';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1] as const,
-    },
-  },
-};
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <section className="hero-section">
-      {/* Wrapper: centraliza e limita largura no mobile */}
-      <div className="mx-auto max-w-screen-sm px-4 sm:px-6 lg:px-8 md:max-w-screen-xl">
+      <div className="mx-auto max-w-(--breakpoint-sm) px-4 sm:px-6 lg:px-8 md:max-w-(--breakpoint-xl)">
         <motion.div
           className="flex flex-col items-center text-center gap-6 md:grid md:grid-cols-12 md:items-center md:text-left md:gap-10"
-          variants={shouldReduceMotion ? {} : containerVariants}
+          variants={shouldReduceMotion ? {} : staggerContainerVariants}
           initial={shouldReduceMotion ? 'visible' : 'hidden'}
           animate="visible"
         >
@@ -92,7 +69,7 @@ export default function Hero() {
                 Ver Meus Projetos
               </Link>
               <a
-                href="https://wa.me/5571992608397"
+                href={SOCIAL_LINKS.WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary"
@@ -104,7 +81,7 @@ export default function Hero() {
             {/* Sociais */}
             <motion.div className="hero-socials" variants={itemVariants}>
               <a
-                href="https://www.linkedin.com/in/icaro-aguiar/"
+                href={SOCIAL_LINKS.LINKEDIN}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -113,7 +90,7 @@ export default function Hero() {
                 <FaLinkedin />
               </a>
               <a
-                href="https://github.com/IcaroAguiar"
+                href={SOCIAL_LINKS.GITHUB}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
