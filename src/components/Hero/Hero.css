@@ -2,11 +2,6 @@
 .hero-section {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  background: linear-gradient(
-    to bottom right,
-    var(--bg-primary),
-    var(--bg-secondary)
-  );
   min-height: 100vh;
   display: flex;
   flex-direction: column;

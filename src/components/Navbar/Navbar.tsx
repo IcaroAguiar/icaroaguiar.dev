@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import './Navbar.css';
 
 const navLinks = [
@@ -39,8 +40,9 @@ export default function Navbar() {
             <span className="logo-text">Ícaro Aguiar</span>
           </Link>
 
-          {/* DIREITA: Navegação Desktop */}
-          <ul className="hidden md:flex items-center gap-6 text-sm">
+          {/* DIREITA: Navegação Desktop + Theme Toggle */}
+          <div className="hidden md:flex items-center gap-4">
+            <ul className="flex items-center gap-6 text-sm">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -58,21 +60,27 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
-          </ul>
+            </ul>
+            <ThemeToggle />
+          </div>
 
-          {/* Mobile: Hambúrguer */}
-          <button
-            className="navbar-mobile-button md:hidden p-2"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Menu"
-          >
+          {/* Mobile: Hambúrguer + Theme Toggle */}
+          <div className="flex items-center gap-2 md:hidden">
+            <div className="scale-75">
+              <ThemeToggle />
+            </div>
+            <button
+              className="navbar-mobile-button p-2"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Menu"
+            >
             {isOpen ? (
               <FaTimes className="icon" />
             ) : (
               <FaBars className="icon" />
             )}
-          </button>
-
+           </button>
+          </div>
         </div>
       </nav>
 

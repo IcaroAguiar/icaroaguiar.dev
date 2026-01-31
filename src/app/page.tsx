@@ -14,8 +14,8 @@ export default function HomePage() {
   return (
     <>
       {/* Efeitos de Background */}
-      <MatrixRain opacity={0.08} speed={0.8} />
-      <ParticleNetwork particleCount={50} connectionDistance={120} />
+      <MatrixRain opacity={0.15} speed={0.8} />
+      <ParticleNetwork particleCount={60} connectionDistance={150} />
 
       <div className="relative z-10">
         {/* Hero Section */}
