@@ -9,6 +9,7 @@ interface GlowButtonProps {
   onClick?: () => void;
   href?: string;
   className?: string;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export function GlowButton({ 
@@ -16,7 +17,8 @@ export function GlowButton({
   variant = 'primary', 
   onClick, 
   href,
-  className = '' 
+  className = '',
+  type = 'button'
 }: GlowButtonProps) {
   const baseStyles = 'relative inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300';
   
@@ -25,17 +27,29 @@ export function GlowButton({
     outline: 'border-2 border-[#2a9d8f] text-[#2a9d8f] hover:bg-[#2a9d8f] hover:text-white'
   };
 
-  const Component = href ? motion.a : motion.button;
+  if (href) {
+    return (
+      <motion.a
+        href={href}
+        onClick={onClick}
+        className={`${baseStyles} ${variants[variant]} ${className}`}
+        whileHover={{ scale: 1.02, y: -2 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        {children}
+      </motion.a>
+    );
+  }
 
   return (
-    <Component
-      href={href}
+    <motion.button
+      type={type}
       onClick={onClick}
       className={`${baseStyles} ${variants[variant]} ${className}`}
       whileHover={{ scale: 1.02, y: -2 }}
       whileTap={{ scale: 0.98 }}
     >
       {children}
-    </Component>
+    </motion.button>
   );
 }

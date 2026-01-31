@@ -1,59 +1,64 @@
 'use client';
 
 import { useForm, ValidationError } from '@formspree/react';
-import { FaLinkedin, FaEnvelope, FaWhatsapp, FaLock } from 'react-icons/fa';
+import { FaLinkedin, FaEnvelope, FaWhatsapp, FaLock, FaGithub, FaCheckCircle } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import { SOCIAL_LINKS, FORMSPREE_ID } from '@/constants';
-import { AnimatedSection, Card, SocialButton } from '@/components/ui';
+import { ScrollReveal, GlowButton } from '@/components/ui';
 
 export default function ContatoPage() {
   const [state, handleSubmit] = useForm(FORMSPREE_ID);
 
   if (state.succeeded) {
     return (
-      <section className="py-16">
-        <div className="max-w-(--breakpoint-lg) mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center py-16">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-emerald-100 flex items-center justify-center">
-              <FaEnvelope className="text-emerald-600 text-2xl" />
-            </div>
-            <h1 className="text-3xl font-bold text-slate-900 mb-3">Mensagem enviada!</h1>
-            <p className="text-slate-600 max-w-md mx-auto">
-              Obrigado pelo seu contato. Responderei em até <strong>24 horas</strong> com os
-              próximos passos.
-            </p>
-          </AnimatedSection>
+      <section className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+        <div className="max-w-2xl mx-auto text-center">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+            className="w-20 h-20 mx-auto mb-8 rounded-full bg-emerald-500/20 flex items-center justify-center"
+          >
+            <FaCheckCircle className="text-emerald-400 text-4xl" />
+          </motion.div>
+          <h1 className="text-4xl font-bold mb-4">Mensagem enviada!</h1>
+          <p className="text-gray-400 text-lg mb-8">
+            Obrigado pelo seu contato. Responderei em até <span className="text-emerald-400">24 horas</span> com os próximos passos.
+          </p>
+          <GlowButton href="/" variant="outline">
+            Voltar para Home
+          </GlowButton>
         </div>
       </section>
     );
   }
 
   return (
-    <section className="py-16">
-      <div className="max-w-(--breakpoint-lg) mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <AnimatedSection className="text-center max-w-2xl mx-auto">
-          <h1 className="text-[clamp(1.8rem,3.2vw,2.5rem)] font-extrabold tracking-[-0.015em] leading-tight text-slate-900 mb-4">
-            Vamos construir seu próximo produto?
-          </h1>
-          <p className="text-[15.5px] sm:text-[16px] text-slate-600 leading-relaxed">
-            Estou disponível para <strong>projetos e parcerias</strong>. Se você precisa
-            transformar uma ideia em um produto confiável ou fortalecer sua equipe com um
-            desenvolvedor focado em <strong>resultado e prazo</strong>, envie uma mensagem com
-            objetivo e contexto. <strong>Respondo em até 24h</strong> com os próximos passos.
-          </p>
-        </AnimatedSection>
+        <ScrollReveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Vamos construir algo{' '}
+              <span className="text-emerald-400">incrível</span> juntos?
+            </h1>
+            <p className="text-xl text-gray-400">
+              Estou disponível para projetos freelance, consultoria e oportunidades. 
+              Envie uma mensagem com objetivo e contexto. Respondo em até 24h.
+            </p>
+          </div>
+        </ScrollReveal>
 
-        {/* Grid 2 colunas: Formulário + Links Rápidos */}
-        <div className="grid gap-8 md:grid-cols-12">
-          {/* Formulário (col-span-7) */}
-          <AnimatedSection delay={0.1} className="md:col-span-7">
-            <Card className="p-6">
-              <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="grid md:grid-cols-5 gap-8">
+          {/* Formulário */}
+          <ScrollReveal delay={0.1} className="md:col-span-3">
+            <div className="glass-card p-8">
+              <h2 className="text-2xl font-semibold mb-6">Envie uma mensagem</h2>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-slate-700 mb-1.5"
-                  >
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                     Nome
                   </label>
                   <input
@@ -61,16 +66,13 @@ export default function ContatoPage() {
                     type="text"
                     name="name"
                     required
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                     placeholder="Seu nome completo"
                   />
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-slate-700 mb-1.5"
-                  >
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                     Email
                   </label>
                   <input
@@ -78,17 +80,32 @@ export default function ContatoPage() {
                     type="email"
                     name="email"
                     required
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
-                    placeholder="seuemail@exemplo.com"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                    placeholder="seu@email.com"
                   />
                   <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-slate-700 mb-1.5"
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                    Assunto
+                  </label>
+                  <select
+                    id="subject"
+                    name="subject"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                   >
+                    <option value="" className="bg-gray-900">Selecione um assunto</option>
+                    <option value="projeto" className="bg-gray-900">Novo Projeto</option>
+                    <option value="consultoria" className="bg-gray-900">Consultoria</option>
+                    <option value="freelance" className="bg-gray-900">Freelance</option>
+                    <option value="oportunidade" className="bg-gray-900">Oportunidade de Trabalho</option>
+                    <option value="outro" className="bg-gray-900">Outro</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                     Mensagem
                   </label>
                   <textarea
@@ -96,74 +113,114 @@ export default function ContatoPage() {
                     name="message"
                     required
                     rows={5}
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all resize-none"
                     placeholder="Descreva seu projeto, objetivo e contexto..."
                   />
                   <ValidationError prefix="Message" field="message" errors={state.errors} />
                 </div>
 
-                <button
+                <GlowButton
                   type="submit"
-                  disabled={state.submitting}
-                  className="w-full h-11 px-6 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
+                  variant="primary"
+                  className="w-full"
                 >
-                  {state.submitting ? 'Enviando...' : 'Solicitar proposta'}
-                </button>
+                  {state.submitting ? 'Enviando...' : 'Enviar mensagem'}
+                </GlowButton>
 
-                <p className="flex items-center gap-2 text-xs text-slate-500 pt-2">
-                  <FaLock className="text-slate-400" />
-                  Seus dados não serão compartilhados.
+                <p className="flex items-center gap-2 text-xs text-gray-500 justify-center">
+                  <FaLock className="text-emerald-400" />
+                  Seus dados estão seguros e não serão compartilhados.
                 </p>
               </form>
-            </Card>
-          </AnimatedSection>
+            </div>
+          </ScrollReveal>
 
-          {/* Links Rápidos (col-span-5) */}
-          <AnimatedSection delay={0.2} className="md:col-span-5 space-y-4">
+          {/* Info lateral */}
+          <ScrollReveal delay={0.2} className="md:col-span-2 space-y-6">
             {/* WhatsApp */}
-            <Card className="p-5">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center shrink-0">
-                  <FaWhatsapp className="text-green-600 text-xl" />
+            <div className="glass-card p-6 hover:glow transition-all duration-300">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center shrink-0">
+                  <FaWhatsapp className="text-green-400 text-xl" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">WhatsApp</h3>
-                  <p className="text-sm text-slate-600 mb-3">
+                  <h3 className="font-semibold text-white mb-1">WhatsApp</h3>
+                  <p className="text-sm text-gray-400 mb-3">
                     Resposta rápida para dúvidas ou conversas informais.
                   </p>
                   <a
                     href={SOCIAL_LINKS.WHATSAPP}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-green-600 hover:text-green-700 transition"
+                    className="text-sm font-medium text-green-400 hover:text-green-300 transition"
                   >
                     Iniciar conversa →
                   </a>
                 </div>
               </div>
-            </Card>
+            </div>
+
+            {/* Email */}
+            <div className="glass-card p-6 hover:glow transition-all duration-300">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center shrink-0">
+                  <FaEnvelope className="text-emerald-400 text-xl" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white mb-1">Email</h3>
+                  <p className="text-sm text-gray-400 mb-3">
+                    Para propostas formais e documentações.
+                  </p>
+                  <a
+                    href={`mailto:${SOCIAL_LINKS.EMAIL}`}
+                    className="text-sm font-medium text-emerald-400 hover:text-emerald-300 transition"
+                  >
+                    {SOCIAL_LINKS.EMAIL}
+                  </a>
+                </div>
+              </div>
+            </div>
 
             {/* Redes Sociais */}
-            <Card className="p-5">
-              <h3 className="font-semibold text-slate-900 mb-3">Ou conecte-se comigo:</h3>
+            <div className="glass-card p-6">
+              <h3 className="font-semibold text-white mb-4">Redes Sociais</h3>
               <div className="flex gap-3">
-                <SocialButton
+                <a
                   href={SOCIAL_LINKS.LINKEDIN}
-                  platform="linkedin"
-                  label="LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-blue-500/20 hover:text-blue-400 hover:border-blue-500/50 transition-all"
                 >
                   <FaLinkedin size={20} />
-                </SocialButton>
-                <SocialButton
-                  href={SOCIAL_LINKS.EMAIL}
-                  platform="email"
-                  label="Email"
+                </a>
+                <a
+                  href={SOCIAL_LINKS.GITHUB}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-gray-500/20 hover:text-white hover:border-gray-500/50 transition-all"
+                >
+                  <FaGithub size={20} />
+                </a>
+                <a
+                  href={`mailto:${SOCIAL_LINKS.EMAIL}`}
+                  className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-emerald-500/20 hover:text-emerald-400 hover:border-emerald-500/50 transition-all"
                 >
                   <FaEnvelope size={18} />
-                </SocialButton>
+                </a>
               </div>
-            </Card>
-          </AnimatedSection>
+            </div>
+
+            {/* Disponibilidade */}
+            <div className="glass-card p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse" />
+                <h3 className="font-semibold text-white">Disponível para projetos</h3>
+              </div>
+              <p className="text-sm text-gray-400">
+                Tempo de resposta: 24 horas
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
