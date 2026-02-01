@@ -20,36 +20,26 @@ export function GlowButton({
   className = '',
   type = 'button'
 }: GlowButtonProps) {
-  const baseStyles = 'relative inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300';
+  const baseStyles = 'relative inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-200';
   
   const variants = {
-    primary: 'bg-[#2a9d8f] text-white hover:shadow-[0_0_30px_rgba(42,157,143,0.5)]',
-    outline: 'border-2 border-[#2a9d8f] text-[#2a9d8f] hover:bg-[#2a9d8f] hover:text-white'
+    primary: 'bg-accent text-white hover:bg-accent-hover shadow-sm hover:shadow-glow',
+    outline: 'border border-accent text-accent hover:bg-accent hover:text-white'
   };
 
-  if (href) {
-    return (
-      <motion.a
-        href={href}
-        onClick={onClick}
-        className={`${baseStyles} ${variants[variant]} ${className}`}
-        whileHover={{ scale: 1.02, y: -2 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        {children}
-      </motion.a>
-    );
-  }
+  const Component = href ? motion.a : motion.button;
+  const props = href ? { href } : { type };
 
   return (
-    <motion.button
-      type={type}
+    <Component
+      {...props}
       onClick={onClick}
       className={`${baseStyles} ${variants[variant]} ${className}`}
-      whileHover={{ scale: 1.02, y: -2 }}
+      whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.15, ease: [0.25, 1, 0.5, 1] }}
     >
       {children}
-    </motion.button>
+    </Component>
   );
 }

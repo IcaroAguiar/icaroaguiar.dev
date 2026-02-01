@@ -1,21 +1,22 @@
 'use client';
 
-import { useState, useRef, MouseEvent, ReactNode } from 'react';
+import { useState, useRef, MouseEvent, ReactNode, useCallback } from 'react';
 
 interface Use3DTiltReturn {
   tiltStyle: {
     transform: string;
     transition: string;
   };
-  handleMouseMove: (e: MouseEvent<HTMLElement>) => void;
+  handleMouseMove: (e: MouseEvent<HTMLDivElement>) => void;
   handleMouseLeave: () => void;
+  ref: React.RefObject<HTMLDivElement | null>;
 }
 
 export function use3DTilt(maxTilt: number = 10): Use3DTiltReturn {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
+  const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     
     const rect = ref.current.getBoundingClientRect();
@@ -29,11 +30,11 @@ export function use3DTilt(maxTilt: number = 10): Use3DTiltReturn {
     const rotateY = (mouseX / (rect.width / 2)) * maxTilt;
     
     setTilt({ x: rotateX, y: rotateY });
-  };
+  }, [maxTilt]);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setTilt({ x: 0, y: 0 });
-  };
+  }, []);
 
   return {
     tiltStyle: {
@@ -41,7 +42,8 @@ export function use3DTilt(maxTilt: number = 10): Use3DTiltReturn {
       transition: 'transform 0.3s ease-out'
     },
     handleMouseMove,
-    handleMouseLeave
+    handleMouseLeave,
+    ref
   };
 }
 
@@ -51,11 +53,12 @@ interface Card3DProps {
 }
 
 export function Card3D({ children, className = '' }: Card3DProps) {
-  const { tiltStyle, handleMouseMove, handleMouseLeave } = use3DTilt(10);
+  const { tiltStyle, handleMouseMove, handleMouseLeave, ref } = use3DTilt(10);
 
   return (
     <div
-      className={`${className}`}
+      ref={ref}
+      className={className}
       style={tiltStyle}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}

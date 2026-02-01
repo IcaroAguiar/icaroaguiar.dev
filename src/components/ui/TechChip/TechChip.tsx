@@ -1,15 +1,20 @@
 interface TechChipProps {
   label: string;
-  variant?: 'default' | 'outlined';
+  variant?: 'default' | 'outlined' | 'accent';
 }
 
 export function TechChip({ label, variant = 'default' }: TechChipProps) {
-  const styles = variant === 'default'
-    ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
-    : 'border-slate-200 bg-slate-50 text-slate-700';
-    
+  const variantStyles = {
+    default: 'bg-surface-3 text-tertiary border-border-default',
+    outlined: 'bg-transparent text-secondary border-border-default',
+    accent: 'bg-accent-subtle text-accent border-accent-primary/20',
+  };
+  
+  const baseStyles = 'px-3 py-1 text-xs font-medium rounded-md border';
+  const hoverStyles = 'hover:border-border-strong transition-colors duration-150';
+  
   return (
-    <span className={`px-3 py-1 text-xs font-medium rounded-full border ${styles}`}>
+    <span className={`${baseStyles} ${hoverStyles} ${variantStyles[variant]}`}>
       {label}
     </span>
   );

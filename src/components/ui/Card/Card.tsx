@@ -7,8 +7,10 @@ interface CardProps {
 }
 
 export function Card({ children, className = '', hoverable = true }: CardProps) {
-  const baseStyles = 'rounded-2xl border border-black/5 bg-white/60 shadow-xs';
-  const hoverStyles = hoverable ? 'hover:shadow-md transition' : '';
+  const baseStyles = 'rounded-lg border border-border-default bg-surface-2 shadow-sm';
+  const hoverStyles = hoverable 
+    ? 'hover:border-border-strong hover:shadow-md transition-all duration-200 ease-out' 
+    : '';
   
   return (
     <div className={`${baseStyles} ${hoverStyles} ${className}`}>

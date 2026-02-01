@@ -22,7 +22,7 @@ export default function ContatoPage() {
             <FaCheckCircle className="text-emerald-400 text-4xl" />
           </motion.div>
           <h1 className="text-4xl font-bold mb-4">Mensagem enviada!</h1>
-          <p className="text-gray-400 text-lg mb-8">
+          <p className="text-tertiary text-lg mb-8">
             Obrigado pelo seu contato. Responderei em até <span className="text-emerald-400">24 horas</span> com os próximos passos.
           </p>
           <GlowButton href="/" variant="outline">
@@ -43,8 +43,8 @@ export default function ContatoPage() {
               Vamos construir algo{' '}
               <span className="text-emerald-400">incrível</span> juntos?
             </h1>
-            <p className="text-xl text-gray-400">
-              Estou disponível para projetos freelance, consultoria e oportunidades. 
+            <p className="text-xl text-tertiary">
+              Estou disponível para projetos freelance, consultoria e oportunidades.
               Envie uma mensagem com objetivo e contexto. Respondo em até 24h.
             </p>
           </div>
@@ -58,7 +58,7 @@ export default function ContatoPage() {
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-secondary mb-2">
                     Nome
                   </label>
                   <input
@@ -66,13 +66,13 @@ export default function ContatoPage() {
                     type="text"
                     name="name"
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-surface-3 border border-border-default text-text-main placeholder-muted focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                     placeholder="Seu nome completo"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-secondary mb-2">
                     Email
                   </label>
                   <input
@@ -80,32 +80,32 @@ export default function ContatoPage() {
                     type="email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-surface-3 border border-border-default text-text-main placeholder-muted focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                     placeholder="seu@email.com"
                   />
                   <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="subject" className="block text-sm font-medium text-secondary mb-2">
                     Assunto
                   </label>
                   <select
                     id="subject"
                     name="subject"
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-surface-3 border border-border-default text-text-main focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                   >
-                    <option value="" className="bg-gray-900">Selecione um assunto</option>
-                    <option value="projeto" className="bg-gray-900">Novo Projeto</option>
-                    <option value="consultoria" className="bg-gray-900">Consultoria</option>
-                    <option value="freelance" className="bg-gray-900">Freelance</option>
-                    <option value="oportunidade" className="bg-gray-900">Oportunidade de Trabalho</option>
-                    <option value="outro" className="bg-gray-900">Outro</option>
+                    <option value="" className="bg-surface-2">Selecione um assunto</option>
+                    <option value="projeto" className="bg-surface-2">Novo Projeto</option>
+                    <option value="consultoria" className="bg-surface-2">Consultoria</option>
+                    <option value="freelance" className="bg-surface-2">Freelance</option>
+                    <option value="oportunidade" className="bg-surface-2">Oportunidade de Trabalho</option>
+                    <option value="outro" className="bg-surface-2">Outro</option>
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-secondary mb-2">
                     Mensagem
                   </label>
                   <textarea
@@ -113,7 +113,7 @@ export default function ContatoPage() {
                     name="message"
                     required
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-surface-3 border border-border-default text-text-main placeholder-muted focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all resize-none"
                     placeholder="Descreva seu projeto, objetivo e contexto..."
                   />
                   <ValidationError prefix="Message" field="message" errors={state.errors} />
@@ -127,7 +127,7 @@ export default function ContatoPage() {
                   {state.submitting ? 'Enviando...' : 'Enviar mensagem'}
                 </GlowButton>
 
-                <p className="flex items-center gap-2 text-xs text-gray-500 justify-center">
+                <p className="flex items-center gap-2 text-xs text-muted justify-center">
                   <FaLock className="text-emerald-400" />
                   Seus dados estão seguros e não serão compartilhados.
                 </p>
@@ -144,8 +144,8 @@ export default function ContatoPage() {
                   <FaWhatsapp className="text-green-400 text-xl" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white mb-1">WhatsApp</h3>
-                  <p className="text-sm text-gray-400 mb-3">
+                  <h3 className="font-semibold text-text-main mb-1">WhatsApp</h3>
+                  <p className="text-sm text-tertiary mb-3">
                     Resposta rápida para dúvidas ou conversas informais.
                   </p>
                   <a
@@ -167,8 +167,8 @@ export default function ContatoPage() {
                   <FaEnvelope className="text-emerald-400 text-xl" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white mb-1">Email</h3>
-                  <p className="text-sm text-gray-400 mb-3">
+                  <h3 className="font-semibold text-text-main mb-1">Email</h3>
+                  <p className="text-sm text-tertiary mb-3">
                     Para propostas formais e documentações.
                   </p>
                   <a
@@ -183,13 +183,13 @@ export default function ContatoPage() {
 
             {/* Redes Sociais */}
             <div className="glass-card p-6">
-              <h3 className="font-semibold text-white mb-4">Redes Sociais</h3>
+              <h3 className="font-semibold text-text-main mb-4">Redes Sociais</h3>
               <div className="flex gap-3">
                 <a
                   href={SOCIAL_LINKS.LINKEDIN}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-blue-500/20 hover:text-blue-400 hover:border-blue-500/50 transition-all"
+                  className="w-12 h-12 rounded-xl bg-surface-3 border border-border-default flex items-center justify-center text-tertiary hover:bg-blue-500/20 hover:text-blue-400 hover:border-blue-500/50 transition-all"
                 >
                   <FaLinkedin size={20} />
                 </a>
@@ -197,13 +197,13 @@ export default function ContatoPage() {
                   href={SOCIAL_LINKS.GITHUB}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-gray-500/20 hover:text-white hover:border-gray-500/50 transition-all"
+                  className="w-12 h-12 rounded-xl bg-surface-3 border border-border-default flex items-center justify-center text-tertiary hover:bg-gray-500/20 hover:text-white hover:border-gray-500/50 transition-all"
                 >
                   <FaGithub size={20} />
                 </a>
                 <a
                   href={`mailto:${SOCIAL_LINKS.EMAIL}`}
-                  className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-emerald-500/20 hover:text-emerald-400 hover:border-emerald-500/50 transition-all"
+                  className="w-12 h-12 rounded-xl bg-surface-3 border border-border-default flex items-center justify-center text-tertiary hover:bg-emerald-500/20 hover:text-emerald-400 hover:border-emerald-500/50 transition-all"
                 >
                   <FaEnvelope size={18} />
                 </a>
@@ -214,9 +214,9 @@ export default function ContatoPage() {
             <div className="glass-card p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse" />
-                <h3 className="font-semibold text-white">Disponível para projetos</h3>
+                <h3 className="font-semibold text-text-main">Disponível para projetos</h3>
               </div>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-tertiary">
                 Tempo de resposta: 24 horas
               </p>
             </div>

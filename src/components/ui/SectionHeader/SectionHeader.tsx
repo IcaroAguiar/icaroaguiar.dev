@@ -8,12 +8,12 @@ export function SectionHeader({ title, subtitle, centered = false }: SectionHead
   const alignment = centered ? 'text-center' : '';
   
   return (
-    <div className={`mb-6 ${alignment}`}>
-      <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+    <div className={`mb-8 ${alignment}`}>
+      <h2 className="text-2xl font-semibold tracking-tight text-main">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-2 text-slate-600">
+        <p className="mt-2 text-tertiary">
           {subtitle}
         </p>
       )}

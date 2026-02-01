@@ -28,7 +28,7 @@ export default function SobrePage() {
                 />
                 <div className="absolute -bottom-6 -right-6 glass-card p-4 z-20">
                   <div className="text-3xl font-bold text-emerald-400">4+</div>
-                  <div className="text-sm text-gray-400">Anos de Experiência</div>
+                  <div className="text-sm text-tertiary">Anos de Experiência</div>
                 </div>
               </div>
             </div>
@@ -42,13 +42,13 @@ export default function SobrePage() {
               <p className="text-xl text-emerald-400 mb-6">
                 Desenvolvedor Full-Stack
               </p>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                Sou um desenvolvedor focado em transformar requisitos em produtos funcionais. 
-                Trabalho com React/Next.js no frontend e .NET/Node.js no backend, entregando 
+              <p className="text-tertiary mb-6 leading-relaxed">
+                Sou um desenvolvedor focado em transformar requisitos em produtos funcionais.
+                Trabalho com React/Next.js no frontend e .NET/Node.js no backend, entregando
                 interfaces claras, APIs confiáveis e deploy com CI/CD.
               </p>
-              <p className="text-gray-400 mb-8 leading-relaxed">
-                Curto ciclos curtos, versionamento bem feito e comunicação direta. 
+              <p className="text-tertiary mb-8 leading-relaxed">
+                Curto ciclos curtos, versionamento bem feito e comunicação direta.
                 Meu foco é sempre entregar valor real para o negócio.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -93,9 +93,9 @@ export default function SobrePage() {
                     <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-emerald-500 rounded-full border-4 border-black" />
                     <div className="glass-card p-4 text-center hover:glow transition-all duration-300">
                       <FaBriefcase className="mx-auto mb-2 text-emerald-400" />
-                      <h3 className="font-semibold text-white text-sm mb-1">{exp.role}</h3>
+                      <h3 className="font-semibold text-text-main text-sm mb-1">{exp.role}</h3>
                       <p className="text-emerald-400 text-xs mb-1">{exp.company}</p>
-                      <p className="text-gray-500 text-xs">{exp.period}</p>
+                      <p className="text-muted text-xs">{exp.period}</p>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -114,10 +114,10 @@ export default function SobrePage() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1">{exp.role}</h3>
+                    <h3 className="font-semibold text-text-main mb-1">{exp.role}</h3>
                     <p className="text-emerald-400 text-sm mb-1">{exp.company}</p>
-                    <p className="text-gray-500 text-sm mb-2">{exp.period}</p>
-                    <ul className="text-gray-400 text-sm space-y-1">
+                    <p className="text-muted text-sm mb-2">{exp.period}</p>
+                    <ul className="text-tertiary text-sm space-y-1">
                       {exp.tasks.slice(0, 2).map((task, i) => (
                         <li key={i}>• {task}</li>
                       ))}
@@ -141,7 +141,7 @@ export default function SobrePage() {
             {allSkills.map((skill, index) => (
               <motion.span
                 key={skill}
-                className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm text-gray-300 hover:bg-emerald-500/20 hover:border-emerald-500/50 hover:text-emerald-400 transition-all duration-300 cursor-default"
+                className="px-4 py-2 bg-surface-3 border border-border-default rounded-full text-sm text-secondary hover:bg-emerald-500/20 hover:border-emerald-500/50 hover:text-emerald-400 transition-all duration-300 cursor-default"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -158,10 +158,10 @@ export default function SobrePage() {
           {Object.entries(skills).slice(0, 3).map(([category, list], index) => (
             <ScrollReveal key={category} delay={index * 0.1}>
               <div className="glass-card p-6">
-                <h3 className="font-semibold text-white mb-4">{category}</h3>
+                <h3 className="font-semibold text-text-main mb-4">{category}</h3>
                 <div className="flex flex-wrap gap-2">
                   {list.map(skill => (
-                    <span key={skill} className="text-xs px-3 py-1 bg-emerald-900/30 text-emerald-400 rounded-full">
+                    <span key={skill} className="text-xs px-3 py-1 bg-surface-3 text-tertiary border border-border-default rounded-full hover:border-accent hover:text-accent transition-colors duration-150">
                       {skill}
                     </span>
                   ))}
@@ -183,9 +183,9 @@ export default function SobrePage() {
             <ScrollReveal key={index} delay={index * 0.1}>
               <div className="glass-card p-6 text-center hover:glow transition-all duration-300">
                 <FaGraduationCap className="mx-auto text-3xl text-emerald-400 mb-4" />
-                <h3 className="font-semibold text-white mb-2">{edu.course}</h3>
+                <h3 className="font-semibold text-text-main mb-2">{edu.course}</h3>
                 <p className="text-emerald-400 text-sm mb-1">{edu.institution}</p>
-                <p className="text-gray-500 text-sm">{edu.status}</p>
+                <p className="text-muted text-sm">{edu.status}</p>
               </div>
             </ScrollReveal>
           ))}
@@ -197,8 +197,8 @@ export default function SobrePage() {
             <h2 className="text-3xl font-bold mb-6">
               Vamos trabalhar juntos?
             </h2>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              Estou sempre aberto a novas oportunidades e projetos interessantes. 
+            <p className="text-tertiary mb-8 max-w-2xl mx-auto">
+              Estou sempre aberto a novas oportunidades e projetos interessantes.
               Entre em contato para conversarmos!
             </p>
             <GlowButton href="/contato" variant="primary">

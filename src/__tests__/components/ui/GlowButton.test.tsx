@@ -4,8 +4,8 @@ import '@testing-library/jest-dom';
 
 jest.mock('framer-motion', () => ({
   motion: {
-    button: ({ children, ...props }: any) => <button {...props}>{children}</button>,
-    a: ({ children, ...props }: any) => <a {...props}>{children}</a>,
+    button: ({ children, whileHover, whileTap, transition, ...props }: any) => <button {...props}>{children}</button>,
+    a: ({ children, whileHover, whileTap, transition, ...props }: any) => <a {...props}>{children}</a>,
   },
 }));
 
@@ -27,5 +27,24 @@ describe('GlowButton Component', () => {
     const link = screen.getByText('Link');
     expect(link.tagName).toBe('A');
     expect(link).toHaveAttribute('href', '/test');
+  });
+
+  it('applies primary variant styles by default', () => {
+    const { container } = render(<GlowButton>Primary</GlowButton>);
+    const button = container.querySelector('button');
+    expect(button).toHaveClass('bg-accent');
+    expect(button).toHaveClass('text-white');
+  });
+
+  it('applies outline variant styles', () => {
+    const { container } = render(<GlowButton variant="outline">Outline</GlowButton>);
+    const button = container.querySelector('button');
+    expect(button).toHaveClass('border-accent');
+    expect(button).toHaveClass('text-accent');
+  });
+
+  it('applies custom className', () => {
+    render(<GlowButton className="custom-btn">Button</GlowButton>);
+    expect(screen.getByText('Button')).toHaveClass('custom-btn');
   });
 });

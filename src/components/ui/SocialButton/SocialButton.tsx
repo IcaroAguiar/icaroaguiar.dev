@@ -10,10 +10,10 @@ interface SocialButtonProps {
 }
 
 const platformStyles: Record<SocialPlatform, string> = {
-  linkedin: 'hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50',
-  github: 'hover:text-slate-800 hover:border-slate-400 hover:bg-slate-50',
-  whatsapp: 'hover:text-green-600 hover:border-green-300 hover:bg-green-50',
-  email: 'hover:text-emerald-600 hover:border-emerald-300 hover:bg-emerald-50',
+  linkedin: 'hover:text-[#0A66C2] hover:border-[#0A66C2]/30 hover:bg-[#0A66C2]/10',
+  github: 'hover:text-text-main hover:border-border-strong hover:bg-surface-3',
+  whatsapp: 'hover:text-[#25D366] hover:border-[#25D366]/30 hover:bg-[#25D366]/10',
+  email: 'hover:text-accent hover:border-accent/30 hover:bg-accent-subtle',
 };
 
 export function SocialButton({ href, platform, children, label }: SocialButtonProps) {
@@ -25,7 +25,7 @@ export function SocialButton({ href, platform, children, label }: SocialButtonPr
       href={linkHref}
       target={isEmail ? undefined : '_blank'}
       rel={isEmail ? undefined : 'noopener noreferrer'}
-      className={`w-11 h-11 rounded-lg border border-slate-300 bg-white flex items-center justify-center text-slate-600 transition ${platformStyles[platform]}`}
+      className={`w-11 h-11 rounded-lg border border-border-default bg-surface-2 flex items-center justify-center text-tertiary transition-all duration-150 ${platformStyles[platform]}`}
       aria-label={label}
     >
       {children}

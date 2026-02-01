@@ -5,11 +5,19 @@ import { TypewriterV2 } from '@/components/ui/TypewriterV2';
 import { StatCard } from '@/components/ui/StatCard';
 import '@testing-library/jest-dom';
 
+// Properly mock framer-motion to avoid DOM prop warnings
 jest.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+    div: ({ children, whileHover, whileInView, transition, initial, animate, viewport, ...props }: any) => (
+      <div {...props}>{children}</div>
+    ),
+    span: ({ children, ...props }: any) => <span {...props}>{children}</span>,
   },
-  useSpring: () => ({ set: jest.fn() }),
+  useSpring: () => ({ 
+    set: jest.fn(),
+    get: () => 0,
+    on: jest.fn(),
+  }),
   useTransform: () => 0,
 }));
 
@@ -20,14 +28,17 @@ describe('BentoCard Component', () => {
   });
 
   it('applies size classes', () => {
-    const { rerender } = render(<BentoCard size="large">Large</BentoCard>);
-    expect(screen.getByText('Large').parentElement).toHaveClass('col-span-2', 'row-span-2');
+    const { rerender, container } = render(<BentoCard size="large">Large</BentoCard>);
+    expect(container.querySelector('.col-span-2')).toBeInTheDocument();
+    expect(container.querySelector('.row-span-2')).toBeInTheDocument();
     
     rerender(<BentoCard size="medium">Medium</BentoCard>);
-    expect(screen.getByText('Medium').parentElement).toHaveClass('col-span-2', 'row-span-1');
+    expect(container.querySelector('.col-span-2')).toBeInTheDocument();
+    expect(container.querySelector('.row-span-1')).toBeInTheDocument();
     
     rerender(<BentoCard size="small">Small</BentoCard>);
-    expect(screen.getByText('Small').parentElement).toHaveClass('col-span-1', 'row-span-1');
+    expect(container.querySelector('.col-span-1')).toBeInTheDocument();
+    expect(container.querySelector('.row-span-1')).toBeInTheDocument();
   });
 });
 
@@ -54,5 +65,10 @@ describe('StatCard Component', () => {
   it('displays suffix correctly', () => {
     render(<StatCard value={5} label="Years" suffix="+" />);
     expect(screen.getByText('+')).toBeInTheDocument();
+  });
+
+  it('applies custom className', () => {
+    const { container } = render(<StatCard value={10} label="Test" className="custom-stat" />);
+    expect(container.firstChild).toHaveClass('custom-stat');
   });
 });

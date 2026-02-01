@@ -24,12 +24,13 @@ export function StatCard({ value, label, suffix = '', className = '' }: StatCard
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
+      transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
     >
-      <div className="text-4xl font-bold text-[#2a9d8f] mb-2">
+      <div className="text-4xl font-bold text-accent mb-2 tabular-nums">
         <motion.span>{display}</motion.span>
         {suffix}
       </div>
-      <div className="text-sm text-gray-500">{label}</div>
+      <div className="text-sm text-tertiary">{label}</div>
     </motion.div>
   );
 }
