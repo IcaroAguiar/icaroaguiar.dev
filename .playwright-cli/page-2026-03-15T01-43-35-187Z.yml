@@ -1,0 +1,304 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Transmutar" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Transmutar" [ref=e5]
+      - navigation [ref=e6]:
+        - link "Serviços" [ref=e7] [cursor=pointer]:
+          - /url: "#servicos"
+        - link "Sobre" [ref=e8] [cursor=pointer]:
+          - /url: "#sobre"
+      - generic [ref=e9]:
+        - link "Instagram" [ref=e10] [cursor=pointer]:
+          - /url: https://www.instagram.com/metodoaexpansao/
+          - img [ref=e11]
+        - link "Agendar sessão" [ref=e14] [cursor=pointer]:
+          - /url: https://wa.me/5511993640713
+  - main [ref=e15]:
+    - generic [ref=e17]:
+      - generic [ref=e18]: Abordagem com ética, respeito e foco na sua autonomia.
+      - heading "Reequilibre sua energia com consciência e acolhimento." [level=1] [ref=e20]:
+        - text: Reequilibre sua energia com
+        - generic [ref=e21]:
+          - text: consciência
+          - img [ref=e22]
+        - text: e acolhimento.
+      - paragraph [ref=e24]: Terapias holísticas com profundidade, respeito e direção. Sem promessas vazias, apenas uma condução clara para o seu bem-estar e autonomia emocional.
+      - generic [ref=e25]:
+        - link "Agendar sessão" [ref=e26] [cursor=pointer]:
+          - /url: "#agendar"
+        - link "Entender como funciona" [ref=e27] [cursor=pointer]:
+          - /url: "#sobre"
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - heading "Reconhece estes sinais?" [level=2] [ref=e31]
+        - paragraph [ref=e32]: Nosso trabalho foca em pessoas que buscam retomada de controle emocional e energético, sem perder os pés no chão.
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - heading "Relacionamentos" [level=3] [ref=e37]
+          - paragraph [ref=e38]: Descontentamento com o parceiro ou dificuldades na convivência afetiva.
+        - generic [ref=e39]:
+          - heading "Vida Profissional" [level=3] [ref=e42]
+          - paragraph [ref=e43]: Dificuldades financeiras e desafios no ambiente de trabalho.
+        - generic [ref=e44]:
+          - heading "Conflitos Familiares" [level=3] [ref=e47]
+          - paragraph [ref=e48]: Tensões e desentendimentos recorrentes no núcleo familiar.
+        - generic [ref=e49]:
+          - heading "Passado e Traumas" [level=3] [ref=e52]
+          - paragraph [ref=e53]: Dificuldade em lidar com mágoas antigas e traumas que ainda ecoam.
+        - generic [ref=e54]:
+          - heading "Vícios e Compulsões" [level=3] [ref=e57]
+          - paragraph [ref=e58]: Apostas, compras, pornografia, jogos, comida ou dependências químicas.
+        - generic [ref=e59]:
+          - heading "Saúde Mental" [level=3] [ref=e62]
+          - paragraph [ref=e63]: Pensamentos intrusivos, ansiedade constante e sensação de angústia.
+        - generic [ref=e64]:
+          - heading "Cansaço Crônico" [level=3] [ref=e67]
+          - paragraph [ref=e68]: Exaustão sem explicação aparente e falta de dinamismo no dia a dia.
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - heading "Nossos Caminhos" [level=2] [ref=e73]
+          - paragraph [ref=e74]: Processos terapêuticos e energéticos para acolher o que pede transformação, com presença, profundidade e clareza.
+        - link "Falar sobre meu caso" [ref=e76] [cursor=pointer]:
+          - /url: "#agendar"
+      - generic [ref=e78]:
+        - button "Resgate Para que serve Cura de traumas, antigos ou recentes, com resultados visíveis na vida presente. Processo terapêutico Ver detalhes ›" [ref=e80]:
+          - heading "Resgate" [level=3] [ref=e81]
+          - generic [ref=e82]:
+            - generic [ref=e83]: Para que serve
+            - paragraph [ref=e84]: Cura de traumas, antigos ou recentes, com resultados visíveis na vida presente.
+          - generic [ref=e85]:
+            - generic [ref=e86]: Processo terapêutico
+            - generic [ref=e87]:
+              - text: Ver detalhes
+              - generic [ref=e88]: ›
+        - button "Proteção Para que serve Exercícios práticos contra vampirismo energético e para criar um campo sólido. Trabalho energético Ver detalhes ›" [ref=e90]:
+          - heading "Proteção" [level=3] [ref=e91]
+          - generic [ref=e92]:
+            - generic [ref=e93]: Para que serve
+            - paragraph [ref=e94]: Exercícios práticos contra vampirismo energético e para criar um campo sólido.
+          - generic [ref=e95]:
+            - generic [ref=e96]: Trabalho energético
+            - generic [ref=e97]:
+              - text: Ver detalhes
+              - generic [ref=e98]: ›
+        - button "Limpeza Para que serve Dissolução de sentimentos pesados e transmutação do negativo em movimento positivo. Campo emocional Ver detalhes ›" [ref=e100]:
+          - heading "Limpeza" [level=3] [ref=e101]
+          - generic [ref=e102]:
+            - generic [ref=e103]: Para que serve
+            - paragraph [ref=e104]: Dissolução de sentimentos pesados e transmutação do negativo em movimento positivo.
+          - generic [ref=e105]:
+            - generic [ref=e106]: Campo emocional
+            - generic [ref=e107]:
+              - text: Ver detalhes
+              - generic [ref=e108]: ›
+        - button "Prosperidade Para que serve Alinhar seu campo energético à abundância que o universo já oferece. Expansão Ver detalhes ›" [ref=e110]:
+          - heading "Prosperidade" [level=3] [ref=e111]
+          - generic [ref=e112]:
+            - generic [ref=e113]: Para que serve
+            - paragraph [ref=e114]: Alinhar seu campo energético à abundância que o universo já oferece.
+          - generic [ref=e115]:
+            - generic [ref=e116]: Expansão
+            - generic [ref=e117]:
+              - text: Ver detalhes
+              - generic [ref=e118]: ›
+        - button "Relacionamento Para que serve Cultivar amor próprio profundo como base para atrair e viver relações verdadeiras. Amor próprio Ver detalhes ›" [ref=e120]:
+          - heading "Relacionamento" [level=3] [ref=e121]
+          - generic [ref=e122]:
+            - generic [ref=e123]: Para que serve
+            - paragraph [ref=e124]: Cultivar amor próprio profundo como base para atrair e viver relações verdadeiras.
+          - generic [ref=e125]:
+            - generic [ref=e126]: Amor próprio
+            - generic [ref=e127]:
+              - text: Ver detalhes
+              - generic [ref=e128]: ›
+        - button "Alquimia Emocional Para que serve Transformar emoções densas em combustível para expansão e consciência. Equilíbrio interno Ver detalhes ›" [ref=e130]:
+          - heading "Alquimia Emocional" [level=3] [ref=e131]
+          - generic [ref=e132]:
+            - generic [ref=e133]: Para que serve
+            - paragraph [ref=e134]: Transformar emoções densas em combustível para expansão e consciência.
+          - generic [ref=e135]:
+            - generic [ref=e136]: Equilíbrio interno
+            - generic [ref=e137]:
+              - text: Ver detalhes
+              - generic [ref=e138]: ›
+        - button "Sessão Única Para que serve Sessão única para traumas emocionais. Traumas Ver detalhes ›" [ref=e140]:
+          - heading "Sessão Única" [level=3] [ref=e141]
+          - generic [ref=e142]:
+            - generic [ref=e143]: Para que serve
+            - paragraph [ref=e144]: Sessão única para traumas emocionais.
+          - generic [ref=e145]:
+            - generic [ref=e146]: Traumas
+            - generic [ref=e147]:
+              - text: Ver detalhes
+              - generic [ref=e148]: ›
+        - button "Terapia em Grupo Para que serve Participe de uma terapia em grupo recebendo abordagens dos caminhos (uma sessão semanal). Grupo Ver detalhes ›" [ref=e150]:
+          - heading "Terapia em Grupo" [level=3] [ref=e151]
+          - generic [ref=e152]:
+            - generic [ref=e153]: Para que serve
+            - paragraph [ref=e154]: Participe de uma terapia em grupo recebendo abordagens dos caminhos (uma sessão semanal).
+          - generic [ref=e155]:
+            - generic [ref=e156]: Grupo
+            - generic [ref=e157]:
+              - text: Ver detalhes
+              - generic [ref=e158]: ›
+        - button "Conexão Magnética Para que serve Como abrir canal para receber as bênçãos do universo. Expansão Ver detalhes ›" [ref=e160]:
+          - heading "Conexão Magnética" [level=3] [ref=e161]
+          - generic [ref=e162]:
+            - generic [ref=e163]: Para que serve
+            - paragraph [ref=e164]: Como abrir canal para receber as bênçãos do universo.
+          - generic [ref=e165]:
+            - generic [ref=e166]: Expansão
+            - generic [ref=e167]:
+              - text: Ver detalhes
+              - generic [ref=e168]: ›
+    - generic [ref=e170]:
+      - generic [ref=e171]:
+        - heading "Como trabalhamos" [level=2] [ref=e172]
+        - paragraph [ref=e173]: "Nosso método é transparente. Você entende o que estamos fazendo e por que estamos fazendo, a cada passo (duração média: 50min)."
+      - generic [ref=e176]:
+        - generic [ref=e177]:
+          - generic [ref=e179]: "01"
+          - heading "Acolhimento e escuta" [level=3] [ref=e180]
+          - paragraph [ref=e181]: Um espaço seguro, sem julgamentos, para ouvirmos o que você está enfrentando e o que busca na terapia.
+        - generic [ref=e182]:
+          - generic [ref=e184]: "02"
+          - heading "Leitura do campo" [level=3] [ref=e185]
+          - paragraph [ref=e186]: Diagnóstico inicial do seu momento emocional e energético atual para calibrar os instrumentos de sessão.
+        - generic [ref=e187]:
+          - generic [ref=e189]: "03"
+          - heading "Condução e Técnica" [level=3] [ref=e190]
+          - paragraph [ref=e191]: Aplicação das metodologias e orientação. Tudo explicado com clareza, gerando autonomia emocional para o seu dia a dia.
+    - generic [ref=e194]:
+      - img "Rosana" [ref=e197]
+      - generic [ref=e198]:
+        - generic [ref=e199]: Mais de 10 anos de experiência
+        - heading "Quem conduzirá o seu processo." [level=2] [ref=e200]
+        - generic [ref=e201]:
+          - paragraph [ref=e202]: Olá, seja bem-vindo ao meu espaço de trabalho. Há mais de uma década tenho me dedicado a entender a complexidade das emoções e das energias que nos atravessam diariamente.
+          - paragraph [ref=e203]: Meu posicionamento nasceu da percepção de que o mercado de terapias holísticas, muitas vezes, peca por excesso de misticismo ou falta de pragmatismo. Acredito que a espiritualidade e a intuição podem e devem caminhar junto com a lógica material, o limite e o respeito.
+          - paragraph [ref=e204]: Você não encontrará aqui promessas mágicas para resolver sua vida em uma sessão. O que eu te ofereço é presença genuína, leitura profunda do seu campo e as ferramentas necessárias para que você mesmo recupere a sua autonomia emocional.
+        - link "Agendar uma conversa" [ref=e206] [cursor=pointer]:
+          - /url: "#agendar"
+    - generic [ref=e208]:
+      - generic [ref=e209]:
+        - heading "Relatos Reais" [level=2] [ref=e210]
+        - paragraph [ref=e211]: Não prometemos curas imediatas, mas o compromisso com uma transformação consciente se reflete em relatos encorajadores.
+      - generic [ref=e212]:
+        - generic [ref=e213]:
+          - img [ref=e215]
+          - paragraph [ref=e217]: "\"Consegui entender minha ansiedade de forma lógica e espiritual juntas. Não me venderam magia, mas direção de verdade.\""
+          - generic [ref=e218]:
+            - paragraph [ref=e219]: M. Silva
+            - paragraph [ref=e220]: Sessões de alinhamento
+        - generic [ref=e221]:
+          - img [ref=e223]
+          - paragraph [ref=e225]: "\"Estava esgotada e achava que era 'excesso de empatia'. O método me ensinou sobre limites sem ferir minha essência cuidadora.\""
+          - generic [ref=e226]:
+            - paragraph [ref=e227]: Ana T.
+            - paragraph [ref=e228]: Acompanhamento
+        - generic [ref=e229]:
+          - img [ref=e231]
+          - paragraph [ref=e233]: "\"Profissionalidade muito diferente do que costumo ver nesse ramo. Tudo é explicado e acolhido com paciência e seriedade.\""
+          - generic [ref=e234]:
+            - paragraph [ref=e235]: R. Mendes
+            - paragraph [ref=e236]: Leitura Direcionada
+      - generic [ref=e237]:
+        - generic [ref=e238]:
+          - heading "O que você pode sentir no processo" [level=3] [ref=e239]
+          - paragraph [ref=e240]: Picos de claridade, flutuações e estabilidade gradual. O nosso trabalho orienta suas ferramentas naturais; você é a causa ativa do seu reequilíbrio.
+        - generic [ref=e242]: ✧
+    - generic [ref=e244]:
+      - generic [ref=e245]:
+        - heading "Dúvidas Frequentes" [level=2] [ref=e246]
+        - paragraph [ref=e247]: Respostas claras para você agendar com tranquilidade.
+      - generic [ref=e248]:
+        - group [ref=e249]:
+          - generic "Preciso ter alguma religião ou crença específica?" [ref=e250] [cursor=pointer]:
+            - text: Preciso ter alguma religião ou crença específica?
+            - img [ref=e252]
+        - group [ref=e253]:
+          - generic "Como funciona a sessão na prática?" [ref=e254] [cursor=pointer]:
+            - text: Como funciona a sessão na prática?
+            - img [ref=e256]
+        - group [ref=e257]:
+          - generic "Quantas sessões eu preciso?" [ref=e258] [cursor=pointer]:
+            - text: Quantas sessões eu preciso?
+            - img [ref=e260]
+        - group [ref=e261]:
+          - generic "Atendimento online tem a mesma eficácia?" [ref=e262] [cursor=pointer]:
+            - text: Atendimento online tem a mesma eficácia?
+            - img [ref=e264]
+        - group [ref=e265]:
+          - generic "Qual a diferença para psicoterapia tradicional?" [ref=e266] [cursor=pointer]:
+            - text: Qual a diferença para psicoterapia tradicional?
+            - img [ref=e268]
+    - generic [ref=e271]:
+      - generic [ref=e273]:
+        - heading "Um caminho mais leve, consciente e verdadeiro do que você imagina." [level=2] [ref=e274]
+        - paragraph [ref=e275]: Deixe seus contatos abaixo para agendarmos sua primeira sessão de alinhamento.
+      - generic [ref=e276]:
+        - generic [ref=e277]:
+          - generic [ref=e278]:
+            - generic [ref=e279]: Nome completo
+            - textbox "Nome completo" [ref=e280]:
+              - /placeholder: Como gosta de ser chamado
+          - generic [ref=e281]:
+            - generic [ref=e282]: WhatsApp
+            - textbox "WhatsApp" [ref=e283]:
+              - /placeholder: (00) 00000-0000
+        - generic [ref=e284]:
+          - generic [ref=e285]: Qual seu momento atual?
+          - button "Qual seu momento atual?" [ref=e287]:
+            - generic [ref=e288]: Selecione uma opção (opcional)
+            - img [ref=e289]
+        - generic [ref=e291]:
+          - button "Enviar solicitação" [ref=e292]
+          - paragraph [ref=e293]: Suas informações estão seguras conosco. Entraremos em contato em até 24 horas úteis.
+  - contentinfo [ref=e294]:
+    - generic [ref=e295]:
+      - generic [ref=e296]:
+        - generic [ref=e297]:
+          - link "✧ Transmutar" [ref=e298] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e299]: ✧
+            - text: Transmutar
+          - paragraph [ref=e300]: Nossos serviços holísticos complementam a rotina de saúde, visando o reequilíbrio energético e a clareza mental.
+          - paragraph [ref=e301]: "Atenção: Nenhuma terapia integrativa substitui o acompanhamento da psicologia tradicional ou psiquiatria."
+        - generic [ref=e302]:
+          - heading "Navegação" [level=3] [ref=e303]
+          - list [ref=e304]:
+            - listitem [ref=e305]:
+              - link "Para quem é" [ref=e306] [cursor=pointer]:
+                - /url: "#para-quem"
+            - listitem [ref=e307]:
+              - link "Nossos Caminhos" [ref=e308] [cursor=pointer]:
+                - /url: "#servicos"
+            - listitem [ref=e309]:
+              - link "O Método" [ref=e310] [cursor=pointer]:
+                - /url: "#metodo"
+            - listitem [ref=e311]:
+              - link "Dúvidas Frequentes" [ref=e312] [cursor=pointer]:
+                - /url: "#faq"
+            - listitem [ref=e313]:
+              - link "Sobre Nós" [ref=e314] [cursor=pointer]:
+                - /url: "#sobre"
+        - generic [ref=e315]:
+          - heading "Contato" [level=3] [ref=e316]
+          - list [ref=e317]:
+            - listitem [ref=e318]:
+              - img [ref=e319]
+              - text: ola@transmutar.com.br
+            - listitem [ref=e321]:
+              - img [ref=e322]
+              - link "+55 (11) 99364-0713" [ref=e324] [cursor=pointer]:
+                - /url: https://wa.me/5511993640713
+            - listitem [ref=e325]:
+              - img [ref=e326]
+              - link "@metodoaexpansao" [ref=e329] [cursor=pointer]:
+                - /url: https://www.instagram.com/metodoaexpansao/
+      - generic [ref=e330]:
+        - paragraph [ref=e331]: © 2026 Transmutar. Todos os direitos reservados.
+        - paragraph [ref=e332]: Desenvolvido e mantido por Star Agency.

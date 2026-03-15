@@ -1,0 +1,308 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Star Agency Star Agency" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Star Agency" [ref=e6]
+        - generic [ref=e7]: Star Agency
+      - navigation [ref=e8]:
+        - link "Serviços" [ref=e9] [cursor=pointer]:
+          - /url: "#servicos"
+          - text: Serviços
+        - link "Depoimentos" [ref=e10] [cursor=pointer]:
+          - /url: "#depoimentos"
+          - text: Depoimentos
+        - link "Equipe" [ref=e11] [cursor=pointer]:
+          - /url: "#equipe"
+          - text: Equipe
+        - link "Fale Conosco" [ref=e12] [cursor=pointer]:
+          - /url: "#contato"
+      - button "Toggle menu" [ref=e13]:
+        - img [ref=e14]
+  - main [ref=e15]:
+    - generic [ref=e21]:
+      - paragraph [ref=e22]: Agência Especializada em Reposicionamento Digital
+      - heading "MARKETING" [level=1] [ref=e23]
+      - heading "ARTÍSTICO" [level=1] [ref=e24]
+      - paragraph [ref=e25]: contato@staragency.com.br
+      - link "Fale Conosco" [ref=e27] [cursor=pointer]:
+        - /url: "#contato"
+    - generic [ref=e31]:
+      - paragraph [ref=e32]: CONFIAM NA STAR
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e36]: "0"
+            - generic [ref=e37]: +
+          - generic [ref=e38]: ARTISTAS
+        - generic [ref=e39]:
+          - generic [ref=e41]: "0"
+          - generic [ref=e42]: ANOS DE EXPERIÊNCIA
+        - generic [ref=e43]:
+          - generic [ref=e45]: "0"
+          - generic [ref=e46]: PAÍSES
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - generic [ref=e49]: "0"
+            - generic [ref=e50]: +
+          - generic [ref=e51]: ESTADOS
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - paragraph [ref=e57]: Soluções Star Agency
+        - heading "Conheça os nossos serviços" [level=2] [ref=e58]
+        - paragraph [ref=e59]: Do diagnóstico estratégico à execução completa, combinamos marketing artístico e gestão de carreira para potencializar cada lançamento.
+      - generic [ref=e60]:
+        - generic [ref=e61] [cursor=pointer]:
+          - generic [ref=e63]:
+            - heading "Diagnóstico de Potencial de Carreira" [level=3] [ref=e64]
+            - img [ref=e66]
+          - paragraph [ref=e68]: Uma análise profunda e personalizada do seu momento artístico. Avaliamos seu posicionamento atual, identificamos oportunidades reais de crescimento e construímos um plano estratégico claro para direcionar sua carreira com foco, autoridade e resultados.
+          - generic [ref=e69]:
+            - img [ref=e71]
+            - generic [ref=e73]: Saiba mais
+        - generic [ref=e74] [cursor=pointer]:
+          - generic [ref=e76]:
+            - heading "Programa de Aceleramento Artístico" [level=3] [ref=e77]
+            - img [ref=e79]
+          - paragraph [ref=e81]: Um programa intensivo focado em acelerar sua carreira de forma estratégica. Você conta com mentoria especializada, acesso a networking qualificado e conexão com oportunidades reais dentro do mercado musical.
+          - generic [ref=e82]:
+            - img [ref=e84]
+            - generic [ref=e86]: Saiba mais
+        - generic [ref=e87] [cursor=pointer]:
+          - generic [ref=e89]:
+            - heading "Social Media Gold" [level=3] [ref=e90]
+            - img [ref=e92]
+          - paragraph [ref=e94]: Gestão premium de redes sociais para artistas, com conteúdo exclusivo, estratégia de engajamento personalizada e acompanhamento contínuo de resultados para fortalecer sua presença digital e sua marca.
+          - generic [ref=e95]:
+            - img [ref=e97]
+            - generic [ref=e99]: Saiba mais
+        - generic [ref=e100] [cursor=pointer]:
+          - generic [ref=e102]:
+            - heading "Social Media de Lançamento" [level=3] [ref=e103]
+            - img [ref=e105]
+          - paragraph [ref=e107]: Campanha estratégica completa para lançamentos musicais, com planejamento e execução de pré-lançamento, estreia e pós-lançamento, garantindo máxima visibilidade e posicionamento no mercado.
+          - generic [ref=e108]:
+            - img [ref=e110]
+            - generic [ref=e112]: Saiba mais
+        - generic [ref=e113] [cursor=pointer]:
+          - generic [ref=e115]:
+            - heading "Mídia Kit Profissional" [level=3] [ref=e116]
+            - img [ref=e118]
+          - paragraph [ref=e120]: Desenvolvimento de um kit profissional completo com fotos, vídeos, biografia e informações estratégicas, pensado para apresentar sua carreira com clareza, autoridade e profissionalismo ao mercado.
+          - generic [ref=e121]:
+            - img [ref=e123]
+            - generic [ref=e125]: Saiba mais
+        - generic [ref=e126] [cursor=pointer]:
+          - generic [ref=e128]:
+            - heading "Manual de Marca" [level=3] [ref=e129]
+            - img [ref=e131]
+          - paragraph [ref=e133]: Guia estratégico completo da sua identidade visual, com definição de elementos de marca, regras de aplicação e diretrizes claras para garantir uma comunicação consistente, profissional e alinhada ao seu posicionamento.
+          - generic [ref=e134]:
+            - img [ref=e136]
+            - generic [ref=e138]: Saiba mais
+    - generic [ref=e145]:
+      - generic [ref=e146]:
+        - img [ref=e148]
+        - paragraph [ref=e150]: Pronto para acelerar sua carreira artística?
+      - button "Falar no WhatsApp" [ref=e151]:
+        - text: Falar no WhatsApp
+        - img
+    - generic [ref=e153]:
+      - generic [ref=e154]:
+        - paragraph [ref=e155]: Depoimentos
+        - heading "O que nossos artistas dizem" [level=2] [ref=e156]
+      - generic [ref=e157]:
+        - generic [ref=e158]:
+          - img "Gata de Botas" [ref=e160]
+          - blockquote [ref=e161]: "\"Nos sentimos sempre muito acolhidos, valorizados e prontamente atendidos pela equipe Star. O trabalho deles é impecável em cada detalhe.\""
+          - generic [ref=e162]:
+            - paragraph [ref=e163]: Gata de Botas
+            - paragraph [ref=e164]: Artista Musical
+        - link "Depoimento de Raffa Fragoso Raffa Fragoso Cantor e Compositor" [ref=e166] [cursor=pointer]:
+          - /url: https://www.youtube.com/watch?v=4H6iR7HbAOE
+          - img "Depoimento de Raffa Fragoso" [ref=e167]
+          - img [ref=e171]
+          - generic [ref=e173]:
+            - paragraph [ref=e174]: Raffa Fragoso
+            - paragraph [ref=e175]: Cantor e Compositor
+        - generic [ref=e176]:
+          - img "Marco Audino" [ref=e178]
+          - blockquote [ref=e179]: "\"A Star enxergou meu projeto como um negócio artístico completo e trouxe excelência para cada etapa da produção.\""
+          - generic [ref=e180]:
+            - paragraph [ref=e181]: Marco Audino
+            - paragraph [ref=e182]: Produtor Musical
+    - generic [ref=e189]:
+      - generic [ref=e190]:
+        - img [ref=e192]
+        - paragraph [ref=e194]: Quer saber como podemos ajudar você?
+      - button "Conversar agora" [ref=e195]:
+        - text: Conversar agora
+        - img
+    - generic [ref=e197]:
+      - generic [ref=e198]:
+        - paragraph [ref=e199]: Nossa Equipe
+        - heading "Conheça quem faz a mágica acontecer" [level=2] [ref=e200]
+      - generic [ref=e201]:
+        - button "Fundador" [ref=e202]
+        - button "Comercial" [ref=e203]
+        - button "Design & Vídeo" [ref=e204]
+        - button "Desenvolvimento" [ref=e205]
+      - generic [ref=e206]:
+        - button [ref=e207]:
+          - img [ref=e208]
+        - button [ref=e210]:
+          - img [ref=e211]
+        - generic [ref=e214] [cursor=pointer]:
+          - img "Jamil" [ref=e216]
+          - generic [ref=e219]:
+            - generic [ref=e220]:
+              - heading "Jamil" [level=3] [ref=e221]
+              - paragraph [ref=e222]: CEO & Head de Estratégia
+            - generic [ref=e223]:
+              - link [ref=e224]:
+                - /url: https://instagram.com/staragencyoficial
+                - img [ref=e225]
+              - link [ref=e228]:
+                - /url: mailto:contato@staragency.com.br
+                - img [ref=e229]
+        - generic [ref=e232]:
+          - button [ref=e233]
+          - button [ref=e234]
+          - button [ref=e235]
+          - button [ref=e236]
+    - generic [ref=e243]:
+      - generic [ref=e244]:
+        - img [ref=e246]
+        - paragraph [ref=e248]: Faça parte dos artistas que confiam na Star!
+      - button "Iniciar conversa" [ref=e249]:
+        - text: Iniciar conversa
+        - img
+    - generic [ref=e251]:
+      - generic [ref=e252]:
+        - paragraph [ref=e253]: Perguntas Frequentes
+        - heading "Dúvidas sobre a Star Agency" [level=2] [ref=e254]
+        - paragraph [ref=e255]: Encontre respostas para as perguntas mais comuns sobre nossos serviços e como trabalhamos.
+      - generic [ref=e256]:
+        - generic [ref=e257]:
+          - button "O que a Star Agency faz e para quem são os serviços?" [expanded] [ref=e258]:
+            - img [ref=e260]
+            - generic [ref=e263]: O que a Star Agency faz e para quem são os serviços?
+            - img [ref=e265]
+          - paragraph [ref=e269]: "A Star Agency atua de forma estratégica no desenvolvimento e aceleração de carreiras artísticas e digitais. Nosso trabalho vai muito além da gestão de redes sociais: cuidamos de toda a estrutura necessária para que a carreira cresça de forma profissional, sustentável e organizada. Atuamos com tráfego pago, orientação e planejamento de conteúdos, criação de roteiros, mentorias estratégicas, treinamento de vendas, desenvolvimento de produtos, posicionamento de marca e comunicação. Além disso, oferecemos suporte nas áreas financeira, jurídica e administrativa, garantindo mais segurança, clareza e profissionalismo em cada etapa da carreira. Nossos serviços são indicados para artistas, influenciadores e criadores que desejam estruturar sua carreira, ganhar autoridade no mercado e crescer com estratégia e acompanhamento especializado."
+        - button "Preciso ter muitos seguidores para trabalhar com vocês?" [ref=e271]:
+          - img [ref=e273]
+          - generic [ref=e278]: Preciso ter muitos seguidores para trabalhar com vocês?
+          - img [ref=e280]
+        - button "Como começa o trabalho com a Star Agency?" [ref=e283]:
+          - img [ref=e285]
+          - generic [ref=e290]: Como começa o trabalho com a Star Agency?
+          - img [ref=e292]
+        - button "Vocês têm um grupo de influenciadores ou casting?" [ref=e295]:
+          - img [ref=e297]
+          - generic [ref=e301]: Vocês têm um grupo de influenciadores ou casting?
+          - img [ref=e303]
+        - button "Quais resultados posso esperar ao trabalhar com a Star Agency?" [ref=e306]:
+          - img [ref=e308]
+          - generic [ref=e311]: Quais resultados posso esperar ao trabalhar com a Star Agency?
+          - img [ref=e313]
+    - generic [ref=e315]:
+      - generic [ref=e318]:
+        - generic [ref=e319]:
+          - generic [ref=e322]:
+            - heading "Contact" [level=2] [ref=e323]
+            - generic [ref=e324]:
+              - link "contato@staragency.com.br" [ref=e325] [cursor=pointer]:
+                - /url: mailto:contato@staragency.com.br
+                - img [ref=e326]
+                - text: contato@staragency.com.br
+              - paragraph [ref=e329]:
+                - img [ref=e330]
+                - text: +55 48 9195-6772
+            - generic [ref=e332]:
+              - img [ref=e334]
+              - generic [ref=e336]:
+                - paragraph [ref=e337]: Star
+                - paragraph [ref=e338]: Agency
+          - paragraph [ref=e340]: Star Agency pontuação 4.9 de 5 baseado em 37 reviews
+        - generic [ref=e341]:
+          - heading "Como podemos ajudar?" [level=3] [ref=e342]
+          - generic [ref=e343]:
+            - generic [ref=e344]:
+              - generic [ref=e345]:
+                - generic [ref=e346]: Nome completo*
+                - textbox "Nome completo*" [ref=e347]:
+                  - /placeholder: ""
+              - generic [ref=e348]:
+                - generic [ref=e349]: E-mail*
+                - textbox "E-mail*" [ref=e350]:
+                  - /placeholder: ""
+            - generic [ref=e351]:
+              - generic [ref=e352]: Mensagem*
+              - textbox "Mensagem*" [ref=e353]:
+                - /placeholder: ""
+            - button "Enviar mensagem" [ref=e354]
+      - generic [ref=e357]: Carregando mapa...
+  - contentinfo [ref=e358]:
+    - generic [ref=e360]:
+      - generic [ref=e361]:
+        - generic [ref=e362]:
+          - img [ref=e364]
+          - generic [ref=e366]:
+            - heading "Star Agency" [level=3] [ref=e367]
+            - paragraph [ref=e368]: Marketing Artístico
+        - paragraph [ref=e369]: Aceleramos carreiras artísticas com estratégias de marketing, branding e posicionamento validadas pelo mercado.
+        - generic [ref=e370]:
+          - link "Instagram" [ref=e371] [cursor=pointer]:
+            - /url: https://www.instagram.com/staragencyoficial/
+            - img [ref=e372]
+          - link "LinkedIn" [ref=e375] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/staragencyoficial/
+            - img [ref=e376]
+          - link "Email" [ref=e380] [cursor=pointer]:
+            - /url: mailto:contato@staragency.com.br
+            - img [ref=e381]
+      - generic [ref=e384]:
+        - heading "Serviços" [level=4] [ref=e385]
+        - list [ref=e386]:
+          - listitem [ref=e387]:
+            - link "Diagnóstico de Carreira" [ref=e388] [cursor=pointer]:
+              - /url: "#servicos"
+          - listitem [ref=e389]:
+            - link "Aceleramento Artístico" [ref=e390] [cursor=pointer]:
+              - /url: "#servicos"
+          - listitem [ref=e391]:
+            - link "Social Media Gold" [ref=e392] [cursor=pointer]:
+              - /url: "#servicos"
+          - listitem [ref=e393]:
+            - link "Mídia Kit Profissional" [ref=e394] [cursor=pointer]:
+              - /url: "#servicos"
+      - generic [ref=e395]:
+        - heading "Empresa" [level=4] [ref=e396]
+        - list [ref=e397]:
+          - listitem [ref=e398]:
+            - link "Sobre Nós" [ref=e399] [cursor=pointer]:
+              - /url: "#equipe"
+          - listitem [ref=e400]:
+            - link "Depoimentos" [ref=e401] [cursor=pointer]:
+              - /url: "#depoimentos"
+          - listitem [ref=e402]:
+            - link "Contato" [ref=e403] [cursor=pointer]:
+              - /url: "#contato"
+      - generic [ref=e404]:
+        - heading "Contato" [level=4] [ref=e405]
+        - generic [ref=e406]:
+          - paragraph [ref=e407]: contato@staragency.com.br
+          - paragraph [ref=e408]: +55 48 9195-6772
+          - paragraph [ref=e409]:
+            - text: Rua Padre Roma, 482
+            - text: Florianópolis - SC
+            - text: 88010-090
+    - generic [ref=e411]:
+      - paragraph [ref=e412]: © 2026 Star Agency Agência de Talentos LTDA. Todos os direitos reservados.
+      - generic [ref=e413]:
+        - link "Política de Privacidade" [ref=e414] [cursor=pointer]:
+          - /url: "#"
+        - link "Termos de Uso" [ref=e415] [cursor=pointer]:
+          - /url: "#"
+  - region "Notifications alt+T"
+  - alert [ref=e416]

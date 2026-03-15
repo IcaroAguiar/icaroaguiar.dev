@@ -1,0 +1,81 @@
+- generic [ref=e2]:
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Neo Constrictor" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "Neo Constrictor" [ref=e7]
+        - button "Ativar tema claro" [ref=e8]:
+          - generic [ref=e9]: Alternar tema
+          - img [ref=e11]
+          - generic [ref=e13]:
+            - img [ref=e14]
+            - img [ref=e16]
+      - generic [ref=e18]:
+        - generic [ref=e20]:
+          - paragraph [ref=e21]: Portal do Pesquisador
+          - generic [ref=e22]:
+            - heading "Acesse sua área de pesquisa." [level=2] [ref=e23]
+            - paragraph [ref=e24]: Acesse com seu e-mail e senha ou valide sua identidade via GOV.br para garantir rastreabilidade e segurança institucional.
+          - list [ref=e25]:
+            - listitem [ref=e26]:
+              - img [ref=e27]
+              - generic [ref=e29]: Acesso auditável e rastreável para pesquisadores institucionais
+            - listitem [ref=e30]:
+              - img [ref=e31]
+              - generic [ref=e33]: Continuidade operacional com ou sem integração GOV.br
+            - listitem [ref=e34]:
+              - img [ref=e35]
+              - generic [ref=e37]: Fluxo seguro e controlado em cada etapa da tramitação
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - button "Acesso interno" [ref=e43]:
+              - img [ref=e44]
+              - text: Acesso interno
+            - button "Criar conta" [active] [ref=e47]:
+              - img [ref=e48]
+              - text: Criar conta
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - text: Nome
+              - generic [ref=e88]:
+                - generic:
+                  - img
+                - textbox "Nome" [ref=e89]:
+                  - /placeholder: Seu nome completo
+            - generic [ref=e90]:
+              - text: E-mail
+              - generic [ref=e91]:
+                - generic:
+                  - img
+                - textbox "E-mail" [ref=e92]:
+                  - /placeholder: nome@instituicao.br
+            - generic [ref=e93]:
+              - text: Senha
+              - generic [ref=e94]:
+                - generic:
+                  - img
+                - button "Mostrar senha" [ref=e96]:
+                  - img [ref=e97]
+                - textbox "Senha" [ref=e99]:
+                  - /placeholder: Mínimo 8 caracteres
+            - generic [ref=e100]:
+              - button "Criar conta" [ref=e101]:
+                - img [ref=e102]
+                - text: Criar conta
+              - button "Voltar para o acesso" [ref=e104]:
+                - img [ref=e105]
+                - text: Voltar para o acesso
+          - generic [ref=e67]:
+            - generic [ref=e70]: ou
+            - button "Entrar com GOV.br Continuação segura do fluxo de autenticação" [ref=e72]:
+              - generic [ref=e73]:
+                - img [ref=e75]
+                - generic [ref=e77]:
+                  - generic [ref=e78]: Entrar com GOV.br
+                  - generic [ref=e79]: Continuação segura do fluxo de autenticação
+              - img [ref=e80]
+            - paragraph [ref=e82]:
+              - img [ref=e83]
+              - text: O acesso interno permanece disponível caso o GOV.br esteja indisponível.
+  - region "Notifications alt+T"

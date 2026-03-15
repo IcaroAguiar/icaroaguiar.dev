@@ -1,0 +1,184 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Aguiar Ambiental Aguiar Ambiental" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Aguiar Ambiental" [ref=e6]
+        - generic [ref=e7]: Aguiar Ambiental
+      - navigation [ref=e8]:
+        - link "Serviços" [ref=e9] [cursor=pointer]:
+          - /url: "#servicos"
+        - link "Sobre" [ref=e10] [cursor=pointer]:
+          - /url: "#sobre"
+        - link "Contato" [ref=e11] [cursor=pointer]:
+          - /url: "#contato"
+  - main [ref=e12]:
+    - generic [ref=e18]:
+      - heading "Soluções Ambientais" [level=1] [ref=e20]:
+        - text: Soluções
+        - text: Ambientais
+      - paragraph [ref=e22]: Consultoria ambiental, licenciamento e projetos sustentáveis com atendimento humanizado.
+      - generic [ref=e24]:
+        - link "Fale com a Consultora" [ref=e25] [cursor=pointer]:
+          - /url: https://wa.me/5511999999999
+        - link "Nossos Serviços" [ref=e26] [cursor=pointer]:
+          - /url: "#servicos"
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - heading "Nossos Serviços" [level=2] [ref=e30]
+        - paragraph [ref=e31]: Oferecemos soluções completas para garantir que seu negócio cresça em harmonia com o meio ambiente.
+      - generic [ref=e32]:
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - img [ref=e37]
+            - generic [ref=e40]: Licenciamento Ambiental
+          - generic [ref=e42]: Regularização de empresas junto aos órgãos ambientais (CETESB, IBAMA, Prefeituras).
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - img [ref=e47]
+            - generic [ref=e54]: Gestão de Resíduos
+          - generic [ref=e56]: Elaboração de PGRS e consultoria para destinação correta de resíduos.
+        - generic [ref=e58]:
+          - generic [ref=e59]:
+            - img [ref=e61]
+            - generic [ref=e64]: Projetos de Reflorestamento
+          - generic [ref=e66]: Planejamento e execução de plantio de mudas nativas e recuperação de áreas degradadas.
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - img [ref=e71]
+            - generic [ref=e73]: Consultoria Industrial
+          - generic [ref=e75]: Adequação ambiental para indústrias, controle de efluentes e emissões.
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - img [ref=e80]
+            - generic [ref=e83]: Educação Ambiental
+          - generic [ref=e85]: Treinamentos e palestras para colaboradores sobre sustentabilidade e normas.
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - img [ref=e90]
+            - generic [ref=e93]: Outorga de Água
+          - generic [ref=e95]: Processos para uso de recursos hídricos junto ao DAEE.
+    - generic [ref=e97]:
+      - generic [ref=e98]:
+        - heading "Galeria de Projetos" [level=2] [ref=e99]
+        - paragraph [ref=e100]: Conheça alguns dos trabalhos que realizamos em campo.
+      - generic [ref=e101]:
+        - button "Fauna Trabalho de campo - Resgate de fauna" [ref=e103] [cursor=pointer]:
+          - generic [ref=e105]: Fauna
+          - paragraph [ref=e108]: Trabalho de campo - Resgate de fauna
+        - button "Água Monitoramento de qualidade da água" [ref=e110] [cursor=pointer]:
+          - generic [ref=e112]: Água
+          - paragraph [ref=e115]: Monitoramento de qualidade da água
+        - button "Fauna Levantamento faunístico" [ref=e117] [cursor=pointer]:
+          - generic [ref=e119]: Fauna
+          - paragraph [ref=e122]: Levantamento faunístico
+        - button "Educação Educação ambiental" [ref=e124] [cursor=pointer]:
+          - generic [ref=e126]: Educação
+          - paragraph [ref=e129]: Educação ambiental
+        - button "Costeiro Consultoria em ecossistemas costeiros" [ref=e131] [cursor=pointer]:
+          - generic [ref=e133]: Costeiro
+          - paragraph [ref=e136]: Consultoria em ecossistemas costeiros
+        - button "Consultoria Diagnóstico socioambiental" [ref=e138] [cursor=pointer]:
+          - generic [ref=e140]: Consultoria
+          - paragraph [ref=e143]: Diagnóstico socioambiental
+    - generic [ref=e146]:
+      - generic [ref=e149]: Foto Tatiane Aguiar
+      - generic [ref=e151]:
+        - generic [ref=e153]:
+          - heading "Tatiane Silva Aguiar" [level=2] [ref=e154]
+          - paragraph [ref=e155]: Bióloga & Especialista em Soluções Ambientais
+        - paragraph [ref=e157]: Com formação acadêmica sólida e vasta experiência prática, ofereço soluções ambientais estratégicas e sustentáveis, pautadas pelo rigor científico e compromisso com a excelência.
+        - generic [ref=e159]:
+          - generic [ref=e160]:
+            - img [ref=e161]
+            - heading "Formação Acadêmica" [level=3] [ref=e164]
+          - list [ref=e165]:
+            - listitem [ref=e166]:
+              - generic [ref=e168]:
+                - strong [ref=e169]: Doutoranda em Ecologia
+                - text: — UFBA (em andamento)
+            - listitem [ref=e170]:
+              - generic [ref=e172]:
+                - strong [ref=e173]: Mestra em Ecologia
+                - text: e
+                - strong [ref=e174]: Saúde, Ambiente e Trabalho
+                - text: — UFBA
+            - listitem [ref=e175]:
+              - strong [ref=e178]: Especialista em Gestão de Ambientes Costeiros
+            - listitem [ref=e179]:
+              - generic [ref=e181]:
+                - strong [ref=e182]: Bacharela em Ciências Biológicas
+                - text: — UFBA
+        - generic [ref=e184]:
+          - generic [ref=e185]:
+            - img [ref=e186]
+            - heading "Áreas de Atuação" [level=3] [ref=e189]
+          - generic [ref=e190]:
+            - generic [ref=e191]:
+              - img [ref=e192]
+              - generic [ref=e195]: Manejo e Resgate de Fauna
+            - generic [ref=e196]:
+              - img [ref=e197]
+              - generic [ref=e200]: Levantamentos Faunísticos
+            - generic [ref=e201]:
+              - img [ref=e202]
+              - generic [ref=e205]: Monitoramento Ambiental
+            - generic [ref=e206]:
+              - img [ref=e207]
+              - generic [ref=e210]: Diagnósticos Socioambientais
+            - generic [ref=e211]:
+              - img [ref=e212]
+              - generic [ref=e215]: Consultoria Ambiental
+            - generic [ref=e216]:
+              - img [ref=e217]
+              - generic [ref=e220]: Educação Ambiental
+        - generic [ref=e222]:
+          - generic [ref=e223]:
+            - img [ref=e224]
+            - heading "Meu Compromisso" [level=3] [ref=e227]
+          - paragraph [ref=e228]: Transformar desafios ambientais em oportunidades de desenvolvimento sustentável, oferecendo soluções que atendem às exigências legais e protegem nosso patrimônio natural para as futuras gerações.
+    - generic [ref=e230]:
+      - generic [ref=e231]:
+        - generic [ref=e233]:
+          - heading "Aguiar Ambiental" [level=3] [ref=e234]
+          - paragraph [ref=e235]: Soluções completas em consultoria ambiental. Compromisso com a sustentabilidade e o futuro.
+        - generic [ref=e237]:
+          - heading "Links Rápidos" [level=4] [ref=e238]
+          - list [ref=e239]:
+            - listitem [ref=e240]:
+              - link "Serviços" [ref=e241] [cursor=pointer]:
+                - /url: "#servicos"
+            - listitem [ref=e242]:
+              - link "Sobre" [ref=e243] [cursor=pointer]:
+                - /url: "#sobre"
+            - listitem [ref=e244]:
+              - link "Contato" [ref=e245] [cursor=pointer]:
+                - /url: "#contato"
+        - generic [ref=e247]:
+          - heading "Contato" [level=4] [ref=e248]
+          - list [ref=e249]:
+            - listitem [ref=e250]:
+              - img [ref=e251]
+              - generic [ref=e253]: (11) 99999-9999
+            - listitem [ref=e254]:
+              - img [ref=e255]
+              - generic [ref=e258]: contato@aguiarambiental.com.br
+            - listitem [ref=e259]:
+              - img [ref=e260]
+              - generic [ref=e263]: Atendimento em todo o Brasil
+        - generic [ref=e265]:
+          - heading "Social" [level=4] [ref=e266]
+          - generic [ref=e267]:
+            - link "Instagram" [ref=e268] [cursor=pointer]:
+              - /url: https://instagram.com/tatianeaguiar
+              - img [ref=e269]
+              - generic [ref=e272]: Instagram
+            - link "LinkedIn" [ref=e273] [cursor=pointer]:
+              - /url: https://linkedin.com/in/tatianeaguiar
+              - img [ref=e274]
+              - generic [ref=e278]: LinkedIn
+      - paragraph [ref=e281]: © 2025 Aguiar Ambiental. Todos os direitos reservados.
+    - button "Chamar no WhatsApp" [ref=e283]:
+      - img [ref=e284]
+  - region "Notifications alt+T"
+  - alert [ref=e286]
