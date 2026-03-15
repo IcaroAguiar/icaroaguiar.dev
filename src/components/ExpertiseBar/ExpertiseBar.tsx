@@ -8,9 +8,9 @@ const EXPERTISE = [
   'Docker',
   'CI/CD',
   'TypeScript',
-  'Node.js',
+  'Flutter',
   'Prisma',
-  'Integrações',
+  'Node.js',
   'DDD',
   'REST APIs',
 ];

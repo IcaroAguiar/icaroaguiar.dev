@@ -3,11 +3,10 @@ export interface SkillCategory {
 }
 
 export const skills: SkillCategory = {
-  Linguagens: ['C#', 'JavaScript/TypeScript', 'Python'],
-  'Front-end': ['React', 'Next.js', 'Angular', 'Tailwind CSS', 'HTML5/CSS3', 'WordPress'],
-  'Back-end': ['.NET', 'Node.js', 'APIs REST'],
-  Mobile: ['React Native', 'Expo'],
-  'Bancos de Dados': ['SQL Server', 'Oracle', 'PostgreSQL'],
-  'DevOps & Cloud': ['GitHub Actions', 'Azure DevOps', 'CI/CD', 'Linux', 'Docker'],
-  Metodologias: ['Scrum', 'Desenvolvimento Ágil'],
+  'Back-end': ['Node.js', 'NestJS', 'Prisma', 'APIs REST', '.NET / C#', 'Python'],
+  'Front-end': ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML5/CSS3'],
+  Mobile: ['Flutter', 'React Native', 'Expo'],
+  'Banco de Dados': ['PostgreSQL', 'SQL Server', 'Oracle'],
+  'DevOps & Infra': ['Docker', 'CI/CD', 'GitHub Actions', 'Azure DevOps', 'Linux'],
+  Arquitetura: ['DDD', 'Multi-tenant', 'Microserviços', 'Autenticação', 'Modelagem de dados'],
 };

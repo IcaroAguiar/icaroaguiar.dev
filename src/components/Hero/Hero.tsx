@@ -11,10 +11,11 @@ import { staggerContainerVariants, itemVariants } from '@/hooks';
 import './Hero.css';
 
 const domainChips = [
-  'SaaS',
-  'APIs & Integrações',
-  'Interfaces Premium',
-  'Arquitetura Orientada a Domínio',
+  'SaaS & Multi-tenant',
+  'APIs & Microserviços',
+  'Interfaces White-label',
+  'NestJS · Prisma · PostgreSQL',
+  'React · Next.js · Flutter',
 ];
 
 export default function Hero() {
@@ -53,7 +54,7 @@ export default function Hero() {
             
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-8 max-w-xl text-center lg:text-left font-light">
-              Atuo do backend à interface, criando sistemas robustos, utilizáveis e visualmente bem resolvidos.
+              Especializado em SaaS, APIs bem estruturadas e interfaces reutilizáveis — do backend à entrega em produção.
             </p>
 
             {/* Domain chips */}

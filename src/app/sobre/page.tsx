@@ -42,16 +42,17 @@ export default function SobrePage() {
                 Ícaro Aguiar
               </h1>
               <p className="text-2xl md:text-3xl font-display italic text-accent-primary mb-6">
-                Engenheiro Full-Stack
+                Engenheiro de Software Full-Stack
               </p>
               <p className="text-text-secondary leading-relaxed mb-4 text-base max-w-lg">
-                Transformo requisitos em produtos funcionais — do backend à interface. Trabalho com
-                React/Next.js, .NET/Node.js e entrego interfaces claras, APIs confiáveis e
-                deploy com CI/CD.
+                Especializado em produtos SaaS, aplicações web escaláveis e sistemas mobile. Atuo
+                com TypeScript e o ecossistema JavaScript — Node.js, NestJS e Prisma no backend;
+                React, Next.js e Flutter no frontend e mobile.
               </p>
               <p className="text-text-secondary leading-relaxed mb-8 text-base max-w-lg">
-                Curto ciclos curtos, versionamento bem feito e comunicação direta.
-                Meu foco é sempre entregar valor real para o negócio.
+                Meu foco está em sistemas robustos, APIs bem estruturadas, interfaces reutilizáveis
+                e entrega contínua. Interesse especial em multi-tenant, microserviços e plataformas
+                de alta qualidade técnica.
               </p>
 
               <div className="flex flex-wrap gap-3">

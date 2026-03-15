@@ -8,12 +8,22 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     role: 'Desenvolvedor Full-Stack',
+    company: 'Tetra Educação',
+    period: 'Atual',
+    tasks: [
+      'Interfaces white-label e componentes reutilizáveis para produtos web e mobile.',
+      'Fluxos full-stack com Node.js, NestJS e Prisma; integrações entre serviços.',
+      'Pipelines CI/CD, testes automatizados e documentação de padrões de engenharia.',
+    ],
+  },
+  {
+    role: 'Desenvolvedor Full-Stack',
     company: 'Star Agency',
     period: 'Setembro de 2025 - Presente',
     tasks: [
-      'Sites e sistemas em WordPress/Next.js com UI React + Tailwind.',
-      'Desenvolvimento de aplicativos React Native (Expo).',
-      'CI/CD com GitHub Actions para deploy automatizado.',
+      'Sites e sistemas com WordPress, React, Next.js e Tailwind CSS.',
+      'Aplicativos mobile com React Native (Expo).',
+      'Automação de build e deploy via GitHub Actions.',
     ],
   },
   {
@@ -21,9 +31,9 @@ export const experiences: Experience[] = [
     company: 'ATSD IT Solutions',
     period: 'Junho de 2025 - Presente',
     tasks: [
-      'APIs em C#/.NET para modernização de sistemas web/mobile.',
-      'Suporte a bancos de dados e infraestrutura.',
-      'Azure DevOps (pipelines CI/CD) e gestão de processos.',
+      'Suporte e evolução de sistemas corporativos e bancos de dados.',
+      'Novas funcionalidades e correções no backend e frontend.',
+      'Discussões técnicas voltadas à melhoria contínua das soluções.',
     ],
   },
   {
@@ -36,21 +46,13 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    role: 'Estagiário de Desenvolvimento',
+    role: 'Desenvolvedor Web Front-End / Analista de Sistemas',
     company: 'Oi S.A.',
-    period: 'Abril de 2023 - Abril de 2025',
+    period: 'Abril de 2022 - Abril de 2025',
     tasks: [
-      'Full-Stack com React/Node.js e aplicações mobile React Native.',
-      'Otimização de APIs REST e suporte a ambientes SOA.',
-    ],
-  },
-  {
-    role: 'Aprendiz Técnico',
-    company: 'Oi S.A.',
-    period: 'Abril de 2022 - Fevereiro de 2023',
-    tasks: [
-      'Desenvolvimento de sistemas internos com Angular/Python.',
-      'Automação de tarefas em Linux e rotinas SOA.',
+      'Manutenção e otimização de APIs REST e sistemas internos.',
+      'Full-stack com React e Node.js; gestão de ambientes SOA.',
+      'Desenvolvimento de sistemas internos com Angular e Python.',
     ],
   },
   {

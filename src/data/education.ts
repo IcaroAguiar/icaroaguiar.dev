@@ -13,11 +13,16 @@ export const education: Education[] = [
   {
     course: 'Análise e Desenvolvimento de Sistemas',
     institution: 'Universidade Salvador (UNIFACS)',
-    status: 'Conclusão prevista: Dezembro de 2025',
+    status: 'Em andamento',
   },
   {
-    course: 'Técnico em Programação Full-Stack',
-    institution: 'SENAI-SP',
-    status: 'Concluído em Fevereiro de 2023',
+    course: 'Programação Full Stack',
+    institution: 'SENAI São Paulo',
+    status: 'Concluído',
+  },
+  {
+    course: 'Técnico em Mecatrônica',
+    institution: 'SENAI CIMATEC',
+    status: 'Concluído',
   },
 ];
