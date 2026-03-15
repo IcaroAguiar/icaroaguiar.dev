@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* Fonts are loaded via next/font/google in layout.tsx */
 @import 'tailwindcss';
 
 /* =====================================================
@@ -9,6 +9,8 @@
 @theme {
   /* Cores de Identidade - usando variáveis CSS para tema dinâmico */
   --color-accent: var(--accent-primary);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
   --color-accent-hover: var(--accent-hover);
   --color-accent-light: var(--accent-secondary);
   --color-accent-glow: var(--shadow-glow);
@@ -63,9 +65,9 @@
   --spacing-12: 48px;
   --spacing-16: 64px;
   
-  /* Fontes */
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
+  /* Fontes — variáveis injetadas pelo next/font no layout.tsx */
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-display: var(--font-dm-serif), Georgia, serif;
   --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
   
   /* Animation */
@@ -379,12 +381,12 @@
 .text-faint { color: var(--text-faint); }
 .text-accent { color: var(--accent-primary); }
 
-/* Background Colors - using !important to override Tailwind */
-.bg-accent { background-color: var(--accent-primary) !important; }
-.bg-accent-subtle { background-color: var(--accent-subtle) !important; }
-.bg-surface-1 { background-color: var(--surface-1) !important; }
-.bg-surface-2 { background-color: var(--surface-2) !important; }
-.bg-surface-3 { background-color: var(--surface-3) !important; }
+/* Background Colors - avoiding !important so we can use opacity modifiers (e.g. bg-accent/10) */
+.bg-accent { background-color: var(--accent-primary); }
+.bg-accent-subtle { background-color: var(--accent-subtle); }
+.bg-surface-1 { background-color: var(--surface-1); }
+.bg-surface-2 { background-color: var(--surface-2); }
+.bg-surface-3 { background-color: var(--surface-3); }
 
 /* Glass Morphism - Linear Style */
 .glass {
@@ -541,11 +543,35 @@
   color: var(--text-tertiary);
 }
 
-/* Divider */
+/* Divider e Separadores Premium */
 .divider {
   height: 1px;
   background: var(--border-default);
   margin: var(--space-4) 0;
+}
+
+.divider-gradient {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+}
+
+/* Background Effects (Noise & Grid) */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.08; /* Mais audível para não ficar 'seco' */
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .bg-noise {
+  opacity: 0.15; /* Maior opacidade no escuro para manter a textura */
+}
+
+.bg-grid-pattern {
+  background-image: radial-gradient(var(--border-subtle) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
 }
 
 /* =====================================================
@@ -582,4 +608,36 @@
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* =====================================================
+   MARQUEE — ExpertiseBar
+   ===================================================== */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+/* =====================================================
+   CURSOR BLINK — Hero editorial touch
+   ===================================================== */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 0.85em;
+  background: var(--accent-primary);
+  margin-left: 3px;
+  vertical-align: middle;
+  border-radius: 1px;
+  animation: cursorBlink 1.1s ease-in-out infinite;
 }

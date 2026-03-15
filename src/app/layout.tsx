@@ -1,15 +1,23 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
+import { DM_Serif_Display, Geist } from 'next/font/google';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import './globals.css';
 
-const jetbrainsMono = JetBrains_Mono({
-  weight: ['500'],
+const dmSerifDisplay = DM_Serif_Display({
+  weight: ['400'],
+  style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-jetbrains-mono',
+  variable: '--font-dm-serif',
+});
+
+const geist = Geist({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-geist',
 });
 
 export const metadata: Metadata = {
@@ -68,7 +76,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={jetbrainsMono.variable} suppressHydrationWarning>
+    <html lang="pt-BR" className={`${dmSerifDisplay.variable} ${geist.variable}`} suppressHydrationWarning>
       <body className="antialiased">
         <ThemeProvider>
           <Navbar />

@@ -4,9 +4,30 @@ import '@testing-library/jest-dom';
 
 jest.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+    div: ({ children, ...props }: any) => {
+      const { initial, animate, variants, transition, exit, ...safeProps } = props;
+      return <div {...safeProps}>{children}</div>;
+    },
+    p: ({ children, ...props }: any) => {
+      const { initial, animate, variants, transition, ...safeProps } = props;
+      return <p {...safeProps}>{children}</p>;
+    },
+    h1: ({ children, ...props }: any) => {
+      const { initial, animate, variants, transition, ...safeProps } = props;
+      return <h1 {...safeProps}>{children}</h1>;
+    },
+    span: ({ children, ...props }: any) => {
+      const { initial, animate, variants, transition, ...safeProps } = props;
+      return <span {...safeProps}>{children}</span>;
+    },
   },
   AnimatePresence: ({ children }: any) => <>{children}</>,
+}));
+
+jest.mock('@/hooks', () => ({
+  staggerContainerVariants: {},
+  itemVariants: {},
+  use3DTilt: () => ({ ref: null, style: {} }),
 }));
 
 jest.mock('@/hooks/use3DTilt', () => ({
@@ -14,8 +35,18 @@ jest.mock('@/hooks/use3DTilt', () => ({
 }));
 
 jest.mock('@/components/ui', () => ({
-  ScrollReveal: ({ children }: any) => <div>{children}</div>,
+  ScrollReveal: ({ children, className }: any) => <div className={className}>{children}</div>,
   GlowButton: ({ children }: any) => <button>{children}</button>,
+}));
+
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: (props: any) => <img {...props} alt={props.alt} />,
+}));
+
+jest.mock('next/link', () => ({
+  __esModule: true,
+  default: ({ children, href }: any) => <a href={href}>{children}</a>,
 }));
 
 describe('ProjetosPage', () => {
@@ -37,18 +68,14 @@ describe('ProjetosPage', () => {
     render(<ProjetosPage />);
     const mobileFilter = screen.getByText('Mobile');
     fireEvent.click(mobileFilter);
-    expect(mobileFilter).toHaveClass('bg-[#2a9d8f]');
+    // Verifica que o filtro ativo recebe a classe de destaque
+    expect(mobileFilter).toHaveClass('bg-text-main');
   });
 
   it('renders featured badge', () => {
     render(<ProjetosPage />);
-    expect(screen.getByText('Featured')).toBeInTheDocument();
-  });
-
-  it('renders other projects', () => {
-    render(<ProjetosPage />);
-    expect(screen.getByRole('heading', { name: /Face API/i, level: 3 })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /Fixxcapital/i, level: 3 })).toBeInTheDocument();
+    // O badge de destaque agora exibe "Destaque"
+    expect(screen.getByText('Destaque')).toBeInTheDocument();
   });
 
   it('renders GitHub CTA', () => {

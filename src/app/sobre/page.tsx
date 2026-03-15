@@ -3,210 +3,253 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FaDownload, FaEnvelope, FaGraduationCap, FaBriefcase } from 'react-icons/fa';
+import { FaDownload, FaEnvelope } from 'react-icons/fa';
 import { experiences, skills, education } from '@/data';
-import { ScrollReveal, GlowButton, StatCard } from '@/components/ui';
+import { ScrollReveal } from '@/components/ui';
 import perfil from '@/assets/perfil.jpg';
+import { staggerContainerVariants, itemVariants } from '@/hooks';
+
+const stats = [
+  { value: '4+', label: 'Anos de experiência' },
+  { value: '6', label: 'Empresas' },
+  { value: '15+', label: 'Projetos entregues' },
+  { value: '20+', label: 'Tecnologias' },
+];
 
 export default function SobrePage() {
-  const allSkills = Object.values(skills).flat();
+  const skillCategories = Object.entries(skills).slice(0, 3);
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Hero Section com Foto e Bio */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
-          <ScrollReveal>
-            <div className="relative">
-              <div className="relative w-full aspect-square max-w-md mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 rounded-3xl transform rotate-6" />
-                <Image
-                  src={perfil}
-                  alt="Ícaro Aguiar"
-                  fill
-                  className="object-cover rounded-3xl relative z-10"
-                />
-                <div className="absolute -bottom-6 -right-6 glass-card p-4 z-20">
-                  <div className="text-3xl font-bold text-emerald-400">4+</div>
-                  <div className="text-sm text-tertiary">Anos de Experiência</div>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
+    <div className="bg-surface-1 min-h-screen">
+      {/* Fixed background layers */}
+      <div className="fixed inset-0 z-0 bg-grid-pattern opacity-30 mix-blend-luminosity" />
+      <div className="fixed inset-0 z-0 bg-noise opacity-40" />
 
-          <ScrollReveal delay={0.2}>
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+      <div className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1000px] mx-auto">
+
+          {/* ── Hero da página ── */}
+          <motion.div
+            className="grid md:grid-cols-12 gap-12 items-start mb-28"
+            variants={staggerContainerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* Texto */}
+            <motion.div className="md:col-span-7 flex flex-col" variants={itemVariants}>
+              <p className="text-xs font-mono text-accent-primary tracking-widest uppercase mb-4">Sobre mim</p>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-main mb-2 leading-tight">
                 Ícaro Aguiar
               </h1>
-              <p className="text-xl text-emerald-400 mb-6">
-                Desenvolvedor Full-Stack
+              <p className="text-2xl md:text-3xl font-display italic text-accent-primary mb-6">
+                Engenheiro Full-Stack
               </p>
-              <p className="text-tertiary mb-6 leading-relaxed">
-                Sou um desenvolvedor focado em transformar requisitos em produtos funcionais.
-                Trabalho com React/Next.js no frontend e .NET/Node.js no backend, entregando
-                interfaces claras, APIs confiáveis e deploy com CI/CD.
+              <p className="text-text-secondary leading-relaxed mb-4 text-base max-w-lg">
+                Transformo requisitos em produtos funcionais — do backend à interface. Trabalho com
+                React/Next.js, .NET/Node.js e entrego interfaces claras, APIs confiáveis e
+                deploy com CI/CD.
               </p>
-              <p className="text-tertiary mb-8 leading-relaxed">
+              <p className="text-text-secondary leading-relaxed mb-8 text-base max-w-lg">
                 Curto ciclos curtos, versionamento bem feito e comunicação direta.
                 Meu foco é sempre entregar valor real para o negócio.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <GlowButton href="/Icaro-Aguiar-DevFullStack-PT%20(2).pdf" variant="primary">
-                  <FaDownload className="mr-2" />
+
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="/Icaro-Aguiar-DevFullStack-PT%20(2).pdf"
+                  download
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-text-main text-surface-1 font-semibold rounded-lg hover:opacity-90 transition-opacity text-sm"
+                >
+                  <FaDownload className="text-xs" />
                   Baixar CV
-                </GlowButton>
-                <GlowButton href="/contato" variant="outline">
-                  <FaEnvelope className="mr-2" />
+                </a>
+                <Link
+                  href="/contato"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-surface-2 text-text-main border border-border-strong font-semibold rounded-lg hover:bg-surface-3 transition-colors text-sm"
+                >
+                  <FaEnvelope className="text-xs" />
                   Contato
-                </GlowButton>
+                </Link>
               </div>
-            </div>
-          </ScrollReveal>
-        </div>
+            </motion.div>
 
-        {/* Stats Section */}
-        <ScrollReveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
-            <StatCard value={4} suffix="+" label="Anos de Experiência" />
-            <StatCard value={6} suffix="" label="Empresas" />
-            <StatCard value={15} suffix="+" label="Projetos Entregues" />
-            <StatCard value={20} suffix="+" label="Tecnologias" />
-          </div>
-        </ScrollReveal>
+            {/* Foto */}
+            <motion.div className="md:col-span-5 flex items-start justify-center md:justify-end" variants={itemVariants}>
+              <div className="relative">
+                {/* Glow atrás da foto */}
+                <div className="absolute inset-0 bg-accent-primary/10 rounded-2xl blur-2xl scale-110 pointer-events-none" />
+                <div className="relative w-64 h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden border border-border-default shadow-xl">
+                  <Image
+                    src={perfil}
+                    alt="Ícaro Aguiar"
+                    fill
+                    className="object-cover object-top"
+                    priority
+                  />
+                </div>
+                {/* Badge flutuante */}
+                <div className="absolute -bottom-4 -left-4 bg-surface-2 border border-border-default rounded-xl px-4 py-2.5 shadow-md">
+                  <div className="text-2xl font-bold text-accent-primary font-display">4+</div>
+                  <div className="text-xs text-text-muted">Anos de exp.</div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
 
-        {/* Timeline de Experiência */}
-        <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Experiência Profissional
-          </h2>
-        </ScrollReveal>
-
-        <div className="relative mb-24">
-          {/* Timeline horizontal no desktop */}
-          <div className="hidden md:block">
-            <div className="absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
-            <div className="grid grid-cols-6 gap-4">
-              {experiences.map((exp, index) => (
-                <ScrollReveal key={index} delay={index * 0.1}>
-                  <div className="relative pt-12">
-                    <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-emerald-500 rounded-full border-4 border-black" />
-                    <div className="glass-card p-4 text-center hover:glow transition-all duration-300">
-                      <FaBriefcase className="mx-auto mb-2 text-emerald-400" />
-                      <h3 className="font-semibold text-text-main text-sm mb-1">{exp.role}</h3>
-                      <p className="text-emerald-400 text-xs mb-1">{exp.company}</p>
-                      <p className="text-muted text-xs">{exp.period}</p>
-                    </div>
-                  </div>
-                </ScrollReveal>
+          {/* ── Stats ── */}
+          <ScrollReveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24">
+              {stats.map((stat) => (
+                <div key={stat.label} className="p-5 rounded-2xl bg-surface-1 border border-border-default text-center">
+                  <span className="text-3xl font-bold font-display text-main block mb-1">{stat.value}</span>
+                  <span className="text-xs text-text-secondary">{stat.label}</span>
+                </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
 
-          {/* Timeline vertical no mobile */}
-          <div className="md:hidden space-y-6">
-            {experiences.map((exp, index) => (
-              <ScrollReveal key={index} delay={index * 0.1}>
-                <div className="glass-card p-6 flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center">
-                      <FaBriefcase className="text-emerald-400" />
+          {/* ── Experiência Profissional — Timeline Vertical ── */}
+          <ScrollReveal>
+            <div className="mb-6">
+              <p className="text-xs font-mono text-accent-primary tracking-widest uppercase mb-2">Trajetória</p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-main mb-12">
+                Experiência Profissional
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="relative mb-24">
+            {/* Linha vertical */}
+            <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent-primary/30 via-border-default to-transparent" />
+
+            <motion.div
+              className="space-y-0"
+              variants={staggerContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-10%' }}
+            >
+              {experiences.map((exp, index) => (
+                <motion.div key={index} className="relative pl-12 pb-12" variants={itemVariants}>
+                  {/* Ponto na linha */}
+                  <div className="absolute left-[11px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent-primary border-2 border-surface-1 shadow-sm" />
+
+                  <div className="group p-5 rounded-xl border border-border-default hover:border-border-strong hover:bg-surface-2/50 transition-all duration-300">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-3">
+                      <div>
+                        <h3 className="font-semibold text-main text-sm">{exp.role}</h3>
+                        <p className="text-accent-primary text-xs font-medium">{exp.company}</p>
+                      </div>
+                      <span className="text-text-muted text-xs font-mono whitespace-nowrap">{exp.period}</span>
                     </div>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-text-main mb-1">{exp.role}</h3>
-                    <p className="text-emerald-400 text-sm mb-1">{exp.company}</p>
-                    <p className="text-muted text-sm mb-2">{exp.period}</p>
-                    <ul className="text-tertiary text-sm space-y-1">
-                      {exp.tasks.slice(0, 2).map((task, i) => (
-                        <li key={i}>• {task}</li>
+                    <ul className="space-y-1">
+                      {exp.tasks.map((task, i) => (
+                        <li key={i} className="text-text-secondary text-sm flex gap-2">
+                          <span className="text-accent-primary/50 mt-0.5 flex-shrink-0">›</span>
+                          {task}
+                        </li>
                       ))}
                     </ul>
                   </div>
-                </div>
-              </ScrollReveal>
-            ))}
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-        </div>
 
-        {/* Skills Tag Cloud */}
-        <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Habilidades Técnicas
-          </h2>
-        </ScrollReveal>
+          {/* ── Habilidades por Categoria ── */}
+          <ScrollReveal>
+            <div className="mb-6">
+              <p className="text-xs font-mono text-accent-primary tracking-widest uppercase mb-2">Stack</p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-main mb-12">
+                Habilidades Técnicas
+              </h2>
+            </div>
+          </ScrollReveal>
 
-        <ScrollReveal delay={0.1}>
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {allSkills.map((skill, index) => (
-              <motion.span
-                key={skill}
-                className="px-4 py-2 bg-surface-3 border border-border-default rounded-full text-sm text-secondary hover:bg-emerald-500/20 hover:border-emerald-500/50 hover:text-emerald-400 transition-all duration-300 cursor-default"
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.02 }}
+          <motion.div
+            className="grid md:grid-cols-3 gap-5 mb-24"
+            variants={staggerContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-10%' }}
+          >
+            {skillCategories.map(([category, list]) => (
+              <motion.div
+                key={category}
+                className="p-6 rounded-xl bg-surface-1 border border-border-default hover:border-border-strong transition-all duration-300"
+                variants={itemVariants}
               >
-                {skill}
-              </motion.span>
-            ))}
-          </div>
-        </ScrollReveal>
-
-        {/* Skills por Categoria */}
-        <div className="grid md:grid-cols-3 gap-6 mb-24">
-          {Object.entries(skills).slice(0, 3).map(([category, list], index) => (
-            <ScrollReveal key={category} delay={index * 0.1}>
-              <div className="glass-card p-6">
-                <h3 className="font-semibold text-text-main mb-4">{category}</h3>
+                <h3 className="font-semibold text-main text-sm mb-4 tracking-wide">{category}</h3>
                 <div className="flex flex-wrap gap-2">
-                  {list.map(skill => (
-                    <span key={skill} className="text-xs px-3 py-1 bg-surface-3 text-tertiary border border-border-default rounded-full hover:border-accent hover:text-accent transition-colors duration-150">
+                  {list.map((skill: string) => (
+                    <span
+                      key={skill}
+                      className="text-xs px-2.5 py-1 bg-surface-3 text-text-tertiary border border-border-default rounded-md hover:border-accent-primary/50 hover:text-accent-primary transition-colors duration-150 cursor-default"
+                    >
                       {skill}
                     </span>
                   ))}
                 </div>
-              </div>
-            </ScrollReveal>
-          ))}
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* ── Formação ── */}
+          <ScrollReveal>
+            <div className="mb-6">
+              <p className="text-xs font-mono text-accent-primary tracking-widest uppercase mb-2">Formação</p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-main mb-12">
+                Acadêmica
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <motion.div
+            className="grid md:grid-cols-3 gap-5 mb-24"
+            variants={staggerContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-10%' }}
+          >
+            {education.map((edu, index) => (
+              <motion.div
+                key={index}
+                className="p-6 rounded-xl bg-surface-1 border border-border-default hover:border-border-strong transition-all duration-300"
+                variants={itemVariants}
+              >
+                <div className="w-8 h-8 rounded-lg bg-accent-primary/10 flex items-center justify-center mb-4">
+                  <svg className="w-4 h-4 text-accent-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                  </svg>
+                </div>
+                <h3 className="font-semibold text-main text-sm mb-1">{edu.course}</h3>
+                <p className="text-accent-primary text-xs font-medium mb-1">{edu.institution}</p>
+                <p className="text-text-muted text-xs">{edu.status}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* ── CTA Final ── */}
+          <ScrollReveal>
+            <div className="divider-gradient mb-16 opacity-40" />
+            <div className="text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-main mb-3 tracking-tight">
+                Vamos trabalhar juntos?
+              </h2>
+              <p className="text-text-secondary mb-8 max-w-lg mx-auto text-base">
+                Aberto a projetos, consultoria e oportunidades onde qualidade e clareza importam.
+              </p>
+              <Link
+                href="/contato"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-text-main text-surface-1 font-semibold rounded-lg hover:opacity-90 transition-opacity"
+              >
+                Entre em contato
+              </Link>
+            </div>
+          </ScrollReveal>
+
         </div>
-
-        {/* Formação */}
-        <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Formação Acadêmica
-          </h2>
-        </ScrollReveal>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-24">
-          {education.map((edu, index) => (
-            <ScrollReveal key={index} delay={index * 0.1}>
-              <div className="glass-card p-6 text-center hover:glow transition-all duration-300">
-                <FaGraduationCap className="mx-auto text-3xl text-emerald-400 mb-4" />
-                <h3 className="font-semibold text-text-main mb-2">{edu.course}</h3>
-                <p className="text-emerald-400 text-sm mb-1">{edu.institution}</p>
-                <p className="text-muted text-sm">{edu.status}</p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-
-        {/* CTA Final */}
-        <ScrollReveal>
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-6">
-              Vamos trabalhar juntos?
-            </h2>
-            <p className="text-tertiary mb-8 max-w-2xl mx-auto">
-              Estou sempre aberto a novas oportunidades e projetos interessantes.
-              Entre em contato para conversarmos!
-            </p>
-            <GlowButton href="/contato" variant="primary">
-              Entre em Contato
-            </GlowButton>
-          </div>
-        </ScrollReveal>
       </div>
-    </section>
+    </div>
   );
 }

@@ -5,7 +5,10 @@ import '@testing-library/jest-dom';
 jest.mock('framer-motion', () => ({
   motion: {
     span: ({ children, ...props }: any) => <span {...props}>{children}</span>,
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+    div: ({ children, ...props }: any) => {
+      const { initial, animate, variants, transition, whileInView, viewport, ...safeProps } = props;
+      return <div {...safeProps}>{children}</div>;
+    },
   },
 }));
 
@@ -15,12 +18,26 @@ jest.mock('@/components/ui', () => ({
   StatCard: ({ value, label }: any) => <div>{value} {label}</div>,
 }));
 
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: (props: any) => <img {...props} alt={props.alt} />,
+}));
+
+jest.mock('@/hooks', () => ({
+  staggerContainerVariants: {},
+  itemVariants: {},
+}));
+
+jest.mock('next/link', () => ({
+  __esModule: true,
+  default: ({ children, href }: any) => <a href={href}>{children}</a>,
+}));
+
 describe('SobrePage', () => {
   it('renders name and title', () => {
     render(<SobrePage />);
     expect(screen.getByText('Ícaro Aguiar')).toBeInTheDocument();
-    // Check for the title in the hero section specifically
-    expect(screen.getAllByText('Desenvolvedor Full-Stack').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText(/Engenheiro Full-Stack/i)).toBeInTheDocument();
   });
 
   it('renders professional experience section', () => {
@@ -35,7 +52,7 @@ describe('SobrePage', () => {
 
   it('renders education section', () => {
     render(<SobrePage />);
-    expect(screen.getByRole('heading', { name: /Formação Acadêmica/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Acadêmica/i })).toBeInTheDocument();
   });
 
   it('renders CTA buttons', () => {
