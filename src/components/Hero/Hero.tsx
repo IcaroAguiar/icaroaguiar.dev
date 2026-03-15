@@ -8,6 +8,7 @@ import { HiArrowRight } from 'react-icons/hi';
 import perfil from '@/assets/perfil.jpg';
 import { SOCIAL_LINKS } from '@/constants';
 import { staggerContainerVariants, itemVariants } from '@/hooks';
+import { useTheme } from '@/providers/ThemeProvider';
 import './Hero.css';
 
 const domainChips = [
@@ -20,6 +21,38 @@ const domainChips = [
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  const { theme } = useTheme();
+  const motionProps = shouldReduceMotion
+    ? {}
+    : {
+        animate: { y: [-6, 6, -6] },
+        transition: { duration: 8, repeat: Infinity, ease: 'easeInOut' as const },
+      };
+  const isDarkTheme = theme === 'dark';
+  const primaryDashboardSrc = isDarkTheme
+    ? '/assets/ASCENDhome-black.png'
+    : '/assets/ASCENDhome-white.png';
+  const secondaryDashboardSrc = isDarkTheme
+    ? '/assets/ASCENDhome-white.png'
+    : '/assets/ASCENDhome-black.png';
+  const primaryFrameClass = isDarkTheme
+    ? 'border-white/10 bg-[#171b21] shadow-[0_30px_80px_rgba(0,0,0,0.34)]'
+    : 'border-slate-200/90 bg-[#f4f7fb] shadow-[0_30px_80px_rgba(0,0,0,0.18)]';
+  const secondaryFrameClass = isDarkTheme
+    ? 'border-slate-200/90 bg-[#f4f7fb] shadow-[0_28px_70px_rgba(0,0,0,0.16)]'
+    : 'border-white/10 bg-[#171b21] shadow-[0_28px_70px_rgba(0,0,0,0.34)]';
+  const primaryHeaderClass = isDarkTheme
+    ? 'border-white/10 text-white/60 bg-[#171b21]'
+    : 'border-slate-200/80 text-slate-500 bg-[#f4f7fb]';
+  const primaryBadgeClass = isDarkTheme
+    ? 'border-white/10 bg-white/5 text-white/70'
+    : 'border-slate-200 bg-white text-slate-600';
+  const secondaryHeaderClass = isDarkTheme
+    ? 'border-slate-200/80 text-slate-500 bg-[#f4f7fb]'
+    : 'border-white/10 text-white/55 bg-[#171b21]';
+  const secondaryBadgeClass = isDarkTheme
+    ? 'border-slate-200 bg-white text-slate-600'
+    : 'border-white/10 bg-white/5 text-white/65';
 
   return (
     <section className="hero-section relative overflow-hidden">
@@ -54,7 +87,7 @@ export default function Hero() {
             
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-text-secondary leading-relaxed mb-8 max-w-xl text-center lg:text-left font-light">
-              Especializado em SaaS, APIs bem estruturadas e interfaces reutilizáveis — do backend à entrega em produção.
+              Desenvolvedor Full-Stack focado em arquitetura de sistemas, APIs robustas e aplicações web escaláveis.
             </p>
 
             {/* Domain chips */}
@@ -103,101 +136,86 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* ── Coluna Direita — Visual Autoral (Workbench) ── */}
-          <motion.div className="lg:col-span-5 relative w-full aspect-square max-w-md mx-auto" variants={itemVariants}>
-            <div className="relative w-full h-full perspective-1000">
-              {/* Glow Behind Workbench */}
-              <div className="absolute top-[20%] left-[10%] w-full h-[60%] bg-accent-primary/10 rounded-full blur-[80px] pointer-events-none -z-10" />
-              
-              {/* Card Base (Projeto) */}
-              <motion.div 
-                className="absolute top-[10%] left-[5%] right-[10%] bottom-[20%] bg-surface-1 border border-border-default rounded-2xl shadow-xl overflow-hidden glass z-10"
-                initial={{ rotateY: -10, rotateX: 5, z: 0 }}
-                animate={{ rotateY: -5, rotateX: 2, z: 20 }}
-                transition={{ duration: 2, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+          {/* ── Coluna Direita — Showcase ASCEND ── */}
+          <motion.div className="lg:col-span-5 relative w-full max-w-[42rem] mx-auto" variants={itemVariants}>
+            <div className="relative w-full min-h-[28rem] lg:min-h-[33rem]">
+              <div className="absolute inset-x-[8%] top-[10%] h-[68%] rounded-full bg-accent-primary/12 blur-[90px] pointer-events-none" />
+
+              <motion.div
+                className={`absolute inset-x-0 top-0 z-20 overflow-hidden rounded-[28px] border ${primaryFrameClass}`}
+                initial={shouldReduceMotion ? undefined : { rotate: -3, y: 6 }}
+                {...motionProps}
               >
-                {/* Header mac-like */}
-                <div className="flex items-center gap-2 px-4 py-3 border-b border-border-subtle bg-surface-2/50">
-                  <div className="w-3 h-3 rounded-full bg-status-error/80" />
-                  <div className="w-3 h-3 rounded-full bg-status-warning/80" />
-                  <div className="w-3 h-3 rounded-full bg-status-success/80" />
-                  <span className="ml-2 text-[10px] text-text-muted font-mono tracking-wider">production / ascend</span>
+                <div className={`flex items-center justify-between border-b px-5 py-3 ${primaryHeaderClass}`}>
+                  <div className="flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                    <span className="text-[11px] font-medium uppercase tracking-[0.22em]">
+                      ASCEND / {isDarkTheme ? 'Dark' : 'Light'}
+                    </span>
+                  </div>
+                  <span className={`rounded-full border px-2.5 py-1 text-[10px] font-medium ${primaryBadgeClass}`}>
+                    Dashboard real
+                  </span>
                 </div>
-                
-                {/* Content mockup */}
-                <div className="p-5 flex flex-col gap-4">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-main font-medium text-sm">Dashboard Analytics</h3>
-                      <p className="text-text-muted text-xs mt-1">SaaS Multi-tenant</p>
-                    </div>
-                    <div className="px-2 py-1 rounded bg-status-success/10 text-status-success text-[10px] font-medium border border-status-success/20">
-                      Live
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <div className="h-2 w-full bg-surface-3 rounded-full" />
-                    <div className="h-2 w-3/4 bg-surface-3 rounded-full" />
-                    <div className="h-2 w-5/6 bg-surface-3 rounded-full" />
-                  </div>
-                  
-                  {/* Pseudo chart area */}
-                  <div className="mt-auto h-20 w-full rounded-lg bg-gradient-to-t from-status-success/10 to-transparent border-b border-status-success/30 flex items-end">
-                    <svg viewBox="0 0 100 30" preserveAspectRatio="none" className="w-full h-full opacity-50">
-                      <path d="M0,30 L10,20 L30,25 L50,10 L70,18 L90,5 L100,10 L100,30 Z" fill="rgba(34, 197, 94, 0.2)" />
-                      <polyline points="0,30 10,20 30,25 50,10 70,18 90,5 100,10" fill="none" stroke="rgb(34, 197, 94)" strokeWidth="1" />
-                    </svg>
-                  </div>
+                <div className="relative aspect-[16/10] w-full">
+                  <Image
+                    src={primaryDashboardSrc}
+                    alt={isDarkTheme ? 'Dashboard escuro do ASCEND' : 'Dashboard claro do ASCEND'}
+                    fill
+                    className="object-cover object-top"
+                    priority
+                  />
                 </div>
               </motion.div>
 
-              {/* Stack Card - Flutuando à direita */}
-              <motion.div 
-                className="absolute right-0 top-[40%] bg-surface-2 border border-border-default rounded-xl shadow-md w-48 p-4 z-20 backdrop-blur-md"
-                initial={{ y: 0 }}
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              <motion.div
+                className={`absolute right-[-2%] bottom-[4%] z-30 w-[72%] overflow-hidden rounded-[24px] border ${secondaryFrameClass}`}
+                initial={shouldReduceMotion ? undefined : { rotate: 4, y: -4 }}
+                animate={shouldReduceMotion ? undefined : { y: [4, -8, 4] }}
+                transition={shouldReduceMotion ? undefined : { duration: 7, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <div className="flex flex-col gap-3">
+                <div className={`flex items-center justify-between border-b px-4 py-3 ${secondaryHeaderClass}`}>
                   <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 flex items-center justify-center bg-blue-500/10 text-blue-500 rounded text-xs font-bold">R</div>
-                    <span className="text-xs font-medium text-main">React 19 / Next.js</span>
+                    <span className="h-2.5 w-2.5 rounded-full bg-accent-primary" />
+                    <span className="text-[11px] font-medium uppercase tracking-[0.22em]">
+                      ASCEND / {isDarkTheme ? 'Light' : 'Dark'}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 flex items-center justify-center bg-status-error/10 text-status-error rounded text-xs font-bold">N</div>
-                    <span className="text-xs font-medium text-main">NestJS / Node</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 flex items-center justify-center bg-sky-500/10 text-sky-500 rounded text-xs font-bold">P</div>
-                    <span className="text-xs font-medium text-main">PostgreSQL</span>
-                  </div>
+                  <span className={`rounded-full border px-2.5 py-1 text-[10px] font-medium ${secondaryBadgeClass}`}>
+                    Contraponto
+                  </span>
+                </div>
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <Image
+                    src={secondaryDashboardSrc}
+                    alt={isDarkTheme ? 'Dashboard claro do ASCEND' : 'Dashboard escuro do ASCEND'}
+                    fill
+                    className="object-cover object-top"
+                  />
                 </div>
               </motion.div>
 
-              {/* Foto integrada - Flutuando no canto inferior esquerdo */}
-              <motion.div 
-                className="absolute left-0 bottom-[15%] z-30 flex items-center gap-3 p-2 bg-surface-2/80 backdrop-blur-xl border border-border-subtle rounded-full shadow-md pr-4"
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
+              <motion.div
+                className="absolute left-[-2%] bottom-[8%] z-40 flex items-center gap-3 rounded-full border border-border-default bg-surface-2/90 p-2 pr-4 backdrop-blur-xl shadow-[0_24px_60px_rgba(0,0,0,0.2)]"
+                initial={shouldReduceMotion ? undefined : { scale: 0.96, opacity: 0 }}
+                animate={shouldReduceMotion ? undefined : { scale: 1, opacity: 1 }}
+                transition={shouldReduceMotion ? undefined : { delay: 0.2, duration: 0.45 }}
               >
                 <div className="relative">
                   <Image
                     src={perfil}
-                    alt="Ícaro Aguiar"
-                    width={48}
-                    height={48}
+                    alt="Icaro Aguiar"
+                    width={46}
+                    height={46}
                     className="rounded-full border border-border-default object-cover"
                   />
-                  <div className="absolute bottom-0 right-0 w-3 h-3 bg-status-success border-2 border-surface-2 rounded-full" />
+                  <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-surface-2 bg-status-success" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-sm font-medium text-main leading-tight">Ícaro Aguiar</span>
-                  <span className="text-[10px] text-text-muted leading-tight">Engenheiro Full-Stack</span>
+                  <span className="text-sm font-medium text-main leading-tight">Icaro Aguiar</span>
+                  <span className="text-[10px] text-text-muted leading-tight">Full-Stack · Produto · Arquitetura</span>
                 </div>
               </motion.div>
-              
             </div>
           </motion.div>
         </motion.div>

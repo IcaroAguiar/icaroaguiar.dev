@@ -11,24 +11,28 @@ import Link from 'next/link';
 
 export default function HomePage() {
   const ascend = projects.find(p => p.id === 'ascend');
-  const faceApi = projects.find(p => p.id === 'face-api');
-  const fixxcapital = projects.find(p => p.id === 'fixxcapital');
+  const bluefit = projects.find(p => p.id === 'bluefit-mvp');
+  const neoConstrictor = projects.find(p => p.id === 'neo-constrictor');
 
-  const orderedProjects = [ascend, faceApi, fixxcapital].filter(Boolean) as typeof projects;
+  const orderedProjects = [
+    ascend,
+    bluefit,
+    neoConstrictor,
+  ].filter(Boolean) as typeof projects;
 
   // Refinamento de custom messages para home baseado no briefing
   const projectMessages = {
     'ascend': {
-      context: 'A necessidade de gerir finanças pessoais e fluxos de cobrança de forma integrada e preditiva.',
-      solution: 'Estruturei uma plataforma multi-tenant com foco em previsibilidade operacional, segurança e evolução contínua.'
+      context: 'Reposicionar um sistema financeiro em uma plataforma real de operação, cobrança, billing e fiscal.',
+      solution: 'Monorepo com web, API e mobile, preparado para workspaces, administração, governança e expansão contínua.'
     },
-    'face-api': {
-      context: 'Criar um sistema de reconhecimento facial confiável para controle de presenças com alta precisão e baixa latência.',
-      solution: 'Desenvolvi uma API robusta escalável focada no balanço entre processamento pesado de visão computacional e resposta em tempo real.'
+    'bluefit-mvp': {
+      context: 'Validar um MVP operacional com agenda, autenticação, inbox e administração sem cair em um protótipo descartável.',
+      solution: 'Estruturei web, API e worker no mesmo monorepo para sustentar operação, sync com legado e evolução segura.'
     },
-    'fixxcapital': {
-      context: 'Transmitir credibilidade institucional CVM e impulsionar captação de investidores qualificados em renda fixa.',
-      solution: 'Projetei uma experiência clean focada em conversão, com arquitetura otimizada e hierarquia de informação clara.'
+    'neo-constrictor': {
+      context: 'Criar a fundação correta para uma plataforma de workflow documental auditável, sem repetir vícios do legado.',
+      solution: 'Monorepo com auth dual, contratos compartilhados, frontends separados e base arquitetural documentada.'
     }
   };
 
