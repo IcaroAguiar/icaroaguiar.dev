@@ -102,3 +102,8 @@ Desktop.ini
 tmp/
 temp/
 .claude/settings.local.json
+
+# AI
+CLAUDE.md
+AGENTS.md
+MASTER.md
