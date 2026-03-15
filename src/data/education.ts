@@ -20,9 +20,4 @@ export const education: Education[] = [
     institution: 'SENAI São Paulo',
     status: 'Concluído',
   },
-  {
-    course: 'Técnico em Mecatrônica',
-    institution: 'SENAI CIMATEC',
-    status: 'Concluído',
-  },
 ];

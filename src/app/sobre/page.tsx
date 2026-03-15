@@ -57,7 +57,7 @@ export default function SobrePage() {
 
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="/Icaro-Aguiar-DevFullStack-PT%20(2).pdf"
+                  href="/Icaro_Aguiar_Curriculo_2026_PTBR.pdf"
                   download
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-text-main text-surface-1 font-semibold rounded-lg hover:opacity-90 transition-opacity text-sm"
                 >
