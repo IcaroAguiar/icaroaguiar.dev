@@ -50,11 +50,12 @@ describe('Hero Component', () => {
   it('renders the technical artifact cards without invented metrics', () => {
     render(<Hero />);
 
-    expect(screen.getByText('create-subscription.use-case.ts')).toBeInTheDocument();
+    expect(screen.getByText('scheduled-messages.controller.ts')).toBeInTheDocument();
     expect(screen.getByText('ASCEND architecture')).toBeInTheDocument();
     expect(screen.getByText('Billing')).toBeInTheDocument();
     expect(screen.getByText('Fiscal')).toBeInTheDocument();
-    expect(screen.getByAltText('Dashboard ASCEND no tema claro')).toBeInTheDocument();
+    expect(screen.getByAltText('Tela real do ASCEND no tema claro')).toBeInTheDocument();
+    expect(screen.getByAltText('Tela real do ASCEND no tema escuro')).toBeInTheDocument();
     expect(screen.queryByText('R$ 94,8k')).not.toBeInTheDocument();
     expect(screen.queryByText('Eventos recentes')).not.toBeInTheDocument();
   });

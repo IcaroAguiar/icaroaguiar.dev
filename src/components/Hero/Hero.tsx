@@ -26,24 +26,21 @@ function CodeArtifact() {
   return (
     <div className="hero-artifact hero-artifact-code">
       <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3 text-xs text-[#77e9dc]">
-        <span>create-subscription.use-case.ts</span>
+        <span>scheduled-messages.controller.ts</span>
         <Braces className="h-4 w-4" aria-hidden="true" />
       </div>
       <pre className="overflow-hidden text-[11px] leading-5 text-[#d7fffb] sm:text-xs">
-        <code>{`@Injectable()
-export class CreateSubscription... {
-  constructor(
-    private billing: BillingService
-  ) {}
+        <code>{`const context =
+  await this.tenantsService
+    .resolveTenantExecutionContext({
+      userId: request.session.user.id,
+      tenantId: getTenantIdFromHeader(request),
+    })
 
-  async execute(input) {
-    return this.billing
-      .createSubscription({
-        userId: input.userId,
-        tenantId: input.tenantId,
-      })
-  }
-}`}</code>
+return this.dispatchScheduled.execute({
+  userId: context.tenantId,
+  date: body.date,
+})`}</code>
       </pre>
     </div>
   );
@@ -51,15 +48,15 @@ export class CreateSubscription... {
 
 function DiagramArtifact() {
   const flow = [
-    { label: 'Web / Mobile', icon: MonitorSmartphone },
-    { label: 'API NestJS', icon: ServerCog },
-    { label: 'Auth', icon: ShieldCheck },
-    { label: 'Tenancy', icon: Building2 },
-    { label: 'Billing', icon: CreditCard },
-    { label: 'Fiscal', icon: FileCheck2 },
-    { label: 'Mensageria', icon: MessageSquareText },
-    { label: 'Scheduler', icon: TimerReset },
-    { label: 'PostgreSQL', icon: Database },
+    { label: 'Web / Mobile', supporting: 'Next + Expo', icon: MonitorSmartphone },
+    { label: 'API NestJS', supporting: 'REST + contratos', icon: ServerCog },
+    { label: 'Auth', supporting: 'Better Auth', icon: ShieldCheck },
+    { label: 'Tenancy', supporting: 'Workspace', icon: Building2 },
+    { label: 'Mensageria', supporting: 'Rules', icon: MessageSquareText },
+    { label: 'Scheduled', supporting: 'Approve/dispatch', icon: TimerReset },
+    { label: 'Fiscal', supporting: 'NFS-e', icon: FileCheck2 },
+    { label: 'Billing', supporting: 'Planos', icon: CreditCard },
+    { label: 'PostgreSQL', supporting: 'Prisma', icon: Database },
   ];
 
   return (
@@ -76,7 +73,8 @@ function DiagramArtifact() {
             <div key={node.label} className="diagram-step">
               <span className="diagram-node">
                 <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-                {node.label}
+                <strong>{node.label}</strong>
+                <small>{node.supporting}</small>
               </span>
               {index < flow.length - 1 && <ArrowRight className="diagram-arrow" aria-hidden="true" />}
             </div>
@@ -95,16 +93,16 @@ function DashboardArtifact() {
     <div className="hero-artifact-dashboard">
       <div className="relative overflow-hidden rounded-md border border-border-default bg-surface-1">
         <Image
-          src="/assets/ASCENDhome-white.png"
-          alt="Dashboard ASCEND no tema claro"
+          src="/case-screenshots/ascend/cover.png"
+          alt="Tela real do ASCEND no tema claro"
           fill
           priority
           sizes="(min-width: 1024px) 34vw, 100vw"
           className="hero-dashboard-image hero-dashboard-image-light object-cover object-top"
         />
         <Image
-          src="/assets/ASCENDhome-black.png"
-          alt="Dashboard ASCEND no tema escuro"
+          src="/case-screenshots/ascend/cover-dark.png"
+          alt="Tela real do ASCEND no tema escuro"
           fill
           priority
           sizes="(min-width: 1024px) 34vw, 100vw"

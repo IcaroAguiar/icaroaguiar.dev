@@ -267,7 +267,7 @@ export const projects: Project[] = [
       'Website institucional com foco em posicionamento de marca, clareza de serviços e captação de contatos qualificados.',
     tags: ['Next.js', 'TypeScript', 'SEO', 'Landing Page', 'Vercel'],
     image: '/case-screenshots/transmutar/cover.png',
-    liveUrl: '',
+    liveUrl: 'https://academiatransmutar.com.br/',
     demoUrl: '',
     githubUrl: '',
     privateProject: true,
@@ -567,6 +567,7 @@ export const projects: Project[] = [
       'Landing page institucional para apresentar servicos, autoridade e facilitar descoberta organica.',
     tags: ['Next.js', 'Landing Page', 'SEO', 'Design System', 'Responsivo'],
     image: '/case-screenshots/kosmedico/cover.png',
+    liveUrl: 'https://kosmedico.ch',
     status: 'Em Produção',
     privateProject: true,
     detailed: {
@@ -682,6 +683,7 @@ export const projects: Project[] = [
       'Site promocional para divulgação de marca com foco em produtos gastronômicos e captação de tráfego.',
     tags: ['React', 'Landing Page', 'SEO', 'Performance', 'Vercel'],
     image: '/case-screenshots/picanha-brasil/cover.png',
+    liveUrl: 'https://picanhabrasil-omega.vercel.app/#hero',
     status: 'Em Produção',
     privateProject: true,
     detailed: {
@@ -910,7 +912,7 @@ export const projects: Project[] = [
     description:
       'Landing page institucional para captação de investidores em renda fixa estruturada, com foco em credibilidade e conversão.',
     tags: ['Next.js', 'Tailwind CSS', 'React', 'Vercel', 'SEO', 'Conversão'],
-    image: '/assets/fixxcapitalLP.png',
+    image: '/case-screenshots/fixxcapital/cover.png',
     demoUrl: 'https://fixxcapital-landingpage.vercel.app/',
     liveUrl: 'https://fixxcapital-landingpage.vercel.app/',
     githubUrl: '',
@@ -1545,7 +1547,7 @@ export const projects: Project[] = [
     description:
       'Plataforma auditável de workflow documental e tramitação interinstitucional, construída em monorepo com API NestJS, área do pesquisador e painel administrativo.',
     tags: ['Monorepo', 'NestJS', 'React', 'Vite', 'Prisma', 'Zod', 'Workflow'],
-    image: '',
+    image: '/case-screenshots/neo-constrictor/cover.png',
     githubUrl: 'https://github.com/INPA-Constrictor/neo-constrictor',
     featured: true,
     status: 'Repositório Privado',
