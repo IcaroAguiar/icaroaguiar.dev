@@ -27,8 +27,9 @@ jest.mock('framer-motion', () => {
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props: any) => {
+    const { fill, priority, sizes, ...imgProps } = props;
     // eslint-disable-next-line @next/next/no-img-element
-    return <img {...props} alt={props.alt} />;
+    return <img {...imgProps} alt={props.alt} />;
   },
 }));
 
@@ -37,23 +38,24 @@ describe('Hero Component', () => {
     render(<Hero />);
     
     // Core overline
-    expect(screen.getByText(/Desenvolvedor Full-Stack · Arquitetura & Produto/i)).toBeInTheDocument();
+    expect(screen.getByText(/Engenharia · Produto · IA aplicada/i)).toBeInTheDocument();
     
     // Subheadline
-    expect(screen.getByText(/Atuo do backend à interface/i)).toBeInTheDocument();
+    expect(screen.getByText(/Do diagnóstico técnico à interface final/i)).toBeInTheDocument();
     
-    // Headline chunks
-    expect(screen.getByText(/Arquitetura sólida/i)).toBeInTheDocument();
-    expect(screen.getByText(/Interfaces refinadas/i)).toBeInTheDocument();
-    expect(screen.getByText(/Produtos que evoluem/i)).toBeInTheDocument();
+    // Headline
+    expect(screen.getByText(/Arquitetura, produto e/i)).toBeInTheDocument();
   });
 
-  it('renders the background glow and workbench elements', () => {
-    const { container } = render(<Hero />);
-    
-    // Workbench glow
-    const workbenchGlow = container.querySelector('.bg-accent-primary\\/10');
-    expect(workbenchGlow).toBeInTheDocument();
-    expect(workbenchGlow).toHaveClass('blur-[80px]');
+  it('renders the technical artifact cards without invented metrics', () => {
+    render(<Hero />);
+
+    expect(screen.getByText('create-subscription.use-case.ts')).toBeInTheDocument();
+    expect(screen.getByText('ASCEND architecture')).toBeInTheDocument();
+    expect(screen.getByText('Billing')).toBeInTheDocument();
+    expect(screen.getByText('Fiscal')).toBeInTheDocument();
+    expect(screen.getByAltText('Dashboard ASCEND no tema claro')).toBeInTheDocument();
+    expect(screen.queryByText('R$ 94,8k')).not.toBeInTheDocument();
+    expect(screen.queryByText('Eventos recentes')).not.toBeInTheDocument();
   });
 });

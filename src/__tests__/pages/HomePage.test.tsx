@@ -2,15 +2,38 @@ import { render, screen } from '@testing-library/react';
 import HomePage from '@/app/page';
 import '@testing-library/jest-dom';
 
+jest.mock('@gsap/react', () => ({
+  useGSAP: jest.fn(),
+}));
+
+jest.mock('gsap', () => ({
+  __esModule: true,
+  default: {
+    registerPlugin: jest.fn(),
+    from: jest.fn(),
+    fromTo: jest.fn(),
+    utils: {
+      toArray: jest.fn(() => []),
+    },
+  },
+}));
+
+jest.mock('gsap/ScrollTrigger', () => ({
+  ScrollTrigger: {},
+}));
+
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: (props: any) => {
+    const { fill, priority, sizes, ...imgProps } = props;
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img {...imgProps} alt={props.alt} />;
+  },
+}));
+
 jest.mock('@/components/Hero/Hero', () => () => <div data-testid="hero" />);
 jest.mock('@/components/ExpertiseBar/ExpertiseBar', () => ({
   ExpertiseBar: () => <div data-testid="expertise-bar" />,
-}));
-jest.mock('@/components/BuildingPrinciples/BuildingPrinciples', () => ({
-  BuildingPrinciples: () => <div data-testid="building-principles" />,
-}));
-jest.mock('@/components/ProjectCard/ProjectCard', () => ({
-  ProjectCard: ({ project }: any) => <div data-testid="project-card">{project.title}</div>,
 }));
 
 jest.mock('@/components/ui', () => ({
@@ -28,21 +51,23 @@ describe('HomePage', () => {
 
   it('renders projects preview section', () => {
     render(<HomePage />);
-    expect(screen.getByText('Projetos Selecionados')).toBeInTheDocument();
+    expect(screen.getByText(/Projetos selecionados/i)).toBeInTheDocument();
   });
 
-  it('renders stats section', () => {
+  it('renders narrative section', () => {
     render(<HomePage />);
-    expect(screen.getByText('Evidências de execução')).toBeInTheDocument();
+    expect(screen.getByText('Como construo')).toBeInTheDocument();
+    expect(screen.getByText('Como ler este portfólio')).toBeInTheDocument();
   });
 
   it('renders CTA section', () => {
     render(<HomePage />);
-    expect(screen.getByText(/Tem uma feature complexa/i)).toBeInTheDocument();
+    expect(screen.getByText(/Vamos construir algo difícil/i)).toBeInTheDocument();
   });
 
-  it('renders project cards', () => {
+  it('renders selected project content', () => {
     render(<HomePage />);
-    expect(screen.getAllByTestId('project-card').length).toBeGreaterThan(0);
+    expect(screen.getByText('ASCEND')).toBeInTheDocument();
+    expect(screen.getByText('Neo Constrictor')).toBeInTheDocument();
   });
 });

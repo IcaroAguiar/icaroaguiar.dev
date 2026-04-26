@@ -1,20 +1,294 @@
 /* Hero Section - Custom Styles (Most styling is handled via Tailwind in Hero.tsx) */
 
 .hero-section {
-  min-height: calc(100vh - 80px); /* Ajuste com base na altura da navbar se existir */
+  min-height: auto;
   display: flex;
-  align-items: center;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  align-items: flex-start;
+  padding-top: 1.75rem;
+  padding-bottom: 2rem;
+}
+
+.hero-visual {
+  margin-left: -1rem;
 }
 
 .perspective-1000 {
   perspective: 1000px;
 }
 
+.hero-artifacts-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-areas:
+    ". . dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard dashboard"
+    "code code code code code code diagram diagram diagram diagram diagram .";
+  gap: 0.6rem 0.95rem;
+  align-items: start;
+}
+
+.hero-artifacts-grid::before {
+  position: absolute;
+  inset: -1.35rem -1.05rem -1.65rem 2.6rem;
+  z-index: -2;
+  background-image: radial-gradient(color-mix(in srgb, var(--accent-primary) 28%, transparent) 1px, transparent 1px);
+  background-position: 0 0;
+  background-size: 18px 18px;
+  content: "";
+  mask-image: linear-gradient(90deg, transparent 0%, black 22%, black 78%, transparent 100%);
+  opacity: 0.22;
+}
+
+.hero-artifact {
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--surface-2) 92%, transparent);
+  box-shadow: 0 30px 90px rgba(15, 23, 42, 0.1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 240ms ease;
+  will-change: transform;
+}
+
+.hero-artifact:hover {
+  border-color: color-mix(in srgb, var(--accent-primary) 28%, var(--border-default));
+  box-shadow: 0 34px 100px rgba(15, 23, 42, 0.13);
+}
+
+.hero-artifact-code {
+  grid-area: code;
+  min-height: 15.4rem;
+  padding: 1rem;
+  background: #041b19;
+  color: #d7fffb;
+  transform: translateY(1.05rem) rotate(-0.55deg);
+  animation: hero-artifact-drift-code 12s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+}
+
+.hero-artifact-code:hover {
+  transform: translateY(0.65rem) rotate(-0.12deg);
+}
+
+.hero-artifact-code pre {
+  font-size: 0.66rem;
+  line-height: 1.45;
+}
+
+.hero-artifact-diagram {
+  grid-area: diagram;
+  min-height: 14.65rem;
+  padding: 1rem;
+  transform: translateY(-0.15rem) rotate(0.45deg);
+  animation: hero-artifact-drift-diagram 13s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+}
+
+.hero-artifact-diagram:hover {
+  transform: translateY(-0.55rem) rotate(0.12deg);
+}
+
+.hero-artifact-dashboard {
+  grid-area: dashboard;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+  transform: translateX(0.35rem);
+  animation: hero-dashboard-presence 14s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+}
+
+.hero-artifact-dashboard .relative {
+  aspect-ratio: 16 / 8.6;
+}
+
+.hero-artifact-connector {
+  position: absolute;
+  right: 11%;
+  bottom: 16.25rem;
+  left: 9%;
+  z-index: -1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-primary) 36%, transparent), transparent);
+  transform: rotate(-1.5deg);
+}
+
+.hero-artifact-connector::before,
+.hero-artifact-connector::after {
+  position: absolute;
+  top: 50%;
+  width: 0.42rem;
+  height: 0.42rem;
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 45%, transparent);
+  background: var(--surface-1);
+  content: "";
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.hero-artifact-connector::before {
+  left: 18%;
+}
+
+.hero-artifact-connector::after {
+  right: 18%;
+}
+
+@keyframes hero-artifact-drift-code {
+  0%,
+  100% {
+    transform: translateY(1.05rem) rotate(-0.55deg);
+  }
+  50% {
+    transform: translateY(0.62rem) rotate(-0.18deg);
+  }
+}
+
+@keyframes hero-artifact-drift-diagram {
+  0%,
+  100% {
+    transform: translateY(-0.15rem) rotate(0.45deg);
+  }
+  50% {
+    transform: translateY(-0.58rem) rotate(0.16deg);
+  }
+}
+
+@keyframes hero-dashboard-presence {
+  0%,
+  100% {
+    transform: translate(0.35rem, 0);
+  }
+  50% {
+    transform: translate(0.35rem, -0.28rem);
+  }
+}
+
+.diagram-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem 0.55rem;
+}
+
+.diagram-step {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.diagram-node {
+  display: inline-flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 3.35rem;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+  padding: 0.52rem 0.42rem;
+  color: var(--text-secondary);
+  font-size: 0.66rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.diagram-node svg {
+  flex: 0 0 auto;
+  color: var(--accent-primary);
+}
+
+.diagram-arrow {
+  width: 0.72rem;
+  height: 0.72rem;
+  flex: 0 0 auto;
+  color: var(--accent-primary);
+  opacity: 0.7;
+}
+
+.diagram-step:nth-child(3n) .diagram-arrow {
+  display: none;
+}
+
+.hero-dashboard-image-dark {
+  opacity: 0;
+}
+
+[data-theme="dark"] .hero-dashboard-image-light {
+  opacity: 0;
+}
+
+[data-theme="dark"] .hero-dashboard-image-dark {
+  opacity: 1;
+}
+
 @media (max-width: 1024px) {
   .hero-section {
     min-height: auto;
-    padding-top: 6rem;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-visual {
+    margin-left: 0;
+  }
+
+  .hero-artifacts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "dashboard dashboard"
+      "code diagram";
+    gap: 0.9rem 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero-artifacts-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "dashboard"
+      "code"
+      "diagram";
+  }
+
+  .hero-artifacts-grid::before {
+    inset: -1rem;
+  }
+
+  .hero-artifact-code,
+  .hero-artifact-diagram {
+    min-height: auto;
+    transform: none;
+    animation: none;
+  }
+
+  .diagram-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-artifact-dashboard,
+  .hero-artifact-connector {
+    animation: none;
+  }
+
+  .hero-artifact-connector {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-artifact-code,
+  .hero-artifact-diagram,
+  .hero-artifact-dashboard {
+    animation: none;
   }
 }

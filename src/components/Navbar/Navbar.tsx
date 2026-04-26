@@ -4,14 +4,15 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { Mail, Menu, X } from 'lucide-react';
+import { SOCIAL_LINKS } from '@/constants';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import './Navbar.css';
 
 const navLinks = [
   { href: '/', label: 'Início' },
-  { href: '/sobre', label: 'Sobre' },
   { href: '/projetos', label: 'Projetos' },
+  { href: '/sobre', label: 'Sobre' },
   { href: '/contato', label: 'Contato' },
 ];
 
@@ -33,16 +34,15 @@ export default function Navbar() {
 
   return (
     <header className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
-      <nav className="mx-auto max-w-(--breakpoint-xl) h-full px-4 sm:px-6 lg:px-8">
-        <div className="flex h-full items-center justify-between">
-          {/* ESQUERDA: Logo */}
-          <Link href="/" className="navbar-logo" onClick={() => setIsOpen(false)}>
+      <nav className="mx-auto flex h-full max-w-6xl items-center px-4 sm:px-6 lg:px-8">
+        <div className="navbar-shell grid h-full w-full min-w-0 grid-cols-[1fr_auto_1fr] items-center gap-3">
+          <Link href="/" className="navbar-logo min-w-0" onClick={() => setIsOpen(false)}>
             <span className="logo-text">Ícaro Aguiar</span>
+            <span className="logo-kicker">Full-stack engineer</span>
           </Link>
 
-          {/* DIREITA: Navegação Desktop + Theme Toggle */}
-          <div className="hidden md:flex items-center gap-4">
-            <ul className="flex items-center gap-6 text-sm">
+          <div className="hidden items-center justify-center md:flex">
+            <ul className="flex items-center gap-1 text-sm">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -61,30 +61,35 @@ export default function Navbar() {
               </li>
             ))}
             </ul>
-            <ThemeToggle />
           </div>
 
-          {/* Mobile: Hambúrguer + Theme Toggle */}
-          <div className="flex items-center gap-2 md:hidden">
-            <div className="scale-75">
+          <div className="ml-auto hidden items-center gap-3 md:flex">
+            <div className="navbar-theme-control">
               <ThemeToggle />
             </div>
+            <a href={SOCIAL_LINKS.WHATSAPP} target="_blank" rel="noopener noreferrer" className="navbar-contact-button">
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              Falar comigo
+            </a>
+          </div>
+
+          <div className="ml-auto flex items-center gap-2 md:hidden">
             <button
-              className="navbar-mobile-button p-2"
+              className="navbar-mobile-button"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Menu"
+              aria-expanded={isOpen}
             >
             {isOpen ? (
-              <FaTimes className="icon" />
+              <X className="icon" />
             ) : (
-              <FaBars className="icon" />
+              <Menu className="icon" />
             )}
            </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Navigation */}
       {isOpen && (
         <motion.div
           className="navbar-menu-mobile"

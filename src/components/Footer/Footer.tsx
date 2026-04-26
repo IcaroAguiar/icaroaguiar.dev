@@ -1,58 +1,56 @@
-import { FaEnvelope } from 'react-icons/fa';
+import Link from 'next/link';
+import { BriefcaseBusiness, Github, Linkedin, Mail, MessageCircle, UserRound } from 'lucide-react';
 import { SOCIAL_LINKS } from '@/constants';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-16 border-t border-border-default bg-surface-2">
-      <div className="mx-auto max-w-(--breakpoint-lg) px-4 sm:px-6 lg:px-8 py-10 text-center">
-        {/* Headline */}
-        <p className="text-main font-medium text-lg">Pronto para o próximo passo?</p>
-        <p className="mt-1 text-tertiary">Disponível para projetos e parcerias.</p>
+    <footer className="relative border-t border-[#173331] bg-[#061514] px-4 py-10 text-white sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_auto] md:items-end">
+        <div>
+          <Link href="/" className="text-lg font-semibold tracking-normal text-white hover:text-[#5eead4]">
+            Ícaro Aguiar
+          </Link>
+          <p className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-white/45">Full-stack engineer</p>
+          <p className="mt-4 max-w-xl text-sm leading-6 text-white/62">
+            Engenharia full-stack, arquitetura de produto e IA aplicada para sistemas que precisam sair do papel com qualidade.
+          </p>
+        </div>
 
-        {/* CTA principal (pill) */}
-        <a
-          href={`mailto:${SOCIAL_LINKS.EMAIL}`}
-          className="mt-4 inline-flex items-center gap-2 rounded-full border border-default bg-accent-subtle px-5 py-2 text-sm font-medium text-accent hover:bg-accent hover:text-white transition"
-        >
-          <FaEnvelope size={14} />
-          {SOCIAL_LINKS.EMAIL}
-        </a>
-
-        {/* Links rápidos */}
-        <div className="mt-5 flex items-center justify-center gap-5 text-sm text-tertiary">
-          <a
-            href={SOCIAL_LINKS.GITHUB}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-accent transition"
-          >
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-white/62">
+          <Link href="/projetos" className="inline-flex items-center gap-2 hover:text-[#5eead4]">
+            <BriefcaseBusiness aria-hidden="true" className="h-4 w-4" />
+            Projetos
+          </Link>
+          <Link href="/sobre" className="inline-flex items-center gap-2 hover:text-[#5eead4]">
+            <UserRound aria-hidden="true" className="h-4 w-4" />
+            Sobre
+          </Link>
+          <Link href="/contato" className="inline-flex items-center gap-2 hover:text-[#5eead4]">
+            <MessageCircle aria-hidden="true" className="h-4 w-4" />
+            Contato
+          </Link>
+          <a href={SOCIAL_LINKS.GITHUB} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#5eead4]">
+            <Github aria-hidden="true" className="h-4 w-4" />
             GitHub
           </a>
-          <span className="h-4 w-px bg-border-default" />
-          <a
-            href={SOCIAL_LINKS.LINKEDIN}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-accent transition"
-          >
+          <a href={SOCIAL_LINKS.LINKEDIN} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-[#5eead4]">
+            <Linkedin aria-hidden="true" className="h-4 w-4" />
             LinkedIn
           </a>
-          <span className="h-4 w-px bg-border-default" />
-          <a
-            href="/Icaro-Aguiar-DevFullStack-PT%20(2).pdf"
-            download="Icaro-Aguiar-DevFullStack-PT.pdf"
-            className="hover:text-accent transition"
-          >
-            Currículo (PDF)
+          <a href={`mailto:${SOCIAL_LINKS.EMAIL}`} className="inline-flex items-center gap-2 hover:text-[#5eead4]">
+            <Mail aria-hidden="true" className="h-4 w-4" />
+            Email
           </a>
         </div>
+      </div>
 
-        {/* Copyright */}
-        <div className="mt-6 text-xs text-muted">
-          © {currentYear} Ícaro Aguiar. Todos os direitos reservados.
-        </div>
+      <div className="mx-auto mt-8 flex max-w-7xl flex-col gap-3 border-t border-white/10 pt-5 text-xs text-white/42 sm:flex-row sm:items-center sm:justify-between">
+        <span>© {currentYear} Ícaro Aguiar. Todos os direitos reservados.</span>
+        <a href="/Icaro_Aguiar_Curriculo_2026_PTBR.pdf" download className="hover:text-[#5eead4]">
+          Currículo
+        </a>
       </div>
     </footer>
   );

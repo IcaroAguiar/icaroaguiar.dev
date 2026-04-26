@@ -1,18 +1,32 @@
 'use client';
 
+import { Blocks, Braces } from 'lucide-react';
+import {
+  SiDocker,
+  SiFlutter,
+  SiGithubactions,
+  SiNestjs,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPrisma,
+  SiReact,
+  SiTypescript,
+} from 'react-icons/si';
+
 const EXPERTISE = [
-  'NestJS',
-  'Next.js',
-  'React 19',
-  'PostgreSQL',
-  'Docker',
-  'CI/CD',
-  'TypeScript',
-  'Flutter',
-  'Prisma',
-  'Node.js',
-  'DDD',
-  'REST APIs',
+  { label: 'NestJS', icon: SiNestjs },
+  { label: 'Next.js', icon: SiNextdotjs },
+  { label: 'React 19', icon: SiReact },
+  { label: 'PostgreSQL', icon: SiPostgresql },
+  { label: 'Docker', icon: SiDocker },
+  { label: 'CI/CD', icon: SiGithubactions },
+  { label: 'TypeScript', icon: SiTypescript },
+  { label: 'Flutter', icon: SiFlutter },
+  { label: 'Prisma', icon: SiPrisma },
+  { label: 'Node.js', icon: SiNodedotjs },
+  { label: 'DDD', icon: Blocks },
+  { label: 'REST APIs', icon: Braces },
 ];
 
 // Duplica o array para criar loop contínuo sem gap
@@ -34,14 +48,19 @@ export function ExpertiseBar() {
       <div className="divider-gradient mb-8 opacity-30" />
 
       <div className="flex animate-marquee gap-0" style={{ width: 'max-content' }}>
-        {EXPERTISE_LOOP.map((item, index) => (
-          <div key={`${item}-${index}`} className="flex items-center gap-0 px-0">
-            <span className="text-text-secondary font-display text-base md:text-lg tracking-tight hover:text-main transition-colors duration-300 cursor-default whitespace-nowrap px-6">
-              {item}
+        {EXPERTISE_LOOP.map((item, index) => {
+          const Icon = item.icon;
+
+          return (
+          <div key={`${item.label}-${index}`} className="flex items-center gap-0 px-0">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border-default bg-surface-2 px-4 py-2 text-sm font-semibold text-text-secondary shadow-xs transition-colors duration-300 hover:text-text-main md:text-base">
+              <Icon className="h-4 w-4 text-accent" aria-hidden="true" />
+              {item.label}
             </span>
-            <span className="w-1 h-1 rounded-full bg-accent-primary/40 flex-shrink-0" />
+            <span className="mx-5 h-1 w-1 flex-shrink-0 rounded-full bg-accent-primary/40" />
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Linha de separação inferior */}

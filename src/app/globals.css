@@ -96,10 +96,10 @@
   --text-faint: #a1a1aa;       /* Faint: disabled, timestamps */
   
   /* Accent & Semantic Colors */
-  --accent-primary: #2a9d8f;
-  --accent-secondary: #4dd4c4;
-  --accent-hover: #238276;
-  --accent-subtle: rgba(42, 157, 143, 0.1);
+  --accent-primary: #0f766e;
+  --accent-secondary: #2dd4bf;
+  --accent-hover: #115e59;
+  --accent-subtle: rgba(15, 118, 110, 0.1);
   
   /* Estado & Feedback */
   --status-success: #22c55e;
@@ -116,7 +116,7 @@
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
-  --shadow-glow: 0 0 20px rgba(42, 157, 143, 0.3);
+  --shadow-glow: 0 0 20px rgba(15, 118, 110, 0.26);
   
   /* Glass Morphism */
   --glass-bg: rgba(255, 255, 255, 0.85);
@@ -246,6 +246,7 @@
   
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   
   body {
@@ -257,6 +258,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
+    overflow-x: hidden;
   }
   
   /* Typography Scale - Linear inspired */
@@ -466,7 +468,12 @@
   font-size: 14px;
   font-weight: 500;
   border-radius: var(--radius-md);
-  transition: all var(--duration-micro) var(--ease-out);
+  transition:
+    background-color var(--duration-micro) var(--ease-out),
+    border-color var(--duration-micro) var(--ease-out),
+    color var(--duration-micro) var(--ease-out),
+    opacity var(--duration-micro) var(--ease-out),
+    transform var(--duration-micro) var(--ease-out);
   cursor: pointer;
 }
 
@@ -514,8 +521,9 @@
   transition: border-color var(--duration-micro) var(--ease-out);
 }
 
-.input:focus {
-  outline: none;
+.input:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
   border-color: var(--accent-primary);
 }
 
