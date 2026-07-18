@@ -1,0 +1,38 @@
+---
+import { navigation, site } from '@/config/site';
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header" data-header>
+  <div class="shell header-inner">
+    <a class="brand" href="/" aria-label="Ícaro Aguiar, início">
+      <strong>Ícaro Aguiar</strong>
+      <span data-copy="role">engenheiro full-stack</span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle>
+      <span class="sr-only">Abrir menu</span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+    <nav id="primary-navigation" class="primary-nav" aria-label="Navegação principal" data-navigation>
+      {navigation.map((item) => (
+        <a href={item.href} aria-current={pathname.startsWith(item.href) ? 'page' : undefined} data-copy-pt={item.label} data-copy-en={item.labelEn}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button" type="button" aria-label="Alternar tema" data-theme-toggle>
+        <span aria-hidden="true" data-theme-icon>◐</span>
+      </button>
+      <button class="language-button" type="button" aria-label="Mudar idioma" data-language-toggle>EN</button>
+      <a class="button button-compact" href={site.links.whatsapp} target="_blank" rel="noreferrer" data-copy="contact">
+        Falar comigo <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</header>

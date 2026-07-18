@@ -1,0 +1,111 @@
+---
+import ProjectCard from '@/components/ProjectCard.astro';
+import { site } from '@/config/site';
+import { projects } from '@/data/projects';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { featuredProjectIds } from '@/utils/projects';
+
+const featuredProjects = featuredProjectIds
+  .map((id) => projects.find((project) => project.id === id))
+  .filter((project) => project !== undefined);
+---
+
+<BaseLayout>
+  <section class="home-hero section">
+    <div class="shell home-hero-grid">
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow" data-copy="heroEyebrow">Engenharia, produto e IA aplicada</p>
+        <h1 data-copy="heroTitle">Software confiável. Problemas reais.</h1>
+        <p class="hero-intro" data-copy="heroIntro">
+          Arquitetura clara, interfaces cuidadosas e execução técnica para produtos que precisam funcionar no mundo real.
+        </p>
+        <div class="button-row">
+          <a class="button" href="/projetos" data-copy="heroPrimary">Ver projetos ↗</a>
+          <a class="text-link" href="/sobre" data-copy="heroSecondary">Sobre meu trabalho</a>
+        </div>
+      </div>
+
+      <div class="hero-composition" data-reveal>
+        <div class="portrait-stage">
+          <img
+            src="/assets/icaro-portrait-cutout.png"
+            alt="Ícaro Aguiar"
+            width="1024"
+            height="1280"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <a class="hero-project-proof" href="/projeto/ascend" aria-label="Conhecer o projeto ASCEND">
+          <img src="/case-screenshots/ascend/cover-dark.png" alt="Dashboard real do ASCEND" width="1600" height="1000" />
+          <span>ASCEND</span>
+          <small>Fintech, web, mobile e API</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="capability-ledger section-tight" aria-labelledby="capability-title">
+    <div class="shell">
+      <h2 id="capability-title" class="sr-only">Como trabalho</h2>
+      <div class="ledger-grid" data-reveal>
+        <article>
+          <strong>Diagnóstico claro</strong>
+          <p>Entendo contexto, restrições e risco antes de escolher tecnologia.</p>
+        </article>
+        <article>
+          <strong>Arquitetura pragmática</strong>
+          <p>Soluções simples na interface, sólidas por dentro e preparadas para evoluir.</p>
+        </article>
+        <article>
+          <strong>Entrega observável</strong>
+          <p>Testes, logs e automação sustentam decisões depois do primeiro deploy.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="selected-title">
+    <div class="shell">
+      <div class="section-heading" data-reveal>
+        <div>
+          <h2 id="selected-title">Projetos selecionados</h2>
+          <p>Sistemas e produtos em que arquitetura, interface e operação precisaram funcionar juntas.</p>
+        </div>
+        <a class="text-link" href="/projetos">Ver todos os projetos</a>
+      </div>
+      <div class="featured-projects">
+        {featuredProjects.map((project, index) => (
+          <div data-reveal>
+            <ProjectCard project={project} featured eager={index === 0} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="method-section section">
+    <div class="shell method-grid">
+      <div data-reveal>
+        <h2>Código é parte do produto, não o produto inteiro.</h2>
+        <p>
+          Meu trabalho conecta decisões técnicas ao que a pessoa usa, ao que a equipe mantém e ao que a operação consegue observar.
+        </p>
+        <a class="text-link" href="/sobre">Conheça meu processo</a>
+      </div>
+      <ol class="method-list" data-reveal>
+        <li><span>Contexto</span><p>O problema real, as restrições e o critério de sucesso.</p></li>
+        <li><span>Decisão</span><p>Trade-offs explícitos, contratos claros e complexidade localizada.</p></li>
+        <li><span>Entrega</span><p>Uma superfície real, verificável e preparada para continuar evoluindo.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="contact-band">
+    <div class="shell contact-band-grid" data-reveal>
+      <h2>Tem um problema difícil para resolver?</h2>
+      <p>Posso ajudar a transformar contexto, produto e engenharia em uma entrega concreta.</p>
+      <a class="button" href={site.links.whatsapp} target="_blank" rel="noreferrer">Falar comigo ↗</a>
+    </div>
+  </section>
+</BaseLayout>

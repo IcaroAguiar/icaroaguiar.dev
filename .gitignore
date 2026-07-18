@@ -1,109 +1,32 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # Dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
+/node_modules/
 
-# Testing
-/coverage
-*.lcov
-.nyc_output
+# Astro
+/.astro/
+/dist/
 
-# Next.js
-/.next/
-/out/
-.next
-
-# Production
-/build
-/dist
-
-# Misc
-.DS_Store
-*.pem
-
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-.pnpm-debug.log*
-
-# Local env files
-.env
-.env*.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Vercel
-.vercel
-
-# TypeScript
+# Coverage and caches
+/coverage/
 *.tsbuildinfo
-next-env.d.ts
-
-# Claude Code
-/.claude/
-.claude/settings.local.json
-
-# IDEs and Editors
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.project
-.classpath
-.settings/
-*.sublime-project
-*.sublime-workspace
-
-# OS Files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-Desktop.ini
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
+*.lcov
 .eslintcache
-
-# Optional stylelint cache
 .stylelintcache
 
-# Microbundle cache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
+# Local configuration
+.env
+.env*.local
+/.vercel/
+/.lazyweb/
 
-# Optional REPL history
-.node_repl_history
+# Logs
+*.log
+pnpm-debug.log*
 
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# Temporary folders
-tmp/
-temp/
-.claude/settings.local.json
-
-# AI
-CLAUDE.md
-AGENTS.md
-MASTER.md
+# Editors and operating systems
+/.vscode/
+/.idea/
+*.swp
+*.swo
+.DS_Store
+._*
+Thumbs.db

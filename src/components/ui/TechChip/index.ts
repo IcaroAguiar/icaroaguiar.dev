@@ -1,1 +1,0 @@
-export { TechChip } from './TechChip';

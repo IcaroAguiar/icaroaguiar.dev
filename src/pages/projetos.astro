@@ -1,0 +1,56 @@
+---
+import ProjectCard from '@/components/ProjectCard.astro';
+import { site } from '@/config/site';
+import { projects } from '@/data/projects';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { featuredProjectIds, projectCategories, projectCategory } from '@/utils/projects';
+
+const orderedProjects = [...projects].sort((a, b) => {
+  const aIndex = featuredProjectIds.indexOf(a.id as (typeof featuredProjectIds)[number]);
+  const bIndex = featuredProjectIds.indexOf(b.id as (typeof featuredProjectIds)[number]);
+  return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex);
+});
+
+const categoryCount = (category: (typeof projectCategories)[number]) =>
+  category === 'Todos' ? projects.length : projects.filter((project) => projectCategory(project) === category).length;
+const visibleCategories = projectCategories.filter((category) => category === 'Todos' || categoryCount(category) > 0);
+---
+
+<BaseLayout
+  title="Projetos"
+  description="Estudos de caso de produtos, plataformas, APIs, aplicativos e sites construídos por Ícaro Aguiar."
+>
+  <section class="page-hero section projects-hero">
+    <div class="shell" data-reveal>
+      <p class="eyebrow">Trabalho selecionado</p>
+      <h1>Projetos que mostram execução real.</h1>
+      <p class="page-intro">Contexto, decisões técnicas e superfícies entregues. Sem métricas inventadas ou complexidade cenográfica.</p>
+    </div>
+  </section>
+
+  <section class="project-browser section-tight" aria-label="Lista de projetos">
+    <div class="shell">
+      <div class="filter-bar" data-reveal>
+        {visibleCategories.map((category, index) => (
+          <button type="button" aria-pressed={index === 0 ? 'true' : 'false'} data-project-filter={category}>
+            {category} <span>{categoryCount(category)}</span>
+          </button>
+        ))}
+      </div>
+      <div class="projects-grid">
+        {orderedProjects.map((project, index) => (
+          <div data-reveal><ProjectCard project={project} featured={index < 3} eager={index === 0} /></div>
+        ))}
+      </div>
+      <p class="empty-filter" hidden data-project-empty>Nenhum projeto nesta categoria.</p>
+    </div>
+  </section>
+
+  <section class="contact-band">
+    <div class="shell contact-band-grid" data-reveal>
+      <h2>Quer discutir arquitetura ou produto?</h2>
+      <p>Compartilhe o contexto. Eu respondo com perguntas e próximos passos objetivos.</p>
+      <a class="button" href={site.links.whatsapp} target="_blank" rel="noreferrer">Iniciar conversa ↗</a>
+    </div>
+  </section>
+</BaseLayout>

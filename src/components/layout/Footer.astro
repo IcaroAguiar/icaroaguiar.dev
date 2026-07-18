@@ -1,0 +1,27 @@
+---
+import { navigation, site } from '@/config/site';
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <a class="footer-name" href="/">Ícaro Aguiar</a>
+      <p data-copy="footerDescription">
+        Engenharia full-stack, arquitetura de produto e IA aplicada para sistemas que precisam sair do papel com qualidade.
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Navegação do rodapé">
+      {navigation.map((item) => (
+        <a href={item.href} data-copy-pt={item.label} data-copy-en={item.labelEn}>{item.label}</a>
+      ))}
+      <a href={site.links.github} target="_blank" rel="noreferrer">GitHub</a>
+      <a href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href={`mailto:${site.email}`}>Email</a>
+    </nav>
+  </div>
+  <div class="shell footer-base">
+    <span>© {new Date().getFullYear()} Ícaro Aguiar. <span data-copy="rights">Todos os direitos reservados.</span></span>
+    <a href={site.links.resume} download data-copy="resume">Currículo</a>
+  </div>
+</footer>

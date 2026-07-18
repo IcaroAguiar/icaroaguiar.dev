@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Ícaro Aguiar Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Portfolio pessoal e estudos de caso de Ícaro Aguiar. O site é gerado como HTML estático com Astro 7.1 e usa JavaScript no cliente apenas para tema, idioma, navegação móvel, filtros e revelações progressivas.
 
-## Available Scripts
+## Stack
 
-In the project directory, you can run:
+- Astro 7.1
+- TypeScript em modo estrito
+- CSS nativo com tokens semânticos
+- Formspree para o formulário de contato
+- Vercel para hospedagem estática
 
-### `npm start`
+## Desenvolvimento
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Requer Node.js 22 ou superior e pnpm 10.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+pnpm install
+pnpm dev
+```
 
-### `npm test`
+O servidor local usa `http://localhost:4321` por padrão.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Verificação
 
-### `npm run build`
+```bash
+pnpm check
+pnpm build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+O build estático é gerado em `dist/`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Estrutura
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```text
+src/
+├── assets/       # Imagens processadas pelo Astro
+├── components/   # Módulos visuais compartilhados
+├── config/       # Identidade, links e navegação
+├── data/         # Conteúdo tipado do portfolio
+├── layouts/      # Documento HTML e SEO compartilhado
+├── pages/        # Rotas públicas
+├── scripts/      # Interações progressivas sem framework
+├── styles/       # Sistema visual global
+└── utils/        # Regras de apresentação dos projetos
+```
 
-### `npm run eject`
+## Rotas
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `/`
+- `/sobre`
+- `/projetos`
+- `/projeto/[projectId]`
+- `/contato`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Os cases são prerenderizados a partir de `src/data/projects.ts`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Conteúdo e assets
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Atualize projetos em `src/data/projects.ts`.
+- Use `public/case-screenshots/<projeto>/` para screenshots que devem manter o nome original.
+- Use `src/assets/` para imagens importadas e otimizadas pelo Astro.
+- Nunca adicione credenciais ou dados privados ao repositório.
