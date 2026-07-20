@@ -9,37 +9,35 @@ interface Props {
 }
 
 const { project, featured = false, eager = false } = Astro.props;
+const category = projectCategory(project);
 ---
 
-<a
-  class:list={['project-card', { 'project-card-featured': featured }]}
-  href={`/projeto/${project.id}`}
+<article
+  class:list={['project-entry', { 'project-entry--featured': featured }]}
   data-project-card
-  data-category={projectCategory(project)}
+  data-category={category}
 >
-  <article>
-    <div class="project-media">
-      <img
-        src={projectImage(project)}
-        alt={`Preview do projeto ${project.title}`}
-        width="1600"
-        height="1000"
-        loading={eager ? 'eager' : 'lazy'}
-        fetchpriority={eager ? 'high' : 'auto'}
-      />
+  <a class="project-entry__media" href={`/projeto/${project.id}`} aria-label={`Abrir projeto ${project.title}`}>
+    <img
+      src={projectImage(project)}
+      alt={`Interface do projeto ${project.title}`}
+      width="1600"
+      height="1000"
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : 'auto'}
+    />
+    <span class="project-entry__open" aria-hidden="true">Ver projeto ↗</span>
+  </a>
+
+  <div class="project-entry__body">
+    <div class="project-entry__meta">
+      <span>{category}</span>
+      <span>{project.status}</span>
     </div>
-    <div class="project-card-body">
-      <div class="project-meta">
-        <span>{projectCategory(project)}</span>
-        <span>{project.status}</span>
-        {project.privateProject && <span>restrito</span>}
-      </div>
-      <h3>{project.title}</h3>
-      <p>{project.description}</p>
-      <ul class="tag-list" aria-label={`Tecnologias de ${project.title}`}>
-        {project.tags.slice(0, featured ? 6 : 4).map((tag) => <li>{tag}</li>)}
-      </ul>
-    </div>
-    <span class="project-arrow" aria-hidden="true">↗</span>
-  </article>
-</a>
+    <h3><a href={`/projeto/${project.id}`}>{project.title}</a></h3>
+    <p>{project.description}</p>
+    <ul class="tag-line" aria-label={`Tecnologias de ${project.title}`}>
+      {project.tags.slice(0, featured ? 6 : 4).map((tag) => <li>{tag}</li>)}
+    </ul>
+  </div>
+</article>

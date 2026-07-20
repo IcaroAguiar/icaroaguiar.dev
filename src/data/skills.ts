@@ -3,10 +3,10 @@ export interface SkillCategory {
 }
 
 export const skills: SkillCategory = {
-  'Back-end': ['Node.js', 'NestJS', 'Prisma', 'APIs REST', '.NET / C#', 'Python'],
-  'Front-end': ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML5/CSS3'],
-  Mobile: ['Flutter', 'React Native', 'Expo'],
-  'Banco de Dados': ['PostgreSQL', 'SQL Server', 'Oracle'],
-  'DevOps & Infra': ['Docker', 'CI/CD', 'GitHub Actions', 'Azure DevOps', 'Linux'],
-  Arquitetura: ['DDD', 'Multi-tenant', 'Microserviços', 'Autenticação', 'Modelagem de dados'],
+  'Front-end': ['React', 'Next.js', 'Vite', 'TypeScript', 'Tailwind CSS', 'SPA', 'SSR', 'PWA', 'Design systems'],
+  'Back-end e APIs': ['Node.js', 'NestJS', 'Go', 'C# / .NET', 'REST', 'OpenAPI', 'Zod', 'Webhooks', 'Workers'],
+  'Dados': ['PostgreSQL', 'Prisma', 'SQL', 'SQL Server', 'Oracle', 'Migrations'],
+  'Qualidade e entrega': ['Vitest', 'Jest', 'Playwright', 'Testes E2E', 'Code review', 'GitHub Actions', 'Azure DevOps'],
+  'Infraestrutura': ['Docker', 'Docker Compose', 'Linux', 'Caddy', 'VPS', 'Observabilidade', 'Backups'],
+  'Arquitetura': ['Monorepo', 'Arquitetura modular', 'Contratos compartilhados', 'Permissões contextuais', 'Auditoria'],
 };

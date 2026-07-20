@@ -1,56 +1,149 @@
 ---
-import ProjectCard from '@/components/ProjectCard.astro';
-import { site } from '@/config/site';
-import { projects } from '@/data/projects';
+import { clientProjects, engineeringProjects } from '@/data/projectCatalog';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { featuredProjectIds, projectCategories, projectCategory } from '@/utils/projects';
 
-const orderedProjects = [...projects].sort((a, b) => {
-  const aIndex = featuredProjectIds.indexOf(a.id as (typeof featuredProjectIds)[number]);
-  const bIndex = featuredProjectIds.indexOf(b.id as (typeof featuredProjectIds)[number]);
-  return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex);
-});
-
-const categoryCount = (category: (typeof projectCategories)[number]) =>
-  category === 'Todos' ? projects.length : projects.filter((project) => projectCategory(project) === category).length;
-const visibleCategories = projectCategories.filter((category) => category === 'Todos' || categoryCount(category) > 0);
+const [featuredProject, ...otherProjects] = engineeringProjects;
+const visualProjects = otherProjects.filter((project) => project.image);
+const repositoryProjects = otherProjects.filter((project) => !project.image);
 ---
 
 <BaseLayout
   title="Projetos"
-  description="Estudos de caso de produtos, plataformas, APIs, aplicativos e sites construídos por Ícaro Aguiar."
+  description="Uma seleção de produtos, plataformas e ferramentas construídos por Ícaro Aguiar."
 >
-  <section class="page-hero section projects-hero">
-    <div class="shell" data-reveal>
-      <p class="eyebrow">Trabalho selecionado</p>
-      <h1>Projetos que mostram execução real.</h1>
-      <p class="page-intro">Contexto, decisões técnicas e superfícies entregues. Sem métricas inventadas ou complexidade cenográfica.</p>
-    </div>
-  </section>
+  <div class="projects-page">
+    <header class="projects-intro shell" aria-labelledby="projects-title" data-reveal>
+      <div class="projects-intro__copy">
+        <h1 id="projects-title" data-copy-pt="Projetos" data-copy-en="Projects">Projetos</h1>
+        <p
+          data-copy-pt="Uma seleção curta de produtos que representam como penso, construo e mantenho software."
+          data-copy-en="A concise selection of products that represent how I think, build, and maintain software."
+        >Uma seleção curta de produtos que representam como penso, construo e mantenho software.</p>
+      </div>
+    </header>
 
-  <section class="project-browser section-tight" aria-label="Lista de projetos">
-    <div class="shell">
-      <div class="filter-bar" data-reveal>
-        {visibleCategories.map((category, index) => (
-          <button type="button" aria-pressed={index === 0 ? 'true' : 'false'} data-project-filter={category}>
-            {category} <span>{categoryCount(category)}</span>
-          </button>
+    <section class="featured-work shell" aria-labelledby="featured-section-title">
+      <header class="projects-section-heading" data-reveal>
+        <h2 id="featured-section-title" data-copy-pt="Em destaque" data-copy-en="Featured">Em destaque</h2>
+      </header>
+      <article class="featured-project" data-reveal>
+        <div class="featured-project__copy">
+          <p class="project-type" data-copy-pt={featuredProject.typePt} data-copy-en={featuredProject.typeEn}>{featuredProject.typePt}</p>
+          <h3>{featuredProject.title}</h3>
+          <p data-copy-pt={featuredProject.descriptionPt} data-copy-en={featuredProject.descriptionEn}>
+            {featuredProject.descriptionPt}
+          </p>
+          <ul class="project-technologies" aria-label={`Tecnologias de ${featuredProject.title}`}>
+            {featuredProject.tags.map((tag) => <li>{tag}</li>)}
+          </ul>
+          <div class="project-facts">
+            <span>{featuredProject.year}</span>
+            <span data-copy-pt={featuredProject.statusPt} data-copy-en={featuredProject.statusEn}>{featuredProject.statusPt}</span>
+          </div>
+          <a class="project-link" href={featuredProject.href}>
+            <span data-copy-pt={featuredProject.linkPt} data-copy-en={featuredProject.linkEn}>{featuredProject.linkPt}</span>
+            <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M8 5h7v7" /></svg>
+          </a>
+        </div>
+        <a class="featured-project__media" href={featuredProject.href} aria-label={`${featuredProject.linkPt}: ${featuredProject.title}`}>
+          <img src={featuredProject.image} alt={`Interface do projeto ${featuredProject.title}`} width="1600" height="1000" />
+        </a>
+      </article>
+    </section>
+
+    <section class="visual-work shell" aria-labelledby="visual-title">
+      <header class="projects-section-heading" data-reveal>
+        <h2 id="visual-title" data-copy-pt="Outros trabalhos" data-copy-en="Other work">Outros trabalhos</h2>
+      </header>
+
+      <div class="visual-projects">
+        {visualProjects.map((project) => (
+          <article class="visual-project" data-reveal>
+            <a
+              class="visual-project__media"
+              href={project.liveUrl ?? project.href}
+              target={project.liveUrl || project.external ? '_blank' : undefined}
+              rel={project.liveUrl || project.external ? 'noreferrer' : undefined}
+              aria-label={`${project.linkPt}: ${project.title}`}
+            >
+              <img src={project.image} alt={`Página pública de ${project.title}`} width="1600" height="900" loading="lazy" />
+            </a>
+            <div class="visual-project__meta">
+              <div>
+                <h3>{project.title}</h3>
+                <p class="project-type" data-copy-pt={project.typePt} data-copy-en={project.typeEn}>{project.typePt}</p>
+                {project.creditPt && (
+                  <strong data-copy-pt={project.creditPt} data-copy-en={project.creditEn}>{project.creditPt}</strong>
+                )}
+              </div>
+              <a
+                class="icon-link"
+                href={project.href}
+                target={project.external ? '_blank' : undefined}
+                rel={project.external ? 'noreferrer' : undefined}
+                aria-label={`${project.linkPt}: ${project.title}`}
+              >
+                <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M8 5h7v7" /></svg>
+              </a>
+            </div>
+            <p data-copy-pt={project.descriptionPt} data-copy-en={project.descriptionEn}>{project.descriptionPt}</p>
+          </article>
         ))}
       </div>
-      <div class="projects-grid">
-        {orderedProjects.map((project, index) => (
-          <div data-reveal><ProjectCard project={project} featured={index < 3} eager={index === 0} /></div>
+    </section>
+
+    <section class="repository-work shell" aria-labelledby="repository-title">
+      <header class="projects-section-heading" data-reveal>
+        <h2 id="repository-title" data-copy-pt="Ferramentas públicas" data-copy-en="Public tools">Ferramentas públicas</h2>
+      </header>
+      <ol class="repository-list">
+        {repositoryProjects.map((project) => (
+          <li data-reveal>
+            <a href={project.href} target="_blank" rel="noreferrer">
+              <div>
+                <h3>{project.title}</h3>
+                <p data-copy-pt={project.typePt} data-copy-en={project.typeEn}>{project.typePt}</p>
+              </div>
+              <span data-copy-pt={project.statusPt} data-copy-en={project.statusEn}>{project.statusPt}</span>
+              <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M8 5h7v7" /></svg>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="client-projects shell" aria-labelledby="client-title">
+      <header class="projects-section-heading" data-reveal>
+        <h2 id="client-title" data-copy-pt="Projetos com a STAR" data-copy-en="Projects with STAR">Projetos com a STAR</h2>
+      </header>
+
+      <div class="client-grid">
+        {clientProjects.map((project) => (
+          <article class="client-project" data-reveal>
+            <a href={project.liveUrl ?? project.href} target="_blank" rel="noreferrer" aria-label={`${project.linkPt}: ${project.title}`}>
+              <figure>
+                <img src={project.image} alt={`Página pública de ${project.title}`} width="1600" height="900" loading="lazy" />
+                <figcaption>
+                  <div>
+                    <strong>{project.title}</strong>
+                    <small data-copy-pt={project.typePt} data-copy-en={project.typeEn}>{project.typePt}</small>
+                  </div>
+                  <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M8 5h7v7" /></svg>
+                </figcaption>
+              </figure>
+            </a>
+            <p data-copy-pt={project.descriptionPt} data-copy-en={project.descriptionEn}>{project.descriptionPt}</p>
+          </article>
         ))}
       </div>
-      <p class="empty-filter" hidden data-project-empty>Nenhum projeto nesta categoria.</p>
-    </div>
-  </section>
+    </section>
 
-  <section class="contact-band">
-    <div class="shell contact-band-grid" data-reveal>
-      <h2>Quer discutir arquitetura ou produto?</h2>
-      <p>Compartilhe o contexto. Eu respondo com perguntas e próximos passos objetivos.</p>
-      <a class="button" href={site.links.whatsapp} target="_blank" rel="noreferrer">Iniciar conversa ↗</a>
-    </div>
-  </section>
+    <aside class="project-note shell" data-reveal>
+      <p data-copy-pt="Os demais experimentos continuam no GitHub. Aqui ficam somente os trabalhos que melhor representam minha engenharia hoje." data-copy-en="The remaining experiments stay on GitHub. This page only keeps the work that best represents my engineering today.">Os demais experimentos continuam no GitHub. Aqui ficam somente os trabalhos que melhor representam minha engenharia hoje.</p>
+      <a class="project-link" href="https://github.com/IcaroAguiar?tab=repositories" target="_blank" rel="noreferrer">
+        <span data-copy-pt="Ver todos no GitHub" data-copy-en="View all on GitHub">Ver todos no GitHub</span>
+        <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M8 5h7v7" /></svg>
+      </a>
+    </aside>
+  </div>
 </BaseLayout>

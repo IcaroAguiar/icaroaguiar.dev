@@ -7,27 +7,44 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   title="Contato"
   description="Entre em contato com Ícaro Aguiar para projetos, consultoria técnica e oportunidades full-stack."
 >
-  <section class="page-hero section contact-hero">
-    <div class="shell" data-reveal>
-      <p class="eyebrow">Contato</p>
-      <h1>Conte o contexto. O resto a gente organiza.</h1>
-      <p class="page-intro">Projetos, consultoria e oportunidades. Quanto mais concreto o problema, melhor será a primeira conversa.</p>
+  <section class="inner-hero contact-hero">
+    <div class="shell inner-hero__meta" data-reveal>
+      <span>Contato</span><span>Projetos + oportunidades</span><span>Salvador, BA</span>
+    </div>
+    <div class="shell contact-hero__grid">
+      <h1 data-reveal>Conversa clara. Entrega real.</h1>
+      <div data-reveal>
+        <p>Conte o problema, o momento e o que precisa mudar. Eu organizo a conversa a partir daí.</p>
+        <a class="action-link action-link--solid" href={site.links.whatsapp} target="_blank" rel="noreferrer">Falar pelo WhatsApp <span>↗</span></a>
+      </div>
     </div>
   </section>
 
-  <section class="section-tight contact-section">
-    <div class="shell contact-grid">
+  <section class="contact-workspace">
+    <div class="shell contact-workspace__grid">
+      <div class="contact-directory" data-reveal>
+        <p class="kicker">Canais diretos</p>
+        <a href={`mailto:${site.email}`}><span>Email</span><strong>{site.email}</strong><i>↗</i></a>
+        <a href={site.links.linkedin} target="_blank" rel="noreferrer"><span>LinkedIn</span><strong>Perfil profissional</strong><i>↗</i></a>
+        <a href={site.links.github} target="_blank" rel="noreferrer"><span>GitHub</span><strong>Código e projetos públicos</strong><i>↗</i></a>
+        <a href={site.links.resume} download><span>Currículo</span><strong>Versão 2026, PDF</strong><i>↓</i></a>
+      </div>
+
       <form class="contact-form" action="https://formspree.io/f/xblyeyez" method="POST" data-reveal>
-        <div class="form-row">
-          <label for="name">Nome</label>
-          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Seu nome" />
+        <div class="contact-form__heading">
+          <p class="kicker">Mensagem</p>
+          <h2>Vamos ao contexto.</h2>
         </div>
         <div class="form-row">
-          <label for="email">Email</label>
+          <label for="name">Seu nome</label>
+          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Como posso te chamar?" />
+        </div>
+        <div class="form-row">
+          <label for="email">Seu email</label>
           <input id="email" name="email" type="email" autocomplete="email" required placeholder="voce@empresa.com" />
         </div>
         <div class="form-row">
-          <label for="subject">Assunto</label>
+          <label for="subject">O que vamos discutir?</label>
           <select id="subject" name="subject" required>
             <option value="">Selecione uma opção</option>
             <option value="projeto">Novo projeto</option>
@@ -37,24 +54,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </select>
         </div>
         <div class="form-row">
-          <label for="message">Mensagem</label>
-          <textarea id="message" name="message" rows="7" required placeholder="Descreva o problema, objetivo e momento do projeto."></textarea>
+          <label for="message">Contexto</label>
+          <textarea id="message" name="message" rows="7" required placeholder="Problema, objetivo, momento e qualquer restrição importante."></textarea>
         </div>
         <input type="hidden" name="_subject" value="Novo contato pelo portfolio" />
-        <button class="button" type="submit">Enviar mensagem ↗</button>
-        <p class="form-note">Os dados serão usados apenas para responder esta conversa.</p>
+        <button class="action-link action-link--solid" type="submit">Enviar mensagem <span>↗</span></button>
+        <p class="form-note">Seus dados serão usados apenas para responder esta conversa.</p>
       </form>
-
-      <aside class="contact-aside" data-reveal>
-        <h2>Outros canais</h2>
-        <div class="contact-methods">
-          <a href={site.links.whatsapp} target="_blank" rel="noreferrer"><strong>WhatsApp</strong><span>Para uma conversa direta ↗</span></a>
-          <a href={`mailto:${site.email}`}><strong>Email</strong><span>{site.email}</span></a>
-          <a href={site.links.linkedin} target="_blank" rel="noreferrer"><strong>LinkedIn</strong><span>Perfil profissional ↗</span></a>
-          <a href={site.links.github} target="_blank" rel="noreferrer"><strong>GitHub</strong><span>Repositórios públicos ↗</span></a>
-        </div>
-        <p class="response-note">Normalmente respondo em até um dia útil.</p>
-      </aside>
     </div>
   </section>
 </BaseLayout>

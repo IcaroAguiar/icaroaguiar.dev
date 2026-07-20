@@ -1,8 +1,8 @@
 export const site = {
   name: 'Ícaro Aguiar',
-  title: 'Ícaro Aguiar | Engenheiro full-stack',
+  title: 'Ícaro Aguiar | Engenheiro de software',
   description:
-    'Engenheiro full-stack orientado a produto. Arquitetura, interfaces e operação para transformar ideias complexas em software confiável.',
+    'Engenheiro de software. Arquitetura, interfaces e operação para transformar ideias complexas em software confiável.',
   url: 'https://icaroaguiar.dev',
   email: 'icaroaguiar14@gmail.com',
   links: {

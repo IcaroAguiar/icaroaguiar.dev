@@ -14,7 +14,10 @@
     "check": "astro check"
   },
   "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
     "astro": "^7.1.0",
+    "github-contrib-graph": "3.1.1",
     "sharp": "^0.35.3"
   },
   "devDependencies": {

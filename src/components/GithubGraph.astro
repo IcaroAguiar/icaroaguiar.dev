@@ -1,0 +1,127 @@
+---
+import 'github-contrib-graph/styles.css';
+
+const username = 'IcaroAguiar';
+const profileUrl = `https://github.com/${username}`;
+---
+
+<section id="github" class="github-panel" aria-labelledby="github-title">
+  <header class="section-title section-title--with-link">
+    <h2 id="github-title" data-copy-pt="Código e contribuições públicas" data-copy-en="Public code and contributions">Código e contribuições públicas</h2>
+    <a href={profileUrl} target="_blank" rel="noreferrer" data-copy-pt="Abrir perfil no GitHub ↗" data-copy-en="Open GitHub profile ↗">Abrir perfil no GitHub ↗</a>
+  </header>
+
+  <div class="github-graph-scroll" tabindex="0" aria-label="Calendário de contribuições reais do GitHub" data-label-pt="Calendário de contribuições reais do GitHub" data-label-en="Real GitHub contribution calendar">
+    <div id="github-contribution-graph" class="github-graph" aria-live="polite">
+      <p class="github-loading" data-copy-pt="Carregando contribuições…" data-copy-en="Loading contributions…">Carregando contribuições…</p>
+    </div>
+  </div>
+
+  <div class="github-fallback" data-github-fallback hidden>
+    <p data-copy-pt="Não foi possível consultar a atividade pública agora." data-copy-en="Public activity is unavailable right now.">Não foi possível consultar a atividade pública agora.</p>
+    <a href={profileUrl} target="_blank" rel="noreferrer" data-copy-pt="Ver atividade no GitHub ↗" data-copy-en="View GitHub activity ↗">Ver atividade no GitHub ↗</a>
+  </div>
+
+  <noscript>
+    <div class="github-fallback">
+      <p>Ative o JavaScript para carregar o calendário de contribuições.</p>
+      <a href={profileUrl} target="_blank" rel="noreferrer">Ver atividade no GitHub ↗</a>
+    </div>
+  </noscript>
+</section>
+
+<script>
+  import { GitHubContributionWidget } from 'github-contrib-graph/vanilla';
+
+  const graph = document.querySelector<HTMLElement>('#github-contribution-graph');
+  const fallback = document.querySelector<HTMLElement>('[data-github-fallback]');
+
+  if (graph) {
+    const monthsPt: Record<string, string> = {
+      Jan: 'Jan',
+      Feb: 'Fev',
+      Mar: 'Mar',
+      Apr: 'Abr',
+      May: 'Mai',
+      Jun: 'Jun',
+      Jul: 'Jul',
+      Aug: 'Ago',
+      Sep: 'Set',
+      Oct: 'Out',
+      Nov: 'Nov',
+      Dec: 'Dez',
+    };
+
+    let renderVersion = 0;
+    const renderGraph = async () => {
+      const currentVersion = ++renderVersion;
+      const language = document.documentElement.dataset.language === 'en' ? 'en' : 'pt';
+      const light = document.documentElement.dataset.theme === 'light';
+      graph.hidden = false;
+      graph.replaceChildren();
+      if (fallback) fallback.hidden = true;
+
+      const widget = new GitHubContributionWidget({
+        username: 'IcaroAguiar',
+        container: graph,
+        showHeader: false,
+        showFooter: true,
+        showThumbnail: false,
+        showMonthLabels: true,
+        showWeekdayLabels: true,
+        showTooltips: true,
+        dayLabels: language === 'pt' ? ['', 'Seg', '', 'Qua', '', 'Sex', ''] : ['', 'Mon', '', 'Wed', '', 'Fri', ''],
+        footerLabels: language === 'pt' ? { less: 'Menos', more: 'Mais' } : { less: 'Less', more: 'More' },
+        monthLabelFormatter: (month) => language === 'pt' ? monthsPt[month.name] ?? month.name : month.name,
+        tooltipFormatter: ({ day, date }) => {
+          const count = day.contributionCount;
+          if (language === 'en') return `${count} ${count === 1 ? 'contribution' : 'contributions'} on ${date.toLocaleDateString('en')}`;
+          return `${count} ${count === 1 ? 'contribuição' : 'contribuições'} em ${date.toLocaleDateString('pt-BR')}`;
+        },
+        theme: {
+          bgColor: 'transparent',
+          textColor: light ? '#54534e' : '#bbb9b1',
+          inactiveTextColor: light ? '#77756d' : '#7f7e76',
+          linkHoverColor: light ? '#4f8468' : '#74a98a',
+          cellLevel0: light ? '#e1dfd8' : '#1b1b18',
+          cellLevel1: light ? '#c6d9cd' : '#263d31',
+          cellLevel2: light ? '#94b7a2' : '#365f49',
+          cellLevel3: light ? '#6e9b80' : '#4f8064',
+          cellLevel4: light ? '#4f8468' : '#74a98a',
+          cellSize: 14,
+          cellGap: 4,
+          cellRadius: 3,
+          cellBorderColor: 'transparent',
+          cellOutlineColor: 'transparent',
+          tooltipBgColor: light ? '#ffffff' : '#20231f',
+          tooltipTextColor: light ? '#171715' : '#f2f1eb',
+          tooltipRadius: 8,
+          borderColor: 'transparent',
+          borderWidth: 0,
+          cardPadding: 0,
+          cardPaddingBlock: 0,
+          fontFamily: 'var(--font-mono)',
+        },
+        onDataLoaded: (data) => {
+          if (currentVersion !== renderVersion) return;
+          const total = data.contributionsCollection.contributionCalendar.totalContributions;
+          const locale = language === 'pt' ? 'pt-BR' : 'en';
+          graph.setAttribute('aria-label', language === 'pt'
+            ? `${new Intl.NumberFormat(locale).format(total)} contribuições no último ano`
+            : `${new Intl.NumberFormat(locale).format(total)} contributions in the last year`);
+        },
+        onError: () => {
+          if (currentVersion !== renderVersion) return;
+          graph.hidden = true;
+          if (fallback) fallback.hidden = false;
+        },
+      });
+
+      await widget.render();
+    };
+
+    void renderGraph();
+    window.addEventListener('portfolio:theme-change', () => void renderGraph());
+    window.addEventListener('portfolio:language-change', () => void renderGraph());
+  }
+</script>

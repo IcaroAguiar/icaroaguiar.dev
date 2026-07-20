@@ -1,90 +1,116 @@
 const root = document.documentElement;
 
-const copy = {
-  pt: {
-    role: 'engenheiro full-stack',
-    contact: 'Falar comigo ↗',
-    footerDescription: 'Engenharia full-stack, arquitetura de produto e IA aplicada para sistemas que precisam sair do papel com qualidade.',
-    rights: 'Todos os direitos reservados.',
-    resume: 'Currículo',
-    heroEyebrow: 'Engenharia, produto e IA aplicada',
-    heroTitle: 'Software confiável. Problemas reais.',
-    heroIntro: 'Arquitetura clara, interfaces cuidadosas e execução técnica para produtos que precisam funcionar no mundo real.',
-    heroPrimary: 'Ver projetos ↗',
-    heroSecondary: 'Sobre meu trabalho',
-  },
-  en: {
-    role: 'full-stack engineer',
-    contact: 'Contact me ↗',
-    footerDescription: 'Full-stack engineering, product architecture, and applied AI for systems that need to leave the idea stage with quality.',
-    rights: 'All rights reserved.',
-    resume: 'Resume',
-    heroEyebrow: 'Engineering, product and applied AI',
-    heroTitle: 'Reliable software. Real problems.',
-    heroIntro: 'Clear architecture, thoughtful interfaces, and technical execution for products that need to work in the real world.',
-    heroPrimary: 'View projects ↗',
-    heroSecondary: 'About my work',
-  },
-} as const;
+type Language = 'pt' | 'en';
+type Theme = 'dark' | 'light';
 
-type Language = keyof typeof copy;
+const languageToggle = document.querySelector<HTMLButtonElement>('[data-language-toggle]');
+const themeToggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
 
 function setLanguage(language: Language) {
   root.dataset.language = language;
   root.lang = language === 'pt' ? 'pt-BR' : 'en';
   localStorage.setItem('portfolio-language', language);
 
-  document.querySelectorAll<HTMLElement>('[data-copy]').forEach((element) => {
-    const key = element.dataset.copy as keyof (typeof copy)['pt'];
-    if (copy[language][key]) element.textContent = copy[language][key];
-  });
-
   document.querySelectorAll<HTMLElement>('[data-copy-pt][data-copy-en]').forEach((element) => {
     element.textContent = language === 'pt' ? element.dataset.copyPt ?? '' : element.dataset.copyEn ?? '';
   });
 
-  const toggle = document.querySelector<HTMLButtonElement>('[data-language-toggle]');
-  if (toggle) toggle.textContent = language === 'pt' ? 'EN' : 'PT';
+  document.querySelectorAll<HTMLElement>('[data-label-pt][data-label-en]').forEach((element) => {
+    element.setAttribute('aria-label', language === 'pt' ? element.dataset.labelPt ?? '' : element.dataset.labelEn ?? '');
+  });
+
+  if (languageToggle) languageToggle.textContent = language === 'pt' ? 'EN' : 'PT';
+  window.dispatchEvent(new CustomEvent('portfolio:language-change', { detail: { language } }));
+}
+
+function setTheme(theme: Theme) {
+  root.dataset.theme = theme;
+  localStorage.setItem('portfolio-theme', theme);
+  const language = root.dataset.language === 'en' ? 'en' : 'pt';
+  themeToggle?.setAttribute('aria-label', theme === 'dark'
+    ? language === 'pt' ? 'Usar tema claro' : 'Use light theme'
+    : language === 'pt' ? 'Usar tema escuro' : 'Use dark theme');
+  document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0c0c0b' : '#f5f4f0');
+  window.dispatchEvent(new CustomEvent('portfolio:theme-change', { detail: { theme } }));
 }
 
 setLanguage(root.dataset.language === 'en' ? 'en' : 'pt');
+setTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
 
-document.querySelector('[data-language-toggle]')?.addEventListener('click', () => {
+languageToggle?.addEventListener('click', () => {
   setLanguage(root.dataset.language === 'pt' ? 'en' : 'pt');
+  setTheme(root.dataset.theme === 'light' ? 'light' : 'dark');
 });
 
-document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
-  const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-  root.dataset.theme = theme;
-  localStorage.setItem('portfolio-theme', theme);
+themeToggle?.addEventListener('click', () => {
+  setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
 });
 
 const menuToggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
 const navigation = document.querySelector<HTMLElement>('[data-navigation]');
 
+function closeNavigation() {
+  menuToggle?.setAttribute('aria-expanded', 'false');
+  navigation?.removeAttribute('data-open');
+  document.body.removeAttribute('data-menu-open');
+}
+
 menuToggle?.addEventListener('click', () => {
   const open = menuToggle.getAttribute('aria-expanded') !== 'true';
   menuToggle.setAttribute('aria-expanded', String(open));
   navigation?.toggleAttribute('data-open', open);
+  document.body.toggleAttribute('data-menu-open', open);
 });
 
-navigation?.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    menuToggle?.setAttribute('aria-expanded', 'false');
-    navigation.removeAttribute('data-open');
-  });
-});
+navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeNavigation));
+
+const sectionLinks = [...(navigation?.querySelectorAll<HTMLAnchorElement>('a') ?? [])]
+  .map((link) => ({ link, url: new URL(link.href) }))
+  .filter(({ url }) => url.pathname === window.location.pathname && url.hash);
+
+const sectionById = new Map(
+  sectionLinks
+    .map(({ link, url }) => {
+      const section = document.querySelector<HTMLElement>(url.hash);
+      return section ? [section.id, { link, section }] as const : null;
+    })
+    .filter((entry): entry is NonNullable<typeof entry> => entry !== null),
+);
+
+if (sectionById.size > 0) {
+  const setActiveSection = (id: string) => {
+    sectionById.forEach(({ link }, sectionId) => {
+      if (sectionId === id) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  const navigationObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (visible?.target.id) setActiveSection(visible.target.id);
+  }, { rootMargin: '-18% 0px -62% 0px', threshold: [0, .2, .6] });
+
+  sectionById.forEach(({ section }) => navigationObserver.observe(section));
+}
 
 const filterButtons = document.querySelectorAll<HTMLButtonElement>('[data-project-filter]');
 const projectCards = document.querySelectorAll<HTMLElement>('[data-project-card]');
+const emptyState = document.querySelector<HTMLElement>('[data-project-empty]');
 
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const category = button.dataset.projectFilter;
+    let visible = 0;
+
     filterButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
     projectCards.forEach((card) => {
-      card.hidden = category !== 'Todos' && card.dataset.category !== category;
+      const hidden = category !== 'Todos' && card.dataset.category !== category;
+      card.hidden = hidden;
+      if (!hidden) visible += 1;
     });
+    if (emptyState) emptyState.hidden = visible !== 0;
   });
 });
 
@@ -95,7 +121,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       entry.target.setAttribute('data-visible', '');
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.12 });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
 
   document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element));
 }

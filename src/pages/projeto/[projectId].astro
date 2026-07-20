@@ -1,78 +1,107 @@
 ---
-import { site } from '@/config/site';
+import { publishedCaseStudyIds } from '@/data/projectCatalog';
 import { projects, type Project } from '@/data/projects';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { projectCategory, projectImage } from '@/utils/projects';
+import { projectCategory, projectGallery, projectImage } from '@/utils/projects';
 
 export function getStaticPaths() {
-  return projects.map((project) => ({ params: { projectId: project.id }, props: { project } }));
+  return projects
+    .filter((project) => publishedCaseStudyIds.includes(project.id as (typeof publishedCaseStudyIds)[number]))
+    .map((project) => ({ params: { projectId: project.id }, props: { project } }));
 }
 
 interface Props { project: Project }
 const { project } = Astro.props as Props;
 const { detailed } = project;
+const gallery = projectGallery(project);
+const imageDimensions = project.id === 'neo-constrictor'
+  ? { width: 2504, height: 1186 }
+  : { width: 1600, height: 1000 };
 const links = [
   project.liveUrl && ['Ver site', project.liveUrl],
   project.demoUrl && ['Ver demo', project.demoUrl],
-  project.githubUrl && [project.privateProject ? 'Repositório privado' : 'Ver GitHub', project.githubUrl],
+  project.githubUrl && [project.privateProject ? 'Repositório' : 'GitHub', project.githubUrl],
   project.backendUrl && ['Backend', project.backendUrl],
 ].filter(Boolean) as [string, string][];
+const publishedProjects = publishedCaseStudyIds
+  .map((id) => projects.find((item) => item.id === id))
+  .filter((item): item is Project => item !== undefined);
+const currentIndex = publishedProjects.findIndex((item) => item.id === project.id);
+const nextProject = publishedProjects[(currentIndex + 1) % publishedProjects.length];
 ---
 
 <BaseLayout title={project.title} description={project.description} image={projectImage(project)}>
   <article class="case-study">
-    <header class="case-hero section">
-      <div class="shell">
-        <a class="back-link" href="/projetos">← Todos os projetos</a>
-        <div class="case-heading" data-reveal>
-          <div>
-            <p class="eyebrow">{projectCategory(project)}</p>
-            <h1>{project.title}</h1>
-            <p class="page-intro">{project.description}</p>
-          </div>
-          <dl class="case-facts">
-            <div><dt>Status</dt><dd>{project.status}</dd></div>
-            <div><dt>Atuação</dt><dd>{detailed.overview.role}</dd></div>
-          </dl>
-        </div>
-        <figure class="case-cover" data-reveal>
-          <img src={projectImage(project)} alt={`Tela do projeto ${project.title}`} width="1600" height="1000" loading="eager" fetchpriority="high" />
-        </figure>
+    <header class="case-hero">
+      <div class="case-shell case-hero__nav" data-reveal>
+        <a href="/projetos"><span aria-hidden="true">←</span> Projetos</a>
+        <span>Estudo de caso</span>
       </div>
+      <div class="case-shell case-hero__content" data-reveal>
+        <p class="case-hero__category">{projectCategory(project)}</p>
+        <h1>{project.title}</h1>
+        <p class="case-hero__intro">{project.description}</p>
+        <div class="case-hero__actions">
+          {links.slice(0, 2).map(([label, href]) => (
+            <a class="case-action" href={href} target="_blank" rel="noreferrer">{label} <span aria-hidden="true">↗</span></a>
+          ))}
+        </div>
+      </div>
+      <dl class="case-shell case-facts" data-reveal>
+        <div><dt>Status</dt><dd>{project.status}</dd></div>
+        <div><dt>Atuação</dt><dd>{detailed.overview.role}</dd></div>
+        <div><dt>Stack principal</dt><dd>{project.tags.slice(0, 4).join(', ')}</dd></div>
+      </dl>
     </header>
 
+    <figure class="case-shell case-cover" data-reveal>
+      <img src={projectImage(project)} alt={`Interface do projeto ${project.title}`} width={imageDimensions.width} height={imageDimensions.height} loading="eager" fetchpriority="high" />
+    </figure>
+
     {detailed.summary && (
-      <section class="section-tight case-summary" aria-label="Resumo do projeto">
-        <div class="shell summary-grid">
-          <article data-reveal><h2>O produto</h2><p>{detailed.summary.what}</p></article>
-          <article data-reveal><h2>Para quem</h2><p>{detailed.summary.audience}</p></article>
-          <article data-reveal><h2>Valor</h2><p>{detailed.summary.value}</p></article>
+      <section class="case-section case-summary" aria-labelledby="summary-title">
+        <div class="case-shell">
+          <header class="case-section__heading" data-reveal>
+            <h2 id="summary-title">Visão geral</h2>
+          </header>
+          <div class="case-summary__grid">
+            <article data-reveal><span>O produto</span><p>{detailed.summary.what}</p></article>
+            <article data-reveal><span>Para quem</span><p>{detailed.summary.audience}</p></article>
+            <article data-reveal><span>Valor</span><p>{detailed.summary.value}</p></article>
+          </div>
         </div>
       </section>
     )}
 
-    <section class="section case-narrative">
-      <div class="shell narrative-grid">
-        <div class="sticky-heading" data-reveal>
-          <h2>Problema e resposta</h2>
-          <ul class="tag-list">{project.tags.map((tag) => <li>{tag}</li>)}</ul>
-        </div>
-        <div class="narrative-copy">
+    <section class="case-section case-story" aria-labelledby="story-title">
+      <div class="case-shell case-story__layout">
+        <header class="case-section__heading" data-reveal>
+          <h2 id="story-title">Problema e resposta</h2>
+          <p>As decisões técnicas partiram do contexto operacional do produto.</p>
+        </header>
+        <div class="case-story__copy">
           <article data-reveal><h3>O problema</h3><p>{detailed.overview.problem}</p></article>
           <article data-reveal><h3>A solução</h3><p>{detailed.overview.solution}</p></article>
-          {detailed.context && <article data-reveal><h3>Contexto</h3><p>{detailed.context.problem}</p><p>{detailed.context.motivation}</p></article>}
+          {detailed.context && (
+            <article class="case-story__context" data-reveal><h3>O contexto</h3><p>{detailed.context.problem}</p><p>{detailed.context.motivation}</p></article>
+          )}
         </div>
       </div>
     </section>
 
-    <section class="section architecture-section" aria-labelledby="architecture-title">
-      <div class="shell">
-        <div class="section-heading" data-reveal><div><h2 id="architecture-title">Arquitetura aplicada</h2><p>Tecnologias organizadas pela responsabilidade que exercem no produto.</p></div></div>
+    <section class="case-section case-architecture" aria-labelledby="architecture-title">
+      <div class="case-shell">
+        <header class="case-section__heading" data-reveal>
+          <h2 id="architecture-title">Arquitetura</h2>
+          <p>Responsabilidades explícitas, contratos claros e tecnologia escolhida pelo papel que cumpre.</p>
+        </header>
         <div class="architecture-grid">
           {detailed.architecture.map((group) => (
             <article data-reveal>
               <h3>{group.category}</h3>
-              <ul>{group.technologies.map((technology) => <li><strong>{technology.name}</strong><p>{technology.description}</p></li>)}</ul>
+              <div class="architecture-list">
+                {group.technologies.map((technology) => <div><strong>{technology.name}</strong><p>{technology.description}</p></div>)}
+              </div>
             </article>
           ))}
         </div>
@@ -80,40 +109,49 @@ const links = [
     </section>
 
     {detailed.decisions && detailed.decisions.length > 0 && (
-      <section class="section-tight decision-section" aria-labelledby="decision-title">
-        <div class="shell decision-layout">
-          <h2 id="decision-title" data-reveal>Decisões relevantes</h2>
-          <div>{detailed.decisions.map((decision) => <article data-reveal><h3>{decision.title}</h3><p>{decision.description}</p></article>)}</div>
+      <section class="case-section case-decisions" aria-labelledby="decisions-title">
+        <div class="case-shell">
+          <header class="case-section__heading" data-reveal>
+            <h2 id="decisions-title">Decisões de produto</h2>
+          </header>
+          <div class="decision-grid">
+            {detailed.decisions.map((decision) => <article data-reveal><h3>{decision.title}</h3><p>{decision.description}</p></article>)}
+          </div>
         </div>
       </section>
     )}
 
-    <section class="section outcomes-section" aria-labelledby="outcomes-title">
-      <div class="shell">
-        <h2 id="outcomes-title" data-reveal>O que foi entregue</h2>
-        <div class="outcome-grid">
+    <section class="case-section case-output" aria-labelledby="output-title">
+      <div class="case-shell">
+        <header class="case-section__heading" data-reveal>
+          <h2 id="output-title">Entrega</h2>
+          <p>As capacidades que chegaram à superfície do produto.</p>
+        </header>
+        <div class="output-grid">
           {detailed.features.map((feature) => <article data-reveal><h3>{feature.title}</h3><p>{feature.description}</p></article>)}
         </div>
       </div>
     </section>
 
-    <section class="case-links section-tight">
-      <div class="shell case-links-grid" data-reveal>
-        <div><h2>Links e acesso</h2><p>Superfícies públicas e materiais disponíveis para este projeto.</p></div>
-        <div class="button-row">
-          {links.length > 0
-            ? links.map(([label, href]) => <a class="button button-secondary" href={href} target="_blank" rel="noreferrer">{label} ↗</a>)
-            : <p>Este projeto não possui uma superfície pública aberta no momento.</p>}
+    {gallery.length > 0 && (
+      <section class="case-section case-gallery" aria-labelledby="gallery-title">
+        <div class="case-shell">
+          <header class="case-section__heading" data-reveal>
+            <h2 id="gallery-title">Interface em uso</h2>
+          </header>
+          {gallery.map((image) => (
+            <figure data-reveal><img src={image} alt={`Detalhe da interface de ${project.title}`} width={imageDimensions.width} height={imageDimensions.height} loading="lazy" /></figure>
+          ))}
         </div>
-      </div>
-    </section>
+      </section>
+    )}
 
-    <section class="contact-band">
-      <div class="shell contact-band-grid" data-reveal>
-        <h2>Precisa construir algo com esse nível de cuidado?</h2>
-        <p>Conte o problema e o contexto. A conversa começa pela decisão certa, não pela ferramenta.</p>
-        <a class="button" href={site.links.whatsapp} target="_blank" rel="noreferrer">Falar comigo ↗</a>
-      </div>
+    <section class="case-next">
+      <a class="case-shell" href={`/projeto/${nextProject.id}`} data-reveal>
+        <span>Próximo projeto</span>
+        <strong>{nextProject.title}</strong>
+        <i aria-hidden="true">↗</i>
+      </a>
     </section>
   </article>
 </BaseLayout>

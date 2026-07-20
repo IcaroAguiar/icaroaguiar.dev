@@ -1,38 +1,50 @@
 ---
-import { navigation, site } from '@/config/site';
+import { site } from '@/config/site';
 
 const pathname = Astro.url.pathname;
+const anchor = (id: string) => pathname === '/' ? `#${id}` : `/#${id}`;
 ---
 
-<header class="site-header" data-header>
-  <div class="shell header-inner">
-    <a class="brand" href="/" aria-label="Ícaro Aguiar, início">
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-identity" href="/" aria-label="Ícaro Aguiar, início" data-label-pt="Ícaro Aguiar, início" data-label-en="Ícaro Aguiar, home">
       <strong>Ícaro Aguiar</strong>
-      <span data-copy="role">engenheiro full-stack</span>
+      <span data-copy-pt="Engenheiro de software" data-copy-en="Software engineer">Engenheiro de software</span>
     </a>
 
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle>
-      <span class="sr-only">Abrir menu</span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </button>
-
     <nav id="primary-navigation" class="primary-nav" aria-label="Navegação principal" data-navigation>
-      {navigation.map((item) => (
-        <a href={item.href} aria-current={pathname.startsWith(item.href) ? 'page' : undefined} data-copy-pt={item.label} data-copy-en={item.labelEn}>
-          {item.label}
-        </a>
-      ))}
+      <a href={anchor('sobre')} data-copy-pt="Sobre" data-copy-en="About">Sobre</a>
+      <a href={anchor('projetos')} data-copy-pt="Projetos" data-copy-en="Projects">Projetos</a>
+      <a href={anchor('experiencia')} data-copy-pt="Experiência" data-copy-en="Experience">Experiência</a>
+      <a href={anchor('stack')}>Stack</a>
+      <a href={anchor('github')}>GitHub</a>
+      <a class="primary-nav__cta" href={site.links.whatsapp} target="_blank" rel="noreferrer" data-copy-pt="Falar comigo ↗" data-copy-en="Let's talk ↗">Falar comigo ↗</a>
     </nav>
 
-    <div class="header-actions">
-      <button class="icon-button" type="button" aria-label="Alternar tema" data-theme-toggle>
-        <span aria-hidden="true" data-theme-icon>◐</span>
-      </button>
-      <button class="language-button" type="button" aria-label="Mudar idioma" data-language-toggle>EN</button>
-      <a class="button button-compact" href={site.links.whatsapp} target="_blank" rel="noreferrer" data-copy="contact">
-        Falar comigo <span aria-hidden="true">↗</span>
+    <div class="header-tools">
+      <a class="header-cta" href={site.links.whatsapp} target="_blank" rel="noreferrer">
+        <span data-copy-pt="Falar comigo" data-copy-en="Let's talk">Falar comigo</span><i aria-hidden="true">↗</i>
       </a>
+      <button
+        class="header-tool language-toggle"
+        type="button"
+        aria-label="Mudar idioma para inglês"
+        data-label-pt="Mudar idioma para inglês"
+        data-label-en="Switch language to Portuguese"
+        data-language-toggle
+      >EN</button>
+      <button
+        class="header-tool theme-toggle"
+        type="button"
+        aria-label="Usar tema claro"
+        data-theme-toggle
+      >
+        <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.25"></circle><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"></path></svg>
+        <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 15.2A8.3 8.3 0 0 1 8.8 4a8.3 8.3 0 1 0 11.2 11.2Z"></path></svg>
+      </button>
+      <button class="header-tool menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle>
+        <span class="sr-only" data-copy-pt="Abrir menu" data-copy-en="Open menu">Abrir menu</span><i aria-hidden="true"></i>
+      </button>
     </div>
   </div>
 </header>

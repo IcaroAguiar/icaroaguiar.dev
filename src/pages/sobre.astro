@@ -6,83 +6,107 @@ import { education } from '@/data/education';
 import { experiences } from '@/data/experiences';
 import { skills } from '@/data/skills';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-
-const principles = [
-  ['Contexto antes da solução', 'Produto, domínio e operação orientam a tecnologia.'],
-  ['Arquitetura que aparece no uso', 'Contrato, dado, fluxo e interface precisam contar a mesma história.'],
-  ['Entrega que sustenta evolução', 'Qualidade, observabilidade e documentação fazem parte do produto.'],
-];
 ---
 
 <BaseLayout
   title="Sobre"
-  description="Conheça a trajetória, o método de trabalho e o repertório técnico de Ícaro Aguiar, engenheiro full-stack orientado a produto."
+  description="Trajetória, princípios e repertório técnico de Ícaro Aguiar, engenheiro de software."
 >
-  <section class="page-hero section">
-    <div class="shell about-hero-grid">
+  <section class="inner-hero about-hero">
+    <div class="shell inner-hero__meta" data-reveal>
+      <span>Sobre</span><span>Desde 2021</span><span>Salvador, Bahia</span>
+    </div>
+    <div class="shell about-hero__grid">
       <div data-reveal>
-        <p class="eyebrow">Sobre meu trabalho</p>
-        <h1>Engenharia com contexto, autoria e responsabilidade.</h1>
-        <p class="page-intro">
-          Atuo entre arquitetura, produto e interface para colocar sistemas reais em produção e mantê-los compreensíveis depois da entrega.
-        </p>
-        <div class="button-row">
-          <a class="button" href={site.links.whatsapp} target="_blank" rel="noreferrer">Falar comigo ↗</a>
-          <a class="text-link" href={site.links.resume} download>Baixar currículo</a>
-        </div>
+        <p class="kicker">Perfil</p>
+        <h1>Do produto à operação.</h1>
       </div>
       <figure class="about-portrait" data-reveal>
-        <Image src={profileImage} alt="Retrato de Ícaro Aguiar" widths={[480, 720, 960]} sizes="(min-width: 900px) 38vw, 90vw" loading="eager" />
+        <Image
+          src={profileImage}
+          alt="Retrato de Ícaro Aguiar"
+          widths={[560, 840, 1120]}
+          sizes="(min-width: 900px) 40vw, 92vw"
+          loading="eager"
+        />
+        <figcaption>Ícaro Aguiar, engenheiro de software.</figcaption>
       </figure>
     </div>
   </section>
 
-  <section class="section-tight">
-    <div class="shell principle-row" data-reveal>
-      {principles.map(([title, description]) => (
-        <article><h2>{title}</h2><p>{description}</p></article>
+  <section class="section about-statement">
+    <div class="shell about-statement__grid">
+      <p class="kicker" data-reveal>Minha abordagem</p>
+      <div class="statement-copy" data-reveal>
+        <p class="statement-copy__lead">
+          Gosto de trabalhar onde produto e engenharia se encontram: quando uma regra difícil precisa virar uma experiência simples e uma base sustentável.
+        </p>
+        <div class="statement-copy__columns">
+          <p>
+            Atuo de ponta a ponta, da modelagem do domínio à interface, passando por APIs, dados, integrações, automação e infraestrutura. Essa amplitude não substitui profundidade. Ela ajuda a enxergar o sistema inteiro e tomar decisões melhores.
+          </p>
+          <p>
+            Minha régua é concreta: o produto precisa ser compreensível para quem usa, sustentável para quem mantém e observável para quem opera. Tecnologia entra como ferramenta de decisão, não como decoração.
+          </p>
+        </div>
+        <div class="about-actions">
+          <a class="action-link action-link--solid" href={site.links.whatsapp} target="_blank" rel="noreferrer">Conversar comigo <span>↗</span></a>
+          <a class="action-link" href={site.links.resume} download>Currículo completo <span>↓</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section experience-section" aria-labelledby="experience-title">
+    <div class="shell section-lead" data-reveal>
+      <p class="kicker">Trajetória</p>
+      <h2 id="experience-title">Experiência construída em diferentes contextos.</h2>
+    </div>
+    <div class="shell experience-ledger">
+      {experiences.map((experience) => (
+        <article data-reveal>
+          <div class="experience-ledger__heading">
+            <span>{experience.period}</span>
+            <h3>{experience.company}</h3>
+            <p>{experience.role}</p>
+          </div>
+          <ul>{experience.tasks.map((task) => <li>{task}</li>)}</ul>
+        </article>
       ))}
     </div>
   </section>
 
-  <section class="section" aria-labelledby="experience-title">
-    <div class="shell experience-layout">
-      <div class="sticky-heading" data-reveal>
-        <h2 id="experience-title">Experiência conectada por produto.</h2>
-        <p>Produto próprio, consultoria, sistemas corporativos e educação técnica formam o mesmo repertório.</p>
+  <section class="section toolkit-section" aria-labelledby="toolkit-title">
+    <div class="shell toolkit-layout">
+      <div class="toolkit-heading" data-reveal>
+        <p class="kicker kicker--inverse">Repertório</p>
+        <h2 id="toolkit-title">Ferramentas seguem o problema.</h2>
+        <p>O stack muda. Os critérios de clareza, confiabilidade e manutenção permanecem.</p>
       </div>
-      <div class="experience-list">
-        {experiences.map((experience) => (
+      <div class="toolkit-groups">
+        {Object.entries(skills).map(([category, items]) => (
           <article data-reveal>
-            <div><strong>{experience.company}</strong><h3>{experience.role}</h3></div>
-            <div><span>{experience.period}</span><ul>{experience.tasks.map((task) => <li>{task}</li>)}</ul></div>
+            <h3>{category}</h3>
+            <ul>{items.map((item) => <li>{item}</li>)}</ul>
           </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section skills-section" aria-labelledby="skills-title">
-    <div class="shell">
-      <div class="section-heading" data-reveal>
-        <div><h2 id="skills-title">Ferramentas seguem a arquitetura.</h2><p>O stack muda conforme o problema. Estes são os recursos que aparecem com mais frequência no trabalho.</p></div>
-      </div>
-      <div class="skill-groups">
-        {Object.entries(skills).map(([category, items]) => (
-          <article data-reveal><h3>{category}</h3><ul>{items.map((item) => <li>{item}</li>)}</ul></article>
-        ))}
-      </div>
+  <section class="section education-section" aria-labelledby="education-title">
+    <div class="shell section-lead section-lead--compact" data-reveal>
+      <p class="kicker">Formação</p>
+      <h2 id="education-title">Aprendizado contínuo, dentro e fora da sala.</h2>
     </div>
-  </section>
-
-  <section class="section-tight education-section" aria-labelledby="education-title">
-    <div class="shell">
-      <h2 id="education-title" data-reveal>Formação</h2>
-      <div class="education-list">
-        {education.map((item) => (
-          <article data-reveal><div><strong>{item.course}</strong><p>{item.institution}</p></div><span>{item.status}</span></article>
-        ))}
-      </div>
+    <div class="shell education-ledger">
+      {education.map((item) => (
+        <article data-reveal>
+          <h3>{item.course}</h3>
+          <p>{item.institution}</p>
+          <span>{item.status}</span>
+        </article>
+      ))}
     </div>
   </section>
 </BaseLayout>
