@@ -4,7 +4,7 @@ export const site = {
   description:
     'Engenheiro de software. Arquitetura, interfaces e operação para transformar ideias complexas em software confiável.',
   url: 'https://icaroaguiar.dev',
-  email: 'icaroaguiar14@gmail.com',
+  email: 'icaroaguiar.dev@gmail.com',
   links: {
     github: 'https://github.com/IcaroAguiar',
     linkedin: 'https://www.linkedin.com/in/icaro-aguiar/',

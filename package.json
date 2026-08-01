@@ -2,6 +2,17 @@
   "name": "icaro-aguiar-portfolio",
   "version": "1.0.0",
   "private": true,
+  "description": "Portfolio pessoal e estudos de caso de Ícaro Aguiar (Astro).",
+  "homepage": "https://icaroaguiar.dev",
+  "bugs": {
+    "url": "https://github.com/IcaroAguiar/meu-portfolio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IcaroAguiar/meu-portfolio.git"
+  },
+  "license": "MIT",
+  "author": "Ícaro Aguiar <icaroaguiar.dev@gmail.com>",
   "type": "module",
   "packageManager": "pnpm@10.15.1",
   "engines": {

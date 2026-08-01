@@ -1,63 +1,68 @@
 # Ícaro Aguiar Portfolio
 
-Portfolio pessoal e estudos de caso de Ícaro Aguiar. O site é gerado como HTML estático com Astro 7.1 e usa JavaScript no cliente apenas para tema, idioma, navegação móvel, filtros e revelações progressivas.
+Site pessoal e estudos de caso de [Ícaro Aguiar](https://icaroaguiar.dev). HTML estático com Astro 7, TypeScript e CSS nativo.
+
+**Live:** https://icaroaguiar.dev
 
 ## Stack
 
-- Astro 7.1
-- TypeScript em modo estrito
-- CSS nativo com tokens semânticos
-- Formspree para o formulário de contato
-- Vercel para hospedagem estática
+- Astro 7.1 + TypeScript estrito
+- CSS com tokens semânticos
+- Formspree no formulário de contato
+- Deploy estático na Vercel
 
 ## Desenvolvimento
 
-Requer Node.js 22 ou superior e pnpm 10.
+Requer Node.js 22+ e pnpm 10.
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-O servidor local usa `http://localhost:4321` por padrão.
-
-## Verificação
+Servidor local: `http://localhost:4321`.
 
 ```bash
 pnpm check
 pnpm build
 ```
 
-O build estático é gerado em `dist/`.
+O build sai em `dist/`.
 
 ## Estrutura
 
 ```text
 src/
-├── assets/       # Imagens processadas pelo Astro
-├── components/   # Módulos visuais compartilhados
-├── config/       # Identidade, links e navegação
-├── data/         # Conteúdo tipado do portfolio
-├── layouts/      # Documento HTML e SEO compartilhado
+├── assets/       # Imagens otimizadas pelo Astro
+├── components/   # UI compartilhada
+├── config/       # Identidade, e-mail, links e navegação
+├── data/         # Conteúdo tipado (cases, catálogo, skills, experiência)
+├── layouts/      # HTML base e SEO
 ├── pages/        # Rotas públicas
-├── scripts/      # Interações progressivas sem framework
-├── styles/       # Sistema visual global
-└── utils/        # Regras de apresentação dos projetos
+├── scripts/      # Tema, idioma, menu e revelações
+├── styles/       # Sistema visual
+└── utils/        # Destaques, categorias e galerias dos cases
 ```
 
 ## Rotas
 
-- `/`
+- `/` — perfil, destaques e stack
 - `/sobre`
-- `/projetos`
-- `/projeto/[projectId]`
+- `/projetos` — catálogo visual + ferramentas públicas
+- `/projeto/[projectId]` — estudos de caso publicados
 - `/contato`
 
-Os cases são prerenderizados a partir de `src/data/projects.ts`.
+## Conteúdo
 
-## Conteúdo e assets
+Há duas fontes complementares de projetos:
 
-- Atualize projetos em `src/data/projects.ts`.
-- Use `public/case-screenshots/<projeto>/` para screenshots que devem manter o nome original.
-- Use `src/assets/` para imagens importadas e otimizadas pelo Astro.
-- Nunca adicione credenciais ou dados privados ao repositório.
+- `src/data/projects.ts` — estudos de caso completos (prerender de `/projeto/[id]`)
+- `src/data/projectCatalog.ts` — listagem de `/projetos` e IDs publicados
+
+Screenshots ficam em `public/case-screenshots/<projeto>/`. Imagens importadas pelo Astro ficam em `src/assets/`.
+
+Identidade e contato: `src/config/site.ts`.
+
+## Licença
+
+MIT © Ícaro Aguiar

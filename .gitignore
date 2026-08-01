@@ -17,6 +17,9 @@
 .env*.local
 /.vercel/
 /.lazyweb/
+/.claude/
+/.playwright-cli/
+.lazyweb/
 
 # Logs
 *.log

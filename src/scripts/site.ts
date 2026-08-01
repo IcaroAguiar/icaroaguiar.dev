@@ -95,25 +95,6 @@ if (sectionById.size > 0) {
   sectionById.forEach(({ section }) => navigationObserver.observe(section));
 }
 
-const filterButtons = document.querySelectorAll<HTMLButtonElement>('[data-project-filter]');
-const projectCards = document.querySelectorAll<HTMLElement>('[data-project-card]');
-const emptyState = document.querySelector<HTMLElement>('[data-project-empty]');
-
-filterButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const category = button.dataset.projectFilter;
-    let visible = 0;
-
-    filterButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-    projectCards.forEach((card) => {
-      const hidden = category !== 'Todos' && card.dataset.category !== category;
-      card.hidden = hidden;
-      if (!hidden) visible += 1;
-    });
-    if (emptyState) emptyState.hidden = visible !== 0;
-  });
-});
-
 if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {

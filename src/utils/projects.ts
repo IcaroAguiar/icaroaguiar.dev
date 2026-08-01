@@ -1,34 +1,14 @@
 import type { Project } from '@/data/projects';
 
-export const featuredProjectIds = ['ascend', 'neo-constrictor'] as const;
+export const featuredProjectIds = ['ascend', 'neo-constrictor', 'palpitae'] as const;
 
-export const projectCategories = [
-  'Todos',
-  'Produtos',
-  'Web',
-  'Mobile',
-  'Backend',
-  'IA/Automação',
-  'Landing Pages',
-] as const;
+const landingPageIds = new Set(['rosana-site', 'kosmedico-lp', 'tatiane-aguiar']);
 
-export type ProjectCategory = (typeof projectCategories)[number];
-
-const landingPageIds = new Set([
-  'rosana-site',
-  'kosmedico-lp',
-  'picanhabrasil',
-  'daniele-landingpage',
-  'fixxcapital',
-  'star-agency-v2',
-  'tatiane-aguiar',
-]);
-
-export function projectCategory(project: Project): Exclude<ProjectCategory, 'Todos'> {
+export function projectCategory(project: Project): string {
   const tags = project.tags.map((tag) => tag.toLowerCase());
   const searchable = `${project.title} ${project.description}`.toLowerCase();
 
-  if (tags.includes('monorepo')) {
+  if (tags.includes('monorepo') || tags.includes('pwa') || project.id === 'palpitae') {
     return 'Produtos';
   }
 
@@ -44,7 +24,7 @@ export function projectCategory(project: Project): Exclude<ProjectCategory, 'Tod
     return 'IA/Automação';
   }
 
-  if (tags.some((tag) => ['api', 'backend', 'node', 'express'].some((value) => tag.includes(value)))) {
+  if (tags.some((tag) => ['api', 'backend', 'node', 'express', 'go'].some((value) => tag.includes(value)))) {
     return 'Backend';
   }
 
@@ -58,15 +38,16 @@ export function projectImage(project: Project) {
 const galleryByProject: Record<string, string[]> = {
   ascend: ['/case-screenshots/ascend/orders-dashboard-wide-2026.png'],
   'rosana-site': ['/case-screenshots/transmutar/screen-01.png'],
-  'bluefit-mvp': ['/case-screenshots/bluefit-mvp/screen-01.png'],
-  picanhabrasil: ['/case-screenshots/picanha-brasil/screen-01.png'],
-  'daniele-landingpage': ['/case-screenshots/daniele-wigstrom/screen-01.png'],
-  'star-agency-v2': ['/case-screenshots/star-agency/screen-01.png'],
   'tatiane-aguiar': ['/case-screenshots/aguiar-ambiental/screen-01.png'],
-  'financas-api': ['/case-screenshots/neo-constrictor/screen-01.png'],
   'neo-constrictor': [
     '/case-screenshots/neo-constrictor/project-dossier-2026.png',
     '/case-screenshots/neo-constrictor/project-timeline-2026.png',
+  ],
+  palpitae: [
+    '/case-screenshots/palpitae/03-dashboard.webp',
+    '/case-screenshots/palpitae/04-matches.webp',
+    '/case-screenshots/palpitae/05-match-detail.webp',
+    '/case-screenshots/palpitae/08-ranking.webp',
   ],
 };
 

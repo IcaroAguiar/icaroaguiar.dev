@@ -56,6 +56,23 @@
 .project-detail__footer > a { display: inline-flex; min-height: 46px; align-items: center; border-bottom: 1px solid currentColor; font-size: .84rem; font-weight: 650; white-space: nowrap; }
 .project-detail__footer > a:hover { color: var(--accent); }
 
+.open-source-note {
+  width: var(--content);
+  margin: 28px auto 0;
+  max-width: 62ch;
+  color: var(--ink-soft);
+  font-size: .92rem;
+  line-height: 1.6;
+}
+.open-source-note a {
+  color: var(--ink);
+  font-weight: 620;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.open-source-note a:hover { color: var(--accent); }
+
 .experience-rows summary { grid-template-columns: minmax(180px, 220px) 1fr 44px; }
 .experience-rows summary > span:first-child { color: var(--ink-faint); font-family: var(--font-mono); font-size: .74rem; text-transform: uppercase; }
 .experience-rows summary > span:nth-child(2) { display: flex; flex-direction: column; }
