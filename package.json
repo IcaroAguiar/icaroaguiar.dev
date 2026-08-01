@@ -5,11 +5,11 @@
   "description": "Portfolio pessoal e estudos de caso de Ícaro Aguiar (Astro).",
   "homepage": "https://icaroaguiar.dev",
   "bugs": {
-    "url": "https://github.com/IcaroAguiar/meu-portfolio/issues"
+    "url": "https://github.com/IcaroAguiar/icaroaguiar.dev/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IcaroAguiar/meu-portfolio.git"
+    "url": "git+https://github.com/IcaroAguiar/icaroaguiar.dev.git"
   },
   "license": "MIT",
   "author": "Ícaro Aguiar <icaroaguiar.dev@gmail.com>",
