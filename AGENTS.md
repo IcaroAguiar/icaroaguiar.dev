@@ -15,7 +15,7 @@ All commands run from the repo root. Standard scripts are defined in `package.js
 
 ### Non-obvious notes
 
-- Requires Node.js `>=22` and pnpm `10.15.1` (both are pre-provisioned by the update script / environment).
+- Requires Node.js `>=22.23.4` and pnpm `10.15.1` (both are pre-provisioned by the update script / environment).
 - `pnpm install` prints a warning that the `esbuild` build script is ignored. This is expected and harmless: the build, type check, and dev server all work correctly because `esbuild` ships its platform binary via optional dependencies. Do NOT run the interactive `pnpm approve-builds`.
 - No environment variables or `.env` files are needed. The site uses no `import.meta.env` / `process.env` values.
 - Two external calls happen only in the browser and both degrade gracefully, so they never block local testing:
