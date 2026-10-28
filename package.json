@@ -16,7 +16,7 @@
   "type": "module",
   "packageManager": "pnpm@10.15.1",
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.23.4"
   },
   "scripts": {
     "dev": "astro dev",
@@ -27,12 +27,12 @@
   "dependencies": {
     "@fontsource-variable/manrope": "^5.3.0",
     "@fontsource/ibm-plex-mono": "^5.3.0",
-    "astro": "^7.1.0",
+    "astro": "^7.4.2",
     "github-contrib-graph": "3.1.1",
-    "sharp": "^0.35.3"
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.12",
     "typescript": "^5.9.3"
   }
 }

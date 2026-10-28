@@ -13,7 +13,7 @@ Site pessoal e estudos de caso de [Ícaro Aguiar](https://icaroaguiar.dev). HTML
 
 ## Desenvolvimento
 
-Requer Node.js 22+ e pnpm 10.
+Requer Node.js 22.23.4+ e pnpm 10.
 
 ```bash
 pnpm install
