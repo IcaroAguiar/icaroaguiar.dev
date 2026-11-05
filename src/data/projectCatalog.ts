@@ -40,7 +40,7 @@ export const engineeringProjects: CatalogProject[] = [
     href: '/projeto/neo-constrictor',
     linkPt: 'Ler estudo de caso',
     linkEn: 'Read case study',
-    image: '/case-screenshots/neo-constrictor/projects-dashboard-2026.png',
+    image: '/case-screenshots/neo-constrictor/cover.png',
   },
   {
     id: 'tetra-educacao',
