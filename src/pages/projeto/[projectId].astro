@@ -14,9 +14,7 @@ interface Props { project: Project }
 const { project } = Astro.props as Props;
 const { detailed } = project;
 const gallery = projectGallery(project);
-const imageDimensions = project.id === 'neo-constrictor'
-  ? { width: 2504, height: 1186 }
-  : { width: 1600, height: 1000 };
+const imageDimensions = { width: 1600, height: 1000 };
 const links = [
   project.liveUrl && ['Ver site', project.liveUrl],
   project.demoUrl && ['Ver demo', project.demoUrl],
