@@ -40,8 +40,8 @@ const galleryByProject: Record<string, string[]> = {
   'rosana-site': ['/case-screenshots/transmutar/screen-01.png'],
   'tatiane-aguiar': ['/case-screenshots/aguiar-ambiental/screen-01.png'],
   'neo-constrictor': [
-    '/case-screenshots/neo-constrictor/project-dossier-2026.png',
-    '/case-screenshots/neo-constrictor/project-timeline-2026.png',
+    '/case-screenshots/neo-constrictor/cover.png',
+    '/case-screenshots/neo-constrictor/screen-01.png',
   ],
   palpitae: [
     '/case-screenshots/palpitae/03-dashboard.webp',

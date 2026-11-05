@@ -619,8 +619,7 @@ export const projects: Project[] = [
     description:
       'Plataforma auditável de workflow documental e tramitação interinstitucional, construída em monorepo com API NestJS, área do pesquisador e painel administrativo.',
     tags: ['Monorepo', 'NestJS', 'React', 'Vite', 'Prisma', 'Zod', 'Workflow'],
-    image: '/case-screenshots/neo-constrictor/projects-workspace-2026.png',
-    githubUrl: 'https://github.com/INPA-Constrictor/neo-constrictor',
+    image: '/case-screenshots/neo-constrictor/cover.png',
     featured: true,
     status: 'Repositório Privado',
     privateProject: true,
