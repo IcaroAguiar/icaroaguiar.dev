@@ -1,0 +1,27 @@
+---
+import Icon from '@/components/Icon.astro';
+import type { ClientProject } from '@/data/projectCatalog';
+import { copy } from '@/utils/copy';
+
+interface Props {
+  sites: ClientProject[];
+}
+
+const { sites } = Astro.props;
+---
+
+<div class="card idx">
+  <div class="card-h"><Icon name="globe" /><span data-copy-pt="Todos os sites no ar" data-copy-en="All live websites">Todos os sites no ar</span></div>
+  <ul>
+    {sites.map((site) => (
+      <li>
+        <a href={site.liveUrl ?? site.href} target="_blank" rel="noreferrer">
+          <b>{site.title}</b>
+          <span {...copy({ pt: site.categoryPt, en: site.categoryEn })}>{site.categoryPt}</span>
+          <span class="lang">{site.language}</span>
+          <i aria-hidden="true">↗</i>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>

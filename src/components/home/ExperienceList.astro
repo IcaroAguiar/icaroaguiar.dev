@@ -1,0 +1,27 @@
+---
+import type { Experience } from '@/data/experiences';
+import { copy } from '@/utils/copy';
+
+interface Props {
+  experiences: Experience[];
+}
+
+const { experiences } = Astro.props;
+---
+
+<div class="card">
+  <ol class="xp">
+    {experiences.map((item) => (
+      <li>
+        <span class="when" {...copy({ pt: item.years, en: item.yearsEn })}>{item.years}</span>
+        <div>
+          <h3><span {...copy({ pt: item.role, en: item.roleEn })}>{item.role}</span>{' '}<span class="co">· {item.company}</span></h3>
+          <p {...copy({ pt: item.summary, en: item.summaryEn })}>{item.summary}</p>
+        </div>
+        {item.current
+          ? <span class="tag now"><span class="dot"></span><span data-copy-pt="Atual" data-copy-en="Current">Atual</span></span>
+          : <span />}
+      </li>
+    ))}
+  </ol>
+</div>

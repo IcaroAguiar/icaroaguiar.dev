@@ -34,7 +34,7 @@ export const resumes = [
     id: 'fullstack-en',
     titlePt: 'Full stack',
     titleEn: 'Full stack',
-    detailPt: 'English · PDF · 2 páginas',
+    detailPt: 'English · PDF · 2 pages',
     detailEn: 'English · PDF · 2 pages',
     href: '/curriculo-icaro-aguiar-fullstack-en.pdf',
   },

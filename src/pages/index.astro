@@ -1,222 +1,65 @@
 ---
-import profileImage from '@/assets/perfil.jpg';
-import { Image } from 'astro:assets';
-import GithubGraph from '@/components/GithubGraph.astro';
+import AboutBento from '@/components/home/AboutBento.astro';
+import ContactCard from '@/components/home/ContactCard.astro';
+import CvCards from '@/components/home/CvCards.astro';
+import ExperienceList from '@/components/home/ExperienceList.astro';
+import Hero from '@/components/home/Hero.astro';
+import ProjectCard from '@/components/home/ProjectCard.astro';
+import ProjectFeature from '@/components/home/ProjectFeature.astro';
+import ProjectMini from '@/components/home/ProjectMini.astro';
+import SiteCard from '@/components/home/SiteCard.astro';
+import SitesIndex from '@/components/home/SitesIndex.astro';
+import { compactProjects, featuredProject, featuredSiteIds, productCard, sitesSubtitle, titles } from '@/data/home';
 import { experiences } from '@/data/experiences';
-import { projects } from '@/data/projects';
-import { skills } from '@/data/skills';
+import { clientProjects } from '@/data/projectCatalog';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { featuredProjectIds, projectCategory } from '@/utils/projects';
+import { copy } from '@/utils/copy';
 
-const selectedProjectIds = [...featuredProjectIds];
-const selectedProjects = selectedProjectIds
-  .map((id) => projects.find((project) => project.id === id))
-  .filter((project) => project !== undefined);
-
-const stackHighlights = [
-  ['TypeScript', 'typescript/typescript-original.svg'],
-  ['React', 'react/react-original.svg'],
-  ['Vite', 'vitejs/vitejs-original.svg'],
-  ['Next.js', 'nextjs/nextjs-original.svg'],
-  ['Node.js', 'nodejs/nodejs-original.svg'],
-  ['NestJS', 'nestjs/nestjs-original.svg'],
-  ['Go', 'go/go-original-wordmark.svg'],
-  ['.NET', 'dotnetcore/dotnetcore-original.svg'],
-  ['PostgreSQL', 'postgresql/postgresql-original.svg'],
-  ['Docker', 'docker/docker-original.svg'],
-  ['Playwright', 'playwright/playwright-original.svg'],
-  ['GitHub Actions', 'githubactions/githubactions-original.svg'],
-];
-
-const projectCopy: Record<string, { descriptionPt: string; descriptionEn: string; categoryEn: string; statusEn: string }> = {
-  ascend: {
-    descriptionPt: 'Plataforma financeira que reúne web, mobile e API em uma única operação.',
-    descriptionEn: 'Financial platform combining web, mobile, and API in one operation.',
-    categoryEn: 'Products',
-    statusEn: 'Evolving',
-  },
-  'neo-constrictor': {
-    descriptionPt: 'Sistema modular para pesquisa, automação e fluxos institucionais complexos.',
-    descriptionEn: 'Modular system for research, automation, and complex institutional workflows.',
-    categoryEn: 'Products',
-    statusEn: 'Private repository',
-  },
-  palpitae: {
-    descriptionPt: 'PWA de palpites para a Copa, com API em Go, ranking determinístico e open source.',
-    descriptionEn: 'World Cup prediction PWA with a Go API, deterministic ranking, and open source release.',
-    categoryEn: 'Products',
-    statusEn: 'Open source · archived',
-  },
-};
-
-const experienceCopy: Record<string, { roleEn: string; periodEn: string; tasksPt: string[]; tasksEn: string[] }> = {
-  'Tetra Educação': {
-    roleEn: 'Full-stack developer',
-    periodEn: 'January 2026 — Present',
-    tasksPt: ['Produtos web e mobile, integrações e sustentação.', 'React, TypeScript, Node.js, APIs e testes automatizados.'],
-    tasksEn: ['Web and mobile products, integrations, and maintenance.', 'React, TypeScript, Node.js, APIs, and automated testing.'],
-  },
-  'Star Agency': {
-    roleEn: 'Full-stack developer',
-    periodEn: 'September 2025 — Present',
-    tasksPt: ['Sites e sistemas full-stack para clientes reais.', 'Astro, React, TypeScript, APIs e infraestrutura.'],
-    tasksEn: ['Websites and full-stack systems for real clients.', 'Astro, React, TypeScript, APIs, and infrastructure.'],
-  },
-  'ATSD IT Solutions': {
-    roleEn: 'Software developer',
-    periodEn: 'June 2025 — January 2026',
-    tasksPt: ['Evolução de sistemas corporativos, backend, frontend e bancos de dados.'],
-    tasksEn: ['Evolution of corporate systems, backend, frontend, and databases.'],
-  },
-  'Oi S.A.': {
-    roleEn: 'Software development intern',
-    periodEn: 'April 2023 — April 2025',
-    tasksPt: ['Sistemas internos, APIs REST e integrações corporativas.'],
-    tasksEn: ['Internal systems, REST APIs, and enterprise integrations.'],
-  },
-};
-
-const skillCopy: Record<string, { categoryEn: string; itemsEn?: Record<string, string> }> = {
-  'Front-end': { categoryEn: 'Front-end' },
-  'Back-end e APIs': { categoryEn: 'Back-end and APIs' },
-  Dados: { categoryEn: 'Data' },
-  'Qualidade e entrega': {
-    categoryEn: 'Quality and delivery',
-    itemsEn: { 'Testes E2E': 'E2E testing' },
-  },
-  Infraestrutura: {
-    categoryEn: 'Infrastructure',
-    itemsEn: { Observabilidade: 'Observability' },
-  },
-  Arquitetura: {
-    categoryEn: 'Architecture',
-    itemsEn: {
-      'Arquitetura modular': 'Modular architecture',
-      'Contratos compartilhados': 'Shared contracts',
-      'Permissões contextuais': 'Contextual permissions',
-      Auditoria: 'Auditing',
-    },
-  },
-};
+const featuredSites = featuredSiteIds.map((id) => clientProjects.find((site) => site.id === id)!);
+const otherSites = clientProjects
+  .filter((site) => !featuredSiteIds.includes(site.id as (typeof featuredSiteIds)[number]))
+  .sort((a, b) => a.title.localeCompare(b.title, 'pt-BR'));
+const subtitle = sitesSubtitle(clientProjects.length);
 ---
 
 <BaseLayout>
-  <div class="portfolio-frame">
-    <section class="profile-hero" aria-labelledby="profile-title">
-      <div class="profile-grid">
-        <figure class="profile-photo" data-reveal>
-          <Image
-            src={profileImage}
-            alt="Ícaro Aguiar"
-            widths={[448, 672, 896]}
-            sizes="(max-width: 460px) calc(100vw - 22px), 300px"
-            loading="eager"
-          />
-        </figure>
-        <div class="profile-copy" data-reveal>
-          <p class="kicker" data-copy-pt="Engenheiro de software" data-copy-en="Software engineer">Engenheiro de software</p>
-          <h1 id="profile-title">Ícaro Aguiar.</h1>
-          <p data-copy-pt="Projeto e construo software claro, robusto e pronto para evoluir." data-copy-en="I design and build clear, robust software ready to evolve.">Projeto e construo software claro, robusto e pronto para evoluir.</p>
-          <span class="availability"><i aria-hidden="true"></i><span data-copy-pt="Disponível para projetos e oportunidades" data-copy-en="Available for projects and opportunities">Disponível para projetos e oportunidades</span></span>
-        </div>
+  <Hero />
+
+  <section class="c sec" id="projetos">
+    <h2 {...copy(titles.projects)}>{titles.projects.pt}</h2>
+    <ProjectFeature project={featuredProject} />
+    <div class="g2 products">
+      <ProjectCard project={productCard} />
+      <div class="stack-cards">
+        {compactProjects.map((project) => <ProjectMini project={project} />)}
       </div>
-    </section>
+    </div>
+    <div class="center"><a class="pill" href="/projetos" {...copy(titles.allProjects)}>{titles.allProjects.pt}</a></div>
+  </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
+  <section class="c sec" id="sites">
+    <h2 {...copy(titles.sites)}>{titles.sites.pt}</h2>
+    <p class="sub" {...copy(subtitle)}>{subtitle.pt}</p>
+    <div class="g3">{featuredSites.map((site) => <SiteCard site={site} />)}</div>
+    <SitesIndex sites={otherSites} />
+  </section>
 
-    <section id="sobre" class="portfolio-section about-panel">
-      <header class="section-title"><h2 data-copy-pt="Sobre" data-copy-en="About">Sobre</h2></header>
-      <div class="section-content about-copy">
-        <p class="about-lead" data-copy-pt="Sou Ícaro Aguiar, engenheiro de software. Trabalho com tecnologia desde 2021 e gosto de acompanhar um produto do primeiro desenho à operação." data-copy-en="I’m Ícaro Aguiar, a software engineer. I have worked in technology since 2021 and enjoy following a product from its first sketch to production.">Sou Ícaro Aguiar, engenheiro de software. Trabalho com tecnologia desde 2021 e gosto de acompanhar um produto do primeiro desenho à operação.</p>
-        <div class="about-details">
-          <p data-copy-pt="Hoje divido meu trabalho entre produtos educacionais, sistemas para clientes e projetos próprios. Minha trajetória também passa por telecomunicações e sistemas corporativos." data-copy-en="Today I split my work between educational products, client systems, and projects of my own. My background also includes telecommunications and enterprise software.">Hoje divido meu trabalho entre produtos educacionais, sistemas para clientes e projetos próprios. Minha trajetória também passa por telecomunicações e sistemas corporativos.</p>
-        </div>
-      </div>
-    </section>
+  <section class="c sec" id="experiencia">
+    <h2 {...copy(titles.experience)}>{titles.experience.pt}</h2>
+    <ExperienceList experiences={experiences} />
+  </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
+  <section class="c sec" id="sobre">
+    <h2 {...copy(titles.about)}>{titles.about.pt}</h2>
+    <AboutBento />
+  </section>
 
-    <section id="projetos" class="portfolio-section projects-panel">
-      <header class="section-title section-title--with-link">
-        <h2 data-copy-pt="Projetos" data-copy-en="Projects">Projetos</h2>
-        <a href="/projetos" data-copy-pt="Ver todos os projetos ↗" data-copy-en="View all projects ↗">Ver todos os projetos ↗</a>
-      </header>
-      <div class="project-accordion">
-        {selectedProjects.map((project, index) => {
-          const localized = projectCopy[project.id];
-          return (
-          <details>
-            <summary>
-              <span class="project-symbol" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-              <span class="project-summary-title"><strong>{project.title}</strong><small data-copy-pt={projectCategory(project)} data-copy-en={localized?.categoryEn ?? projectCategory(project)}>{projectCategory(project)}</small></span>
-              <span class="project-status" data-copy-pt={project.status} data-copy-en={localized?.statusEn ?? project.status}>{project.status}</span>
-              <i aria-hidden="true"></i>
-            </summary>
-            <div class="project-detail">
-              <p data-copy-pt={localized?.descriptionPt ?? project.description} data-copy-en={localized?.descriptionEn ?? project.description}>{localized?.descriptionPt ?? project.description}</p>
-              <div class="project-detail__footer">
-                <ul>{project.tags.slice(0, 4).map((tag) => <li>{tag}</li>)}</ul>
-                <a href={`/projeto/${project.id}`} data-copy-pt="Ver projeto ↗" data-copy-en="View project ↗">Ver projeto ↗</a>
-              </div>
-            </div>
-          </details>
-        )})}
-      </div>
-      <p class="open-source-note" data-reveal>
-        <span
-          data-copy-pt="Também mantenho ferramentas open source, como o catálogo"
-          data-copy-en="I also maintain open source tools, such as the"
-        >Também mantenho ferramentas open source, como o catálogo</span>{' '}
-        <a href="https://github.com/IcaroAguiar/agent-skills" target="_blank" rel="noreferrer">Agent Skills</a>
-        <span data-copy-pt=" — e outras em" data-copy-en=" catalogue — and more under"> — e outras em</span>{' '}
-        <a href="/projetos#ferramentas" data-copy-pt="Ferramentas públicas" data-copy-en="Public tools">Ferramentas públicas</a>.
-      </p>
-    </section>
+  <section class="c sec" id="curriculos">
+    <h2 {...copy(titles.resumes)}>{titles.resumes.pt}</h2>
+    <CvCards />
+  </section>
 
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <section id="experiencia" class="portfolio-section experience-panel">
-      <header class="section-title"><h2 data-copy-pt="Experiência" data-copy-en="Experience">Experiência</h2></header>
-      <div class="experience-rows">
-        {experiences.map((experience) => {
-          const localized = experienceCopy[experience.company];
-          return (
-          <details>
-            <summary>
-              <span data-copy-pt={experience.period} data-copy-en={localized?.periodEn ?? experience.period}>{experience.period}</span>
-              <span><strong>{experience.company}</strong><small data-copy-pt={experience.role} data-copy-en={localized?.roleEn ?? experience.role}>{experience.role}</small></span>
-              <i aria-hidden="true"></i>
-            </summary>
-            <ul>{(localized?.tasksPt ?? experience.tasks.slice(0, 2)).map((task, index) => <li data-copy-pt={task} data-copy-en={localized?.tasksEn[index] ?? task}>{task}</li>)}</ul>
-          </details>
-        )})}
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <section id="stack" class="portfolio-section stack-panel">
-      <header class="section-title"><h2>Stack</h2></header>
-      <div class="stack-highlights" aria-label="Tecnologias principais" data-label-pt="Tecnologias principais" data-label-en="Core technologies">
-        {stackHighlights.map(([name, icon]) => (
-          <div class="stack-tile" title={name}>
-            <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${icon}`} alt="" width="48" height="48" loading="lazy" />
-            <span>{name}</span>
-          </div>
-        ))}
-      </div>
-      <div class="stack-grid">
-        {Object.entries(skills).map(([category, items]) => (
-          <article>
-            <h3 data-copy-pt={category} data-copy-en={skillCopy[category]?.categoryEn ?? category}>{category}</h3>
-            <ul>{items.map((item) => <li data-copy-pt={item} data-copy-en={skillCopy[category]?.itemsEn?.[item] ?? item}>{item}</li>)}</ul>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true"></div>
-
-    <GithubGraph />
-  </div>
+  <section class="c sec" id="contato">
+    <ContactCard />
+  </section>
 </BaseLayout>
