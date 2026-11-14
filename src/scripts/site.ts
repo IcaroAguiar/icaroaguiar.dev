@@ -21,6 +21,10 @@ function setLanguage(language: Language) {
     image.alt = (language === 'pt' ? image.dataset.altPt : image.dataset.altEn) ?? '';
   });
 
+  document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-placeholder-pt][data-placeholder-en]').forEach((field) => {
+    field.placeholder = (language === 'pt' ? field.dataset.placeholderPt : field.dataset.placeholderEn) ?? '';
+  });
+
   document.querySelectorAll<HTMLAnchorElement>('[data-href-pt][data-href-en]').forEach((link) => {
     link.href = (language === 'pt' ? link.dataset.hrefPt : link.dataset.hrefEn) ?? link.href;
   });

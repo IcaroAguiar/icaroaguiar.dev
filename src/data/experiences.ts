@@ -3,12 +3,14 @@ export interface Experience {
   roleEn: string;
   company: string;
   period: string;
+  periodEn: string;
   years: string;
   yearsEn: string;
   current?: boolean;
   summary: string;
   summaryEn: string;
   tasks: string[];
+  tasksEn: string[];
 }
 
 export const experiences: Experience[] = [
@@ -17,6 +19,7 @@ export const experiences: Experience[] = [
     roleEn: 'Full-stack developer',
     company: 'Tetra Educação',
     period: 'jan/2026 – atual',
+    periodEn: 'Jan 2026 – present',
     years: '2026 — hoje',
     yearsEn: '2026 — present',
     current: true,
@@ -30,12 +33,19 @@ export const experiences: Experience[] = [
       'Central de suporte com agente de IA (servidor MCP) que atende o primeiro nível: verifica identidade, envia link de acesso e consulta contratos e certificados.',
       'Infraestrutura AWS em Terraform (ECS Fargate, RDS, WAF, S3, SQS/SES).',
     ],
+    tasksEn: [
+      'Main author of the NestJS services for identity (IAM), enrollments, products and notifications, and of the two React front ends (admin and student area) of a multi-tenant education platform in Brazil and Latin America.',
+      'End-to-end digital contracts: versioned templates, automatic issuing after an approved purchase, private PDF, signing with evidence and content locked until signed.',
+      'Support center with an AI agent (MCP server) that handles first-level requests: verifies identity, sends an access link and looks up contracts and certificates.',
+      'AWS infrastructure in Terraform (ECS Fargate, RDS, WAF, S3, SQS/SES).',
+    ],
   },
   {
     role: 'Desenvolvedor autônomo',
     roleEn: 'Freelance developer',
     company: 'Star Agency',
     period: 'set/2025 – atual',
+    periodEn: 'Sep 2025 – present',
     years: '2025 — hoje',
     yearsEn: '2025 — present',
     current: true,
@@ -48,12 +58,18 @@ export const experiences: Experience[] = [
       'Fixx CRM: funis, agenda com sincronização bidirecional com o Google Agenda, Google SSO e auditoria.',
       'Agents Platform: plataforma multiempresa de agentes de IA com WhatsApp, PostgreSQL/pgvector, BullMQ e controle de custo por agente.',
     ],
+    tasksEn: [
+      'About 17 websites and landing pages in Astro, Next.js and React from an in-house template.',
+      'Fixx CRM: funnels, scheduling with two-way sync with Google Calendar, Google SSO and auditing.',
+      'Agents Platform: multi-tenant AI agent platform with WhatsApp, PostgreSQL/pgvector, BullMQ and per-agent cost control.',
+    ],
   },
   {
     role: 'Desenvolvedor',
     roleEn: 'Developer',
     company: 'ATSD IT Solutions',
     period: 'jun/2025 – jan/2026',
+    periodEn: 'Jun 2025 – Jan 2026',
     years: '2025 — 2026',
     yearsEn: '2025 — 2026',
     summary:
@@ -65,12 +81,18 @@ export const experiences: Experience[] = [
       'APIs em C#/.NET para integração entre sistemas, com SQL Server e Oracle, e pipelines de CI/CD no Azure DevOps.',
       'Participação nas reuniões técnicas e de produto que definiram os sistemas novos.',
     ],
+    tasksEn: [
+      'One of the main people responsible for modernizing legacy accounting and logistics systems.',
+      'C#/.NET APIs for integration between systems, with SQL Server and Oracle, and CI/CD pipelines in Azure DevOps.',
+      'Took part in the technical and product meetings that defined the new systems.',
+    ],
   },
   {
     role: 'Estagiário e aprendiz',
     roleEn: 'Intern and apprentice',
     company: 'Oi S.A.',
     period: 'abr/2022 – abr/2025',
+    periodEn: 'Apr 2022 – Apr 2025',
     years: '2022 — 2025',
     yearsEn: '2022 — 2025',
     summary:
@@ -80,6 +102,10 @@ export const experiences: Experience[] = [
     tasks: [
       'Estágio de desenvolvimento (abr/2023 – abr/2025): sistemas internos com React e Node.js, manutenção e otimização de APIs REST, ambientes SOA e suporte avançado à operação de TI.',
       'Aprendiz técnico de programação (abr/2022 – fev/2023): sistemas internos com Angular e Python, automação em Linux e ambientes SOA.',
+    ],
+    tasksEn: [
+      'Development internship (Apr 2023 – Apr 2025): internal systems with React and Node.js, maintenance and optimization of REST APIs, SOA environments and advanced IT operations support.',
+      'Technical programming apprentice (Apr 2022 – Feb 2023): internal systems with Angular and Python, Linux automation and SOA environments.',
     ],
   },
 ];
