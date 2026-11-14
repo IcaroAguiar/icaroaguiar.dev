@@ -266,7 +266,7 @@ export const projects: Project[] = [
     description:
       'Website institucional para apresentar processos terapêuticos, explicar a abordagem e conduzir visitantes ao agendamento.',
     tags: ['Web', 'SEO', 'Conteúdo', 'Responsivo'],
-    image: '/case-screenshots/transmutar/cover-public-2026.png',
+    image: '/case-screenshots/transmutar/cover-2026-11.webp',
     liveUrl: 'https://academiatransmutar.com.br/',
     privateProject: true,
     status: 'Projeto Privado',
@@ -392,7 +392,7 @@ export const projects: Project[] = [
     description:
       'Experiência multilíngue para avaliação estética, apresentação de tratamentos e captação de contatos em Zürich.',
     tags: ['Web', 'Multilíngue', 'SEO', 'Responsivo'],
-    image: '/case-screenshots/kosmedico/cover-public-2026.png',
+    image: '/case-screenshots/kosmedico/cover-2026-11.webp',
     liveUrl: 'https://kosmedico.ch',
     status: 'Em Produção',
     privateProject: true,
@@ -508,7 +508,7 @@ export const projects: Project[] = [
     description:
       'Website institucional com foco em posicionamento da marca, apresentacao de servicos e conversao para contato.',
     tags: ['React', 'SEO', 'Personal Brand', 'Landing Page', 'Vercel'],
-    image: '/case-screenshots/aguiar-ambiental/cover.png',
+    image: '/case-screenshots/aguiar-ambiental/cover-2026-11.webp',
     status: 'Em Produção',
     privateProject: true,
     detailed: {
