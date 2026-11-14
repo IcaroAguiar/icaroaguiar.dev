@@ -113,8 +113,8 @@ export const compactProjects: CompactProject[] = [
     code: 'AG',
     title: 'Agents Platform',
     description: {
-      pt: 'Agentes de IA com WhatsApp e controle de custo por agente.',
-      en: 'AI agents with WhatsApp and per-agent cost control.',
+      pt: 'Agentes de IA para atendimento no WhatsApp, com versões e revisão antes de ativar.',
+      en: 'AI agents for WhatsApp support, with versions and review before activation.',
     },
     href: '/projeto/agents-platform',
   },
