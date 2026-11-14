@@ -81,7 +81,7 @@ export const featuredProject: FeaturedProject = {
 export const productCard = {
   kicker: { pt: 'SaaS multiempresa · em evolução', en: 'Multi-tenant SaaS · evolving' },
   title: 'QualityFlow',
-  image: '/case-screenshots/qualityflow/cover.webp',
+  image: '/case-screenshots/qualityflow/cover-2026-11.webp',
   imageAlt: { pt: 'Painel do QualityFlow', en: 'QualityFlow dashboard' },
   description: {
     pt: 'Gestão da qualidade com auditorias, planos de ação, indicadores e documentos. Isolamento por tenant e cliente tipado gerado do contrato OpenAPI.',

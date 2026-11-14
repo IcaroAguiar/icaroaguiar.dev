@@ -1,6 +1,6 @@
 import type { Project } from '@/data/projects';
 
-export const featuredProjectIds = ['ascend', 'neo-constrictor', 'palpitae'] as const;
+export const featuredProjectIds = ['neo-constrictor', 'palpitae', 'ascend'] as const;
 
 const landingPageIds = new Set(['rosana-site', 'kosmedico-lp', 'tatiane-aguiar']);
 
@@ -40,8 +40,9 @@ const galleryByProject: Record<string, string[]> = {
   'rosana-site': ['/case-screenshots/transmutar/screen-01.png'],
   'tatiane-aguiar': ['/case-screenshots/aguiar-ambiental/screen-01.png'],
   'neo-constrictor': [
-    '/case-screenshots/neo-constrictor/cover.png',
-    '/case-screenshots/neo-constrictor/screen-01.png',
+    '/case-screenshots/neo-constrictor/02-solicitacoes-animais-2026-11.webp',
+    '/case-screenshots/neo-constrictor/04-laboratorios-admin-2026-11.webp',
+    '/case-screenshots/neo-constrictor/06-submissoes-2026-11.webp',
   ],
   palpitae: [
     '/case-screenshots/palpitae/03-dashboard.webp',
