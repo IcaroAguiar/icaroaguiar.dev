@@ -886,11 +886,6 @@ export const projects: Project[] = [
               description:
                 'Pix, calendário de jogos, e-mail e auditoria atrás de interfaces; o domínio nunca importa SDK de fornecedor.',
             },
-            {
-              name: 'Testes e CI',
-              description:
-                'go test, Vitest, Testing Library e Playwright; CI com lint, testes, build e E2E em cada pull request.',
-            },
           ],
         },
       ],
@@ -998,19 +993,17 @@ export const projects: Project[] = [
       },
       overview: {
         problem: 'A rotina de qualidade vive em planilhas soltas: auditorias sem programação, não conformidades sem dono e documentos sem controle de versão e de leitura.',
-        solution: 'Uma API NestJS com isolamento por empresa e um front React que consome um cliente tipado gerado do contrato OpenAPI, com 11 módulos de domínio.',
-        role: 'Sou autor de cerca de 87% dos commits da API e 93% do front: arquitetura, backend, frontend, testes e CI.',
+        solution: 'Uma API NestJS com isolamento por empresa e um front React que consome um cliente tipado gerado do contrato OpenAPI, cobrindo auditorias, eventos, indicadores, documentos e fornecedores.',
+        role: 'Escrevi a maior parte da API e do front: arquitetura, backend, frontend e entrega.',
       },
       roleAreas: [
         'API NestJS com isolamento por empresa',
         'Front React com cliente tipado gerado do OpenAPI',
-        'Mutation testing com Stryker',
         'CI de staging e produção e infraestrutura em Terraform',
       ],
       valueFocus: [
         'Contrato da API como fonte única entre back e front',
         'Fila do dia em vez de relatórios',
-        'Testes que medem se as asserções pegam erro de verdade',
       ],
       architecture: [
         {
@@ -1024,13 +1017,11 @@ export const projects: Project[] = [
           category: 'Frontend',
           technologies: [
             { name: 'React + Vite', description: 'Interface densa de operação, com atalhos de teclado e listas filtráveis.' },
-            { name: 'Playwright', description: 'Testes de ponta a ponta com a API simulada, sem depender de banco.' },
           ],
         },
         {
-          category: 'Qualidade e entrega',
+          category: 'Entrega',
           technologies: [
-            { name: 'Stryker', description: 'Mutation testing para medir a força real dos testes.' },
             { name: 'Terraform + CI', description: 'Ambientes de staging e produção descritos como código, com deploy pela CI.' },
           ],
         },
@@ -1074,7 +1065,7 @@ export const projects: Project[] = [
       overview: {
         problem: 'Agentes de IA em atendimento costumam ir direto para produção, sem versão, sem revisão humana e sem saber quanto cada um custa.',
         solution: 'Um núcleo comum com empresas, agentes e rascunhos versionados. Laboratório de testes, modo copiloto e limites de custo vêm nas próximas etapas.',
-        role: 'Produto, arquitetura, backend e frontend. Foram 100 PRs em 23 dias.',
+        role: 'Produto, arquitetura, backend e frontend.',
       },
       roleAreas: ['Arquitetura do núcleo e das edições', 'API e filas', 'Painel React', 'Integração com WhatsApp'],
       valueFocus: ['Versões e revisão antes de ativar', 'Autonomia em etapas (em construção)', 'Custo visível por agente'],
