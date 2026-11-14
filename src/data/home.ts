@@ -5,13 +5,12 @@ import {
 import type { Localized } from '@/utils/copy';
 
 export const hero = {
-  availability: { pt: 'Aberto a vagas e projetos', en: 'Open to jobs and projects' },
   titleStart: { pt: 'Sou Ícaro, um desenvolvedor full stack construindo ', en: 'I’m Ícaro, a full-stack developer building ' },
   titleHighlight: { pt: 'sistemas completos', en: 'complete systems' },
-  titleEnd: { pt: ' com React, NestJS e AWS', en: ' with React, NestJS and AWS' },
+  titleEnd: { pt: ', do banco de dados à interface.', en: ', from the database to the interface.' },
   where: { pt: 'Cruz das Almas, BA • remoto • CLT ou PJ', en: 'Cruz das Almas, Brazil • remote • employee or contractor' },
   contact: { pt: 'Falar comigo', en: 'Get in touch' },
-  resumes: { pt: 'Currículos', en: 'Résumés' },
+  resume: { pt: 'Baixar currículo', en: 'Download résumé' },
 };
 
 export interface DiagramColumn {
@@ -80,14 +79,13 @@ export const featuredProject: FeaturedProject = {
 };
 
 export const productCard = {
-  href: '/projeto/ascend',
-  kicker: { pt: 'Produto próprio · em evolução', en: 'Own product · evolving' },
-  title: 'ASCEND',
-  image: '/case-screenshots/ascend/orders-dashboard-wide-2026.png',
-  imageAlt: { pt: 'Painel de pedidos do ASCEND', en: 'ASCEND orders dashboard' },
+  kicker: { pt: 'SaaS multiempresa · em evolução', en: 'Multi-tenant SaaS · evolving' },
+  title: 'QualityFlow',
+  image: '/case-screenshots/qualityflow/cover.webp',
+  imageAlt: { pt: 'Painel do QualityFlow', en: 'QualityFlow dashboard' },
   description: {
-    pt: 'Gestão financeira com cobrança, operação fiscal e app mobile. NestJS, Next.js e Expo, com 346 arquivos de teste.',
-    en: 'Financial management with billing, tax operations and a mobile app. NestJS, Next.js and Expo, with 346 test files.',
+    pt: 'Gestão da qualidade com auditorias, planos de ação, indicadores e documentos. Isolamento por tenant e cliente tipado gerado do contrato OpenAPI.',
+    en: 'Quality management with audits, action plans, indicators and documents. Tenant isolation and a typed client generated from the OpenAPI contract.',
   },
 };
 
@@ -101,14 +99,6 @@ export interface CompactProject {
 }
 
 export const compactProjects: CompactProject[] = [
-  {
-    code: 'QF',
-    title: 'QualityFlow',
-    description: {
-      pt: 'SaaS multiempresa de gestão da qualidade, com cliente tipado gerado do contrato OpenAPI.',
-      en: 'Multi-tenant quality management SaaS, with a typed client generated from the OpenAPI contract.',
-    },
-  },
   {
     code: 'MC',
     title: 'Maria Comprou',
@@ -135,6 +125,15 @@ export const compactProjects: CompactProject[] = [
     status: { pt: 'Fora do ar.', en: 'Offline.' },
     href: '/projeto/palpitae',
   },
+  {
+    code: 'AS',
+    title: 'ASCEND',
+    description: {
+      pt: 'Gestão financeira com cobrança, operação fiscal e app mobile, com 346 arquivos de teste.',
+      en: 'Financial management with billing, tax operations and a mobile app, with 346 test files.',
+    },
+    href: '/projeto/ascend',
+  },
 ];
 
 export const titles = {
@@ -143,7 +142,6 @@ export const titles = {
   sites: { pt: 'Sites de clientes', en: 'Client websites' },
   experience: { pt: 'Experiência', en: 'Experience' },
   about: { pt: 'Sobre mim', en: 'About me' },
-  resumes: { pt: 'Currículos', en: 'Résumés' },
 };
 
 export const sitesSubtitle = (count: number): Localized => ({

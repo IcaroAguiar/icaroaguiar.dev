@@ -10,8 +10,8 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<a class="card" href={project.href}>
+<div class="card">
   <div class="card-h"><Icon name="bulb" /><span {...copy(project.kicker)}>{project.kicker.pt}</span></div>
   <div class="well"><img src={project.image} alt={project.imageAlt.pt} data-alt-pt={project.imageAlt.pt} data-alt-en={project.imageAlt.en} width="1600" height="900" loading="lazy" /></div>
   <div class="card-b"><h3>{project.title}</h3><p {...copy(project.description)}>{project.description.pt}</p></div>
-</a>
+</div>
