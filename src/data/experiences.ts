@@ -21,14 +21,14 @@ export const experiences: Experience[] = [
     yearsEn: '2026 — present',
     current: true,
     summary:
-      'Identidade, matrículas e notificações, contratos digitais de ponta a ponta, suporte com agente de IA (MCP) e infraestrutura AWS em Terraform. Mais de 1.000 PRs em 10 meses.',
+      'Identidade, matrículas e notificações, contratos digitais de ponta a ponta, suporte com agente de IA (MCP) e infraestrutura AWS em Terraform.',
     summaryEn:
-      'Identity, enrollments and notifications, end-to-end digital contracts, AI-agent support (MCP) and AWS infrastructure in Terraform. Over 1,000 PRs in 10 months.',
+      'Identity, enrollments and notifications, end-to-end digital contracts, AI-agent support (MCP) and AWS infrastructure in Terraform.',
     tasks: [
       'Maior autor dos serviços NestJS de identidade (IAM), matrículas, produtos e notificações e dos dois front-ends React (admin e área do aluno) de uma plataforma educacional multi-tenant no Brasil e na América Latina.',
       'Contratos digitais de ponta a ponta: modelos versionados, emissão automática após compra aprovada, PDF privado, assinatura com evidências e bloqueio de conteúdo até a assinatura.',
       'Central de suporte com agente de IA (servidor MCP) que atende o primeiro nível: verifica identidade, envia link de acesso e consulta contratos e certificados.',
-      'Infraestrutura AWS em Terraform (ECS Fargate, RDS, WAF, S3, SQS/SES). Mais de 1.000 PRs em 10 meses.',
+      'Infraestrutura AWS em Terraform (ECS Fargate, RDS, WAF, S3, SQS/SES).',
     ],
   },
   {

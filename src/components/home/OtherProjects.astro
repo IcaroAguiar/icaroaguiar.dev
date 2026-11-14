@@ -1,0 +1,15 @@
+---
+import { otherProjects, titles } from '@/data/home';
+import { copy } from '@/utils/copy';
+---
+
+<div class="others">
+  <h3 {...copy(titles.otherProjects)}>{titles.otherProjects.pt}</h3>
+  <ul>
+    {otherProjects.map((project) => (
+      <li>
+        <a href={project.href}><b>{project.title}</b><span {...copy(project.description)}>{project.description.pt}</span><i aria-hidden="true">→</i></a>
+      </li>
+    ))}
+  </ul>
+</div>

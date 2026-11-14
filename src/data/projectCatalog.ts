@@ -148,7 +148,7 @@ export const engineeringProjects: CatalogProject[] = [
     year: '2026',
     statusPt: 'Open source · ativo',
     statusEn: 'Open source · active',
-    tags: ['Electron', 'TypeScript', 'Vitest', 'Playwright'],
+    tags: ['Electron', 'TypeScript'],
     href: 'https://github.com/IcaroAguiar/fiscal-desk',
     linkPt: 'Ver código e documentação',
     linkEn: 'View code and documentation',
