@@ -6,6 +6,7 @@ import { education } from '@/data/education';
 import { experiences } from '@/data/experiences';
 import { skills } from '@/data/skills';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { copy } from '@/utils/copy';
 ---
 
 <BaseLayout
@@ -14,44 +15,56 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 >
   <section class="inner-hero about-hero">
     <div class="shell inner-hero__meta" data-reveal>
-      <span>Sobre</span><span>Desde 2022</span><span>Cruz das Almas, BA</span>
+      <span data-copy-pt="Sobre" data-copy-en="About">Sobre</span><span data-copy-pt="Desde 2022" data-copy-en="Since 2022">Desde 2022</span><span data-copy-pt="Cruz das Almas, BA" data-copy-en="Cruz das Almas, Brazil">Cruz das Almas, BA</span>
     </div>
     <div class="shell about-hero__grid">
       <div data-reveal>
-        <p class="kicker">Perfil</p>
-        <h1>Do produto à operação.</h1>
+        <p class="kicker" data-copy-pt="Perfil" data-copy-en="Profile">Perfil</p>
+        <h1 data-copy-pt="Do produto à operação." data-copy-en="From product to operations.">Do produto à operação.</h1>
       </div>
       <figure class="about-portrait" data-reveal>
         <Image
           src={profileImage}
           alt="Retrato de Ícaro Aguiar"
+          data-alt-pt="Retrato de Ícaro Aguiar"
+          data-alt-en="Portrait of Ícaro Aguiar"
           widths={[560, 840, 1120]}
           sizes="(min-width: 900px) 40vw, 92vw"
           loading="eager"
         />
-        <figcaption>Ícaro Aguiar, desenvolvedor full stack.</figcaption>
+        <figcaption data-copy-pt="Ícaro Aguiar, desenvolvedor full stack." data-copy-en="Ícaro Aguiar, full-stack developer.">Ícaro Aguiar, desenvolvedor full stack.</figcaption>
       </figure>
     </div>
   </section>
 
   <section class="section about-statement">
     <div class="shell about-statement__grid">
-      <p class="kicker" data-reveal>Minha abordagem</p>
+      <p class="kicker" data-copy-pt="Minha abordagem" data-copy-en="My approach" data-reveal>Minha abordagem</p>
       <div class="statement-copy" data-reveal>
-        <p class="statement-copy__lead">
+        <p
+          class="statement-copy__lead"
+          data-copy-pt="Gosto de trabalhar onde produto e engenharia se encontram: quando uma regra difícil precisa virar uma experiência simples e uma base sustentável."
+          data-copy-en="I like working where product and engineering meet: when a hard rule has to become a simple experience and a sustainable foundation."
+        >
           Gosto de trabalhar onde produto e engenharia se encontram: quando uma regra difícil precisa virar uma experiência simples e uma base sustentável.
         </p>
         <div class="statement-copy__columns">
-          <p>
+          <p
+            data-copy-pt="Atuo de ponta a ponta, da modelagem do domínio à interface, passando por APIs, dados, integrações, automação e infraestrutura. Essa amplitude não substitui profundidade. Ela ajuda a enxergar o sistema inteiro e tomar decisões melhores."
+            data-copy-en="I work end to end, from domain modeling to the interface, through APIs, data, integrations, automation and infrastructure. That breadth does not replace depth. It helps me see the whole system and make better decisions."
+          >
             Atuo de ponta a ponta, da modelagem do domínio à interface, passando por APIs, dados, integrações, automação e infraestrutura. Essa amplitude não substitui profundidade. Ela ajuda a enxergar o sistema inteiro e tomar decisões melhores.
           </p>
-          <p>
+          <p
+            data-copy-pt="Minha régua é concreta: o produto precisa ser compreensível para quem usa, sustentável para quem mantém e observável para quem opera. Tecnologia entra como ferramenta de decisão, não como decoração."
+            data-copy-en="My yardstick is concrete: the product has to be understandable to the people who use it, sustainable for the people who maintain it and observable for the people who run it. Technology is a tool for making decisions, not decoration."
+          >
             Minha régua é concreta: o produto precisa ser compreensível para quem usa, sustentável para quem mantém e observável para quem opera. Tecnologia entra como ferramenta de decisão, não como decoração.
           </p>
         </div>
         <div class="about-actions">
-          <a class="action-link action-link--solid" href={site.links.whatsapp} target="_blank" rel="noreferrer">Conversar comigo <span>↗</span></a>
-          <a class="action-link" {...resumeLink}>Baixar currículo <span>↓</span></a>
+          <a class="action-link action-link--solid" href={site.links.whatsapp} target="_blank" rel="noreferrer"><span data-copy-pt="Conversar comigo" data-copy-en="Let’s talk">Conversar comigo</span> <span>↗</span></a>
+          <a class="action-link" {...resumeLink}><span data-copy-pt="Baixar currículo" data-copy-en="Download résumé">Baixar currículo</span> <span>↓</span></a>
         </div>
       </div>
     </div>
@@ -59,18 +72,18 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
   <section class="section experience-section" aria-labelledby="experience-title">
     <div class="shell section-lead" data-reveal>
-      <p class="kicker">Trajetória</p>
-      <h2 id="experience-title">Experiência construída em diferentes contextos.</h2>
+      <p class="kicker" data-copy-pt="Trajetória" data-copy-en="Career">Trajetória</p>
+      <h2 id="experience-title" data-copy-pt="Experiência construída em diferentes contextos." data-copy-en="Experience built across different contexts.">Experiência construída em diferentes contextos.</h2>
     </div>
     <div class="shell experience-ledger">
       {experiences.map((experience) => (
         <article data-reveal>
           <div class="experience-ledger__heading">
-            <span>{experience.period}</span>
+            <span {...copy({ pt: experience.period, en: experience.periodEn })}>{experience.period}</span>
             <h3>{experience.company}</h3>
-            <p>{experience.role}</p>
+            <p {...copy({ pt: experience.role, en: experience.roleEn })}>{experience.role}</p>
           </div>
-          <ul>{experience.tasks.map((task) => <li>{task}</li>)}</ul>
+          <ul>{experience.tasks.map((task) => <li {...copy(task)}>{task.pt}</li>)}</ul>
         </article>
       ))}
     </div>
@@ -79,15 +92,15 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <section class="section toolkit-section" aria-labelledby="toolkit-title">
     <div class="shell toolkit-layout">
       <div class="toolkit-heading" data-reveal>
-        <p class="kicker kicker--inverse">Repertório</p>
-        <h2 id="toolkit-title">Ferramentas seguem o problema.</h2>
-        <p>O stack muda. Os critérios de clareza, confiabilidade e manutenção permanecem.</p>
+        <p class="kicker kicker--inverse" data-copy-pt="Repertório" data-copy-en="Toolkit">Repertório</p>
+        <h2 id="toolkit-title" data-copy-pt="Ferramentas seguem o problema." data-copy-en="Tools follow the problem.">Ferramentas seguem o problema.</h2>
+        <p data-copy-pt="O stack muda. Os critérios de clareza, confiabilidade e manutenção permanecem." data-copy-en="The stack changes. The criteria of clarity, reliability and maintainability stay.">O stack muda. Os critérios de clareza, confiabilidade e manutenção permanecem.</p>
       </div>
       <div class="toolkit-groups">
-        {Object.entries(skills).map(([category, items]) => (
+        {skills.map(({ category, items }) => (
           <article data-reveal>
-            <h3>{category}</h3>
-            <ul>{items.map((item) => <li>{item}</li>)}</ul>
+            <h3 {...copy(category)}>{category.pt}</h3>
+            <ul>{items.map((item) => <li {...copy(item)}>{item.pt}</li>)}</ul>
           </article>
         ))}
       </div>
@@ -96,15 +109,15 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
   <section class="section education-section" aria-labelledby="education-title">
     <div class="shell section-lead section-lead--compact" data-reveal>
-      <p class="kicker">Formação</p>
-      <h2 id="education-title">Aprendizado contínuo, dentro e fora da sala.</h2>
+      <p class="kicker" data-copy-pt="Formação" data-copy-en="Education">Formação</p>
+      <h2 id="education-title" data-copy-pt="Aprendizado contínuo, dentro e fora da sala." data-copy-en="Continuous learning, in and out of the classroom.">Aprendizado contínuo, dentro e fora da sala.</h2>
     </div>
     <div class="shell education-ledger">
       {education.map((item) => (
         <article data-reveal>
-          <h3>{item.course}</h3>
-          <p>{item.institution}</p>
-          <span>{item.status}</span>
+          <h3 {...copy(item.course)}>{item.course.pt}</h3>
+          <p {...copy(item.institution)}>{item.institution.pt}</p>
+          <span {...copy(item.status)}>{item.status.pt}</span>
         </article>
       ))}
     </div>

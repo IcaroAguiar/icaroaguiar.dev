@@ -9,13 +9,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 >
   <section class="inner-hero contact-hero">
     <div class="shell inner-hero__meta" data-reveal>
-      <span>Contato</span><span>Projetos + oportunidades</span><span>Cruz das Almas, BA</span>
+      <span data-copy-pt="Contato" data-copy-en="Contact">Contato</span><span data-copy-pt="Projetos + oportunidades" data-copy-en="Projects + opportunities">Projetos + oportunidades</span><span data-copy-pt="Cruz das Almas, BA" data-copy-en="Cruz das Almas, Brazil">Cruz das Almas, BA</span>
     </div>
     <div class="shell contact-hero__grid">
-      <h1 data-reveal>Conversa clara. Entrega real.</h1>
+      <h1 data-copy-pt="Conversa clara. Entrega real." data-copy-en="Clear conversation. Real delivery." data-reveal>Conversa clara. Entrega real.</h1>
       <div data-reveal>
-        <p>Conte o problema, o momento e o que precisa mudar. Eu organizo a conversa a partir daí.</p>
-        <a class="action-link action-link--solid" href={site.links.whatsapp} target="_blank" rel="noreferrer">Falar pelo WhatsApp <span>↗</span></a>
+        <p data-copy-pt="Conte o problema, o momento e o que precisa mudar. Eu organizo a conversa a partir daí." data-copy-en="Tell me the problem, the moment and what needs to change. I’ll organize the conversation from there.">Conte o problema, o momento e o que precisa mudar. Eu organizo a conversa a partir daí.</p>
+        <a class="action-link action-link--solid" href={site.links.whatsapp} target="_blank" rel="noreferrer"><span data-copy-pt="Falar pelo WhatsApp" data-copy-en="Message me on WhatsApp">Falar pelo WhatsApp</span> <span>↗</span></a>
       </div>
     </div>
   </section>
@@ -23,43 +23,43 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <section class="contact-workspace">
     <div class="shell contact-workspace__grid">
       <div class="contact-directory" data-reveal>
-        <p class="kicker">Canais diretos</p>
-        <a href={`mailto:${site.email}`}><span>Email</span><strong>{site.email}</strong><i>↗</i></a>
-        <a href={site.links.linkedin} target="_blank" rel="noreferrer"><span>LinkedIn</span><strong>Perfil profissional</strong><i>↗</i></a>
-        <a href={site.links.github} target="_blank" rel="noreferrer"><span>GitHub</span><strong>Código e projetos públicos</strong><i>↗</i></a>
-        <a {...resumeLink}><span>Currículo</span><strong>Full stack, PDF</strong><i>↓</i></a>
+        <p class="kicker" data-copy-pt="Canais diretos" data-copy-en="Direct channels">Canais diretos</p>
+        <a href={`mailto:${site.email}`}><span data-copy-pt="Email" data-copy-en="Email">Email</span><strong>{site.email}</strong><i>↗</i></a>
+        <a href={site.links.linkedin} target="_blank" rel="noreferrer"><span>LinkedIn</span><strong data-copy-pt="Perfil profissional" data-copy-en="Professional profile">Perfil profissional</strong><i>↗</i></a>
+        <a href={site.links.github} target="_blank" rel="noreferrer"><span>GitHub</span><strong data-copy-pt="Código e projetos públicos" data-copy-en="Code and public projects">Código e projetos públicos</strong><i>↗</i></a>
+        <a {...resumeLink}><span data-copy-pt="Currículo" data-copy-en="Résumé">Currículo</span><strong data-copy-pt="Full stack, PDF" data-copy-en="Full stack, PDF">Full stack, PDF</strong><i>↓</i></a>
       </div>
 
       <form class="contact-form" action="https://formspree.io/f/xblyeyez" method="POST" data-reveal>
         <div class="contact-form__heading">
-          <p class="kicker">Mensagem</p>
-          <h2>Vamos ao contexto.</h2>
+          <p class="kicker" data-copy-pt="Mensagem" data-copy-en="Message">Mensagem</p>
+          <h2 data-copy-pt="Vamos ao contexto." data-copy-en="Let’s get to the context.">Vamos ao contexto.</h2>
         </div>
         <div class="form-row">
-          <label for="name">Seu nome</label>
-          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Como posso te chamar?" />
+          <label for="name" data-copy-pt="Seu nome" data-copy-en="Your name">Seu nome</label>
+          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Como posso te chamar?" data-placeholder-pt="Como posso te chamar?" data-placeholder-en="What should I call you?" />
         </div>
         <div class="form-row">
-          <label for="email">Seu email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required placeholder="voce@empresa.com" />
+          <label for="email" data-copy-pt="Seu email" data-copy-en="Your email">Seu email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="voce@empresa.com" data-placeholder-pt="voce@empresa.com" data-placeholder-en="you@company.com" />
         </div>
         <div class="form-row">
-          <label for="subject">O que vamos discutir?</label>
+          <label for="subject" data-copy-pt="O que vamos discutir?" data-copy-en="What shall we discuss?">O que vamos discutir?</label>
           <select id="subject" name="subject" required>
-            <option value="">Selecione uma opção</option>
-            <option value="projeto">Novo projeto</option>
-            <option value="consultoria">Consultoria técnica</option>
-            <option value="oportunidade">Oportunidade profissional</option>
-            <option value="outro">Outro assunto</option>
+            <option value="" data-copy-pt="Selecione uma opção" data-copy-en="Select an option">Selecione uma opção</option>
+            <option value="projeto" data-copy-pt="Novo projeto" data-copy-en="New project">Novo projeto</option>
+            <option value="consultoria" data-copy-pt="Consultoria técnica" data-copy-en="Technical consulting">Consultoria técnica</option>
+            <option value="oportunidade" data-copy-pt="Oportunidade profissional" data-copy-en="Job opportunity">Oportunidade profissional</option>
+            <option value="outro" data-copy-pt="Outro assunto" data-copy-en="Something else">Outro assunto</option>
           </select>
         </div>
         <div class="form-row">
-          <label for="message">Contexto</label>
-          <textarea id="message" name="message" rows="7" required placeholder="Problema, objetivo, momento e qualquer restrição importante."></textarea>
+          <label for="message" data-copy-pt="Contexto" data-copy-en="Context">Contexto</label>
+          <textarea id="message" name="message" rows="7" required placeholder="Problema, objetivo, momento e qualquer restrição importante." data-placeholder-pt="Problema, objetivo, momento e qualquer restrição importante." data-placeholder-en="Problem, goal, timing and any important constraint."></textarea>
         </div>
         <input type="hidden" name="_subject" value="Novo contato pelo portfolio" />
-        <button class="action-link action-link--solid" type="submit">Enviar mensagem <span>↗</span></button>
-        <p class="form-note">Seus dados serão usados apenas para responder esta conversa.</p>
+        <button class="action-link action-link--solid" type="submit"><span data-copy-pt="Enviar mensagem" data-copy-en="Send message">Enviar mensagem</span> <span>↗</span></button>
+        <p class="form-note" data-copy-pt="Seus dados serão usados apenas para responder esta conversa." data-copy-en="Your details will only be used to reply to this conversation.">Seus dados serão usados apenas para responder esta conversa.</p>
       </form>
     </div>
   </section>

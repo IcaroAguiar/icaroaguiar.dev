@@ -5,6 +5,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 const [featuredProject, ...otherProjects] = engineeringProjects;
 const visualProjects = otherProjects.filter((project) => project.image);
 const repositoryProjects = otherProjects.filter((project) => !project.image);
+const label = (pt: string, en: string) => ({ 'aria-label': pt, 'data-label-pt': pt, 'data-label-en': en });
+const alt = (pt: string, en: string) => ({ alt: pt, 'data-alt-pt': pt, 'data-alt-en': en });
 ---
 
 <BaseLayout
@@ -33,7 +35,7 @@ const repositoryProjects = otherProjects.filter((project) => !project.image);
           <p data-copy-pt={featuredProject.descriptionPt} data-copy-en={featuredProject.descriptionEn}>
             {featuredProject.descriptionPt}
           </p>
-          <ul class="project-technologies" aria-label={`Tecnologias de ${featuredProject.title}`}>
+          <ul class="project-technologies" {...label(`Tecnologias de ${featuredProject.title}`, `${featuredProject.title} technologies`)}>
             {featuredProject.tags.map((tag) => <li>{tag}</li>)}
           </ul>
           <div class="project-facts">
@@ -45,8 +47,8 @@ const repositoryProjects = otherProjects.filter((project) => !project.image);
             <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M8 5h7v7" /></svg>
           </a>
         </div>
-        <a class="featured-project__media" href={featuredProject.href} aria-label={`${featuredProject.linkPt}: ${featuredProject.title}`}>
-          <img src={featuredProject.image} alt={`Interface do projeto ${featuredProject.title}`} width="1600" height="1000" />
+        <a class="featured-project__media" href={featuredProject.href} {...label(`${featuredProject.linkPt}: ${featuredProject.title}`, `${featuredProject.linkEn}: ${featuredProject.title}`)}>
+          <img src={featuredProject.image} {...alt(`Interface do projeto ${featuredProject.title}`, `${featuredProject.title} project interface`)} width="1600" height="1000" />
         </a>
       </article>
     </section>
@@ -64,9 +66,9 @@ const repositoryProjects = otherProjects.filter((project) => !project.image);
               href={project.liveUrl ?? project.href}
               target={project.liveUrl || project.external ? '_blank' : undefined}
               rel={project.liveUrl || project.external ? 'noreferrer' : undefined}
-              aria-label={`${project.linkPt}: ${project.title}`}
+              {...label(`${project.linkPt}: ${project.title}`, `${project.linkEn}: ${project.title}`)}
             >
-              <img src={project.image} alt={`Página pública de ${project.title}`} width="1600" height="900" loading="lazy" />
+              <img src={project.image} {...alt(`Página pública de ${project.title}`, `${project.title} public page`)} width="1600" height="900" loading="lazy" />
             </a>
             <div class="visual-project__meta">
               <div>
@@ -81,7 +83,7 @@ const repositoryProjects = otherProjects.filter((project) => !project.image);
                 href={project.href}
                 target={project.external ? '_blank' : undefined}
                 rel={project.external ? 'noreferrer' : undefined}
-                aria-label={`${project.linkPt}: ${project.title}`}
+                {...label(`${project.linkPt}: ${project.title}`, `${project.linkEn}: ${project.title}`)}
               >
                 <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M8 5h7v7" /></svg>
               </a>
@@ -120,9 +122,9 @@ const repositoryProjects = otherProjects.filter((project) => !project.image);
       <div class="client-grid">
         {clientProjects.map((project) => (
           <article class="client-project" data-reveal>
-            <a href={project.liveUrl ?? project.href} target="_blank" rel="noreferrer" aria-label={`${project.linkPt}: ${project.title}`}>
+            <a href={project.liveUrl ?? project.href} target="_blank" rel="noreferrer" {...label(`${project.linkPt}: ${project.title}`, `${project.linkEn}: ${project.title}`)}>
               <figure>
-                <img src={project.image} alt={`Página pública de ${project.title}`} width="1280" height="800" loading="lazy" />
+                <img src={project.image} {...alt(`Página pública de ${project.title}`, `${project.title} public page`)} width="1280" height="800" loading="lazy" />
                 <figcaption>
                   <div>
                     <strong>{project.title}</strong>
