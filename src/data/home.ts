@@ -24,7 +24,7 @@ export interface FeaturedProject {
   kicker: Localized;
   title: string;
   description: Localized;
-  numbers: { value: string; label: Localized }[];
+  numbers: { value: Localized; label: Localized }[];
   diagram: DiagramColumn[];
 }
 
@@ -39,9 +39,9 @@ export const featuredProject: FeaturedProject = {
     en: 'Institutional research management platform: document workflows, grants, laboratories and auditing. I am the sole developer and architect.',
   },
   numbers: [
-    { value: '21', label: { pt: 'módulos NestJS', en: 'NestJS modules' } },
-    { value: '141', label: { pt: 'modelos Prisma', en: 'Prisma models' } },
-    { value: '1.092', label: { pt: 'commits em 8 meses', en: 'commits in 8 months' } },
+    { value: same('21'), label: { pt: 'módulos NestJS', en: 'NestJS modules' } },
+    { value: same('141'), label: { pt: 'modelos Prisma', en: 'Prisma models' } },
+    { value: { pt: '1.092', en: '1,092' }, label: { pt: 'commits em 8 meses', en: 'commits in 8 months' } },
   ],
   diagram: [
     {

@@ -38,7 +38,7 @@ const links = [
 
   <div class="card b-tech">
     <div class="card-h"><Icon name="bolt" /><span data-copy-pt="Tecnologias" data-copy-en="Technologies">Tecnologias</span></div>
-    <div class="marquee">
+    <div class="marquee" tabindex="0" aria-label="Tecnologias que uso. Passe o mouse ou foque para pausar.">
       <div class="track">
         {[0, 1].map((copyIndex) => techIcons.map((icon) => (
           <svg viewBox="0 0 24 24" role={copyIndex ? undefined : 'img'} aria-hidden={copyIndex ? 'true' : undefined}><title>{icon.title}</title><path d={icon.path} /></svg>
