@@ -1,0 +1,35 @@
+---
+import { site } from '@/config/site';
+import { copy } from '@/utils/copy';
+import { sectionHref, sections } from '@/utils/sections';
+
+const pathname = Astro.url.pathname;
+const section = (id: string) => sections.find((item) => item.id === id)!;
+// Sobre e Contato têm página própria (formação e formulário); o rodapé é o caminho até elas.
+const pages: Record<string, string> = { sobre: '/sobre', contato: '/contato' };
+const column = (ids: string[]) => ids.map((id) => ({ ...section(id), href: pages[id] ?? sectionHref(pathname, id) }));
+const columns = [column(['projetos', 'sites', 'experiencia']), column(['sobre', 'curriculos', 'contato'])];
+const external = [
+  { label: 'GitHub', href: site.links.github },
+  { label: 'LinkedIn', href: site.links.linkedin },
+  { label: 'E-mail', href: `mailto:${site.email}` },
+];
+---
+
+<footer class="ft">
+  <div class="aurora bottom" aria-hidden="true"></div>
+  <div class="c">
+    <div class="cols">
+      {columns.map((links) => (
+        <div>{links.map(({ href, label }) => <a href={href} {...copy(label)}>{label.pt}</a>)}</div>
+      ))}
+      <div>
+        {external.map(({ label, href }) => <a href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noreferrer' : undefined}>{label}</a>)}
+      </div>
+    </div>
+    <div class="row">
+      <span>© {new Date().getFullYear()} Ícaro Aguiar</span>
+      <span data-copy-pt="Feito com Astro" data-copy-en="Built with Astro">Feito com Astro</span>
+    </div>
+  </div>
+</footer>

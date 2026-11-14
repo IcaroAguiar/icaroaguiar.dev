@@ -1,0 +1,24 @@
+---
+import { copy } from '@/utils/copy';
+import type { ClientProject } from '@/data/projectCatalog';
+
+interface Props {
+  site: ClientProject;
+}
+
+const { site } = Astro.props;
+const domain = new URL(site.liveUrl ?? site.href).hostname.replace(/^www\./, '');
+const caption = {
+  pt: `${site.categoryPt} · ${site.notePt ?? domain}`,
+  en: `${site.categoryEn} · ${site.noteEn ?? domain}`,
+};
+---
+
+<a class="card site" href={site.liveUrl ?? site.href} target="_blank" rel="noreferrer">
+  <div class="meta">
+    <span class="tag"><span class="dot"></span><span data-copy-pt="No ar" data-copy-en="Live">No ar</span></span>
+    <span>{site.language}</span>
+  </div>
+  <div class="well"><img src={site.image} alt="" width="1280" height="800" loading="lazy" /></div>
+  <div class="card-b"><h3>{site.title}</h3><p {...copy(caption)}>{caption.pt}</p></div>
+</a>

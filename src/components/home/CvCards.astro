@@ -1,0 +1,18 @@
+---
+import Icon from '@/components/Icon.astro';
+import { resumes } from '@/config/site';
+import { copy } from '@/utils/copy';
+---
+
+<div class="g3">
+  {resumes.map((resume) => (
+    <a class="card cv" href={resume.href} download>
+      <span class="paper" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span>
+        <b {...copy({ pt: resume.titlePt, en: resume.titleEn })}>{resume.titlePt}</b>
+        <span {...copy({ pt: resume.detailPt, en: resume.detailEn })}>{resume.detailPt}</span>
+      </span>
+      <Icon name="download" class="i dl" />
+    </a>
+  ))}
+</div>

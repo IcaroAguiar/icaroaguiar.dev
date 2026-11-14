@@ -1,0 +1,97 @@
+---
+import Icon from '@/components/Icon.astro';
+import { site } from '@/config/site';
+import { about, techIcons } from '@/data/home';
+import { copy } from '@/utils/copy';
+
+const [lat, lon] = about.coordinates;
+const pinLabel = { pt: `🇧🇷 ${about.location.pt}`, en: `🇧🇷 ${about.location.en}` };
+const links = [
+  { icon: 'github', label: 'GitHub', href: site.links.github, external: true },
+  { icon: 'linkedin', label: 'LinkedIn', href: site.links.linkedin, external: true },
+  { icon: 'mail', label: site.email, href: `mailto:${site.email}` },
+  { icon: 'file', label: 'Currículos', labelEn: 'Résumés', href: '#curriculos' },
+] as const;
+---
+
+<div class="bento">
+  <div class="card b-loc">
+    <div class="card-h"><Icon name="pin" /><span data-copy-pt="Localização" data-copy-en="Location">Localização</span></div>
+    <span class="pin" {...copy(pinLabel)}>{pinLabel.pt}</span>
+    <div class="globe"><canvas width="600" height="600" data-globe data-lat={lat} data-lon={lon} aria-hidden="true"></canvas></div>
+  </div>
+
+  <div class="card b-con">
+    <div class="card-h"><Icon name="link" /><span data-copy-pt="Conectar" data-copy-en="Connect">Conectar</span></div>
+    <p class="lead" {...copy(about.connect)}>{about.connect.pt}</p>
+    <ul>
+      {links.map((link) => (
+        <li>
+          <a href={link.href} target={'external' in link ? '_blank' : undefined} rel={'external' in link ? 'noreferrer' : undefined}>
+            <Icon name={link.icon} />
+            {'labelEn' in link ? <span {...copy({ pt: link.label, en: link.labelEn })}>{link.label}</span> : link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="card b-tech">
+    <div class="card-h"><Icon name="bolt" /><span data-copy-pt="Tecnologias" data-copy-en="Technologies">Tecnologias</span></div>
+    <div class="marquee" tabindex="0" aria-label="Tecnologias que uso. Passe o mouse ou foque para pausar.">
+      <div class="track">
+        {[0, 1].map((copyIndex) => techIcons.map((icon) => (
+          <svg viewBox="0 0 24 24" role={copyIndex ? undefined : 'img'} aria-hidden={copyIndex ? 'true' : undefined}><title>{icon.title}</title><path d={icon.path} /></svg>
+        )))}
+      </div>
+    </div>
+  </div>
+
+  <div class="card b-num">
+    <div class="card-h"><Icon name="clock" /><span data-copy-pt="Em produção" data-copy-en="In production">Em produção</span></div>
+    <div class="bignum">
+      <div>{about.years.value} <span {...copy({ pt: about.years.unitPt, en: about.years.unitEn })}>{about.years.unitPt}</span><small {...copy(about.years.since)}>{about.years.since.pt}</small></div>
+    </div>
+  </div>
+
+  <div class="card b-now">
+    <div class="card-h"><Icon name="building" /><span data-copy-pt="Agora" data-copy-en="Now">Agora</span></div>
+    <div class="now-b"><b>{about.now.company}</b><span {...copy(about.now.description)}>{about.now.description.pt}</span></div>
+  </div>
+</div>
+
+<script>
+  import createGlobe from 'cobe';
+
+  const canvas = document.querySelector<HTMLCanvasElement>('[data-globe]');
+
+  if (canvas) {
+    const lat = Number(canvas.dataset.lat);
+    const lon = Number(canvas.dataset.lon);
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // cobe mede o giro em radianos; estes ajustes colocam a longitude e a latitude de frente para a câmera.
+    let phi = Math.PI - ((lon * Math.PI) / 180 - Math.PI / 2);
+    const theta = ((lat * Math.PI) / 180) * -1 + 0.25;
+
+    createGlobe(canvas, {
+      devicePixelRatio: 2,
+      width: 600,
+      height: 600,
+      phi,
+      theta,
+      dark: 1,
+      diffuse: 1.2,
+      mapSamples: 16000,
+      mapBrightness: 6,
+      baseColor: [0.3, 0.3, 0.3],
+      markerColor: [1, 1, 1],
+      glowColor: [0.25, 0.25, 0.25],
+      markers: [{ location: [lat, lon], size: 0.06 }],
+      onRender: (state) => {
+        if (reduceMotion) return;
+        phi += 0.0006;
+        state.phi = phi;
+      },
+    });
+  }
+</script>

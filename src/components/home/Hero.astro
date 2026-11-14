@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import profileImage from '@/assets/perfil.jpg';
+import { hero } from '@/data/home';
+import { copy } from '@/utils/copy';
+---
+
+<section class="c hero">
+  <div class="hero-t">
+    <span class="avail"><span class="dot"></span><span {...copy(hero.availability)}>{hero.availability.pt}</span></span>
+    <h1>
+      <span {...copy(hero.titleStart)}>{hero.titleStart.pt}</span><span class="grad" {...copy(hero.titleHighlight)}>{hero.titleHighlight.pt}</span><span {...copy(hero.titleEnd)}>{hero.titleEnd.pt}</span>
+    </h1>
+    <p class="where" {...copy(hero.where)}>{hero.where.pt}</p>
+    <div class="acts">
+      <a class="pill solid" href="#contato" {...copy(hero.contact)}>{hero.contact.pt}</a>
+      <a class="pill" href="#curriculos" {...copy(hero.resumes)}>{hero.resumes.pt}</a>
+    </div>
+  </div>
+  <div class="avatar">
+    <Image
+      src={profileImage}
+      alt="Foto de Ícaro Aguiar"
+      data-alt-pt="Foto de Ícaro Aguiar"
+      data-alt-en="Photo of Ícaro Aguiar"
+      widths={[240, 480, 720]}
+      sizes="(max-width: 820px) 160px, 240px"
+      loading="eager"
+    />
+  </div>
+</section>

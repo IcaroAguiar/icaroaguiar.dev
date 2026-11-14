@@ -1,0 +1,22 @@
+---
+import type { CompactProject } from '@/data/home';
+import { copy } from '@/utils/copy';
+
+interface Props {
+  project: CompactProject;
+}
+
+const { project } = Astro.props;
+const Tag = project.href ? 'a' : 'div';
+---
+
+<Tag class="card mini" href={project.href}>
+  <span class="ic">{project.code}</span>
+  <span>
+    <b>{project.title}</b>
+    <span class="d">
+      <span {...copy(project.description)}>{project.description.pt}</span>
+      {project.status && <>{' '}<em {...copy(project.status)}>{project.status.pt}</em></>}
+    </span>
+  </span>
+</Tag>

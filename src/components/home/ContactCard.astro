@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import profileImage from '@/assets/perfil.jpg';
+import { site } from '@/config/site';
+import { contact } from '@/data/home';
+import { copy } from '@/utils/copy';
+---
+
+<div class="card contact">
+  <div class="float" aria-hidden="true">
+    <div class="me"><Image src={profileImage} alt="" widths={[80, 160, 240]} sizes="80px" /></div>
+    {contact.floats.map(({ label, left, top, highlight }) => (
+      <span class={highlight ? 'hl' : undefined} style={`left:${left};top:${top}`}>{label}</span>
+    ))}
+  </div>
+  <div>
+    <h2 {...copy(contact.title)}>{contact.title.pt}</h2>
+    <p {...copy(contact.text)}>{contact.text.pt}</p>
+    <div class="acts">
+      <a class="pill solid" href={`mailto:${site.email}`}>{site.email}</a>
+      <a class="pill" href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+  </div>
+</div>
