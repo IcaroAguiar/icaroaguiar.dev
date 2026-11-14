@@ -6,9 +6,8 @@
   .inner-hero__meta { grid-template-columns: 1fr 1fr; }
   .inner-hero__meta span:nth-child(2) { text-align: right; }
   .inner-hero__meta span:last-child { display: none; }
-  .about-hero__grid > div { min-height: 270px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .about-hero__grid > div { min-height: 270px; padding-right: 0; }
   .about-statement__grid, .statement-copy__columns, .experience-ledger article, .toolkit-layout, .contact-workspace__grid { grid-template-columns: 1fr; }
-  .about-statement__grid { padding-inline: 14px; }
   .experience-ledger__heading { grid-template-columns: 1fr; }
   .experience-ledger__heading span { grid-row: auto; }
   .toolkit-groups article { grid-template-columns: 100px 1fr; }
@@ -50,7 +49,7 @@
   .about-actions { flex-direction: column; }
   .about-actions .action-link { width: 100%; }
   .contact-directory > a { grid-template-columns: 70px 1fr auto; }
-  .case-hero h1 { font-size: 3.6rem; }
+  .case-hero h1 { font-size: 2.6rem; }
   .projects-intro { padding-top: 76px; }
   .projects-intro h1 { font-size: clamp(2.35rem, 12vw, 3.1rem); }
   .featured-project { grid-template-columns: 1fr; }

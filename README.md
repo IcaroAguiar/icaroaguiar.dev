@@ -39,7 +39,7 @@ src/
 ├── data/         # Conteúdo tipado (cases, catálogo, skills, experiência)
 ├── layouts/      # HTML base e SEO
 ├── pages/        # Rotas públicas
-├── scripts/      # Tema, idioma, menu e revelações
+├── scripts/      # Idioma, cabeçalho e revelações
 ├── styles/       # Sistema visual
 └── utils/        # Destaques, categorias e galerias dos cases
 ```
