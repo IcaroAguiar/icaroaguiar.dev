@@ -2,7 +2,8 @@
 import { publishedCaseStudyIds } from '@/data/projectCatalog';
 import { projects, type Project } from '@/data/projects';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { projectCategory, projectGallery, projectImage } from '@/utils/projects';
+import { copy, type Localized } from '@/utils/copy';
+import { projectCategory, projectGallery, projectImage, projectTag } from '@/utils/projects';
 
 export function getStaticPaths() {
   return projects
@@ -16,11 +17,18 @@ const { detailed } = project;
 const gallery = projectGallery(project);
 const imageDimensions = { width: 1600, height: 1000 };
 const links = [
-  project.liveUrl && ['Ver site', project.liveUrl],
-  project.demoUrl && ['Ver demo', project.demoUrl],
-  project.githubUrl && [project.privateProject ? 'Repositório' : 'GitHub', project.githubUrl],
-  project.backendUrl && ['Backend', project.backendUrl],
-].filter(Boolean) as [string, string][];
+  project.liveUrl && [{ pt: 'Ver site', en: 'View site' }, project.liveUrl],
+  project.demoUrl && [{ pt: 'Ver demo', en: 'View demo' }, project.demoUrl],
+  project.githubUrl && [project.privateProject ? { pt: 'Repositório', en: 'Repository' } : { pt: 'GitHub', en: 'GitHub' }, project.githubUrl],
+  project.backendUrl && [{ pt: 'Backend', en: 'Backend' }, project.backendUrl],
+].filter(Boolean) as [Localized, string][];
+const mainStack: Localized = {
+  pt: project.tags.slice(0, 4).map((tag) => projectTag(tag).pt).join(', '),
+  en: project.tags.slice(0, 4).map((tag) => projectTag(tag).en).join(', '),
+};
+const category = projectCategory(project);
+const coverAlt: Localized = { pt: `Interface do projeto ${project.title}`, en: `${project.title} project interface` };
+const galleryAlt: Localized = { pt: `Detalhe da interface de ${project.title}`, en: `${project.title} interface detail` };
 const publishedProjects = publishedCaseStudyIds
   .map((id) => projects.find((item) => item.id === id))
   .filter((item): item is Project => item !== undefined);
@@ -28,44 +36,44 @@ const currentIndex = publishedProjects.findIndex((item) => item.id === project.i
 const nextProject = publishedProjects[(currentIndex + 1) % publishedProjects.length];
 ---
 
-<BaseLayout title={project.title} description={project.description} image={projectImage(project)}>
+<BaseLayout title={project.title} description={project.description.pt} image={projectImage(project)}>
   <article class="case-study">
     <header class="case-hero">
       <div class="case-shell case-hero__nav" data-reveal>
-        <a href="/projetos"><span aria-hidden="true">←</span> Projetos</a>
-        <span>Estudo de caso</span>
+        <a href="/projetos"><span aria-hidden="true">←</span> <span data-copy-pt="Projetos" data-copy-en="Projects">Projetos</span></a>
+        <span data-copy-pt="Estudo de caso" data-copy-en="Case study">Estudo de caso</span>
       </div>
       <div class="case-shell case-hero__content" data-reveal>
-        <p class="case-hero__category">{projectCategory(project)}</p>
+        <p class="case-hero__category" {...copy(category)}>{category.pt}</p>
         <h1>{project.title}</h1>
-        <p class="case-hero__intro">{project.description}</p>
+        <p class="case-hero__intro" {...copy(project.description)}>{project.description.pt}</p>
         <div class="case-hero__actions">
           {links.slice(0, 2).map(([label, href]) => (
-            <a class="case-action" href={href} target="_blank" rel="noreferrer">{label} <span aria-hidden="true">↗</span></a>
+            <a class="case-action" href={href} target="_blank" rel="noreferrer"><span {...copy(label)}>{label.pt}</span> <span aria-hidden="true">↗</span></a>
           ))}
         </div>
       </div>
       <dl class="case-shell case-facts" data-reveal>
-        <div><dt>Status</dt><dd>{project.status}</dd></div>
-        <div><dt>Atuação</dt><dd>{detailed.overview.role}</dd></div>
-        <div><dt>Stack principal</dt><dd>{project.tags.slice(0, 4).join(', ')}</dd></div>
+        <div><dt data-copy-pt="Status" data-copy-en="Status">Status</dt><dd {...copy(project.status)}>{project.status.pt}</dd></div>
+        <div><dt data-copy-pt="Atuação" data-copy-en="Role">Atuação</dt><dd {...copy(detailed.overview.role)}>{detailed.overview.role.pt}</dd></div>
+        <div><dt data-copy-pt="Stack principal" data-copy-en="Main stack">Stack principal</dt><dd {...copy(mainStack)}>{mainStack.pt}</dd></div>
       </dl>
     </header>
 
     <figure class="case-shell case-cover" data-reveal>
-      <img src={projectImage(project)} alt={`Interface do projeto ${project.title}`} width={imageDimensions.width} height={imageDimensions.height} loading="eager" fetchpriority="high" />
+      <img src={projectImage(project)} alt={coverAlt.pt} data-alt-pt={coverAlt.pt} data-alt-en={coverAlt.en} width={imageDimensions.width} height={imageDimensions.height} loading="eager" fetchpriority="high" />
     </figure>
 
     {detailed.summary && (
       <section class="case-section case-summary" aria-labelledby="summary-title">
         <div class="case-shell">
           <header class="case-section__heading" data-reveal>
-            <h2 id="summary-title">Visão geral</h2>
+            <h2 id="summary-title" data-copy-pt="Visão geral" data-copy-en="Overview">Visão geral</h2>
           </header>
           <div class="case-summary__grid">
-            <article data-reveal><span>O produto</span><p>{detailed.summary.what}</p></article>
-            <article data-reveal><span>Para quem</span><p>{detailed.summary.audience}</p></article>
-            <article data-reveal><span>Valor</span><p>{detailed.summary.value}</p></article>
+            <article data-reveal><span data-copy-pt="O produto" data-copy-en="The product">O produto</span><p {...copy(detailed.summary.what)}>{detailed.summary.what.pt}</p></article>
+            <article data-reveal><span data-copy-pt="Para quem" data-copy-en="Who it’s for">Para quem</span><p {...copy(detailed.summary.audience)}>{detailed.summary.audience.pt}</p></article>
+            <article data-reveal><span data-copy-pt="Valor" data-copy-en="Value">Valor</span><p {...copy(detailed.summary.value)}>{detailed.summary.value.pt}</p></article>
           </div>
         </div>
       </section>
@@ -74,14 +82,14 @@ const nextProject = publishedProjects[(currentIndex + 1) % publishedProjects.len
     <section class="case-section case-story" aria-labelledby="story-title">
       <div class="case-shell case-story__layout">
         <header class="case-section__heading" data-reveal>
-          <h2 id="story-title">Problema e resposta</h2>
-          <p>As decisões técnicas partiram do contexto operacional do produto.</p>
+          <h2 id="story-title" data-copy-pt="Problema e resposta" data-copy-en="Problem and response">Problema e resposta</h2>
+          <p data-copy-pt="As decisões técnicas partiram do contexto operacional do produto." data-copy-en="The technical decisions started from the product’s operating context.">As decisões técnicas partiram do contexto operacional do produto.</p>
         </header>
         <div class="case-story__copy">
-          <article data-reveal><h3>O problema</h3><p>{detailed.overview.problem}</p></article>
-          <article data-reveal><h3>A solução</h3><p>{detailed.overview.solution}</p></article>
+          <article data-reveal><h3 data-copy-pt="O problema" data-copy-en="The problem">O problema</h3><p {...copy(detailed.overview.problem)}>{detailed.overview.problem.pt}</p></article>
+          <article data-reveal><h3 data-copy-pt="A solução" data-copy-en="The solution">A solução</h3><p {...copy(detailed.overview.solution)}>{detailed.overview.solution.pt}</p></article>
           {detailed.context && (
-            <article class="case-story__context" data-reveal><h3>O contexto</h3><p>{detailed.context.problem}</p><p>{detailed.context.motivation}</p></article>
+            <article class="case-story__context" data-reveal><h3 data-copy-pt="O contexto" data-copy-en="The context">O contexto</h3><p {...copy(detailed.context.problem)}>{detailed.context.problem.pt}</p><p {...copy(detailed.context.motivation)}>{detailed.context.motivation.pt}</p></article>
           )}
         </div>
       </div>
@@ -90,15 +98,15 @@ const nextProject = publishedProjects[(currentIndex + 1) % publishedProjects.len
     <section class="case-section case-architecture" aria-labelledby="architecture-title">
       <div class="case-shell">
         <header class="case-section__heading" data-reveal>
-          <h2 id="architecture-title">Arquitetura</h2>
-          <p>Responsabilidades explícitas, contratos claros e tecnologia escolhida pelo papel que cumpre.</p>
+          <h2 id="architecture-title" data-copy-pt="Arquitetura" data-copy-en="Architecture">Arquitetura</h2>
+          <p data-copy-pt="Responsabilidades explícitas, contratos claros e tecnologia escolhida pelo papel que cumpre." data-copy-en="Explicit responsibilities, clear contracts and technology chosen for the role it plays.">Responsabilidades explícitas, contratos claros e tecnologia escolhida pelo papel que cumpre.</p>
         </header>
         <div class="architecture-grid">
           {detailed.architecture.map((group) => (
             <article data-reveal>
-              <h3>{group.category}</h3>
+              <h3 {...copy(group.category)}>{group.category.pt}</h3>
               <div class="architecture-list">
-                {group.technologies.map((technology) => <div><strong>{technology.name}</strong><p>{technology.description}</p></div>)}
+                {group.technologies.map((technology) => <div><strong>{technology.name}</strong><p {...copy(technology.description)}>{technology.description.pt}</p></div>)}
               </div>
             </article>
           ))}
@@ -110,10 +118,10 @@ const nextProject = publishedProjects[(currentIndex + 1) % publishedProjects.len
       <section class="case-section case-decisions" aria-labelledby="decisions-title">
         <div class="case-shell">
           <header class="case-section__heading" data-reveal>
-            <h2 id="decisions-title">Decisões de produto</h2>
+            <h2 id="decisions-title" data-copy-pt="Decisões de produto" data-copy-en="Product decisions">Decisões de produto</h2>
           </header>
           <div class="decision-grid">
-            {detailed.decisions.map((decision) => <article data-reveal><h3>{decision.title}</h3><p>{decision.description}</p></article>)}
+            {detailed.decisions.map((decision) => <article data-reveal><h3 {...copy(decision.title)}>{decision.title.pt}</h3><p {...copy(decision.description)}>{decision.description.pt}</p></article>)}
           </div>
         </div>
       </section>
@@ -122,11 +130,11 @@ const nextProject = publishedProjects[(currentIndex + 1) % publishedProjects.len
     <section class="case-section case-output" aria-labelledby="output-title">
       <div class="case-shell">
         <header class="case-section__heading" data-reveal>
-          <h2 id="output-title">Entrega</h2>
-          <p>As capacidades que chegaram à superfície do produto.</p>
+          <h2 id="output-title" data-copy-pt="Entrega" data-copy-en="Delivery">Entrega</h2>
+          <p data-copy-pt="As capacidades que chegaram à superfície do produto." data-copy-en="The capabilities that reached the product’s surface.">As capacidades que chegaram à superfície do produto.</p>
         </header>
         <div class="output-grid">
-          {detailed.features.map((feature) => <article data-reveal><h3>{feature.title}</h3><p>{feature.description}</p></article>)}
+          {detailed.features.map((feature) => <article data-reveal><h3 {...copy(feature.title)}>{feature.title.pt}</h3><p {...copy(feature.description)}>{feature.description.pt}</p></article>)}
         </div>
       </div>
     </section>
@@ -135,10 +143,10 @@ const nextProject = publishedProjects[(currentIndex + 1) % publishedProjects.len
       <section class="case-section case-gallery" aria-labelledby="gallery-title">
         <div class="case-shell">
           <header class="case-section__heading" data-reveal>
-            <h2 id="gallery-title">Interface em uso</h2>
+            <h2 id="gallery-title" data-copy-pt="Interface em uso" data-copy-en="Interface in use">Interface em uso</h2>
           </header>
           {gallery.map((image) => (
-            <figure data-reveal><img src={image} alt={`Detalhe da interface de ${project.title}`} width={imageDimensions.width} height={imageDimensions.height} loading="lazy" /></figure>
+            <figure data-reveal><img src={image} alt={galleryAlt.pt} data-alt-pt={galleryAlt.pt} data-alt-en={galleryAlt.en} width={imageDimensions.width} height={imageDimensions.height} loading="lazy" /></figure>
           ))}
         </div>
       </section>
@@ -146,7 +154,7 @@ const nextProject = publishedProjects[(currentIndex + 1) % publishedProjects.len
 
     <section class="case-next">
       <a class="case-shell" href={`/projeto/${nextProject.id}`} data-reveal>
-        <span>Próximo projeto</span>
+        <span data-copy-pt="Próximo projeto" data-copy-en="Next project">Próximo projeto</span>
         <strong>{nextProject.title}</strong>
         <i aria-hidden="true">↗</i>
       </a>

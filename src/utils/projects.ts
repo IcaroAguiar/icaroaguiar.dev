@@ -1,32 +1,53 @@
 import type { Project } from '@/data/projects';
+import type { Localized } from '@/utils/copy';
 
 const landingPageIds = new Set(['rosana-site', 'kosmedico-lp', 'tatiane-aguiar']);
 
-export function projectCategory(project: Project): string {
+const categories = {
+  products: { pt: 'Produtos', en: 'Products' },
+  landingPages: { pt: 'Landing Pages', en: 'Landing pages' },
+  mobile: { pt: 'Mobile', en: 'Mobile' },
+  ai: { pt: 'IA/Automação', en: 'AI/Automation' },
+  backend: { pt: 'Backend', en: 'Backend' },
+  web: { pt: 'Web', en: 'Web' },
+} satisfies Record<string, Localized>;
+
+export function projectCategory(project: Project): Localized {
   const tags = project.tags.map((tag) => tag.toLowerCase());
-  const searchable = `${project.title} ${project.description}`.toLowerCase();
+  const searchable = `${project.title} ${project.description.pt}`.toLowerCase();
 
   if (tags.includes('monorepo') || tags.includes('pwa') || project.id === 'palpitae') {
-    return 'Produtos';
+    return categories.products;
   }
 
   if (landingPageIds.has(project.id) || tags.some((tag) => tag.includes('landing')) || searchable.includes('landing')) {
-    return 'Landing Pages';
+    return categories.landingPages;
   }
 
   if (tags.some((tag) => ['mobile', 'react native', 'expo'].some((value) => tag.includes(value)))) {
-    return 'Mobile';
+    return categories.mobile;
   }
 
   if (tags.some((tag) => ['python', 'fastapi', 'ml', 'automation'].some((value) => tag.includes(value)))) {
-    return 'IA/Automação';
+    return categories.ai;
   }
 
   if (tags.some((tag) => ['api', 'backend', 'node', 'express', 'go'].some((value) => tag.includes(value)))) {
-    return 'Backend';
+    return categories.backend;
   }
 
-  return 'Web';
+  return categories.web;
+}
+
+const tagLabels: Record<string, string> = {
+  Conteúdo: 'Content',
+  Multilíngue: 'Multilingual',
+  Responsivo: 'Responsive',
+};
+
+/** Tags são nomes de tecnologia, exceto os poucos termos em português listados em tagLabels. */
+export function projectTag(tag: string): Localized {
+  return { pt: tag, en: tagLabels[tag] ?? tag };
 }
 
 export function projectImage(project: Project) {
