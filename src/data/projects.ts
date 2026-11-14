@@ -1059,7 +1059,7 @@ export const projects: Project[] = [
     id: 'agents-platform',
     title: 'Agents Platform',
     description:
-      'Plataforma multiempresa para configurar, testar e acompanhar agentes de IA no WhatsApp, com versões, modo copiloto e controle de custo por agente.',
+      'Plataforma multiempresa para configurar agentes de IA no WhatsApp, com empresas e rascunhos versionados. Modo copiloto e custo por agente em construção.',
     tags: ['NestJS', 'Fastify', 'React', 'BullMQ', 'PostgreSQL', 'pgvector'],
     image: '/case-screenshots/agents-platform/cover-2026-11.webp',
     featured: true,
