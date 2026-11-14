@@ -80,8 +80,6 @@
 .now-b b { display: block; font-size: 22px; font-weight: 600; letter-spacing: -.015em; line-height: 1.25; }
 .now-b span { display: block; margin-top: 6px; color: var(--muted); font-size: 14px; line-height: 1.45; }
 
-/* currículos */
-
 /* contato */
 .contact { display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; gap: 24px; padding: 56px 48px; }
 .float { position: relative; height: 180px; }

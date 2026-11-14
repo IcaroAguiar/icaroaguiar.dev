@@ -1,7 +1,5 @@
 import type { Project } from '@/data/projects';
 
-export const featuredProjectIds = ['neo-constrictor', 'palpitae', 'ascend'] as const;
-
 const landingPageIds = new Set(['rosana-site', 'kosmedico-lp', 'tatiane-aguiar']);
 
 export function projectCategory(project: Project): string {
