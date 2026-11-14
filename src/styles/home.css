@@ -26,7 +26,6 @@
 .meta { display: flex; justify-content: space-between; gap: 12px; padding: 14px 16px 0; font-size: 14px; color: var(--muted); }
 .tag { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
 .tag .dot { width: 7px; height: 7px; border-radius: 50%; background: #74a98a; }
-.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
 
@@ -90,7 +89,7 @@
   .hero { flex-direction: column-reverse; align-items: flex-start; gap: 28px; padding-block: 40px 80px; }
   .hero h1 { font-size: 26px; }
   .avatar { width: 88px; height: 88px; }
-  .g2, .g3 { grid-template-columns: 1fr; }
+  .g3 { grid-template-columns: 1fr; }
   .bento { grid-template-columns: 1fr 1fr; }
   .b-loc, .b-con, .b-tech { grid-column: 1/-1; grid-row: auto; }
   .b-num { grid-column: 1; grid-row: auto; }

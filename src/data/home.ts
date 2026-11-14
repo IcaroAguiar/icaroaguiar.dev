@@ -1,6 +1,6 @@
 import {
   siAmazonwebservices, siAstro, siDocker, siFastify, siGithubactions, siGo, siNestjs, siNextdotjs, siNodedotjs,
-  siPostgresql, siPrisma, siReact, siReactquery, siTailwindcss, siTerraform, siTypescript, siVite, siVitest, siZod,
+  siPostgresql, siPrisma, siReact, siReactquery, siTailwindcss, siTerraform, siTypescript, siVite, siZod,
 } from 'simple-icons';
 import type { Localized } from '@/utils/copy';
 
@@ -144,5 +144,5 @@ export const contact = {
 /** Ordem da faixa de tecnologias; os SVGs entram inline no build. */
 export const techIcons = [
   siReact, siTypescript, siNestjs, siNodedotjs, siPostgresql, siPrisma, siTailwindcss, siVite, siReactquery,
-  siFastify, siAmazonwebservices, siTerraform, siDocker, siGithubactions, siVitest, siZod, siAstro, siNextdotjs, siGo,
+  siFastify, siAmazonwebservices, siTerraform, siDocker, siGithubactions, siZod, siAstro, siNextdotjs, siGo,
 ];
