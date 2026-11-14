@@ -79,6 +79,7 @@ export const featuredProject: FeaturedProject = {
 };
 
 export const productCard = {
+  href: '/projeto/qualityflow',
   kicker: { pt: 'SaaS multiempresa · em evolução', en: 'Multi-tenant SaaS · evolving' },
   title: 'QualityFlow',
   image: '/case-screenshots/qualityflow/cover-2026-11.webp',
@@ -106,6 +107,7 @@ export const compactProjects: CompactProject[] = [
       pt: 'Automação de e-commerce com filas, Telegram, servidor MCP e agente de IA.',
       en: 'E-commerce automation with queues, Telegram, an MCP server and an AI agent.',
     },
+    href: '/projeto/maria-comprou',
   },
   {
     code: 'AG',
@@ -114,6 +116,7 @@ export const compactProjects: CompactProject[] = [
       pt: 'Agentes de IA com WhatsApp e controle de custo por agente.',
       en: 'AI agents with WhatsApp and per-agent cost control.',
     },
+    href: '/projeto/agents-platform',
   },
   {
     code: 'P26',

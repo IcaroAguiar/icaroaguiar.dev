@@ -36,6 +36,22 @@ export function projectImage(project: Project) {
 }
 
 const galleryByProject: Record<string, string[]> = {
+  qualityflow: [
+    '/case-screenshots/qualityflow/02-indicadores-2026-11.webp',
+    '/case-screenshots/qualityflow/03-auditorias-2026-11.webp',
+    '/case-screenshots/qualityflow/06-documentos-2026-11.webp',
+    '/case-screenshots/qualityflow/07-fornecedores-2026-11.webp',
+  ],
+  'agents-platform': [
+    '/case-screenshots/agents-platform/02-empresas-2026-11.webp',
+    '/case-screenshots/agents-platform/03-editor-agente-2026-11.webp',
+    '/case-screenshots/agents-platform/04-conversas-2026-11.webp',
+  ],
+  'maria-comprou': [
+    '/case-screenshots/maria-comprou/02-ofertas-2026-11.webp',
+    '/case-screenshots/maria-comprou/03-mais-vistos-2026-11.webp',
+    '/case-screenshots/maria-comprou/04-sugira-oferta-2026-11.webp',
+  ],
   ascend: ['/case-screenshots/ascend/orders-dashboard-wide-2026.png'],
   'rosana-site': ['/case-screenshots/transmutar/screen-01.png'],
   'tatiane-aguiar': ['/case-screenshots/aguiar-ambiental/screen-01.png'],
