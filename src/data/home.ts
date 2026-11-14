@@ -13,133 +13,90 @@ export const hero = {
   resume: { pt: 'Baixar currículo', en: 'Download résumé' },
 };
 
-export interface DiagramColumn {
-  heading: Localized;
-  items: { label: Localized; hot?: boolean; wire?: 'a' | 'b' | 'c' | 'd' }[];
-}
-
-export interface FeaturedProject {
+export interface ShowcaseProduct {
   href: string;
+  title: string;
   kicker: Localized;
-  title: string;
+  lead: Localized;
   description: Localized;
-  numbers: { value: Localized; label: Localized }[];
-  diagram: DiagramColumn[];
+  role: Localized;
+  image: string;
+  imageAlt: Localized;
 }
 
-const same = (text: string): Localized => ({ pt: text, en: text });
-
-export const featuredProject: FeaturedProject = {
-  href: '/projeto/neo-constrictor',
-  kicker: { pt: 'Projeto pessoal · em produção', en: 'Personal project · in production' },
-  title: 'Neo Constrictor',
-  description: {
-    pt: 'Plataforma de gestão de pesquisa institucional: tramitação documental, editais, laboratórios e auditoria. Sou o único desenvolvedor e arquiteto.',
-    en: 'Institutional research management platform: document workflows, grants, laboratories and auditing. I am the sole developer and architect.',
-  },
-  numbers: [
-    { value: same('21'), label: { pt: 'módulos NestJS', en: 'NestJS modules' } },
-    { value: same('141'), label: { pt: 'modelos Prisma', en: 'Prisma models' } },
-    { value: { pt: '1.092', en: '1,092' }, label: { pt: 'commits em 8 meses', en: 'commits in 8 months' } },
-  ],
-  diagram: [
-    {
-      heading: { pt: 'Interfaces', en: 'Interfaces' },
-      items: [
-        { label: { pt: 'Pesquisador', en: 'Researcher' }, wire: 'a' },
-        { label: same('Admin') },
-        { label: { pt: 'Laboratórios', en: 'Laboratories' } },
-      ],
-    },
-    {
-      heading: { pt: 'Acesso', en: 'Access' },
-      items: [
-        { label: same('gov.br') },
-        { label: same('ORCID') },
-        { label: { pt: 'RBAC por instituição', en: 'RBAC per institution' }, hot: true, wire: 'b' },
-      ],
-    },
-    {
-      heading: { pt: 'Domínio', en: 'Domain' },
-      items: [
-        { label: { pt: 'Tramitação', en: 'Workflows' }, wire: 'c' },
-        { label: { pt: 'Editais', en: 'Grants' } },
-        { label: { pt: 'Auditoria', en: 'Auditing' } },
-        { label: { pt: '+18 módulos', en: '+18 modules' } },
-      ],
-    },
-    {
-      heading: { pt: 'Dados', en: 'Data' },
-      items: [
-        { label: same('PostgreSQL'), wire: 'd' },
-        { label: { pt: 'Deploy por commit', en: 'Deploy per commit' } },
-      ],
-    },
-  ],
-};
-
-export const productCard = {
-  href: '/projeto/qualityflow',
-  kicker: { pt: 'SaaS multiempresa · em evolução', en: 'Multi-tenant SaaS · evolving' },
-  title: 'QualityFlow',
-  image: '/case-screenshots/qualityflow/cover-2026-11.webp',
-  imageAlt: { pt: 'Painel do QualityFlow', en: 'QualityFlow dashboard' },
-  description: {
-    pt: 'Gestão da qualidade com auditorias, planos de ação, indicadores e documentos. Isolamento por tenant e cliente tipado gerado do contrato OpenAPI.',
-    en: 'Quality management with audits, action plans, indicators and documents. Tenant isolation and a typed client generated from the OpenAPI contract.',
-  },
-};
-
-export interface CompactProject {
-  code: string;
-  title: string;
-  description: Localized;
-  /** Complemento destacado ao fim da descrição. */
-  status?: Localized;
-  href?: string;
-}
-
-export const compactProjects: CompactProject[] = [
+/** Os três produtos com tela na home; a ordem alterna o lado da imagem. */
+export const showcase: ShowcaseProduct[] = [
   {
-    code: 'MC',
+    href: '/projeto/neo-constrictor',
+    title: 'Neo Constrictor',
+    kicker: { pt: 'Projeto pessoal · em produção', en: 'Personal project · in production' },
+    lead: { pt: 'Da submissão do projeto à bancada do laboratório', en: 'From project submission to the lab bench' },
+    description: {
+      pt: 'Pesquisadores submetem projetos, a instituição avalia e os laboratórios recebem, agendam e executam. Cada decisão fica registrada.',
+      en: 'Researchers submit projects, the institution reviews them and laboratories receive, schedule and run them. Every decision is recorded.',
+    },
+    role: { pt: 'Sou o único desenvolvedor e arquiteto.', en: 'I am the sole developer and architect.' },
+    image: '/case-screenshots/neo-constrictor/vitrine-2026-11.webp',
+    imageAlt: { pt: 'Esteira do laboratório no Neo Constrictor', en: 'Laboratory pipeline in Neo Constrictor' },
+  },
+  {
+    href: '/projeto/qualityflow',
+    title: 'QualityFlow',
+    kicker: { pt: 'SaaS multiempresa · em evolução', en: 'Multi-tenant SaaS · evolving' },
+    lead: { pt: 'A rotina da qualidade numa fila só', en: 'The whole quality routine in one queue' },
+    description: {
+      pt: 'Auditorias, não conformidades, indicadores e documentos de cada empresa no mesmo lugar, com o que está atrasado no topo do dia.',
+      en: 'Audits, nonconformities, indicators and documents for each company in one place, with what is overdue at the top of the day.',
+    },
+    role: { pt: 'Escrevi a maior parte da API e do front.', en: 'I wrote most of the API and the front end.' },
+    image: '/case-screenshots/qualityflow/vitrine-2026-11.webp',
+    imageAlt: { pt: 'Fila do dia no QualityFlow', en: 'Daily queue in QualityFlow' },
+  },
+  {
+    href: '/projeto/agents-platform',
+    title: 'Agents Platform',
+    kicker: { pt: 'Em desenvolvimento', en: 'In development' },
+    lead: { pt: 'Agentes de IA no WhatsApp, com uma pessoa no controle', en: 'AI agents on WhatsApp, with a person in control' },
+    description: {
+      pt: 'Cada empresa configura seus agentes. No modo copiloto, em construção, o agente sugere a resposta e a equipe decide o que enviar.',
+      en: 'Each company sets up its agents. In copilot mode, still being built, the agent suggests a reply and the team decides what to send.',
+    },
+    role: { pt: 'Produto, arquitetura e código.', en: 'Product, architecture and code.' },
+    image: '/case-screenshots/agents-platform/vitrine-2026-11.webp',
+    imageAlt: { pt: 'Conversa em modo copiloto no Agents Platform', en: 'Copilot-mode conversation in Agents Platform' },
+  },
+];
+
+export const otherProjects: { href: string; title: string; description: Localized }[] = [
+  {
+    href: '/projeto/maria-comprou',
     title: 'Maria Comprou',
     description: {
-      pt: 'Automação de e-commerce com filas, Telegram, servidor MCP e agente de IA.',
-      en: 'E-commerce automation with queues, Telegram, an MCP server and an AI agent.',
+      pt: 'Achadinhos com curadoria automatizada: coleta em fila, publicação no Telegram e um agente de IA no catálogo.',
+      en: 'Curated deals on autopilot: queued collection, Telegram publishing and an AI agent running the catalogue.',
     },
-    href: '/projeto/maria-comprou',
   },
   {
-    code: 'AG',
-    title: 'Agents Platform',
-    description: {
-      pt: 'Agentes de IA para atendimento no WhatsApp, com versões e revisão antes de ativar.',
-      en: 'AI agents for WhatsApp support, with versions and review before activation.',
-    },
-    href: '/projeto/agents-platform',
-  },
-  {
-    code: 'P26',
+    href: '/projeto/palpitae',
     title: 'Palpitaê 26',
     description: {
-      pt: 'PWA de palpites com API em Go e 211 testes.',
-      en: 'Predictions PWA with a Go API and 211 tests.',
+      pt: 'Palpites da Copa entre amigos, com grupos, ranking e Pix. Rodou durante a Copa e hoje é open source.',
+      en: 'World Cup predictions among friends, with groups, rankings and Pix. It ran during the Cup and is now open source.',
     },
-    status: { pt: 'Fora do ar.', en: 'Offline.' },
-    href: '/projeto/palpitae',
   },
   {
-    code: 'AS',
+    href: '/projeto/ascend',
     title: 'ASCEND',
     description: {
-      pt: 'Gestão financeira com cobrança, operação fiscal e app mobile, com 346 arquivos de teste.',
-      en: 'Financial management with billing, tax operations and a mobile app, with 346 test files.',
+      pt: 'Gestão financeira com cobrança, operação fiscal e app mobile.',
+      en: 'Financial management with billing, tax operations and a mobile app.',
     },
-    href: '/projeto/ascend',
   },
 ];
 
 export const titles = {
+  caseStudy: { pt: 'Ver estudo de caso', en: 'Read case study' },
+  otherProjects: { pt: 'Outros projetos', en: 'Other projects' },
   projects: { pt: 'Projetos selecionados', en: 'Selected projects' },
   allProjects: { pt: 'Ver todos os projetos', en: 'See all projects' },
   sites: { pt: 'Sites de clientes', en: 'Client websites' },

@@ -1,0 +1,25 @@
+---
+import { titles, type ShowcaseProduct } from '@/data/home';
+import { copy } from '@/utils/copy';
+
+interface Props {
+  product: ShowcaseProduct;
+  flip?: boolean;
+}
+
+const { product, flip = false } = Astro.props;
+---
+
+<article class:list={['showcase', { flip }]}>
+  <div class="showcase-t">
+    <span class="showcase-k" {...copy(product.kicker)}>{product.kicker.pt}</span>
+    <h3>{product.title}</h3>
+    <p class="showcase-lead" {...copy(product.lead)}>{product.lead.pt}</p>
+    <p class="showcase-d" {...copy(product.description)}>{product.description.pt}</p>
+    <p class="showcase-role" {...copy(product.role)}>{product.role.pt}</p>
+    <a class="showcase-link" href={product.href}><span {...copy(titles.caseStudy)}>{titles.caseStudy.pt}</span> <i aria-hidden="true">→</i></a>
+  </div>
+  <a class="shot" href={product.href} tabindex="-1">
+    <img src={product.image} alt={product.imageAlt.pt} data-alt-pt={product.imageAlt.pt} data-alt-en={product.imageAlt.en} width="2000" height="1250" loading="lazy" />
+  </a>
+</article>

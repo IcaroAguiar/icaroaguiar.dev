@@ -3,12 +3,11 @@ import AboutBento from '@/components/home/AboutBento.astro';
 import ContactCard from '@/components/home/ContactCard.astro';
 import ExperienceList from '@/components/home/ExperienceList.astro';
 import Hero from '@/components/home/Hero.astro';
-import ProjectCard from '@/components/home/ProjectCard.astro';
-import ProjectFeature from '@/components/home/ProjectFeature.astro';
-import ProjectMini from '@/components/home/ProjectMini.astro';
+import OtherProjects from '@/components/home/OtherProjects.astro';
+import ProductShowcase from '@/components/home/ProductShowcase.astro';
 import SiteCard from '@/components/home/SiteCard.astro';
 import SitesIndex from '@/components/home/SitesIndex.astro';
-import { compactProjects, featuredProject, featuredSiteIds, productCard, sitesSubtitle, titles } from '@/data/home';
+import { featuredSiteIds, showcase, sitesSubtitle, titles } from '@/data/home';
 import { experiences } from '@/data/experiences';
 import { clientProjects } from '@/data/projectCatalog';
 import BaseLayout from '@/layouts/BaseLayout.astro';
@@ -26,13 +25,10 @@ const subtitle = sitesSubtitle(clientProjects.length);
 
   <section class="c sec" id="projetos">
     <h2 {...copy(titles.projects)}>{titles.projects.pt}</h2>
-    <ProjectFeature project={featuredProject} />
-    <div class="g2 products">
-      <ProjectCard project={productCard} />
-      <div class="stack-cards">
-        {compactProjects.map((project) => <ProjectMini project={project} />)}
-      </div>
+    <div class="showcases">
+      {showcase.map((product, index) => <ProductShowcase product={product} flip={index % 2 === 1} />)}
     </div>
+    <OtherProjects />
     <div class="center"><a class="pill" href="/projetos" {...copy(titles.allProjects)}>{titles.allProjects.pt}</a></div>
   </section>
 
