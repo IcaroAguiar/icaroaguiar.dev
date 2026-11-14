@@ -1,0 +1,22 @@
+---
+import Icon from '@/components/Icon.astro';
+import { copy } from '@/utils/copy';
+import { sectionHref, sections } from '@/utils/sections';
+
+const pathname = Astro.url.pathname;
+const href = (id: string) => sectionHref(pathname, id);
+const navSections = sections.filter(({ id }) => id !== 'contato');
+const contact = sections.find(({ id }) => id === 'contato')!;
+---
+
+<header class="hd" id="hd">
+  <div class="hd-bg"></div>
+  <div class="c">
+    <a class="logo" href="/" aria-label="Início" data-label-pt="Início" data-label-en="Home">ía</a>
+    <nav aria-label="Principal" data-label-pt="Principal" data-label-en="Main">
+      {navSections.map(({ id, label }) => <a href={href(id)} {...copy(label)}>{label.pt}</a>)}
+      <a class="cmd" href={href('contato')} aria-label={contact.label.pt} data-label-pt={contact.label.pt} data-label-en={contact.label.en}><Icon name="mail" /></a>
+      <button class="lang-toggle" type="button" aria-label="Mudar idioma para inglês" data-label-pt="Mudar idioma para inglês" data-label-en="Switch language to Portuguese" data-language-toggle>EN</button>
+    </nav>
+  </div>
+</header>

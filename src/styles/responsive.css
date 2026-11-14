@@ -1,38 +1,4 @@
 @media (max-width: 900px) {
-  :root { --shell: calc(100% - 20px); }
-  .site-header__inner { width: var(--shell); grid-template-columns: 1fr auto; min-height: 70px; gap: 12px; }
-  .site-identity span { display: none; }
-  .header-tools { grid-column: 2; }
-  .menu-toggle { display: grid; }
-  .menu-toggle i, .menu-toggle i::after { display: block; width: 14px; height: 1px; background: currentColor; content: ""; }
-  .menu-toggle i::after { transform: translateY(4px); }
-  .primary-nav { position: fixed; inset: 70px 10px auto; display: none; width: auto; height: calc(100dvh - 80px); margin: 0; justify-self: stretch; border-radius: 18px; background: var(--overlay); padding: 18px; flex-direction: column; box-shadow: var(--shadow-surface); }
-  .primary-nav[data-open] { display: flex; }
-  .primary-nav a { display: flex; width: 100%; min-height: 56px; align-items: center; border-radius: 10px; font-size: 1.12rem; }
-  .primary-nav .primary-nav__cta { display: flex; margin-top: auto; color: var(--accent); font-weight: 680; }
-  .header-cta { display: none; }
-  .profile-hero { padding-top: 22px; }
-  .profile-grid { width: 100%; min-height: 0; grid-template-columns: 180px 1fr; gap: 34px; padding: 24px 0; transform: none; }
-  .profile-photo { width: 180px; }
-  .profile-copy { padding: 0; }
-  .profile-copy h1 { font-size: clamp(2.2rem, 8vw, 3.2rem); }
-  .profile-copy > p:not(.kicker) { font-size: .92rem; }
-  .availability { font-size: .68rem; }
-  .project-accordion summary { grid-template-columns: 42px 1fr 40px; }
-  .project-status { display: none; }
-  .project-detail { padding: 4px 40px 22px 42px; }
-  .project-detail__footer { align-items: flex-start; flex-direction: column; }
-  .experience-rows summary { grid-template-columns: 1fr 40px; }
-  .experience-rows summary > span:first-child { display: none; }
-  .experience-rows details > ul { padding: 0 40px 20px 0; }
-  .about-copy { grid-template-columns: 1fr; gap: 22px; }
-  .stack-highlights { grid-template-columns: repeat(4, 1fr); }
-  .stack-grid article { grid-template-columns: 150px minmax(0, 1fr); }
-  .footer-signature { grid-template-columns: 1fr; gap: 38px; padding-inline: 10px; }
-  .footer-base { min-height: 100px; grid-template-columns: 1fr 1fr; gap: 8px; padding-inline: 10px; }
-  .footer-base > span:nth-child(2) { text-align: right; }
-  .footer-base > span:last-child { display: none; }
-  .github-graph-scroll { width: 100%; }
 
   .section-lead { grid-template-columns: 1fr; }
   .section-lead h2 { margin-top: 10px; }
@@ -81,18 +47,6 @@
 }
 
 @media (max-width: 460px) {
-  .profile-grid { grid-template-columns: 1fr; }
-  .profile-grid { gap: 30px; padding: 18px 0; }
-  .profile-photo { width: min(100%, 280px); height: auto; justify-self: center; }
-  .profile-photo img { width: 100%; }
-  .profile-copy { min-height: 0; }
-  .section-title { min-height: 0; margin-bottom: 18px; }
-  .section-title h2 { font-size: 1.7rem; }
-  .project-detail { grid-template-columns: 1fr; gap: 18px; padding: 4px 40px 22px 42px; }
-  .stack-highlights { grid-template-columns: repeat(3, 1fr); }
-  .stack-grid article { grid-template-columns: 1fr; gap: 10px; padding-block: 14px; }
-  .footer-links { grid-template-columns: 1fr; }
-  .footer-link--wide { grid-column: auto; }
   .about-actions { flex-direction: column; }
   .about-actions .action-link { width: 100%; }
   .contact-directory > a { grid-template-columns: 70px 1fr auto; }
