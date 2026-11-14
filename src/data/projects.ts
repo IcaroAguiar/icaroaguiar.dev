@@ -3,7 +3,7 @@
 import type { Localized } from '@/utils/copy';
 
 export interface Technology {
-  name: string;
+  name: Localized;
   description: Localized;
 }
 
@@ -170,21 +170,21 @@ export const projects: Project[] = [
           category: { pt: 'Monorepo e superfícies', en: 'Monorepo and surfaces' },
           technologies: [
             {
-              name: 'pnpm + Turborepo',
+              name: { pt: 'pnpm + Turborepo', en: 'pnpm + Turborepo' },
               description: {
                 pt: 'Coordena apps e pacote compartilhado com pipelines de build, lint, typecheck e testes.',
                 en: 'Coordinates the apps and the shared package with build, lint, typecheck and test pipelines.',
               },
             },
             {
-              name: 'Next.js 16 no web',
+              name: { pt: 'Next.js 16 no web', en: 'Next.js 16 on web' },
               description: {
                 pt: 'Camada pública, autenticada e administrativa com foco em densidade operacional e performance.',
                 en: 'Public, authenticated and admin layers focused on operational density and performance.',
               },
             },
             {
-              name: 'Expo / React Native no mobile',
+              name: { pt: 'Expo / React Native no mobile', en: 'Expo / React Native on mobile' },
               description: {
                 pt: 'App complementar com autenticação, transações, devedores, contas, assinaturas e notificações.',
                 en: 'Companion app with authentication, transactions, debtors, accounts, subscriptions and notifications.',
@@ -196,21 +196,21 @@ export const projects: Project[] = [
           category: { pt: 'Core de domínio', en: 'Domain core' },
           technologies: [
             {
-              name: 'NestJS + Prisma + PostgreSQL',
+              name: { pt: 'NestJS + Prisma + PostgreSQL', en: 'NestJS + Prisma + PostgreSQL' },
               description: {
                 pt: 'Base transacional para clientes, dívidas, alocações, convites, categorias, metas e workspace.',
                 en: 'Transactional base for clients, debts, allocations, invites, categories, goals and workspace.',
               },
             },
             {
-              name: 'Better Auth + tenancy',
+              name: { pt: 'Better Auth + tenancy', en: 'Better Auth + tenancy' },
               description: {
                 pt: 'Camada de autenticação e controle de acesso preparada para workspaces, membros e contexto administrativo.',
                 en: 'Authentication and access control layer ready for workspaces, members and an admin context.',
               },
             },
             {
-              name: 'Packages compartilhados',
+              name: { pt: 'Packages compartilhados', en: 'Shared packages' },
               description: {
                 pt: 'Tipos e contratos reaproveitados entre apps para reduzir divergência e custo de manutenção.',
                 en: 'Types and contracts reused across apps to reduce drift and maintenance cost.',
@@ -222,14 +222,14 @@ export const projects: Project[] = [
           category: { pt: 'Expansão operacional', en: 'Operational expansion' },
           technologies: [
             {
-              name: 'Billing e feature flags',
+              name: { pt: 'Billing e feature flags', en: 'Billing and feature flags' },
               description: {
                 pt: 'Módulos de assinatura, entitlements, flags e planos em runtime para crescimento comercial do produto.',
                 en: 'Subscription modules, entitlements, flags and runtime plans for the product’s commercial growth.',
               },
             },
             {
-              name: 'Fiscal + OTel',
+              name: { pt: 'Fiscal + OTel', en: 'Fiscal + OTel' },
               description: {
                 pt: 'Camada fiscal com emissão, reconciliação e diagnósticos, além de observabilidade estruturada.',
                 en: 'Tax layer with issuing, reconciliation and diagnostics, plus structured observability.',
@@ -432,21 +432,21 @@ export const projects: Project[] = [
           category: { pt: 'Frontend', en: 'Frontend' },
           technologies: [
             {
-              name: 'Next.js',
+              name: { pt: 'Next.js', en: 'Next.js' },
               description: {
                 pt: 'Roteamento e SSR para SEO de página institucional.',
                 en: 'Routing and SSR for the SEO of an institutional page.',
               },
             },
             {
-              name: 'Tailwind CSS',
+              name: { pt: 'Tailwind CSS', en: 'Tailwind CSS' },
               description: {
                 pt: 'Tokenização visual com componentes consistentes para rapidez de evolução.',
                 en: 'Visual tokens with consistent components for fast iteration.',
               },
             },
             {
-              name: 'Acessibilidade',
+              name: { pt: 'Acessibilidade', en: 'Accessibility' },
               description: {
                 pt: 'Hierarquia semântica, contraste e navegação eficiente por teclado.',
                 en: 'Semantic hierarchy, contrast and efficient keyboard navigation.',
@@ -617,14 +617,14 @@ export const projects: Project[] = [
           category: { pt: 'Frontend', en: 'Frontend' },
           technologies: [
             {
-              name: 'Next.js',
+              name: { pt: 'Next.js', en: 'Next.js' },
               description: {
                 pt: 'Performance e estrutura SSR para páginas institucionais.',
                 en: 'Performance and SSR structure for institutional pages.',
               },
             },
             {
-              name: 'Design Tokens',
+              name: { pt: 'Design Tokens', en: 'Design Tokens' },
               description: {
                 pt: 'Padronização visual para manter consistência entre blocos e dispositivos.',
                 en: 'Visual standardization to keep blocks and devices consistent.',
@@ -784,14 +784,14 @@ export const projects: Project[] = [
           category: { pt: 'Frontend', en: 'Frontend' },
           technologies: [
             {
-              name: 'React',
+              name: { pt: 'React', en: 'React' },
               description: {
                 pt: 'Blocos semânticos para leitura por recrutadores e clientes.',
                 en: 'Semantic blocks for reading by recruiters and clients.',
               },
             },
             {
-              name: 'SEO',
+              name: { pt: 'SEO', en: 'SEO' },
               description: {
                 pt: 'Metadados e estrutura para rastreamento orgânico correto.',
                 en: 'Metadata and structure for correct organic crawling.',
@@ -962,21 +962,21 @@ export const projects: Project[] = [
           category: { pt: 'Fundação da plataforma', en: 'Platform foundation' },
           technologies: [
             {
-              name: 'Monorepo com pnpm + turbo',
+              name: { pt: 'Monorepo com pnpm + turbo', en: 'Monorepo with pnpm + turbo' },
               description: {
                 pt: 'Organiza apps, contratos e UI compartilhada para crescimento controlado do MVP.',
                 en: 'Organizes apps, contracts and shared UI for controlled growth of the MVP.',
               },
             },
             {
-              name: 'NestJS + Prisma + PostgreSQL',
+              name: { pt: 'NestJS + Prisma + PostgreSQL', en: 'NestJS + Prisma + PostgreSQL' },
               description: {
                 pt: 'Monólito modular responsável por auth, identidade, vínculo institucional e evolução do workflow.',
                 en: 'Modular monolith responsible for auth, identity, institutional affiliation and workflow evolution.',
               },
             },
             {
-              name: 'React + Vite nos frontends',
+              name: { pt: 'React + Vite nos frontends', en: 'React + Vite on the frontends' },
               description: {
                 pt: 'Áreas separadas para pesquisador e administração, consumindo contratos estáveis do backend.',
                 en: 'Separate areas for researchers and administration, consuming stable backend contracts.',
@@ -988,21 +988,21 @@ export const projects: Project[] = [
           category: { pt: 'Domínio e governança', en: 'Domain and governance' },
           technologies: [
             {
-              name: 'Contracts com Zod',
+              name: { pt: 'Contracts com Zod', en: 'Contracts with Zod' },
               description: {
                 pt: 'Padronizam payloads e preservam fronteiras públicas entre backend e frontends.',
                 en: 'Standardize payloads and preserve the public boundaries between backend and frontends.',
               },
             },
             {
-              name: 'Auth dual e RBAC contextual',
+              name: { pt: 'Auth dual e RBAC contextual', en: 'Dual auth and contextual RBAC' },
               description: {
                 pt: 'Login interno, preparação para GOV.br e autorização baseada em perfil, escopo, estado e vínculo.',
                 en: 'Internal login, groundwork for GOV.br and authorization based on role, scope, state and affiliation.',
               },
             },
             {
-              name: 'ADR + roadmap-base',
+              name: { pt: 'ADR + roadmap-base', en: 'ADR + roadmap-base' },
               description: {
                 pt: 'As decisões arquiteturais mais sensíveis já nascem documentadas para evitar deriva de produto.',
                 en: 'The most sensitive architectural decisions are documented from the start to avoid product drift.',
@@ -1212,21 +1212,21 @@ export const projects: Project[] = [
           category: { pt: 'Backend e domínio', en: 'Backend and domain' },
           technologies: [
             {
-              name: 'Go 1.26 + chi',
+              name: { pt: 'Go 1.26 + chi', en: 'Go 1.26 + chi' },
               description: {
                 pt: 'API HTTP com pacotes de domínio (identity, payments, groups, predictions, scoring, referrals, admin, audit) e regras explícitas de dependência.',
                 en: 'HTTP API with domain packages (identity, payments, groups, predictions, scoring, referrals, admin, audit) and explicit dependency rules.',
               },
             },
             {
-              name: 'PostgreSQL + pgx + sqlc + goose',
+              name: { pt: 'PostgreSQL + pgx + sqlc + goose', en: 'PostgreSQL + pgx + sqlc + goose' },
               description: {
                 pt: 'SQL explícito sem ORM, migrations versionadas e acessos tipados — priorizando auditabilidade financeira sobre conveniência.',
                 en: 'Explicit SQL without an ORM, versioned migrations and typed queries — favoring financial auditability over convenience.',
               },
             },
             {
-              name: 'Worker dedicado',
+              name: { pt: 'Worker dedicado', en: 'Dedicated worker' },
               description: {
                 pt: 'Binário separado para jobs agendados: sincronização de calendário, liberação de comissões e recálculo pós-partida.',
                 en: 'Separate binary for scheduled jobs: calendar sync, commission release and post-match recalculation.',
@@ -1238,21 +1238,21 @@ export const projects: Project[] = [
           category: { pt: 'Frontend e entrega', en: 'Frontend and delivery' },
           technologies: [
             {
-              name: 'React 19 + Vite + TanStack',
+              name: { pt: 'React 19 + Vite + TanStack', en: 'React 19 + Vite + TanStack' },
               description: {
                 pt: 'PWA mobile-first com Router, Query e Zod; fundação de rotas e contratos introduzida antes do checkout.',
                 en: 'Mobile-first PWA with Router, Query and Zod; routing and contracts foundation introduced before checkout.',
               },
             },
             {
-              name: 'Sessões no servidor',
+              name: { pt: 'Sessões no servidor', en: 'Server-side sessions' },
               description: {
                 pt: 'Cookies HttpOnly com sessões no PostgreSQL e Argon2id — reembolso e bloqueio com efeito imediato.',
                 en: 'HttpOnly cookies with PostgreSQL-backed sessions and Argon2id — refunds and blocks take effect immediately.',
               },
             },
             {
-              name: 'Docker Compose + Caddy',
+              name: { pt: 'Docker Compose + Caddy', en: 'Docker Compose + Caddy' },
               description: {
                 pt: 'Deploy em VPS única com HTTPS, estáticos e API atrás do Caddy; ambiente local offline com gateway Pix falso.',
                 en: 'Single-VPS deploy with HTTPS, static files and the API behind Caddy; offline local environment with a fake Pix gateway.',
@@ -1264,7 +1264,7 @@ export const projects: Project[] = [
           category: { pt: 'Integrações e qualidade', en: 'Integrations and quality' },
           technologies: [
             {
-              name: 'Adapters externos',
+              name: { pt: 'Adapters externos', en: 'External adapters' },
               description: {
                 pt: 'Pix, calendário de jogos, e-mail e auditoria atrás de interfaces; o domínio nunca importa SDK de fornecedor.',
                 en: 'Pix, match calendar, email and auditing behind interfaces; the domain never imports a vendor SDK.',
@@ -1463,14 +1463,14 @@ export const projects: Project[] = [
           category: { pt: 'Backend', en: 'Backend' },
           technologies: [
             {
-              name: 'NestJS + Prisma',
+              name: { pt: 'NestJS + Prisma', en: 'NestJS + Prisma' },
               description: {
                 pt: 'API modular com uma base por empresa e um núcleo comum para contas, planos e domínios.',
                 en: 'Modular API with one database per company and a shared core for accounts, plans and domains.',
               },
             },
             {
-              name: 'OpenAPI + Zod',
+              name: { pt: 'OpenAPI + Zod', en: 'OpenAPI + Zod' },
               description: {
                 pt: 'O contrato é gerado da API e vira o cliente tipado que o front usa; mudança quebrada aparece no typecheck.',
                 en: 'The contract is generated from the API and becomes the typed client the front end uses; a breaking change shows up in the typecheck.',
@@ -1482,7 +1482,7 @@ export const projects: Project[] = [
           category: { pt: 'Frontend', en: 'Frontend' },
           technologies: [
             {
-              name: 'React + Vite',
+              name: { pt: 'React + Vite', en: 'React + Vite' },
               description: {
                 pt: 'Interface densa de operação, com atalhos de teclado e listas filtráveis.',
                 en: 'Dense operations interface, with keyboard shortcuts and filterable lists.',
@@ -1494,7 +1494,7 @@ export const projects: Project[] = [
           category: { pt: 'Entrega', en: 'Delivery' },
           technologies: [
             {
-              name: 'Terraform + CI',
+              name: { pt: 'Terraform + CI', en: 'Terraform + CI' },
               description: {
                 pt: 'Ambientes de staging e produção descritos como código, com deploy pela CI.',
                 en: 'Staging and production environments described as code, deployed through CI.',
@@ -1616,21 +1616,21 @@ export const projects: Project[] = [
           category: { pt: 'Backend', en: 'Backend' },
           technologies: [
             {
-              name: 'NestJS + Fastify',
+              name: { pt: 'NestJS + Fastify', en: 'NestJS + Fastify' },
               description: {
                 pt: 'API do painel e dos canais, com identidade interna e empresas.',
                 en: 'API for the dashboard and the channels, with internal identity and companies.',
               },
             },
             {
-              name: 'BullMQ + Redis',
+              name: { pt: 'BullMQ + Redis', en: 'BullMQ + Redis' },
               description: {
                 pt: 'Filas para mensagens, análises e tarefas dos agentes.',
                 en: 'Queues for messages, analyses and agent tasks.',
               },
             },
             {
-              name: 'PostgreSQL + pgvector + Drizzle',
+              name: { pt: 'PostgreSQL + pgvector + Drizzle', en: 'PostgreSQL + pgvector + Drizzle' },
               description: {
                 pt: 'Dados, rascunhos versionados e base de conhecimento com busca vetorial.',
                 en: 'Data, versioned drafts and a knowledge base with vector search.',
@@ -1642,7 +1642,7 @@ export const projects: Project[] = [
           category: { pt: 'Frontend', en: 'Frontend' },
           technologies: [
             {
-              name: 'React + Vite',
+              name: { pt: 'React + Vite', en: 'React + Vite' },
               description: {
                 pt: 'Central de agentes, editor guiado e caixa de conversas.',
                 en: 'Agent hub, guided editor and conversation inbox.',
@@ -1759,25 +1759,25 @@ export const projects: Project[] = [
           category: { pt: 'Plataforma', en: 'Platform' },
           technologies: [
             {
-              name: 'Astro',
+              name: { pt: 'Astro', en: 'Astro' },
               description: {
                 pt: 'Site público rápido, com categorias, mais vistos e sugestão de ofertas.',
                 en: 'Fast public site, with categories, most viewed and offer suggestions.',
               },
             },
             {
-              name: 'Fastify + BullMQ/Redis',
+              name: { pt: 'Fastify + BullMQ/Redis', en: 'Fastify + BullMQ/Redis' },
               description: {
                 pt: 'API e workers que coletam, normalizam e publicam ofertas.',
                 en: 'API and workers that collect, normalize and publish offers.',
               },
             },
             {
-              name: 'PostgreSQL + Directus',
+              name: { pt: 'PostgreSQL + Directus', en: 'PostgreSQL + Directus' },
               description: { pt: 'Dados das ofertas e painel administrativo.', en: 'Offer data and admin panel.' },
             },
             {
-              name: 'MCP + CLI',
+              name: { pt: 'MCP + CLI', en: 'MCP + CLI' },
               description: {
                 pt: 'Ferramentas para o agente de IA operar o catálogo e o Telegram.',
                 en: 'Tools for the AI agent to run the catalogue and Telegram.',

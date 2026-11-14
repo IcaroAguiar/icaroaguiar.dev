@@ -106,7 +106,7 @@ const nextProject = publishedProjects[(currentIndex + 1) % publishedProjects.len
             <article data-reveal>
               <h3 {...copy(group.category)}>{group.category.pt}</h3>
               <div class="architecture-list">
-                {group.technologies.map((technology) => <div><strong>{technology.name}</strong><p {...copy(technology.description)}>{technology.description.pt}</p></div>)}
+                {group.technologies.map((technology) => <div><strong {...copy(technology.name)}>{technology.name.pt}</strong><p {...copy(technology.description)}>{technology.description.pt}</p></div>)}
               </div>
             </article>
           ))}
