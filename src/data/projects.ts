@@ -992,7 +992,7 @@ export const projects: Project[] = [
     privateProject: true,
     detailed: {
       summary: {
-        what: 'Sistema de gestão da qualidade (SGQ) vendido como SaaS, em que cada empresa cliente opera sua rotina de qualidade num espaço isolado.',
+        what: 'Sistema de gestão da qualidade (SGQ) multiempresa, em que cada empresa cliente opera sua rotina de qualidade num espaço isolado.',
         audience: 'Equipes de qualidade de indústrias e empresas que precisam manter auditorias, documentos e fornecedores em dia para certificações.',
         value: 'Troca planilhas e pastas por uma fila diária do que está atrasado, com rastreabilidade de quem fez o quê.',
       },
@@ -1063,21 +1063,21 @@ export const projects: Project[] = [
     tags: ['NestJS', 'Fastify', 'React', 'BullMQ', 'PostgreSQL', 'pgvector'],
     image: '/case-screenshots/agents-platform/cover-2026-11.webp',
     featured: true,
-    status: 'Em evolução',
+    status: 'Em desenvolvimento',
     privateProject: true,
     detailed: {
       summary: {
-        what: 'Um painel onde cada empresa atendida ganha agentes de IA com instruções, conhecimento, ferramentas e canais, do rascunho à autonomia.',
+        what: 'Um painel onde cada empresa atendida ganha agentes de IA com instruções, conhecimento, ferramentas e canais.',
         audience: 'Operações de atendimento que querem IA no WhatsApp sem perder o controle do que o agente responde e do quanto ele custa.',
-        value: 'O agente sobe em etapas (observação, copiloto, autônomo) e cada conversa mostra o que ele sugeriu e por quê.',
+        value: 'O plano é o agente subir em etapas (observação, copiloto, autônomo), com custo visível por agente. A primeira entrega cobre a central de agentes e o editor.',
       },
       overview: {
         problem: 'Agentes de IA em atendimento costumam ir direto para produção, sem versão, sem revisão humana e sem saber quanto cada um custa.',
-        solution: 'Um núcleo comum com empresas, agentes versionados, laboratório de testes, conversas com modo copiloto e limites de custo por agente.',
+        solution: 'Um núcleo comum com empresas, agentes e rascunhos versionados. Laboratório de testes, modo copiloto e limites de custo vêm nas próximas etapas.',
         role: 'Produto, arquitetura, backend e frontend. Foram 100 PRs em 23 dias.',
       },
       roleAreas: ['Arquitetura do núcleo e das edições', 'API e filas', 'Painel React', 'Integração com WhatsApp'],
-      valueFocus: ['Autonomia em etapas', 'Custo visível por agente', 'Versões e revisão antes de ativar'],
+      valueFocus: ['Versões e revisão antes de ativar', 'Autonomia em etapas (em construção)', 'Custo visível por agente'],
       architecture: [
         {
           category: 'Backend',
@@ -1094,9 +1094,9 @@ export const projects: Project[] = [
       ],
       features: [
         { title: 'Editor guiado', description: 'Papel, tom, público, limites e quando chamar uma pessoa, salvos como rascunho versionado.' },
-        { title: 'Modo copiloto', description: 'O agente sugere a resposta e a pessoa aprova, edita ou responde por conta própria.' },
+        { title: 'Conversas (em construção)', description: 'Caixa de conversas com modo copiloto: o agente sugere e a pessoa aprova, edita ou responde.' },
         { title: 'Empresas e agentes', description: 'Cada empresa atendida tem seus agentes, canais e configurações.' },
-        { title: 'Custos', description: 'Consumo e limites acompanhados por agente.' },
+        { title: 'Custos (em construção)', description: 'Consumo e limites acompanhados por agente.' },
       ],
       challenges: [
         {
@@ -1128,7 +1128,7 @@ export const projects: Project[] = [
         value: 'A curadoria vira operação: o agente de IA usa as ferramentas do servidor MCP para cuidar do catálogo e da divulgação.',
       },
       overview: {
-        problem: 'Publicar achadinhos à mão em site e Telegram toma horas por dia e não escala.',
+        problem: 'Publicar achadinhos à mão no site e no Telegram é trabalho repetitivo e não escala.',
         solution: 'Monorepo com site Astro, API Fastify, workers em fila, painel Directus, servidor MCP e um agente de IA que opera o fluxo.',
         role: 'Produto, arquitetura, backend, site e automação.',
       },
