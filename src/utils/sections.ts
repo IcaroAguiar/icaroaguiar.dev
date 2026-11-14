@@ -5,7 +5,6 @@ export const sections: { id: string; label: Localized }[] = [
   { id: 'sites', label: { pt: 'Sites', en: 'Websites' } },
   { id: 'experiencia', label: { pt: 'Experiência', en: 'Experience' } },
   { id: 'sobre', label: { pt: 'Sobre', en: 'About' } },
-  { id: 'curriculos', label: { pt: 'Currículos', en: 'Résumés' } },
   { id: 'contato', label: { pt: 'Contato', en: 'Contact' } },
 ];
 

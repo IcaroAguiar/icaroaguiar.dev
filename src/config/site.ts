@@ -9,36 +9,17 @@ export const site = {
     github: 'https://github.com/IcaroAguiar',
     linkedin: 'https://www.linkedin.com/in/icaro-aguiar/',
     whatsapp: 'https://wa.me/5571992608397',
-    resume: '/curriculo-icaro-aguiar-fullstack-pt.pdf',
   },
 } as const;
 
-export const resumes = [
-  {
-    id: 'fullstack-pt',
-    titlePt: 'Full stack',
-    titleEn: 'Full stack',
-    detailPt: 'Português · PDF · 2 páginas',
-    detailEn: 'Portuguese · PDF · 2 pages',
-    href: '/curriculo-icaro-aguiar-fullstack-pt.pdf',
-  },
-  {
-    id: 'backend-pt',
-    titlePt: 'Back-end',
-    titleEn: 'Back-end',
-    detailPt: 'Português · PDF · 2 páginas',
-    detailEn: 'Portuguese · PDF · 2 pages',
-    href: '/curriculo-icaro-aguiar-backend-pt.pdf',
-  },
-  {
-    id: 'fullstack-en',
-    titlePt: 'Full stack',
-    titleEn: 'Full stack',
-    detailPt: 'English · PDF · 2 pages',
-    detailEn: 'English · PDF · 2 pages',
-    href: '/curriculo-icaro-aguiar-fullstack-en.pdf',
-  },
-] as const;
+/** Um currículo por idioma; o link acompanha a troca de idioma do site. */
+export const resume = {
+  pt: '/curriculo-icaro-aguiar-fullstack-pt.pdf',
+  en: '/curriculo-icaro-aguiar-fullstack-en.pdf',
+};
+
+/** Atributos lidos por scripts/site.ts para trocar o href junto com o idioma. */
+export const resumeLink = { href: resume.pt, 'data-href-pt': resume.pt, 'data-href-en': resume.en, download: true };
 
 export const navigation = [
   { href: '/projetos', label: 'Projetos', labelEn: 'Projects' },

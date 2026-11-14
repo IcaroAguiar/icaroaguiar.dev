@@ -1,8 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import profileImage from '@/assets/perfil.jpg';
-import { site } from '@/config/site';
-import { contact } from '@/data/home';
+import { resumeLink, site } from '@/config/site';
+import { contact, hero } from '@/data/home';
 import { copy } from '@/utils/copy';
 ---
 
@@ -19,6 +19,7 @@ import { copy } from '@/utils/copy';
     <div class="acts">
       <a class="pill solid" href={`mailto:${site.email}`}>{site.email}</a>
       <a class="pill" href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="pill" {...resumeLink} {...copy(hero.resume)}>{hero.resume.pt}</a>
     </div>
   </div>
 </div>
