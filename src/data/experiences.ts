@@ -1,3 +1,5 @@
+import type { Localized } from '@/utils/copy';
+
 export interface Experience {
   role: string;
   roleEn: string;
@@ -9,8 +11,7 @@ export interface Experience {
   current?: boolean;
   summary: string;
   summaryEn: string;
-  tasks: string[];
-  tasksEn: string[];
+  tasks: Localized[];
 }
 
 export const experiences: Experience[] = [
@@ -28,16 +29,10 @@ export const experiences: Experience[] = [
     summaryEn:
       'Identity, enrollments and notifications, end-to-end digital contracts, AI-agent support (MCP) and AWS infrastructure in Terraform.',
     tasks: [
-      'Maior autor dos serviços NestJS de identidade (IAM), matrículas, produtos e notificações e dos dois front-ends React (admin e área do aluno) de uma plataforma educacional multi-tenant no Brasil e na América Latina.',
-      'Contratos digitais de ponta a ponta: modelos versionados, emissão automática após compra aprovada, PDF privado, assinatura com evidências e bloqueio de conteúdo até a assinatura.',
-      'Central de suporte com agente de IA (servidor MCP) que atende o primeiro nível: verifica identidade, envia link de acesso e consulta contratos e certificados.',
-      'Infraestrutura AWS em Terraform (ECS Fargate, RDS, WAF, S3, SQS/SES).',
-    ],
-    tasksEn: [
-      'Main author of the NestJS services for identity (IAM), enrollments, products and notifications, and of the two React front ends (admin and student area) of a multi-tenant education platform in Brazil and Latin America.',
-      'End-to-end digital contracts: versioned templates, automatic issuing after an approved purchase, private PDF, signing with evidence and content locked until signed.',
-      'Support center with an AI agent (MCP server) that handles first-level requests: verifies identity, sends an access link and looks up contracts and certificates.',
-      'AWS infrastructure in Terraform (ECS Fargate, RDS, WAF, S3, SQS/SES).',
+      { pt: 'Maior autor dos serviços NestJS de identidade (IAM), matrículas, produtos e notificações e dos dois front-ends React (admin e área do aluno) de uma plataforma educacional multi-tenant no Brasil e na América Latina.', en: 'Main author of the NestJS services for identity (IAM), enrollments, products and notifications, and of the two React front ends (admin and student area) of a multi-tenant education platform in Brazil and Latin America.' },
+      { pt: 'Contratos digitais de ponta a ponta: modelos versionados, emissão automática após compra aprovada, PDF privado, assinatura com evidências e bloqueio de conteúdo até a assinatura.', en: 'End-to-end digital contracts: versioned templates, automatic issuing after an approved purchase, private PDF, signing with evidence and content locked until signed.' },
+      { pt: 'Central de suporte com agente de IA (servidor MCP) que atende o primeiro nível: verifica identidade, envia link de acesso e consulta contratos e certificados.', en: 'Support center with an AI agent (MCP server) that handles first-level requests: verifies identity, sends an access link and looks up contracts and certificates.' },
+      { pt: 'Infraestrutura AWS em Terraform (ECS Fargate, RDS, WAF, S3, SQS/SES).', en: 'AWS infrastructure in Terraform (ECS Fargate, RDS, WAF, S3, SQS/SES).' },
     ],
   },
   {
@@ -54,14 +49,9 @@ export const experiences: Experience[] = [
     summaryEn:
       'Websites and landing pages from an in-house template, a CRM with Google-synced scheduling and an AI agent platform with WhatsApp.',
     tasks: [
-      'Cerca de 17 sites e landing pages em Astro, Next.js e React a partir de um template próprio.',
-      'Fixx CRM: funis, agenda com sincronização bidirecional com o Google Agenda, Google SSO e auditoria.',
-      'Agents Platform: plataforma multiempresa de agentes de IA com WhatsApp, PostgreSQL/pgvector, BullMQ e controle de custo por agente.',
-    ],
-    tasksEn: [
-      'About 17 websites and landing pages in Astro, Next.js and React from an in-house template.',
-      'Fixx CRM: funnels, scheduling with two-way sync with Google Calendar, Google SSO and auditing.',
-      'Agents Platform: multi-tenant AI agent platform with WhatsApp, PostgreSQL/pgvector, BullMQ and per-agent cost control.',
+      { pt: 'Cerca de 17 sites e landing pages em Astro, Next.js e React a partir de um template próprio.', en: 'About 17 websites and landing pages in Astro, Next.js and React from an in-house template.' },
+      { pt: 'Fixx CRM: funis, agenda com sincronização bidirecional com o Google Agenda, Google SSO e auditoria.', en: 'Fixx CRM: funnels, scheduling with two-way sync with Google Calendar, Google SSO and auditing.' },
+      { pt: 'Agents Platform: plataforma multiempresa de agentes de IA com WhatsApp, PostgreSQL/pgvector, BullMQ e controle de custo por agente.', en: 'Agents Platform: multi-tenant AI agent platform with WhatsApp, PostgreSQL/pgvector, BullMQ and per-agent cost control.' },
     ],
   },
   {
@@ -77,14 +67,9 @@ export const experiences: Experience[] = [
     summaryEn:
       'Modernization of legacy accounting and logistics systems, with C#/.NET APIs and Azure DevOps pipelines.',
     tasks: [
-      'Um dos principais responsáveis pela modernização de sistemas legados das áreas contábil e de logística.',
-      'APIs em C#/.NET para integração entre sistemas, com SQL Server e Oracle, e pipelines de CI/CD no Azure DevOps.',
-      'Participação nas reuniões técnicas e de produto que definiram os sistemas novos.',
-    ],
-    tasksEn: [
-      'One of the main people responsible for modernizing legacy accounting and logistics systems.',
-      'C#/.NET APIs for integration between systems, with SQL Server and Oracle, and CI/CD pipelines in Azure DevOps.',
-      'Took part in the technical and product meetings that defined the new systems.',
+      { pt: 'Um dos principais responsáveis pela modernização de sistemas legados das áreas contábil e de logística.', en: 'One of the main people responsible for modernizing legacy accounting and logistics systems.' },
+      { pt: 'APIs em C#/.NET para integração entre sistemas, com SQL Server e Oracle, e pipelines de CI/CD no Azure DevOps.', en: 'C#/.NET APIs for integration between systems, with SQL Server and Oracle, and CI/CD pipelines in Azure DevOps.' },
+      { pt: 'Participação nas reuniões técnicas e de produto que definiram os sistemas novos.', en: 'Took part in the technical and product meetings that defined the new systems.' },
     ],
   },
   {
@@ -100,12 +85,8 @@ export const experiences: Experience[] = [
     summaryEn:
       'Internal systems with React and Node.js, REST APIs and SOA environments. Before that, Angular, Python and Linux automation.',
     tasks: [
-      'Estágio de desenvolvimento (abr/2023 – abr/2025): sistemas internos com React e Node.js, manutenção e otimização de APIs REST, ambientes SOA e suporte avançado à operação de TI.',
-      'Aprendiz técnico de programação (abr/2022 – fev/2023): sistemas internos com Angular e Python, automação em Linux e ambientes SOA.',
-    ],
-    tasksEn: [
-      'Development internship (Apr 2023 – Apr 2025): internal systems with React and Node.js, maintenance and optimization of REST APIs, SOA environments and advanced IT operations support.',
-      'Technical programming apprentice (Apr 2022 – Feb 2023): internal systems with Angular and Python, Linux automation and SOA environments.',
+      { pt: 'Estágio de desenvolvimento (abr/2023 – abr/2025): sistemas internos com React e Node.js, manutenção e otimização de APIs REST, ambientes SOA e suporte avançado à operação de TI.', en: 'Development internship (Apr 2023 – Apr 2025): internal systems with React and Node.js, maintenance and optimization of REST APIs, SOA environments and advanced IT operations support.' },
+      { pt: 'Aprendiz técnico de programação (abr/2022 – fev/2023): sistemas internos com Angular e Python, automação em Linux e ambientes SOA.', en: 'Technical programming apprentice (Apr 2022 – Feb 2023): internal systems with Angular and Python, Linux automation and SOA environments.' },
     ],
   },
 ];

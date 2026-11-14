@@ -83,7 +83,7 @@ import { copy } from '@/utils/copy';
             <h3>{experience.company}</h3>
             <p {...copy({ pt: experience.role, en: experience.roleEn })}>{experience.role}</p>
           </div>
-          <ul>{experience.tasks.map((task, index) => <li {...copy({ pt: task, en: experience.tasksEn[index] })}>{task}</li>)}</ul>
+          <ul>{experience.tasks.map((task) => <li {...copy(task)}>{task.pt}</li>)}</ul>
         </article>
       ))}
     </div>
