@@ -1,7 +1,6 @@
 ---
 import AboutBento from '@/components/home/AboutBento.astro';
 import ContactCard from '@/components/home/ContactCard.astro';
-import CvCards from '@/components/home/CvCards.astro';
 import ExperienceList from '@/components/home/ExperienceList.astro';
 import Hero from '@/components/home/Hero.astro';
 import ProjectCard from '@/components/home/ProjectCard.astro';
@@ -52,11 +51,6 @@ const subtitle = sitesSubtitle(clientProjects.length);
   <section class="c sec" id="sobre">
     <h2 {...copy(titles.about)}>{titles.about.pt}</h2>
     <AboutBento />
-  </section>
-
-  <section class="c sec" id="curriculos">
-    <h2 {...copy(titles.resumes)}>{titles.resumes.pt}</h2>
-    <CvCards />
   </section>
 
   <section class="c sec" id="contato">

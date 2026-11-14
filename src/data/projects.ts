@@ -619,7 +619,7 @@ export const projects: Project[] = [
     description:
       'Plataforma auditável de workflow documental e tramitação interinstitucional, construída em monorepo com API NestJS, área do pesquisador e painel administrativo.',
     tags: ['Monorepo', 'NestJS', 'React', 'Vite', 'Prisma', 'Zod', 'Workflow'],
-    image: '/case-screenshots/neo-constrictor/cover.png',
+    image: '/case-screenshots/neo-constrictor/cover-2026-11.webp',
     featured: true,
     status: 'Repositório Privado',
     privateProject: true,
@@ -976,6 +976,186 @@ export const projects: Project[] = [
             'Treze áreas de domínio num único autor tendem a virar um pacote mutuamente dependente.',
           solution:
             'Pacotes Go com dependências explícitas, adapters nas bordas e ADRs antes das fases sensíveis (checkout e calendário).',
+        },
+      ],
+    },
+  },
+  {
+    id: 'qualityflow',
+    title: 'QualityFlow',
+    description:
+      'SaaS multiempresa de gestão da qualidade: auditorias, eventos e não conformidades, indicadores, documentos controlados e qualificação de fornecedores, com isolamento por empresa.',
+    tags: ['NestJS', 'Prisma', 'React', 'TypeScript', 'PostgreSQL', 'OpenAPI', 'Terraform'],
+    image: '/case-screenshots/qualityflow/cover-2026-11.webp',
+    featured: true,
+    status: 'SaaS · em evolução',
+    privateProject: true,
+    detailed: {
+      summary: {
+        what: 'Sistema de gestão da qualidade (SGQ) multiempresa, em que cada empresa cliente opera sua rotina de qualidade num espaço isolado.',
+        audience: 'Equipes de qualidade de indústrias e empresas que precisam manter auditorias, documentos e fornecedores em dia para certificações.',
+        value: 'Troca planilhas e pastas por uma fila diária do que está atrasado, com rastreabilidade de quem fez o quê.',
+      },
+      overview: {
+        problem: 'A rotina de qualidade vive em planilhas soltas: auditorias sem programação, não conformidades sem dono e documentos sem controle de versão e de leitura.',
+        solution: 'Uma API NestJS com isolamento por empresa e um front React que consome um cliente tipado gerado do contrato OpenAPI, com 11 módulos de domínio.',
+        role: 'Sou autor de cerca de 87% dos commits da API e 93% do front: arquitetura, backend, frontend, testes e CI.',
+      },
+      roleAreas: [
+        'API NestJS com isolamento por empresa',
+        'Front React com cliente tipado gerado do OpenAPI',
+        'Mutation testing com Stryker',
+        'CI de staging e produção e infraestrutura em Terraform',
+      ],
+      valueFocus: [
+        'Contrato da API como fonte única entre back e front',
+        'Fila do dia em vez de relatórios',
+        'Testes que medem se as asserções pegam erro de verdade',
+      ],
+      architecture: [
+        {
+          category: 'Backend',
+          technologies: [
+            { name: 'NestJS + Prisma', description: 'API modular com uma base por empresa e um núcleo comum para contas, planos e domínios.' },
+            { name: 'OpenAPI + Zod', description: 'O contrato é gerado da API e vira o cliente tipado que o front usa; mudança quebrada aparece no typecheck.' },
+          ],
+        },
+        {
+          category: 'Frontend',
+          technologies: [
+            { name: 'React + Vite', description: 'Interface densa de operação, com atalhos de teclado e listas filtráveis.' },
+            { name: 'Playwright', description: 'Testes de ponta a ponta com a API simulada, sem depender de banco.' },
+          ],
+        },
+        {
+          category: 'Qualidade e entrega',
+          technologies: [
+            { name: 'Stryker', description: 'Mutation testing para medir a força real dos testes.' },
+            { name: 'Terraform + CI', description: 'Ambientes de staging e produção descritos como código, com deploy pela CI.' },
+          ],
+        },
+      ],
+      features: [
+        { title: 'Fila do dia', description: 'A home mostra o que está atrasado, vence hoje ou está fora da meta, com atalho para resolver.' },
+        { title: 'Auditorias', description: 'Programação anual por processo, execução com progresso e não conformidades ligadas.' },
+        { title: 'Indicadores', description: 'Valor, meta, série histórica e estado de cada indicador, com lançamento manual ou automático.' },
+        { title: 'Documentos e fornecedores', description: 'Documentos controlados com versão e confirmação de leitura; fornecedores com qualificação e restrições.' },
+      ],
+      challenges: [
+        {
+          title: 'Isolar empresas sem duplicar código',
+          problem: 'Cada cliente precisa de dados isolados, mas o código e as migrations são os mesmos para todos.',
+          solution: 'Isolamento por empresa com migrations aplicadas por etapas (canário e depois as demais) e um núcleo comum separado.',
+        },
+        {
+          title: 'Front e API divergindo',
+          problem: 'Tipos escritos à mão no front quebravam em silêncio quando a API mudava.',
+          solution: 'Migrei o front para um cliente gerado do contrato OpenAPI/Zod; a divergência vira erro de compilação.',
+        },
+      ],
+    },
+  },
+  {
+    id: 'agents-platform',
+    title: 'Agents Platform',
+    description:
+      'Plataforma multiempresa para configurar agentes de IA no WhatsApp, com empresas e rascunhos versionados. Modo copiloto e custo por agente em construção.',
+    tags: ['NestJS', 'Fastify', 'React', 'BullMQ', 'PostgreSQL', 'pgvector'],
+    image: '/case-screenshots/agents-platform/cover-2026-11.webp',
+    featured: true,
+    status: 'Em desenvolvimento',
+    privateProject: true,
+    detailed: {
+      summary: {
+        what: 'Um painel onde cada empresa atendida ganha agentes de IA com instruções, conhecimento, ferramentas e canais.',
+        audience: 'Operações de atendimento que querem IA no WhatsApp sem perder o controle do que o agente responde e do quanto ele custa.',
+        value: 'O plano é o agente subir em etapas (observação, copiloto, autônomo), com custo visível por agente. A primeira entrega cobre a central de agentes e o editor.',
+      },
+      overview: {
+        problem: 'Agentes de IA em atendimento costumam ir direto para produção, sem versão, sem revisão humana e sem saber quanto cada um custa.',
+        solution: 'Um núcleo comum com empresas, agentes e rascunhos versionados. Laboratório de testes, modo copiloto e limites de custo vêm nas próximas etapas.',
+        role: 'Produto, arquitetura, backend e frontend. Foram 100 PRs em 23 dias.',
+      },
+      roleAreas: ['Arquitetura do núcleo e das edições', 'API e filas', 'Painel React', 'Integração com WhatsApp'],
+      valueFocus: ['Versões e revisão antes de ativar', 'Autonomia em etapas (em construção)', 'Custo visível por agente'],
+      architecture: [
+        {
+          category: 'Backend',
+          technologies: [
+            { name: 'NestJS + Fastify', description: 'API do painel e dos canais, com identidade interna e empresas.' },
+            { name: 'BullMQ + Redis', description: 'Filas para mensagens, análises e tarefas dos agentes.' },
+            { name: 'PostgreSQL + pgvector + Drizzle', description: 'Dados, rascunhos versionados e base de conhecimento com busca vetorial.' },
+          ],
+        },
+        {
+          category: 'Frontend',
+          technologies: [{ name: 'React + Vite', description: 'Central de agentes, editor guiado e caixa de conversas.' }],
+        },
+      ],
+      features: [
+        { title: 'Editor guiado', description: 'Papel, tom, público, limites e quando chamar uma pessoa, salvos como rascunho versionado.' },
+        { title: 'Conversas (em construção)', description: 'Caixa de conversas com modo copiloto: o agente sugere e a pessoa aprova, edita ou responde.' },
+        { title: 'Empresas e agentes', description: 'Cada empresa atendida tem seus agentes, canais e configurações.' },
+        { title: 'Custos (em construção)', description: 'Consumo e limites acompanhados por agente.' },
+      ],
+      challenges: [
+        {
+          title: 'Um produto, várias operações',
+          problem: 'A mesma base precisa servir uso próprio e operadoras com marca, dados e segredos separados.',
+          solution: 'Núcleo comum com edições que fixam uma versão do núcleo e mantêm configuração e dados próprios.',
+        },
+        {
+          title: 'Edições concorrentes',
+          problem: 'Duas pessoas editando o mesmo agente sobrescreviam o trabalho uma da outra.',
+          solution: 'Rascunhos com versão; conflito de edição pede revisão explícita antes de salvar.',
+        },
+      ],
+    },
+  },
+  {
+    id: 'maria-comprou',
+    title: 'Maria Comprou',
+    description:
+      'Site de achadinhos com ofertas selecionadas, alimentado por automação: filas de coleta, publicação no Telegram, painel administrativo, servidor MCP e agente de IA.',
+    tags: ['Astro', 'Fastify', 'BullMQ', 'PostgreSQL', 'Directus', 'MCP'],
+    image: '/case-screenshots/maria-comprou/cover-2026-11.webp',
+    status: 'Produto próprio',
+    privateProject: true,
+    detailed: {
+      summary: {
+        what: 'Um site de ofertas curadas em que a coleta, a publicação e a divulgação rodam por automação.',
+        audience: 'Quem segue o perfil e quer ofertas boas sem garimpar em várias lojas.',
+        value: 'A curadoria vira operação: o agente de IA usa as ferramentas do servidor MCP para cuidar do catálogo e da divulgação.',
+      },
+      overview: {
+        problem: 'Publicar achadinhos à mão no site e no Telegram é trabalho repetitivo e não escala.',
+        solution: 'Monorepo com site Astro, API Fastify, workers em fila, painel Directus, servidor MCP e um agente de IA que opera o fluxo.',
+        role: 'Produto, arquitetura, backend, site e automação.',
+      },
+      roleAreas: ['Site público em Astro', 'API e workers', 'Automação com MCP e agente de IA', 'Infraestrutura com Docker'],
+      valueFocus: ['Automação de ponta a ponta', 'Operação por agente com aprovação humana'],
+      architecture: [
+        {
+          category: 'Plataforma',
+          technologies: [
+            { name: 'Astro', description: 'Site público rápido, com categorias, mais vistos e sugestão de ofertas.' },
+            { name: 'Fastify + BullMQ/Redis', description: 'API e workers que coletam, normalizam e publicam ofertas.' },
+            { name: 'PostgreSQL + Directus', description: 'Dados das ofertas e painel administrativo.' },
+            { name: 'MCP + CLI', description: 'Ferramentas para o agente de IA operar o catálogo e o Telegram.' },
+          ],
+        },
+      ],
+      features: [
+        { title: 'Ofertas por categoria', description: 'Grade de ofertas com desconto, preço anterior e link para a loja.' },
+        { title: 'Mais vistos', description: 'Ordenação pelos cliques reais dos últimos dias.' },
+        { title: 'Sugestões da comunidade', description: 'Formulário para enviar um achadinho para a curadoria.' },
+        { title: 'Telegram e agente', description: 'Publicação automática no Telegram e um agente de IA que opera o fluxo pelo MCP.' },
+      ],
+      challenges: [
+        {
+          title: 'Um monorepo de muitos serviços',
+          problem: 'Site, API, workers, painel, MCP e agente somam cerca de 18 pacotes; subir tudo para mexer só no site é lento e ruidoso.',
+          solution: 'Turborepo com pnpm e um modo de desenvolvimento que sobe só o site e a API, com Postgres e Redis em Docker.',
         },
       ],
     },

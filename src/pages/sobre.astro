@@ -1,7 +1,7 @@
 ---
 import profileImage from '@/assets/perfil.jpg';
 import { Image } from 'astro:assets';
-import { site } from '@/config/site';
+import { resumeLink, site } from '@/config/site';
 import { education } from '@/data/education';
 import { experiences } from '@/data/experiences';
 import { skills } from '@/data/skills';
@@ -51,7 +51,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         </div>
         <div class="about-actions">
           <a class="action-link action-link--solid" href={site.links.whatsapp} target="_blank" rel="noreferrer">Conversar comigo <span>↗</span></a>
-          <a class="action-link" href={site.links.resume} download>Currículo completo <span>↓</span></a>
+          <a class="action-link" {...resumeLink}>Baixar currículo <span>↓</span></a>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ const section = (id: string) => sections.find((item) => item.id === id)!;
 // Sobre e Contato têm página própria (formação e formulário); o rodapé é o caminho até elas.
 const pages: Record<string, string> = { sobre: '/sobre', contato: '/contato' };
 const column = (ids: string[]) => ids.map((id) => ({ ...section(id), href: pages[id] ?? sectionHref(pathname, id) }));
-const columns = [column(['projetos', 'sites', 'experiencia']), column(['sobre', 'curriculos', 'contato'])];
+const columns = [column(['projetos', 'sites', 'experiencia']), column(['sobre', 'contato'])];
 const external = [
   { label: 'GitHub', href: site.links.github },
   { label: 'LinkedIn', href: site.links.linkedin },
